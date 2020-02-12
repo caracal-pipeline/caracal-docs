@@ -4,10 +4,10 @@
    contain the root `toctree` directive.
  
 =========
-MeerKATHI
+Caracal
 =========
  
-MeerKATHI is a pipeline for radio interferometry data reduction. 
+Caracal is a pipeline for radio interferometry data reduction. 
 It works on data from any radio interferometer as long as they are in "measurement set" format.
 
 *This documentation is work in progress. Please bear with us.*
