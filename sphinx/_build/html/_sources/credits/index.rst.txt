@@ -1,4 +1,4 @@
-.. meerkathi-docs documentation master file, created by
+.. caracal-docs documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -7,7 +7,7 @@
 Acknowledgements
 ================
  
-The MeerKATHI team acknowledges support from the following institutes:
+The Caracal team acknowledges support from the following institutes:
  
 * South African Radio Astronomy Observatory (SARAO)
 * Rhodes University

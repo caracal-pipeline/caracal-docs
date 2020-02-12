@@ -12,7 +12,7 @@ Data products
 .. toctree::
    :maxdepth: 1
 
-The following data products are written by MeerKATHI.
+The following data products are written by Caracal.
  
 log files
 ^^^^^^^^^

@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -16,7 +16,7 @@ Continuum imaging and self-calibration
 Split, average and flag target visibilities
 -------------------------------------------
 
-Following cross-calibration MeerKATHI creates a new .MS file which contains the
+Following cross-calibration Caracal creates a new .MS file which contains the
 cross-calibrated target visibilities only. This is done by the :ref:`split_target`
 worker. In case the cross-calibration tables have not been applied to the target
 by the :ref:`cross_cal` worker, :ref:`split_target` can do so on the fly while
@@ -27,7 +27,7 @@ while splitting. Depending on the science goals, it might be useful to run this
 worker more than once. E.g., the first time to create a frequency-averaged dataset
 for continuum imaging and self-calibration, and the second time to create a
 narrow-band dataset for spectral-line work. The possibility of running this
-worker multiple times within a single MeerKATHI run allows users to design the
+worker multiple times within a single Caracal run allows users to design the
 best strategy for their project.
 
 Before self-calibrating it might also be good to flag the target's visibilities.

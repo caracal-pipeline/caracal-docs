@@ -178,7 +178,7 @@
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>, <a class="reference internal" href="../../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a>, <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a><strong>]</strong></p>
 <div class="section" id="split-average-and-flag-target-visibilities">
 <h2>Split, average and flag target visibilities<a class="headerlink" href="#split-average-and-flag-target-visibilities" title="Permalink to this headline">¶</a></h2>
-<p>Following cross-calibration MeerKATHI creates a new .MS file which contains the
+<p>Following cross-calibration Caracal creates a new .MS file which contains the
 cross-calibrated target visibilities only. This is done by the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>
 worker. In case the cross-calibration tables have not been applied to the target
 by the <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a> worker, <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> can do so on the fly while
@@ -188,7 +188,7 @@ while splitting. Depending on the science goals, it might be useful to run this
 worker more than once. E.g., the first time to create a frequency-averaged dataset
 for continuum imaging and self-calibration, and the second time to create a
 narrow-band dataset for spectral-line work. The possibility of running this
-worker multiple times within a single MeerKATHI run allows users to design the
+worker multiple times within a single Caracal run allows users to design the
 best strategy for their project.</p>
 <p>Before self-calibrating it might also be good to flag the target’s visibilities.
 (Typically the target is not flagged before applying the cross-calibration.) This can

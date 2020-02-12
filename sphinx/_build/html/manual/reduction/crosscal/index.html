@@ -180,7 +180,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a>, <a class="reference internal" href="../../workers/inspect_data/index.html#inspect-data"><span class="std std-ref">inspect_data</span></a><strong>]</strong></p>
-<p>Cross-calibration runs largely on CASA tasks. Using these tasks, MeerKATHI allows users to
+<p>Cross-calibration runs largely on CASA tasks. Using these tasks, Caracal allows users to
 solve for delays, bandpass, gains and flux scale in several different ways.</p>
 <p>Just as an example, it is possible to solve for:
 1) time-independent antenna delays and normalised bandpass based on the observation of a
@@ -190,7 +190,7 @@ bandpass calibrator;
 4) time-dependent antenna flux scale at fine time resolution obtained by scaling the gains
 from step 3 above to the gains from step 2 above.</p>
 <p>Variations on the above scheme are possible by tuning the parameters of the various
-steps. However, be aware that MeerKATHI does not check that the selected combination of
+steps. However, be aware that Caracal does not check that the selected combination of
 settings makes physical sense.</p>
 <div class="section" id="preliminary-steps">
 <h2>Preliminary steps<a class="headerlink" href="#preliminary-steps" title="Permalink to this headline">¶</a></h2>
@@ -200,11 +200,11 @@ settings makes physical sense.</p>
 cross-calibration products (i.e., tables and plots; <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal-label"><span class="std std-ref">cross_cal: label</span></a>)</p></li>
 <li><p>Reinitialise the .MS for calibration with the CASA task CLEARCAL
 (<span class="xref std std-ref">cross_cal: clear_cal</span>). Given the users’ field selection
-for this task (with the <em>field</em> parameter) MeerKATHI sets the MODEL_DATA column
+for this task (with the <em>field</em> parameter) Caracal sets the MODEL_DATA column
 to unity in total intensity and zero in polarization, sets the
 CORRECTED_DATA column equal to the DATA column, and optionally adds a MODEL_DATA
 column if not already present. Selected fields can be specified with the field number or name
-as it appears in the metadata, or with the field code within MeerKATHI (typically “fcal”, “bpcal”;
+as it appears in the metadata, or with the field code within Caracal (typically “fcal”, “bpcal”;
 field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a> worker).
 Multiple fields can be selected.</p></li>
 <li><p>Select the UV range that should be used to calibrate the data
@@ -216,7 +216,7 @@ and can be chosen using a number of additional parameters.
 For PKS 1934-638, users can choose a sky model which includes confusing
 sources and their spectral shape as seen through a frequency-dependent MeerKAT primary beam.
 This is recommended for MeerKAT observations. Alternatively, users can choose a point
-source model. When available, SARAO models are adopted. Alternatively, MeerKATHI uses the
+source model. When available, SARAO models are adopted. Alternatively, Caracal uses the
 NRAO models.</p></li>
 </ul>
 </div>
@@ -234,7 +234,7 @@ fraction of the array due to missing delay calibration.</p>
 Users can set the following parameters:</p>
 <ul class="simple">
 <li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
-field code within MeerKATHI (“fcal”, “bpcal”, “gcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
+field code within Caracal (“fcal”, “bpcal”, “gcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
 worker). Multiple fields can be used for the delay calibration.</p></li>
 <li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for time-independent delays. Note that for fully
 time-independent delays you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
@@ -258,7 +258,7 @@ Its options are set at <span class="xref std std-ref">cross_cal: bp_cal</span>.
 The following bandpass calibration options are similar to those for the delay calibration (see above):</p>
 <ul class="simple">
 <li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
-field code within MeerKATHI (typically “bpcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
+field code within Caracal (typically “bpcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
 worker). Multiple fields can be used for the bandpass calibration.</p></li>
 <li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent bandpass. Note that for a fully
 time-independent bandpass you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
@@ -276,14 +276,14 @@ with less baselines than this minimum number.</p></li>
 (<em>set_refant</em>). If <em>false</em> then CASA BANDPASS will decide which reference antenna to use.</p></li>
 <li><p>Whether to normalise the bandpass to have average amplitude and phase of 1 and 0, repsectively (<em>solnorm</em>).</p></li>
 </ul>
-<p>MeerKATHI can calibrate the bandpass with the above options in a single run of the CASA task BANDPASS.
+<p>Caracal can calibrate the bandpass with the above options in a single run of the CASA task BANDPASS.
 However, a single run of BANDPASS may not be ideal when calculating a time-independent bandpass from
 calibrator scans spread over a long time interval.
 This is because the vector time-average of the calibrator’s raw visibilities, which is calculated
 before solving for the time-independent bandpass, may be corrupted by the variation of
 the antenna gains with time. In this case it is better to correct for such gain variations <em>before</em>
 time-averaging the calibrator’s visibilities and calculating the time-independent bandpass.
-MeerKATHI allows users to do this through the parameter <em>remove_ph_time_var</em>.
+Caracal allows users to do this through the parameter <em>remove_ph_time_var</em>.
 Setting this parameter to <em>true</em> results in the following three steps (instead of a single run of BANDPASS):</p>
 <ul class="simple">
 <li><p>A first run of BANDPASS with the solution interval set by <em>solint</em> and with <em>combine=””</em> (regardless of
@@ -306,7 +306,7 @@ default values.</p>
 <p>The flux scale calibration options are similar to those for the bandpass calibration (see above):</p>
 <ul class="simple">
 <li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
-field code within MeerKATHI (typically “fcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
+field code within Caracal (typically “fcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
 worker). Multiple fields can be used for the flux scale calibration.</p></li>
 <li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent calibration. Note that for a fully
 time-independent calibration you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
@@ -330,7 +330,7 @@ default values.</p>
 <p>The gain scale calibration options are identical to those for the flux calibration (see above):</p>
 <ul class="simple">
 <li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
-field code within MeerKATHI (typically “gcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
+field code within Caracal (typically “gcal”; field codes are set by the <a class="reference internal" href="../../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>
 worker). Multiple fields can be used for the gain calibration.</p></li>
 <li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent calibration. Note that for a fully
 time-independent calibration you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
@@ -354,11 +354,11 @@ results in a coarse time resolution (if any) for the flux calibration. Higher re
 of the variation of the gain amplitude with time might be provided by the gain calibration step above,
 which is based on the typically more frequent observation of a gain calibrator.
 These gain amplitudes do not give a reliable, absolute flux scale, but can be scaled to the gain
-amplitudes obtained from the flux calibrator. Within MeerKATHI, this step is performed with the CASA
+amplitudes obtained from the flux calibrator. Within Caracal, this step is performed with the CASA
 task FLUXSCALE. Its options are set at <span class="xref std std-ref">cross_cal: transfer_fluxscale</span>.</p>
 <p>The only availabel options are the field(s) from which the flux scale was derived (<em>reference</em>) and those
 whose gains should be scaled (<em>transfer</em>). As for all other steps above, fields can be specified
-with the field number or name as it appears in the metadata, or the field code within MeerKATHI. Typically
+with the field number or name as it appears in the metadata, or the field code within Caracal. Typically
 this will be <em>reference=”fcal”</em> and <em>transfer=”gcal”</em>.</p>
 <p>The CASA FLUXSCALE algorithm works initially on each antenna and each polarisation product separately.
 It calculates the ratio <em>R</em> ( <em>i</em> , <em>x</em> ) between the time-averaged gain amplitude derived from the flux calibrator
@@ -372,7 +372,7 @@ default values.</p>
 </div>
 <div class="section" id="apply-the-cross-calibration-and-diagnostic-plots">
 <h2>Apply the cross-calibration and diagnostic plots<a class="headerlink" href="#apply-the-cross-calibration-and-diagnostic-plots" title="Permalink to this headline">¶</a></h2>
-<p>MeerKATHI can apply the cross calibration tables to all calibrators (useful for diagnostics) and to the science
+<p>Caracal can apply the cross calibration tables to all calibrators (useful for diagnostics) and to the science
 target. In doing so it will use the following interpolation rules:</p>
 <ul class="simple">
 <li><p>Delay calibration: applied to the fields bpcal, gcal, target with nearest, linear, linear interpolation, respectively.</p></li>
