@@ -1,2 +1,2 @@
-# meerkathi-docs
-Documentation for the MeerKATHI pipeline
+# caracal-docs
+Documentation for the Caracal pipeline
