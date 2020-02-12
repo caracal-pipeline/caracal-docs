@@ -2,8 +2,8 @@
 ### INITIAL SETTINGS ###
 ########################
 
-# Where to find the MeerKATHI schema directory
-meerkathiDir='../meerkathi'
+# Where to find the Caracal schema directory
+caracalDir='../meerkathi'
 
 # Where to write the doc files
 docsDir='sphinx/'
@@ -34,13 +34,13 @@ sortedWorkers = [
 ### DEFINE FUNCTIONS ###
 ########################
 
-# Get and adapt MeerKATHI README.md
-def getMeerkathiReadme(mrkthiDr,dcsDr):
-  print('  INFO: Getting and adapting {0:s}/README.md ...'.format(mrkthiDr))
-  f=open(mrkthiDr+'/README.md')
+# Get and adapt Caracal README.md
+def getCaracalReadme(pipeDr,dcsDr):
+  print('  INFO: Getting and adapting {0:s}/README.md ...'.format(pipeDr))
+  f=open(pipeDr+'/README.md')
   readme=f.readlines()
   f.close()
-  f=open(dcsDr+'meerkathiREADME.md','w')
+  f=open(dcsDr+'caracalREADME.md','w')
   nn=readme.index('## Download & Install\n')
   while nn<len(readme) and '## Running the pipeline' not in readme[nn]:
     f.write(readme[nn])
@@ -52,7 +52,7 @@ def getMeerkathiReadme(mrkthiDr,dcsDr):
 def writeWorkerPageIndex(srtWrks,wrkDr):
   print('  INFO: Writing workers homepage index.rst ...')
   writeLines=[
-    '.. meerkathi documentation master file, created by',
+    '.. caracal documentation master file, created by',
     '   sphinx-quickstart on Mon Feb 18 15:04:26 2019.',
     '   You can adapt this file completely to your liking, but it should at least',
     '   contain the root `toctree` directive.',
@@ -130,7 +130,7 @@ def writeWorkersIndex(srtWrks,wrkDr,schms,schDr):
   for wrk in srtWrks:
     # Write preamble to index.rst
     writeLines=[
-      '.. meerkathi documentation master file, created by',
+      '.. caracal documentation master file, created by',
       '   sphinx-quickstart on Mon Feb 18 15:04:26 2019.',
       '   You can adapt this file completely to your liking, but it should at least',
       '   contain the root `toctree` directive.',
@@ -218,11 +218,11 @@ import ruamel.yaml
 ### DO IT! ###
 ##############
 
-schemaDir=meerkathiDir+'/meerkathi/schema/'
+schemaDir=caracalDir+'/meerkathi/schema/'
 schemaVersion='0.2.0'
 
 
-print('  INFO: Browsing MeerKATHI schema directory {0:s} ...'.format(schemaDir))
+print('  INFO: Browsing Caracal schema directory {0:s} ...'.format(schemaDir))
 # Get list of workers and their .yml files from the schema directory
 schemas=[ww.replace(schemaDir,'') for ww in glob(schemaDir+'*'+schemaVersion+'.yml')]
 workers=[ww.split('_schema')[0] for ww in schemas]
@@ -249,8 +249,8 @@ for dd in [installDir,workersDir]:
   os.mkdir(dd)
 for ww in sortedWorkers: os.mkdir(workersDir+ww)
 
-# Copy MeerKATHI readme from meerkathiDir and edit 
-getMeerkathiReadme(meerkathiDir,docsDir)
+# Copy Caracal readme from caracalDir and edit 
+getCaracalReadme(caracalDir,docsDir)
 
 # Write index.rst files
 writeWorkerPageIndex(sortedWorkers,workersDir)
