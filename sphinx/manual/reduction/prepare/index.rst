@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -16,7 +16,7 @@ Prepare pipeline and data
 Directories and input file names
 --------------------------------
  
-A run of MeerKATHI must always start by setting up a number of directory and file
+A run of Caracal must always start by setting up a number of directory and file
 names. This is done through the :ref:`general` and :ref:`get_data` workers.
 
 In the :ref:`general` worker users give:
@@ -31,7 +31,7 @@ In the :ref:`general` worker users give:
 
 If they do not exist yet, the above directories can be created by setting
 :ref:`general: init_pipeline <general_init_pipeline>` to *true*. This also copies
-files from the meerkathi/data/meerkat_files directory to the *input* directory set above.
+files from the caracal/data/meerkat_files directory to the *input* directory set above.
 
 In the :ref:`get_data` worker users give the name of the .MS files to be processed
 (:ref:`get_data: dataid <get_data_dataid>`). Furthermore, the following optional steps are available:
@@ -62,7 +62,7 @@ by editing the relevant parameters of this worker:
 * :ref:`observation_config: gcal <observation_config_gcal>`
 * :ref:`observation_config: reference_antenna <observation_config_reference_antenna>`
 
-In fact, MeerKATHI can automatically extract
+In fact, Caracal can automatically extract
 most of these info from the .MS files themselves. To do so users should enable the
 :ref:`observation_config: obsinfo <observation_config_obsinfo>` parameter. This writes a .JSON and a .TXT file to disc. Once
 the .JSON file is on disc, parameters set to *auto* (or in some cases to 0) in the :ref:`observation_config`
