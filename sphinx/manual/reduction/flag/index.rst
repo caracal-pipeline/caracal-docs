@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -13,7 +13,7 @@ Flag data
 **[relevant workers:** :ref:`flagging`\ **]**
 
 The :ref:`flagging` worker can run on the input .MS files or on .MS files created by
-MeerKATHI at various stages of the pipeline (e.g., by the :ref:`split_target` worker).
+Caracal at various stages of the pipeline (e.g., by the :ref:`split_target` worker).
 In the latter case the name of the .MS files to be flagged is based on that of the input
 .MS files, with a label added before the extension. Users can set the label with the
 :ref:`flagging: label <flagging_label>` parameter in this worker.
@@ -52,10 +52,10 @@ below for a detailed documentation of the individual flagging modes.
 * Flag with AOFlagger (:ref:`flagging: autoflag_rfi <flagging_autoflag_rfi>`). The
   AOFlagger strategy file should be located in the *input* directory set by
   :ref:`general: input <general_input>`.
-  MeerKATHI comes with a number of strategy files, which are located in the
-  meerkathi/data/meerkat_files directory and are copied to the *input* directory by the
+  Caracal comes with a number of strategy files, which are located in the
+  caracal/data/meerkat_files directory and are copied to the *input* directory by the
   :ref:`general` worker. However, users can copy their own strategy file to the same
-  *input* directory and use it within MeerKATHI.
+  *input* directory and use it within Caracal.
   Additional parameters allow users to limit the execution of AOFlagger to selected
   columns, fields or frequency bands of the .MS files. AOFlagger is described by
   Offringa et al. (2012), A&A, 539, A95.
