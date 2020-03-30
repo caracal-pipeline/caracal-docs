@@ -46,7 +46,7 @@ Dignostic plots of the first-pass cross-calibrated data.
 **plotter**
 --------------------------------------------------
 
-  *{"plotms", "shadems"}*, *optional*, *default = plotms*
+  *{"plotms", "shadems"}*, *optional*, *default = shadems*
 
   Application to use for making plots
 

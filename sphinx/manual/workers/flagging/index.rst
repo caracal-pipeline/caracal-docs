@@ -40,6 +40,34 @@ Flagging of the data.
 
 
 
+.. _flagging_load_flags:
+
+--------------------------------------------------
+**load_flags**
+--------------------------------------------------
+
+  Restore flags to specified state
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    enable this segement
+
+  **version**
+
+    *str*, *optional*, *default = before_flagging_automatic*
+
+    Flag version name
+
+  **merge**
+
+    *bool*, *optional*, *default = False*
+
+    Merge flags to restored with current flags. (uses 'or')
+
+
+
 .. _flagging_autoflag_autocorr_powerspectra:
 
 --------------------------------------------------
@@ -102,7 +130,7 @@ Flagging of the data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enables flagging of autocorrelations.
 
@@ -342,9 +370,9 @@ Flagging of the data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
-    Enable RFI flagging with AOFlagger or tricolour (not active yet)
+    Enable RFI flagging with AOFlagger or tricolour
 
   **flagger**
 
@@ -387,6 +415,16 @@ Flagging of the data.
     *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
 
     Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
+
+  **tricolour_mode**
+
+    *{"auto", "manual"}*, *optional*, *default = auto*
+
+    If set to 'auto', decides the tricolour flagging strategy based on the bandwidth of the dataset. Else uses tricolour_calibrator_strat.
+
+  **tricolour_calibrator_strat_narrowband**
+
+    *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
   **tricolour_calibrator_strat**
 

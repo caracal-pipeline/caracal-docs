@@ -142,7 +142,7 @@ Perform Self calibration on the data
 **img_mgain**
 --------------------------------------------------
 
-  *float*, *optional*, *default = 0.99*
+  *float*, *optional*, *default = 0.90*
 
   Image CLEANing gain
 

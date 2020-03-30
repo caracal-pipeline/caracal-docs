@@ -62,31 +62,25 @@ Prepare the data for calibration and imaging.
 **manage_flags**
 --------------------------------------------------
 
-  Manage MS flags
+  Manage flags
 
   **enable**
 
-    *bool*, *optional*, *default = true*
+    *bool*, *optional*, *default = True*
 
-    enable this section
+    Enable this segment
 
-  **add_bitflag_column**
+  **mode**
 
-    *bool*, *optional*, *default = true*
+    *{"initialize", "reset", "restore"}*, *optional*, *default = restore*
 
-    Add BITFLAG and BITFLAG_ROW columns
+    Manage flag mode. reset: unflag all data and delete all flagsets. restore: Restore flags from user specified flagset. initialize: Save current FLAG column as 'caracal_legacy'
 
-  **init_legacy_flagset**
+  **version**
 
-    *bool*, *optional*, *default = true*
+    *str*, *optional*, *default = caracal_legacy*
 
-    Save all current flags in a legacy flagset if it does not exist
-
-  **remove_flagsets**
-
-    *bool*, *optional*, *default = true*
-
-    Remove all existing flagsets, except legacy flags
+    flagversion to restore
 
 
 
@@ -108,7 +102,7 @@ Prepare the data for calibration and imaging.
 
     *{"uniform", "estimate", "delete"}*, *optional*, *default = uniform*
 
-    uniform: Set all weights to unity, estimate: Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, delete: Delete WEIGHT_SPECTRUM column if it exists. if 'estimate', then further settings are available in the 'estimate' segement of this section
+    uniform: Set all weights to unity. estimate: Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, Also see 'estimate' segment of this section. delete: Delete WEIGHT_SPECTRUM column if it exists.
 
   **estimate**
 

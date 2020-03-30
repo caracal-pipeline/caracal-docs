@@ -28,6 +28,34 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
 
 
+.. _cross_cal_load_flags:
+
+--------------------------------------------------
+**load_flags**
+--------------------------------------------------
+
+  Restore flags to specified state
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    enable this segement
+
+  **version**
+
+    *str*, *optional*, *default = after_flagging_automatic*
+
+    Flag version name
+
+  **merge**
+
+    *bool*, *optional*, *default = False*
+
+    Merge flags to restored with current flags. (uses 'or')
+
+
+
 .. _cross_cal_otfdelay:
 
 --------------------------------------------------

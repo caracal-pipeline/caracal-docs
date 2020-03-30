@@ -219,12 +219,10 @@ import ruamel.yaml
 ##############
 
 schemaDir=caracalDir+'/meerkathi/schema/'
-schemaVersion='0.2.0'
-
 
 print('  INFO: Browsing Caracal schema directory {0:s} ...'.format(schemaDir))
 # Get list of workers and their .yml files from the schema directory
-schemas=[ww.replace(schemaDir,'') for ww in glob(schemaDir+'*'+schemaVersion+'.yml')]
+schemas=[ww.replace(schemaDir,'') for ww in glob(schemaDir+'*.yml')]
 workers=[ww.split('_schema')[0] for ww in schemas]
 
 # Remove from the sortedWorkers list all workers not in the current schema directory

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>prepare_data &mdash; MeerKATHI  documentation</title>
+  <title>prepare_data &mdash; Caracal  documentation</title>
   
 
   
@@ -50,9 +50,12 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> MeerKATHI
+            <a href="../../../index.html">
           
 
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -127,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">MeerKATHI</a>
+          <a href="../../../index.html">Caracal</a>
         
       </nav>
 
@@ -214,26 +217,21 @@
 <div class="section" id="manage-flags">
 <span id="prepare-data-manage-flags"></span><h2><strong>manage_flags</strong><a class="headerlink" href="#manage-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Manage MS flags</p>
+<div><p>Manage flags</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>enable this section</p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable this segment</p>
 </div></blockquote>
-<p><strong>add_bitflag_column</strong></p>
+<p><strong>mode</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Add BITFLAG and BITFLAG_ROW columns</p>
+<div><p><em>{“initialize”, “reset”, “restore”}</em>, <em>optional</em>, <em>default = restore</em></p>
+<p>Manage flag mode. reset: unflag all data and delete all flagsets. restore: Restore flags from user specified flagset. initialize: Save current FLAG column as ‘caracal_legacy’</p>
 </div></blockquote>
-<p><strong>init_legacy_flagset</strong></p>
+<p><strong>version</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Save all current flags in a legacy flagset if it does not exist</p>
-</div></blockquote>
-<p><strong>remove_flagsets</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Remove all existing flagsets, except legacy flags</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = caracal_legacy</em></p>
+<p>flagversion to restore</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -249,7 +247,7 @@
 <p><strong>mode</strong></p>
 <blockquote>
 <div><p><em>{“uniform”, “estimate”, “delete”}</em>, <em>optional</em>, <em>default = uniform</em></p>
-<p>uniform: Set all weights to unity, estimate: Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, delete: Delete WEIGHT_SPECTRUM column if it exists. if ‘estimate’, then further settings are available in the ‘estimate’ segement of this section</p>
+<p>uniform: Set all weights to unity. estimate: Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, Also see ‘estimate’ segment of this section. delete: Delete WEIGHT_SPECTRUM column if it exists.</p>
 </div></blockquote>
 <p><strong>estimate</strong></p>
 <blockquote>
@@ -299,7 +297,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MeerKATHI team
+        &copy; Copyright 2019, Caracal team
 
     </p>
   </div>

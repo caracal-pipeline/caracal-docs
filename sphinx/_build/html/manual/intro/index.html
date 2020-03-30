@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; MeerKATHI  documentation</title>
+  <title>Introduction &mdash; Caracal  documentation</title>
   
 
   
@@ -50,9 +50,12 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MeerKATHI
+            <a href="../../index.html">
           
 
+          
+            
+            <img src="../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -86,19 +89,19 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is Caracal?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#brief-description-of-workers">Brief description of workers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#general"><span class="xref std std-ref">general</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-data"><span class="xref std std-ref">get_data</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#observation-config"><span class="xref std std-ref">observation_config</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#prepare-data"><span class="xref std std-ref">prepare_data</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flagging"><span class="xref std std-ref">flagging</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cross-cal"><span class="xref std std-ref">cross_cal</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#polcal"><span class="xref std std-ref">polcal</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inspect-data"><span class="xref std std-ref">inspect_data</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#split-target"><span class="xref std std-ref">split_target</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#masking"><span class="xref std std-ref">masking</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#self-cal"><span class="xref std std-ref">self_cal</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#image-line"><span class="xref std std-ref">image_line</span></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mosaic"><span class="xref std std-ref">mosaic</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general"><code class="docutils literal notranslate"><span class="pre">general</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-data"><code class="docutils literal notranslate"><span class="pre">get_data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#observation-config"><code class="docutils literal notranslate"><span class="pre">observation_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-data"><code class="docutils literal notranslate"><span class="pre">prepare_data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flagging"><code class="docutils literal notranslate"><span class="pre">flagging</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-cal"><code class="docutils literal notranslate"><span class="pre">cross_cal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polcal"><code class="docutils literal notranslate"><span class="pre">polcal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspect-data"><code class="docutils literal notranslate"><span class="pre">inspect_data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#split-target"><code class="docutils literal notranslate"><span class="pre">split_target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#masking"><code class="docutils literal notranslate"><span class="pre">masking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#self-cal"><code class="docutils literal notranslate"><span class="pre">self_cal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-line"><code class="docutils literal notranslate"><span class="pre">image_line</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mosaic"><code class="docutils literal notranslate"><span class="pre">mosaic</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -124,7 +127,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MeerKATHI</a>
+          <a href="../../index.html">Caracal</a>
         
       </nav>
 
@@ -194,7 +197,7 @@ install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc
 Using Stimela, the different software packages are available through a unified scheme.
 Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
 <p>Within Caracal – and throughout this documentation – the individual Stimela scripts are called
-“workers”. Each Caracal worker corresponds to a specific section of the data reduction
+“workers”. Each Caracal worker corresponds to a specific&nbsp;section of the data reduction
 process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).</p>
@@ -218,32 +221,32 @@ section of this manual or following the links below.</p>
 same order in which they are given below. Only the first three workers (general, get_data
 and  observation_config) should always be executed. All other workers are optional.</p>
 <div class="section" id="general">
-<h3><a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">general</span><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
 <p>This worker sets up the name of various input/output directories
 and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).</p>
 </div>
 <div class="section" id="get-data">
-<h3><a class="reference internal" href="../workers/get_data/index.html#get-data"><span class="std std-ref">get_data</span></a><a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">get_data</span><a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h3>
 <p>This worker sets up the name of the files to be processed and whether any
 conversion to .MS format is necessary. It can also virtually concatenate several .MS files
 together.</p>
 </div>
 <div class="section" id="observation-config">
-<h3><a class="reference internal" href="../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a><a class="headerlink" href="#observation-config" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">observation_config</span><a class="headerlink" href="#observation-config" title="Permalink to this headline">¶</a></h3>
 <p>This worker collects basic information on the content of the .MS files to be
 processed (e.g., target and calibrators’ name, channelisation, etc.). The worker can also
 extract this information automatically from the .MS metadata. Finally, it can create a
 primary beam image cube on a user-defined pixel- and frequency grid.</p>
 </div>
 <div class="section" id="prepare-data">
-<h3><a class="reference internal" href="../workers/prepare_data/index.html#prepare-data"><span class="std std-ref">prepare_data</span></a><a class="headerlink" href="#prepare-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">prepare_data</span><a class="headerlink" href="#prepare-data" title="Permalink to this headline">¶</a></h3>
 <p>This worker prepares the data for calibration and imaging. For example, it can
 recalculate UVW coordinates, add a BITFLAG column to the input .MS files, or add spectral
 weights based on Tsys measurements.</p>
 </div>
 <div class="section" id="flagging">
-<h3><a class="reference internal" href="../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a><a class="headerlink" href="#flagging" title="Permalink to this headline">¶</a></h3>
-<p>This worker flags the data and returns statistics on the flags. As all other
+<h3><span class="xref std std-ref">flagging</span><a class="headerlink" href="#flagging" title="Permalink to this headline">¶</a></h3>
+<p>This worker flags the data and returns statistics&nbsp;on the flags. As all other
 workers, it can be run multiple times within a single Caracal run as explained at
 <a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a> (though this feature is not necessarily useful for many other workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
@@ -251,48 +254,48 @@ algorithms that run on autocorrelations (to catch antennas with clear problems) 
 crosscorrelations.</p>
 </div>
 <div class="section" id="cross-cal">
-<h3><a class="reference internal" href="../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a><a class="headerlink" href="#cross-cal" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">cross_cal</span><a class="headerlink" href="#cross-cal" title="Permalink to this headline">¶</a></h3>
 <p>This worker cross-calibrates the data. Users can calibrate delays, bandpass,
 gains and flux scale. The calibration can be applied to the calibrators’ visibilities (for
 later inspection) and to the target. Numerous parameters are available for users to decide
 how to calibrate. Flagging based on closure errors is available in this worker.</p>
 </div>
 <div class="section" id="polcal">
-<h3><a class="reference internal" href="../workers/polcal/index.html#polcal"><span class="std std-ref">polcal</span></a><a class="headerlink" href="#polcal" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">polcal</span><a class="headerlink" href="#polcal" title="Permalink to this headline">¶</a></h3>
 <p>TBD</p>
 </div>
 <div class="section" id="inspect-data">
-<h3><a class="reference internal" href="../workers/inspect_data/index.html#inspect-data"><span class="std std-ref">inspect_data</span></a><a class="headerlink" href="#inspect-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">inspect_data</span><a class="headerlink" href="#inspect-data" title="Permalink to this headline">¶</a></h3>
 <p>This worker produces diagnostic plots based on the calibrated calibrators’ visibilities.</p>
 </div>
 <div class="section" id="split-target">
-<h3><a class="reference internal" href="../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a><a class="headerlink" href="#split-target" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">split_target</span><a class="headerlink" href="#split-target" title="Permalink to this headline">¶</a></h3>
 <p>This worker creates new .MS files which contain the targets’ calibrated
 visibilities only. Time and frequency averaging is available, as well as phase rotation to
 a new phase centre. Crosscalibration can be applied on the fly while splitting.</p>
 </div>
 <div class="section" id="masking">
-<h3><a class="reference internal" href="../workers/masking/index.html#masking"><span class="std std-ref">masking</span></a><a class="headerlink" href="#masking" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">masking</span><a class="headerlink" href="#masking" title="Permalink to this headline">¶</a></h3>
 <p>This worker creates an a-priori clean mask based on NVSS or SUMSS catalogues,
 to be used during the continuum imaging/self-calibration loop. It can also merge the
 resulting mask with a mask based on an existing image.</p>
 </div>
 <div class="section" id="self-cal">
-<h3><a class="reference internal" href="../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a><a class="headerlink" href="#self-cal" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">self_cal</span><a class="headerlink" href="#self-cal" title="Permalink to this headline">¶</a></h3>
 <p>This worker performs continuum imaging and standard (i.e., direction-independent)
 self-calibration. Automated convergence of the calibration procedure is optionally
 available. This worker can also interpolate and transfer sky model and calibration tables
 to another .MS (e.g., from a coarse- to a fine-channel .MS file).</p>
 </div>
 <div class="section" id="image-line">
-<h3><a class="reference internal" href="../workers/image_line/index.html#image-line"><span class="std std-ref">image_line</span></a><a class="headerlink" href="#image-line" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">image_line</span><a class="headerlink" href="#image-line" title="Permalink to this headline">¶</a></h3>
 <p>This worker creates spectral-line cubes and images. It can subtract the continuum via both
 model and UVLIN-like subtraction, Doppler correct, flag solar RFI, perform
 automated iterative cleaning with 3D clean masks, and, finally, run a spectral-line source
 finder.</p>
 </div>
 <div class="section" id="mosaic">
-<h3><a class="reference internal" href="../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a><a class="headerlink" href="#mosaic" title="Permalink to this headline">¶</a></h3>
+<h3><span class="xref std std-ref">mosaic</span><a class="headerlink" href="#mosaic" title="Permalink to this headline">¶</a></h3>
 <p>TBD</p>
 </div>
 </div>
@@ -318,7 +321,7 @@ finder.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MeerKATHI team
+        &copy; Copyright 2019, Caracal team
 
     </p>
   </div>

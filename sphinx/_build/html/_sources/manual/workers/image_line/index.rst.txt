@@ -162,6 +162,28 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
+.. _image_line_flag_mst_errors:
+
+--------------------------------------------------
+**flag_mst_errors**
+--------------------------------------------------
+
+  Run AOFlagger to flag any faulty visibilities produced by CASA mstranform.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Execute segment flag_mst_errors
+
+  **strategy**
+
+    *str*, *optional*, *default = postmst.rfis*
+
+    AOFlagger strategy file
+
+
+
 .. _image_line_sunblocker:
 
 --------------------------------------------------

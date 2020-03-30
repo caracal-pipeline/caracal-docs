@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>image_line &mdash; MeerKATHI  documentation</title>
+  <title>image_line &mdash; Caracal  documentation</title>
   
 
   
@@ -50,9 +50,12 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> MeerKATHI
+            <a href="../../../index.html">
           
 
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -106,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#restfreq"><strong>restfreq</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subtractmodelcol"><strong>subtractmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mstransform"><strong>mstransform</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flag-mst-errors"><strong>flag_mst_errors</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sunblocker"><strong>sunblocker</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-cube"><strong>make_cube</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#remove-stokes-axis"><strong>remove_stokes_axis</strong></a></li>
@@ -135,7 +139,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">MeerKATHI</a>
+          <a href="../../../index.html">Caracal</a>
         
       </nav>
 
@@ -296,6 +300,22 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Create obsinfo.txt and obsinfo.json of MS file created by mstransform.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="flag-mst-errors">
+<span id="image-line-flag-mst-errors"></span><h2><strong>flag_mst_errors</strong><a class="headerlink" href="#flag-mst-errors" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Run AOFlagger to flag any faulty visibilities produced by CASA mstranform.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Execute segment flag_mst_errors</p>
+</div></blockquote>
+<p><strong>strategy</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = postmst.rfis</em></p>
+<p>AOFlagger strategy file</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -683,7 +703,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MeerKATHI team
+        &copy; Copyright 2019, Caracal team
 
     </p>
   </div>

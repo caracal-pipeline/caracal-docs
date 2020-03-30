@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Continuum imaging and self-calibration &mdash; MeerKATHI  documentation</title>
+  <title>Continuum imaging and self-calibration &mdash; Caracal  documentation</title>
   
 
   
@@ -50,9 +50,12 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> MeerKATHI
+            <a href="../../../index.html">
           
 
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -117,7 +120,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">MeerKATHI</a>
+          <a href="../../../index.html">Caracal</a>
         
       </nav>
 
@@ -175,15 +178,15 @@
 <h1>Continuum imaging and self-calibration<a class="headerlink" href="#continuum-imaging-and-self-calibration" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>, <a class="reference internal" href="../../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a>, <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a><strong>]</strong></p>
+<p><strong>[relevant workers:</strong> <span class="xref std std-ref">split_target</span>, <span class="xref std std-ref">flagging</span>, <span class="xref std std-ref">self_cal</span><strong>]</strong></p>
 <div class="section" id="split-average-and-flag-target-visibilities">
 <h2>Split, average and flag target visibilities<a class="headerlink" href="#split-average-and-flag-target-visibilities" title="Permalink to this headline">¶</a></h2>
 <p>Following cross-calibration Caracal creates a new .MS file which contains the
-cross-calibrated target visibilities only. This is done by the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>
+cross-calibrated target visibilities only. This is done by the <span class="xref std std-ref">split_target</span>
 worker. In case the cross-calibration tables have not been applied to the target
-by the <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a> worker, <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> can do so on the fly while
+by the <span class="xref std std-ref">cross_cal</span> worker, <span class="xref std std-ref">split_target</span> can do so on the fly while
 splitting using the CASA task MSTRANSFORM.</p>
-<p>Optionally, the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> worker can average in time and/or frequency
+<p>Optionally, the <span class="xref std std-ref">split_target</span> worker can average in time and/or frequency
 while splitting. Depending on the science goals, it might be useful to run this
 worker more than once. E.g., the first time to create a frequency-averaged dataset
 for continuum imaging and self-calibration, and the second time to create a
@@ -192,9 +195,9 @@ worker multiple times within a single Caracal run allows users to design the
 best strategy for their project.</p>
 <p>Before self-calibrating it might also be good to flag the target’s visibilities.
 (Typically the target is not flagged before applying the cross-calibration.) This can
-be done with the <a class="reference internal" href="../../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a> worker (which was probably already run on the
+be done with the <span class="xref std std-ref">flagging</span> worker (which was probably already run on the
 calibrators’ visibilities before cross-calibration) setting fields to target in
-<a class="reference internal" href="../../workers/flagging/index.html#flagging-autoflag-rfi"><span class="std std-ref">flagging: autoflag_rfi</span></a>.</p>
+<span class="xref std std-ref">flagging: autoflag_rfi</span>.</p>
 </div>
 <div class="section" id="image-the-continuum-and-self-calibrate">
 <h2>Image the continuum and self-calibrate<a class="headerlink" href="#image-the-continuum-and-self-calibrate" title="Permalink to this headline">¶</a></h2>
@@ -202,24 +205,24 @@ calibrators’ visibilities before cross-calibration) setting fields to target i
 iteratively image the radio continuum emission and self-calibrate the visibilities.
 The resulting gain tables and continuum model can also be transferred to another
 .MS file (particularly useful for spectral line work). All this can be done with the
-<a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a> worker.</p>
+<span class="xref std std-ref">self_cal</span> worker.</p>
 <p>Several parameters allow users to set up both the imaging and self-calibration
 according to their needs. Imaging is done with WSclean, and the parameters of this
-imaging software are available in the <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a> worker. Calibration is done
-with either Cubical or MeqTrees, and also in this case the <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a> worker
+imaging software are available in the <span class="xref std std-ref">self_cal</span> worker. Calibration is done
+with either Cubical or MeqTrees, and also in this case the <span class="xref std std-ref">self_cal</span> worker
 includes the parameters available in those packages.</p>
 <p>Additional parameters allow users to decide how many calibration iterations to
-perform through the parameter <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-cal-niter"><span class="std std-ref">self_cal: cal_niter</span></a>.
+perform through the parameter <span class="xref std std-ref">self_cal: cal_niter</span>.
 For a value N, the code will create N+1 images following the sequence image1,
 selfcal1, image2, selfcal2, … imageN, selfcalN, imageN+1.</p>
-<p>Optionally, users can enable <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-aimfast"><span class="std std-ref">self_cal: aimfast</span></a>, which
+<p>Optionally, users can enable <span class="xref std std-ref">self_cal: aimfast</span>, which
 at each new iteration compares the new continuum image with the previous one and
 decides whether the image has improved significantly. In case it has not, no further
-iterations are performed. In this case therefore <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-cal-niter"><span class="std std-ref">self_cal: cal_niter</span></a>
+iterations are performed. In this case therefore <span class="xref std std-ref">self_cal: cal_niter</span>
 is the maximum number of iterations.</p>
 <p>While imaging, WSclean auto-mask and auto-threshold can be used, but it is also possible
 to use a clean mask made by SoFiA from the previous continuum image. This functionality
-is controlled through <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-sofia-mask"><span class="std std-ref">self_cal: sofia_mask</span></a>.</p>
+is controlled through <span class="xref std std-ref">self_cal: sofia_mask</span>.</p>
 <p><strong>[missing a description of additional functionalities]</strong></p>
 </div>
 <div class="section" id="gain-and-model-transfer">
@@ -227,8 +230,8 @@ is controlled through <a class="reference internal" href="../../workers/self_cal
 <p>If the self-cal loop was executed on a frequency-averaged .MS file, it might
 be necessary to transfer the resulting gains and continuum model back to the
 original .MS file. This is done with
-<a class="reference internal" href="../../workers/self_cal/index.html#self-cal-transfer-apply-gains"><span class="std std-ref">self_cal: transfer_apply_gains</span></a> (using Cubical)
-and <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-transfer-model"><span class="std std-ref">self_cal: transfer_model</span></a> (using Crystalball),
+<span class="xref std std-ref">self_cal: transfer_apply_gains</span> (using Cubical)
+and <span class="xref std std-ref">self_cal: transfer_model</span> (using Crystalball),
 respectively. The latter allows users to limit the model transfer to the N brightest
 sources, to sources in a region, or to point sources only.</p>
 </div>
@@ -254,7 +257,7 @@ sources, to sources in a region, or to point sources only.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MeerKATHI team
+        &copy; Copyright 2019, Caracal team
 
     </p>
   </div>

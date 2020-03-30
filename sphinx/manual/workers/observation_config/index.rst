@@ -50,15 +50,19 @@ Setup some basic observation information
 
   **plot_elevation_tracks**
 
-    *bool*, *optional*, *default = False*
-
     Make Elevation vs Hour angle plots for observed fields
 
-  **plotter**
+    **enable**
 
-    *{"plotms", "owlcat"}*, *optional*, *default = owlcat*
+      *bool*, *optional*, *default = True*
 
-    Application to use for making plots
+      Enable this segment
+
+    **plotter**
+
+      *{"plotms", "owlcat"}*, *optional*, *default = owlcat*
+
+      Application to use for making plots
 
 
 
