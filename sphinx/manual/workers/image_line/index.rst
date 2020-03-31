@@ -24,7 +24,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *bool*
 
-  Execute segment image_line.
+  Execute the image_line worker.
 
 
 
@@ -36,7 +36,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *str*, *optional*, *default = corr*
 
-  Label of names of MS data sets to be used. MS data set names will always start with the data set id, followed by a hyphen, followed by desc.
+  Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the get_data worker, followed by the target ID (one file per target), followed by this label. This is the format used by Caracal whenever it writes an .MS file to disk (e.g., in the split_target worker).
 
 
 
@@ -48,7 +48,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *str*, *optional*, *default = HI*
 
-  Line name string to be used for output file names.
+  Suffix to be used for the name of the output files (data cubes etc).
 
 
 
@@ -60,7 +60,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *str*, *optional*, *default = 1.420405752GHz*
 
-  Rest frequency default value for this worker.
+  Spectral line rest frequency.
 
 
 
@@ -70,13 +70,29 @@ Process visibilities for spectral line work and create line cubes and images.
 **subtractmodelcol**
 --------------------------------------------------
 
-  Replace the column CORRECTED_DATA with the difference CORRECTED_DATA - MODEL_DATA. This is useful for continuum subtraction as it enables the subtraction of the most recent continuum clean model.
+  Replace the CORRECTED_DATA column of the .MS file(s) with the difference CORRECTED_DATA - MODEL_DATA. This is useful for continuum subtraction as it subtracts the continuum clean model written to MODEL_DATA. WARNING! The CORRECTED_DATA column is overwritten. To undo this operation enable the addmodelcol segment in this worker.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute segment subtractmodelcol.
+    Execute the segment subtractmodelcol.
+
+
+
+.. _image_line_addmodelcol:
+
+--------------------------------------------------
+**addmodelcol**
+--------------------------------------------------
+
+  Replace the CORRECTED_DATA column of the .MS file(s) with the sum CORRECTED_DATA + MODEL_DATA. This is useful to undo the operation performed by subtractmodelcol in this worker. WARNING! The CORRECTED_DATA column is overwritten.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Execute the segment addmodelcol.
 
 
 
@@ -86,79 +102,87 @@ Process visibilities for spectral line work and create line cubes and images.
 **mstransform**
 --------------------------------------------------
 
-  Perform UVLIN continuum subtraction and/or doppler tracking corrections
+  Perform Doppler-tracking corrections and/or UVLIN continuum subtraction with CASA mstransform. For each input .MS file, this produces an output .MS file whose name is the same as that of the input .MS file plus the suffix "_mst".
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute segment doppler correction.
-
-  **telescope**
-
-    *{"meerkat", "vla", "gmrt", "wsrt", "atca", "askap"}*, *optional*, *default = meerkat*
-
-    The name of the telescope from which observations were made. Default is the 'meerkat' telescope. Current options are gmrt, vla, wsrt, atca.
-
-  **doppler**
-
-    *bool*, *optional*, *default = True*
-
-    Transform channel labels and visibilities to a different spectral reference frame.
-
-  **mode**
-
-    *{"frequency"}*, *optional*, *default = frequency*
-
-    Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT - Currently only frequency mode is supported.
-
-  **outframe**
-
-    *{"", "topo", "geo", "lsrk", "lsrd", "bary", "galacto", "lgroup", "cmb", "source"}*, *optional*, *default = bary*
-
-    Output reference frame, options '', 'topo', 'geo', 'lsrk', 'lsrd', 'bary', 'galacto', 'lgroup', 'cmb', 'source'
-
-  **veltype**
-
-    *str*, *optional*, *default = radio*
-
-    Definition of velocity (as used in mode), radio or optical.
-
-  **outchangrid**
-
-    *str*, *optional*, *default = auto*
-
-    Output channel grid for Doppler correction. Default is 'auto', and the pipeline will calculate the appropriate channel grid. If not 'auto' it must be in the format 'nchan,chan0,chanw' where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter 'mode' above)
-
-  **uvlin**
-
-    *bool*, *optional*, *default = True*
-
-    Perform continuum subtraction as in task uvcontsub whilst regridding within mstransform.
-
-  **fitspw**
-
-    *str*, *optional*, *default = ' '*
-
-    Spectral window channel selection for fitting the continuumSelection of line-free channels using CASA syntax (e.g. '0:0~100;150:300'). If set to null, a fit to all unflagges visibilities will be performed.
-
-  **fitorder**
-
-    *int*, *optional*, *default = 1*
-
-    Polynomial order for the continuum fits
+    Execute the segment mstransform.
 
   **column**
 
     *str*, *optional*, *default = corrected*
 
-    Data column to use.
+    Which column of the .MS file(s) to process.
+
+  **doppler**
+
+    Include the Doppler-tracking correction in the run of CASA mstransform.
+
+    **enable**
+
+      *bool*, *optional*, *default = True*
+
+      Enable the Doppler correction section.
+
+    **telescope**
+
+      *{"askap", "atca", "gmrt", "meerkat", "vla", "wsrt"}*
+
+      Name of the telescope used to take the data. This is used to set the telescope's geographical coordinates when calculating the Doppler correction. Default is 'meerkat'. Current options are askap, atca, gmrt, meerkat, vla, wsrt.
+
+    **mode**
+
+      *{"frequency"}*, *optional*, *default = frequency*
+
+      Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently only frequency mode is supported. Other modes will throw an error.
+
+    **outframe**
+
+      *{"", "topo", "geo", "lsrk", "lsrd", "bary", "galacto", "lgroup", "cmb", "source"}*, *optional*, *default = bary*
+
+      Output reference frame. Current options are '', topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, source.
+
+    **veltype**
+
+      *{"radio", "optical"}*, *optional*, *default = radio*
+
+      Velocity used when regridding if mode = velocity. Current options are radio, optical.
+
+    **outchangrid**
+
+      *str*, *optional*, *default = auto*
+
+      Output channel grid for Doppler correction. Default is 'auto', and the pipeline will calculate the appropriate channel grid. If not 'auto' it must be in the format 'nchan,chan0,chanw' where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter 'mode' above).
+
+  **uvlin**
+
+    Include UVLIN-like continuum subtraction in the run of CASA mstransform.
+
+    **enable**
+
+      *bool*, *optional*, *default = True*
+
+      Enable the UVLIN section.
+
+    **fitspw**
+
+      *str*, *optional*, *default = ' '*
+
+      Selection of line-free channels using CASA syntax (e.g. '0:0~100;150:300'). If set to null, a fit to all unflagges visibilities will be performed.
+
+    **fitorder**
+
+      *int*, *optional*, *default = 1*
+
+      Polynomial order of the continuum fit.
 
   **obsinfo**
 
     *bool*, *optional*, *default = True*
 
-    Create obsinfo.txt and obsinfo.json of MS file created by mstransform.
+    Create obsinfo.txt and obsinfo.json of the .MS file(s) created by CASA mstransform.
 
 
 
@@ -168,13 +192,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **flag_mst_errors**
 --------------------------------------------------
 
-  Run AOFlagger to flag any faulty visibilities produced by CASA mstranform.
+  Run AOFlagger to flag any faulty visibilities produced by CASA mstransform.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute segment flag_mst_errors
+    Execute segment flag_mst_errors.
 
   **strategy**
 
@@ -190,7 +214,7 @@ Process visibilities for spectral line work and create line cubes and images.
 **sunblocker**
 --------------------------------------------------
 
-  Use sunblocker to remove solar RFI. See description of sunblocker on github repository gigjozsa/sunblocker in method phazer of module sunblocker.py.
+  Use sunblocker to grid the visibilities and flag UV cells affected by solar RFI. See description of sunblocker on github repository gigjozsa/sunblocker in method phazer of module sunblocker.py.
 
   **enable**
 
@@ -202,43 +226,43 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = True*
 
-    Execute sunblocker on continuum-subtracted data (otherwise use non-continuum-subtracted data).
+    Run sunblocker on the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).
 
   **imsize**
 
     *int*, *optional*, *default = 900*
 
-    Image size (use the same as in wsclean_image or casa_image).
+    Image size (pixels). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.
 
   **cell**
 
     *float*, *optional*, *default = 2.*
 
-    Cell size in arcsec (use the same as in wsclean_image or casa_image).
+    Pixel size (arcsec). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.
 
   **threshold**
 
     *float*, *optional*, *default = 4.*
 
-    Distance from average beyond which data are flagged in units of sigma.
+    Flag UV cells whose visibility deviates by more than this threshold from the average visibility on the UV plane. The threshold is in units of the rms dispersion of all visibilities.
 
   **vampirisms**
 
     *bool*, *optional*, *default = False*
 
-    Apply only to data taken during day time.
-
-  **uvmax**
-
-    *float*, *optional*, *default = 2000*
-
-    Maximum uvdistance in wavelength to be analysed.
+    Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells where to flag.
 
   **uvmin**
 
     *float*, *optional*, *default = 0.*
 
-    Minimum uvdistance in wavelength to be analysed.
+    Minimum uvdistance to be analysed (in wavelengths).
+
+  **uvmax**
+
+    *float*, *optional*, *default = 2000*
+
+    Maximum uvdistance to be analysed (in wavelengths).
 
 
 
@@ -248,7 +272,7 @@ Process visibilities for spectral line work and create line cubes and images.
 **make_cube**
 --------------------------------------------------
 
-  Make a line cube with either WSclean + SoFiA (for clean masks) or Casa.
+  Make a line cube using either WSclean + SoFiA (optional for clean masks) or CASA Clean.
 
   **enable**
 
@@ -260,13 +284,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *{"wsclean", "casa"}*, *optional*, *default = wsclean*
 
-    Choose whether to image with WSclean + SoFiA ("wsclean") or with Casa ("casa").
+    Choose whether to image with WSclean + SoFiA ('wsclean') or with CASA Clean ('casa').
 
   **use_mstransform**
 
     *bool*, *optional*, *default = True*
 
-    Image the .MS file(s) made by CASA MSTRANSFORM (continuum-subtracted and/or Doppler corrected).
+    Image the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).
 
   **pol**
 
@@ -284,13 +308,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *int*, *optional*, *default = 0*
 
-    Number of channels of HI cube, 0 means all channels.
+    Number of channels of the line cube, 0 means all channels.
 
   **firstchan**
 
     *int*, *optional*, *default = 0*
 
-    First channel of HI cube.
+    First channel of the line cube.
 
   **binchans**
 
@@ -308,7 +332,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 2*
 
-    Scale of a pixel. Default unit is arcsec, but can be specificied, e.g. 'scale 20asec'.
+    Pixel size. The default unit is arcsec, but other units can be specificied, e.g., 'scale 20asec'.
 
   **padding**
 
@@ -318,9 +342,9 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **weight**
 
-    *str*, *optional*, *default = briggs*
+    *{"natural", "uniform", "briggs"}*, *optional*, *default = briggs*
 
-    Weightmode can be natural, uniform, briggs. When using Briggs weighting, the Robustness parameter robust has to be specified in addition.
+    Weightmode can be natural, uniform, briggs. When using Briggs weighting, the additional robust parameter has to be specified.
 
   **robust**
 
@@ -344,13 +368,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 0.1*
 
-    Fraction of the peak that will be cleaned in each minor iteration.
+    Fraction of the peak that is cleaned in each minor iteration.
 
   **wscl_mgain**
 
     *float*, *optional*, *default = 1.0*
 
-    WSclean gain for major iterations, i.e., maximum fraction of peak that will be cleaned in each major iteration.
+    WSclean gain for major iterations, i.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.
 
   **wscl_sofia_niter**
 
@@ -362,7 +386,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 1.1*
 
-    Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor < wscl_sofia_converge when comparing the last two iterations. If set to 0 then the maximum number of iterations is performed regardless of the noise change.
+    Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor < wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the noise change.
 
   **wscl_keep_final_products_only**
 
@@ -380,19 +404,19 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 10*
 
-    WSclean option. Construct a mask from found components and when a threshold of sigma is reached, continue cleaning with the mask down to the normal threshold.
+    Used only during the first WSclean iteration. Clean blindly down to a threshold given by this parameter (in  units of the noise), then clean again the already cleaned pixels down to the parameter wscl_auto_threshold.
 
   **wscl_auto_threshold**
 
     *float*, *optional*, *default = 0.5*
 
-    WSclean option. Auto clean threshold.
+    WSclean cleaning threshold in units of the noise.
 
   **wscl_make_cube**
 
     *bool*, *optional*, *default = True*
 
-    If set to true the output of WSclean is a data cube, if set to false the output is one fits file per spectral channel.
+    If set to true the output of WSclean is a data cube, if set to false the output is one .FITS image per spectral channel.
 
   **wscl_no_update_mod**
 
@@ -422,7 +446,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *str*, *optional*, *default = 10mJy*
 
-    Flux level to stop CASA cleaning, must include units, e.g. '1.0mJy'.
+    Flux level to stop CASA cleaning. It must include units, e.g. '1.0mJy'.
 
   **casa_port2fits**
 
@@ -438,13 +462,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **remove_stokes_axis**
 --------------------------------------------------
 
-  Remove Stokes axis from HI cube
+  Remove the Stokes axis from the line cube.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment.
+    Execute segment remove_stokes_axis.
 
 
 
@@ -454,13 +478,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **pb_cube**
 --------------------------------------------------
 
-  Make primary beam cube
+  Make a primary beam cube.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment.
+    Execute segment pb_cube.
 
   **apply_pb**
 
@@ -476,13 +500,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **freq_to_vel**
 --------------------------------------------------
 
-  Convert the spectral axis' header keys of the HI cube from frequency to velocity in the radio definition, v=c(1-obsfreq/restfreq). No change of spectra reference frame is performed.
+  Convert the spectral axis' header keys of the line cube from frequency to velocity in the radio definition, v=c(1-obsfreq/restfreq). No change of spectra reference frame is performed.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute conversion.
+    Execute segment freq_to_vel.
 
   **reverse**
 
@@ -498,13 +522,25 @@ Process visibilities for spectral line work and create line cubes and images.
 **sofia**
 --------------------------------------------------
 
-  Run SoFiA source finder to produce a source mask and a Moment-0 map
+  Run SoFiA source finder to produce a detection mask, moment images and catalogues.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute segment sofia?
+    Execute segment sofia.
+
+  **flag**
+
+    *bool*, *optional*, *default = False*
+
+    Use flag regions?
+
+  **flagregion**
+
+    *list* *of int*, *optional*, *default = 0, 0, 0, 0, 0, 0*
+
+    Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
 
   **rmsMode**
 
@@ -518,77 +554,65 @@ Process visibilities for spectral line work and create line cubes and images.
 
     SoFiA source finding threshold.
 
-  **flag**
-
-    *bool*, *optional*, *default = False*
-
-    Use flag regions?
-
-  **flagregion**
-
-    *list* *of int*, *optional*, *default = 10, 10*
-
-    Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
-
   **merge**
 
     *bool*, *optional*, *default = False*
 
-    Use method to de-select and merge emission islands detected by any of SoFiA source finding algorithms. If turned on, pixels with a separation of less than mergeX pixels in x direction and less than mergeY pixels in y-direction and less than z pixels in z-direction will be merged and identified as a single object in the mask. Detections whose extent in x-direction is smaller than minSizeX, in y direction is smaller than minSizeY, and in z-direction is smaller than minSizeZ will be removed from the mask. Parameter merge determines if the merging should be applied.
+    Merge pixels detected by any of SoFiA source finding algorithms into objects. If turned on, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in Y direction, and mergeZ channels in Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.
 
   **mergeX**
 
     *int*, *optional*, *default = 2*
 
-    Merge-'radius' in x-direction.
+    Merging radius (in pixels) in the X direction (RA axis).
 
   **mergeY**
 
     *int*, *optional*, *default = 2*
 
-    Merge-'radius' in y-direction.
+    Merging radius (in pixels) in the Y direction (Dec axis).
 
   **mergeZ**
 
     *int*, *optional*, *default = 3*
 
-    Merge-'radius' in z-direction (velocity direction).
+    Merging radius (in channels) in Z direction (spectral axis).
 
   **minSizeX**
 
     *int*, *optional*, *default = 3*
 
-    Minimum size in x-direction.
+    Minimum size (in pixels) in the X direction (RA axis).
 
   **minSizeY**
 
     *int*, *optional*, *default = 3*
 
-    Minimum size in y-direction.
+    Minimum size (in pixels) in  the Y direction (Dec axis).
 
   **minSizeZ**
 
     *int*, *optional*, *default = 3*
 
-    Minimum size in y-direction.
+    Minimum size (in channels) in the Z direction (spectral axis).
 
   **do_cubelets**
 
     *bool*, *optional*, *default = True*
 
-    Create cubelets of HI sources.
+    Create a cubelet for each detected emission-line object.
 
   **do_mom0**
 
     *bool*, *optional*, *default = True*
 
-    Create moment 0 map.
+    Create a moment-0 image of the field.
 
   **do_mom1**
 
     *bool*, *optional*, *default = True*
 
-    Create moment 1 map.
+    Create a moment-1 image of the field.
 
 
 
@@ -598,13 +622,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **sharpener**
 --------------------------------------------------
 
-  Run sharpener to extract spectrum of all continuum sources against the lines of sight. The spectra are then plotted.
+  Run sharpener to extract and plot the spectra of all continuum sources brighter than a given threshold.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute sharpener?
+    Execute segment sharpener.
 
   **catalog**
 

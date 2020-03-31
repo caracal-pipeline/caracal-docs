@@ -33,7 +33,8 @@ executes several tasks from the interferometry packages included in Stimela (e.g
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).
 
 In practice, users tell Caracal what to do – and how to do it – via a YAML configuration file.
-The configuration file has one section for each run of a worker. By editing the configuration
+The configuration file has one section for each run of a worker (some workers, e.g., the flagging
+one, might need to be run multiple times). By editing the configuration
 file users control the workers' options, deciding which tasks to run and with what settings.
 A detailed explanation of the configuration file syntax is given in the :ref:`configfile`
 section of this manual.
@@ -58,15 +59,14 @@ and  observation_config) should always be executed. All other workers are option
 :ref:`general`
 ^^^^^^^^^^^^^^
 
-This worker sets up the name of various input/output directories
+This worker sets the name of various input/output directories
 and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).
 
 :ref:`get_data`
 ^^^^^^^^^^^^^^^
 
-This worker sets up the name of the files to be processed and whether any
-conversion to .MS format is necessary. It can also virtually concatenate several .MS files
-together.
+This worker sets the name of the files to be processed and whether any conversion to
+.MS format is necessary. It can also virtually concatenate several .MS files together.
 
 :ref:`observation_config`
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,4 +145,5 @@ finder.
 :ref:`mosaic`
 ^^^^^^^^^^^^^^^^^
 
-TBD
+This worker mosaics continuum images or line cubes using a Gaussian primary beam with FWHM
+= 1.02 lambda / antenna_diameter out to a cutoff level.

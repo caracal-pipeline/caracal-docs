@@ -108,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#restfreq"><strong>restfreq</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subtractmodelcol"><strong>subtractmodelcol</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#addmodelcol"><strong>addmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mstransform"><strong>mstransform</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-mst-errors"><strong>flag_mst_errors</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sunblocker"><strong>sunblocker</strong></a></li>
@@ -202,115 +203,134 @@
 <span id="image-line-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute segment image_line.</p>
+<p>Execute the image_line worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label">
 <span id="image-line-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label of names of MS data sets to be used. MS data set names will always start with the data set id, followed by a hyphen, followed by desc.</p>
+<p>Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the get_data worker, followed by the target ID (one file per target), followed by this label. This is the format used by Caracal whenever it writes an .MS file to disk (e.g., in the split_target worker).</p>
 </div></blockquote>
 </div>
 <div class="section" id="line-name">
 <span id="image-line-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
-<p>Line name string to be used for output file names.</p>
+<p>Suffix to be used for the name of the output files (data cubes etc).</p>
 </div></blockquote>
 </div>
 <div class="section" id="restfreq">
 <span id="image-line-restfreq"></span><h2><strong>restfreq</strong><a class="headerlink" href="#restfreq" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.420405752GHz</em></p>
-<p>Rest frequency default value for this worker.</p>
+<p>Spectral line rest frequency.</p>
 </div></blockquote>
 </div>
 <div class="section" id="subtractmodelcol">
 <span id="image-line-subtractmodelcol"></span><h2><strong>subtractmodelcol</strong><a class="headerlink" href="#subtractmodelcol" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Replace the column CORRECTED_DATA with the difference CORRECTED_DATA - MODEL_DATA. This is useful for continuum subtraction as it enables the subtraction of the most recent continuum clean model.</p>
+<div><p>Replace the CORRECTED_DATA column of the .MS file(s) with the difference CORRECTED_DATA - MODEL_DATA. This is useful for continuum subtraction as it subtracts the continuum clean model written to MODEL_DATA. WARNING! The CORRECTED_DATA column is overwritten. To undo this operation enable the addmodelcol segment in this worker.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute segment subtractmodelcol.</p>
+<p>Execute the segment subtractmodelcol.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="addmodelcol">
+<span id="image-line-addmodelcol"></span><h2><strong>addmodelcol</strong><a class="headerlink" href="#addmodelcol" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Replace the CORRECTED_DATA column of the .MS file(s) with the sum CORRECTED_DATA + MODEL_DATA. This is useful to undo the operation performed by subtractmodelcol in this worker. WARNING! The CORRECTED_DATA column is overwritten.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Execute the segment addmodelcol.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="mstransform">
 <span id="image-line-mstransform"></span><h2><strong>mstransform</strong><a class="headerlink" href="#mstransform" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Perform UVLIN continuum subtraction and/or doppler tracking corrections</p>
+<div><p>Perform Doppler-tracking corrections and/or UVLIN continuum subtraction with CASA mstransform. For each input .MS file, this produces an output .MS file whose name is the same as that of the input .MS file plus the suffix “_mst”.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute segment doppler correction.</p>
-</div></blockquote>
-<p><strong>telescope</strong></p>
-<blockquote>
-<div><p><em>{“meerkat”, “vla”, “gmrt”, “wsrt”, “atca”, “askap”}</em>, <em>optional</em>, <em>default = meerkat</em></p>
-<p>The name of the telescope from which observations were made. Default is the ‘meerkat’ telescope. Current options are gmrt, vla, wsrt, atca.</p>
-</div></blockquote>
-<p><strong>doppler</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Transform channel labels and visibilities to a different spectral reference frame.</p>
-</div></blockquote>
-<p><strong>mode</strong></p>
-<blockquote>
-<div><p><em>{“frequency”}</em>, <em>optional</em>, <em>default = frequency</em></p>
-<p>Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT - Currently only frequency mode is supported.</p>
-</div></blockquote>
-<p><strong>outframe</strong></p>
-<blockquote>
-<div><p><em>{“”, “topo”, “geo”, “lsrk”, “lsrd”, “bary”, “galacto”, “lgroup”, “cmb”, “source”}</em>, <em>optional</em>, <em>default = bary</em></p>
-<p>Output reference frame, options ‘’, ‘topo’, ‘geo’, ‘lsrk’, ‘lsrd’, ‘bary’, ‘galacto’, ‘lgroup’, ‘cmb’, ‘source’</p>
-</div></blockquote>
-<p><strong>veltype</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = radio</em></p>
-<p>Definition of velocity (as used in mode), radio or optical.</p>
-</div></blockquote>
-<p><strong>outchangrid</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Output channel grid for Doppler correction. Default is ‘auto’, and the pipeline will calculate the appropriate channel grid. If not ‘auto’ it must be in the format ‘nchan,chan0,chanw’ where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter ‘mode’ above)</p>
-</div></blockquote>
-<p><strong>uvlin</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Perform continuum subtraction as in task uvcontsub whilst regridding within mstransform.</p>
-</div></blockquote>
-<p><strong>fitspw</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Spectral window channel selection for fitting the continuumSelection of line-free channels using CASA syntax (e.g. ‘0:0~100;150:300’). If set to null, a fit to all unflagges visibilities will be performed.</p>
-</div></blockquote>
-<p><strong>fitorder</strong></p>
-<blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>Polynomial order for the continuum fits</p>
+<p>Execute the segment mstransform.</p>
 </div></blockquote>
 <p><strong>column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
-<p>Data column to use.</p>
+<p>Which column of the .MS file(s) to process.</p>
+</div></blockquote>
+<p><strong>doppler</strong></p>
+<blockquote>
+<div><p>Include the Doppler-tracking correction in the run of CASA mstransform.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable the Doppler correction section.</p>
+</div></blockquote>
+<p><strong>telescope</strong></p>
+<blockquote>
+<div><p><em>{“askap”, “atca”, “gmrt”, “meerkat”, “vla”, “wsrt”}</em></p>
+<p>Name of the telescope used to take the data. This is used to set the telescope’s geographical coordinates when calculating the Doppler correction. Default is ‘meerkat’. Current options are askap, atca, gmrt, meerkat, vla, wsrt.</p>
+</div></blockquote>
+<p><strong>mode</strong></p>
+<blockquote>
+<div><p><em>{“frequency”}</em>, <em>optional</em>, <em>default = frequency</em></p>
+<p>Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently only frequency mode is supported. Other modes will throw an error.</p>
+</div></blockquote>
+<p><strong>outframe</strong></p>
+<blockquote>
+<div><p><em>{“”, “topo”, “geo”, “lsrk”, “lsrd”, “bary”, “galacto”, “lgroup”, “cmb”, “source”}</em>, <em>optional</em>, <em>default = bary</em></p>
+<p>Output reference frame. Current options are ‘’, topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, source.</p>
+</div></blockquote>
+<p><strong>veltype</strong></p>
+<blockquote>
+<div><p><em>{“radio”, “optical”}</em>, <em>optional</em>, <em>default = radio</em></p>
+<p>Velocity used when regridding if mode = velocity. Current options are radio, optical.</p>
+</div></blockquote>
+<p><strong>outchangrid</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>Output channel grid for Doppler correction. Default is ‘auto’, and the pipeline will calculate the appropriate channel grid. If not ‘auto’ it must be in the format ‘nchan,chan0,chanw’ where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter ‘mode’ above).</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>uvlin</strong></p>
+<blockquote>
+<div><p>Include UVLIN-like continuum subtraction in the run of CASA mstransform.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable the UVLIN section.</p>
+</div></blockquote>
+<p><strong>fitspw</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Selection of line-free channels using CASA syntax (e.g. ‘0:0~100;150:300’). If set to null, a fit to all unflagges visibilities will be performed.</p>
+</div></blockquote>
+<p><strong>fitorder</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
+<p>Polynomial order of the continuum fit.</p>
+</div></blockquote>
 </div></blockquote>
 <p><strong>obsinfo</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Create obsinfo.txt and obsinfo.json of MS file created by mstransform.</p>
+<p>Create obsinfo.txt and obsinfo.json of the .MS file(s) created by CASA mstransform.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="flag-mst-errors">
 <span id="image-line-flag-mst-errors"></span><h2><strong>flag_mst_errors</strong><a class="headerlink" href="#flag-mst-errors" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Run AOFlagger to flag any faulty visibilities produced by CASA mstranform.</p>
+<div><p>Run AOFlagger to flag any faulty visibilities produced by CASA mstransform.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment flag_mst_errors</p>
+<p>Execute segment flag_mst_errors.</p>
 </div></blockquote>
 <p><strong>strategy</strong></p>
 <blockquote>
@@ -322,7 +342,7 @@
 <div class="section" id="sunblocker">
 <span id="image-line-sunblocker"></span><h2><strong>sunblocker</strong><a class="headerlink" href="#sunblocker" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Use sunblocker to remove solar RFI. See description of sunblocker on github repository gigjozsa/sunblocker in method phazer of module sunblocker.py.</p>
+<div><p>Use sunblocker to grid the visibilities and flag UV cells affected by solar RFI. See description of sunblocker on github repository gigjozsa/sunblocker in method phazer of module sunblocker.py.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
@@ -331,44 +351,44 @@
 <p><strong>use_mstransform</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute sunblocker on continuum-subtracted data (otherwise use non-continuum-subtracted data).</p>
+<p>Run sunblocker on the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).</p>
 </div></blockquote>
 <p><strong>imsize</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 900</em></p>
-<p>Image size (use the same as in wsclean_image or casa_image).</p>
+<p>Image size (pixels). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.</p>
 </div></blockquote>
 <p><strong>cell</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
-<p>Cell size in arcsec (use the same as in wsclean_image or casa_image).</p>
+<p>Pixel size (arcsec). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.</p>
 </div></blockquote>
 <p><strong>threshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.</em></p>
-<p>Distance from average beyond which data are flagged in units of sigma.</p>
+<p>Flag UV cells whose visibility deviates by more than this threshold from the average visibility on the UV plane. The threshold is in units of the rms dispersion of all visibilities.</p>
 </div></blockquote>
 <p><strong>vampirisms</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Apply only to data taken during day time.</p>
-</div></blockquote>
-<p><strong>uvmax</strong></p>
-<blockquote>
-<div><p><em>float</em>, <em>optional</em>, <em>default = 2000</em></p>
-<p>Maximum uvdistance in wavelength to be analysed.</p>
+<p>Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells where to flag.</p>
 </div></blockquote>
 <p><strong>uvmin</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.</em></p>
-<p>Minimum uvdistance in wavelength to be analysed.</p>
+<p>Minimum uvdistance to be analysed (in wavelengths).</p>
+</div></blockquote>
+<p><strong>uvmax</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 2000</em></p>
+<p>Maximum uvdistance to be analysed (in wavelengths).</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="make-cube">
 <span id="image-line-make-cube"></span><h2><strong>make_cube</strong><a class="headerlink" href="#make-cube" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Make a line cube with either WSclean + SoFiA (for clean masks) or Casa.</p>
+<div><p>Make a line cube using either WSclean + SoFiA (optional for clean masks) or CASA Clean.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
@@ -377,12 +397,12 @@
 <p><strong>image_with</strong></p>
 <blockquote>
 <div><p><em>{“wsclean”, “casa”}</em>, <em>optional</em>, <em>default = wsclean</em></p>
-<p>Choose whether to image with WSclean + SoFiA (“wsclean”) or with Casa (“casa”).</p>
+<p>Choose whether to image with WSclean + SoFiA (‘wsclean’) or with CASA Clean (‘casa’).</p>
 </div></blockquote>
 <p><strong>use_mstransform</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Image the .MS file(s) made by CASA MSTRANSFORM (continuum-subtracted and/or Doppler corrected).</p>
+<p>Image the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).</p>
 </div></blockquote>
 <p><strong>pol</strong></p>
 <blockquote>
@@ -397,12 +417,12 @@
 <p><strong>nchans</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Number of channels of HI cube, 0 means all channels.</p>
+<p>Number of channels of the line cube, 0 means all channels.</p>
 </div></blockquote>
 <p><strong>firstchan</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>First channel of HI cube.</p>
+<p>First channel of the line cube.</p>
 </div></blockquote>
 <p><strong>binchans</strong></p>
 <blockquote>
@@ -417,7 +437,7 @@
 <p><strong>cell</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Scale of a pixel. Default unit is arcsec, but can be specificied, e.g. ‘scale 20asec’.</p>
+<p>Pixel size. The default unit is arcsec, but other units can be specificied, e.g., ‘scale 20asec’.</p>
 </div></blockquote>
 <p><strong>padding</strong></p>
 <blockquote>
@@ -426,8 +446,8 @@
 </div></blockquote>
 <p><strong>weight</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = briggs</em></p>
-<p>Weightmode can be natural, uniform, briggs. When using Briggs weighting, the Robustness parameter robust has to be specified in addition.</p>
+<div><p><em>{“natural”, “uniform”, “briggs”}</em>, <em>optional</em>, <em>default = briggs</em></p>
+<p>Weightmode can be natural, uniform, briggs. When using Briggs weighting, the additional robust parameter has to be specified.</p>
 </div></blockquote>
 <p><strong>robust</strong></p>
 <blockquote>
@@ -447,12 +467,12 @@
 <p><strong>gain</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
-<p>Fraction of the peak that will be cleaned in each minor iteration.</p>
+<p>Fraction of the peak that is cleaned in each minor iteration.</p>
 </div></blockquote>
 <p><strong>wscl_mgain</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.0</em></p>
-<p>WSclean gain for major iterations, i.e., maximum fraction of peak that will be cleaned in each major iteration.</p>
+<p>WSclean gain for major iterations, i.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.</p>
 </div></blockquote>
 <p><strong>wscl_sofia_niter</strong></p>
 <blockquote>
@@ -462,7 +482,7 @@
 <p><strong>wscl_sofia_converge</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.1</em></p>
-<p>Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor &lt; wscl_sofia_converge when comparing the last two iterations. If set to 0 then the maximum number of iterations is performed regardless of the noise change.</p>
+<p>Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor &lt; wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the noise change.</p>
 </div></blockquote>
 <p><strong>wscl_keep_final_products_only</strong></p>
 <blockquote>
@@ -477,17 +497,17 @@
 <p><strong>wscl_auto_mask</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 10</em></p>
-<p>WSclean option. Construct a mask from found components and when a threshold of sigma is reached, continue cleaning with the mask down to the normal threshold.</p>
+<p>Used only during the first WSclean iteration. Clean blindly down to a threshold given by this parameter (in  units of the noise), then clean again the already cleaned pixels down to the parameter wscl_auto_threshold.</p>
 </div></blockquote>
 <p><strong>wscl_auto_threshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
-<p>WSclean option. Auto clean threshold.</p>
+<p>WSclean cleaning threshold in units of the noise.</p>
 </div></blockquote>
 <p><strong>wscl_make_cube</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>If set to true the output of WSclean is a data cube, if set to false the output is one fits file per spectral channel.</p>
+<p>If set to true the output of WSclean is a data cube, if set to false the output is one .FITS image per spectral channel.</p>
 </div></blockquote>
 <p><strong>wscl_no_update_mod</strong></p>
 <blockquote>
@@ -512,7 +532,7 @@
 <p><strong>casa_threshold</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10mJy</em></p>
-<p>Flux level to stop CASA cleaning, must include units, e.g. ‘1.0mJy’.</p>
+<p>Flux level to stop CASA cleaning. It must include units, e.g. ‘1.0mJy’.</p>
 </div></blockquote>
 <p><strong>casa_port2fits</strong></p>
 <blockquote>
@@ -524,22 +544,22 @@
 <div class="section" id="remove-stokes-axis">
 <span id="image-line-remove-stokes-axis"></span><h2><strong>remove_stokes_axis</strong><a class="headerlink" href="#remove-stokes-axis" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Remove Stokes axis from HI cube</p>
+<div><p>Remove the Stokes axis from the line cube.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this segment.</p>
+<p>Execute segment remove_stokes_axis.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="pb-cube">
 <span id="image-line-pb-cube"></span><h2><strong>pb_cube</strong><a class="headerlink" href="#pb-cube" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Make primary beam cube</p>
+<div><p>Make a primary beam cube.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this segment.</p>
+<p>Execute segment pb_cube.</p>
 </div></blockquote>
 <p><strong>apply_pb</strong></p>
 <blockquote>
@@ -551,11 +571,11 @@
 <div class="section" id="freq-to-vel">
 <span id="image-line-freq-to-vel"></span><h2><strong>freq_to_vel</strong><a class="headerlink" href="#freq-to-vel" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Convert the spectral axis’ header keys of the HI cube from frequency to velocity in the radio definition, v=c(1-obsfreq/restfreq). No change of spectra reference frame is performed.</p>
+<div><p>Convert the spectral axis’ header keys of the line cube from frequency to velocity in the radio definition, v=c(1-obsfreq/restfreq). No change of spectra reference frame is performed.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute conversion.</p>
+<p>Execute segment freq_to_vel.</p>
 </div></blockquote>
 <p><strong>reverse</strong></p>
 <blockquote>
@@ -567,11 +587,21 @@
 <div class="section" id="sofia">
 <span id="image-line-sofia"></span><h2><strong>sofia</strong><a class="headerlink" href="#sofia" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Run SoFiA source finder to produce a source mask and a Moment-0 map</p>
+<div><p>Run SoFiA source finder to produce a detection mask, moment images and catalogues.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute segment sofia?</p>
+<p>Execute segment sofia.</p>
+</div></blockquote>
+<p><strong>flag</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Use flag regions?</p>
+</div></blockquote>
+<p><strong>flagregion</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0, 0, 0, 0, 0, 0</em></p>
+<p>Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], …].</p>
 </div></blockquote>
 <p><strong>rmsMode</strong></p>
 <blockquote>
@@ -583,76 +613,66 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
 <p>SoFiA source finding threshold.</p>
 </div></blockquote>
-<p><strong>flag</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Use flag regions?</p>
-</div></blockquote>
-<p><strong>flagregion</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 10, 10</em></p>
-<p>Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], …].</p>
-</div></blockquote>
 <p><strong>merge</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Use method to de-select and merge emission islands detected by any of SoFiA source finding algorithms. If turned on, pixels with a separation of less than mergeX pixels in x direction and less than mergeY pixels in y-direction and less than z pixels in z-direction will be merged and identified as a single object in the mask. Detections whose extent in x-direction is smaller than minSizeX, in y direction is smaller than minSizeY, and in z-direction is smaller than minSizeZ will be removed from the mask. Parameter merge determines if the merging should be applied.</p>
+<p>Merge pixels detected by any of SoFiA source finding algorithms into objects. If turned on, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in Y direction, and mergeZ channels in Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.</p>
 </div></blockquote>
 <p><strong>mergeX</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Merge-‘radius’ in x-direction.</p>
+<p>Merging radius (in pixels) in the X direction (RA axis).</p>
 </div></blockquote>
 <p><strong>mergeY</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Merge-‘radius’ in y-direction.</p>
+<p>Merging radius (in pixels) in the Y direction (Dec axis).</p>
 </div></blockquote>
 <p><strong>mergeZ</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Merge-‘radius’ in z-direction (velocity direction).</p>
+<p>Merging radius (in channels) in Z direction (spectral axis).</p>
 </div></blockquote>
 <p><strong>minSizeX</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Minimum size in x-direction.</p>
+<p>Minimum size (in pixels) in the X direction (RA axis).</p>
 </div></blockquote>
 <p><strong>minSizeY</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Minimum size in y-direction.</p>
+<p>Minimum size (in pixels) in  the Y direction (Dec axis).</p>
 </div></blockquote>
 <p><strong>minSizeZ</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Minimum size in y-direction.</p>
+<p>Minimum size (in channels) in the Z direction (spectral axis).</p>
 </div></blockquote>
 <p><strong>do_cubelets</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Create cubelets of HI sources.</p>
+<p>Create a cubelet for each detected emission-line object.</p>
 </div></blockquote>
 <p><strong>do_mom0</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Create moment 0 map.</p>
+<p>Create a moment-0 image of the field.</p>
 </div></blockquote>
 <p><strong>do_mom1</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Create moment 1 map.</p>
+<p>Create a moment-1 image of the field.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="sharpener">
 <span id="image-line-sharpener"></span><h2><strong>sharpener</strong><a class="headerlink" href="#sharpener" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Run sharpener to extract spectrum of all continuum sources against the lines of sight. The spectra are then plotted.</p>
+<div><p>Run sharpener to extract and plot the spectra of all continuum sources brighter than a given threshold.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute sharpener?</p>
+<p>Execute segment sharpener.</p>
 </div></blockquote>
 <p><strong>catalog</strong></p>
 <blockquote>

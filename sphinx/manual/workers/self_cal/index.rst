@@ -40,30 +40,6 @@ Perform Self calibration on the data
 
 
 
-.. _self_cal_undo_subtractmodelcol:
-
---------------------------------------------------
-**undo_subtractmodelcol**
---------------------------------------------------
-
-  *bool*, *optional*, *default = False*
-
-  replace the corrected column with the sum of corrected and model columns to undo continuum subtraction that may have been done by the image HI worker.
-
-
-
-.. _self_cal_primary_beam:
-
---------------------------------------------------
-**primary_beam**
---------------------------------------------------
-
-  *bool*, *optional*, *default = False*
-
-  Use primary beam
-
-
-
 .. _self_cal_calibrate_with:
 
 --------------------------------------------------
