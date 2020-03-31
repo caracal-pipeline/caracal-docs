@@ -87,7 +87,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../meerkathiREADME.html">Download &amp; Install</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../intro/index.html">Introduction</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration file</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brief-description-of-workers">Brief description of workers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general"><code class="docutils literal notranslate"><span class="pre">general</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../products/index.html">Data products</a></li>
@@ -166,7 +170,20 @@
 <span id="configfile"></span><h1>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>TBD</p>
+<div class="section" id="brief-description-of-workers">
+<h2>Brief description of workers<a class="headerlink" href="#brief-description-of-workers" title="Permalink to this headline">¶</a></h2>
+<p>Users settings are passed to Caracal through a .YML configuration file, which follows the
+YAML rules (see <a class="reference external" href="https://yaml.readthedocs.io">https://yaml.readthedocs.io</a>). The complete list of all parameters is
+available at</p>
+<p>The following workers are available in Caracal. Typically, they are executed in the
+same order in which they are given below. Only the first three workers (general, get_data
+and  observation_config) should always be executed. All other workers are optional.</p>
+<div class="section" id="general">
+<h3><a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<p>This worker sets the name of various input/output directories
+and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).</p>
+</div>
+</div>
 </div>
 
 

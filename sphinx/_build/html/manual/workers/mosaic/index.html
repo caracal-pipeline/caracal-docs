@@ -194,25 +194,25 @@
 <span id="id1"></span><h1>mosaic<a class="headerlink" href="#mosaic" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Mosaic images output by selfcal or image_line worker.</p>
+<p>Mosaic the images and cubes made with the self_cal and image_line workers. If not available on disc, the primary beam is built by this worker assuming a Gaussian shape with FWHM = 1.02 lambda/D.</p>
 <div class="section" id="enable">
 <span id="mosaic-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute mosaic segment(yes/no). Default is no.</p>
+<p>Execute mosaic segment.</p>
 </div></blockquote>
 </div>
 <div class="section" id="mosaic-type">
 <span id="mosaic-mosaic-type"></span><h2><strong>mosaic_type</strong><a class="headerlink" href="#mosaic-type" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>str</em></p>
-<p>Type of mosaic to be made(continuum/spectral). Default is continuum.</p>
+<div><p><em>{“continuum”, “spectral”}</em></p>
+<p>Type of mosaic to be made, either continuum or spectral.</p>
 </div></blockquote>
 </div>
 <div class="section" id="domontage">
 <span id="mosaic-domontage"></span><h2><strong>domontage</strong><a class="headerlink" href="#domontage" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Re-grid the input images, and associated beams. Default is true.</p>
+<div><p>Re-grid the input images, and associated beams.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
@@ -224,14 +224,14 @@
 <span id="mosaic-cutoff"></span><h2><strong>cutoff</strong><a class="headerlink" href="#cutoff" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
-<p>The cutoff in the primary beam to use, assuming a Gaussian at the moment. Default is 0.1 (signifying 10 per cent).</p>
+<p>The cutoff in the primary beam. It should be a number between 0 and 1.</p>
 </div></blockquote>
 </div>
 <div class="section" id="use-mfs-images">
 <span id="mosaic-use-mfs-images"></span><h2><strong>use_MFS_images</strong><a class="headerlink" href="#use-mfs-images" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Indicate that the images to be mosaicked were created using MFS. Default is false.</p>
+<p>Indicate that the images to be mosaicked were created using MFS.</p>
 </div></blockquote>
 </div>
 <div class="section" id="name">
@@ -266,14 +266,14 @@
 <span id="mosaic-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>For autoselection of images, this needs to match the label setting used for the self_cal worker(when mosaicking continuum images) or the image_line worker(when mosaicking cubes).</p>
+<p>For autoselection of images, this needs to match the label setting used for the self_cal worker (when mosaicking continuum images) or the image_line worker (when mosaicking cubes).</p>
 </div></blockquote>
 </div>
 <div class="section" id="line-name">
 <span id="mosaic-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
-<p>Spectral mode only - - If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker. Default is HI.</p>
+<p>Spectral mode only – If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker.</p>
 </div></blockquote>
 </div>
 </div>

@@ -12,7 +12,7 @@ mosaic
 .. toctree::
    :maxdepth: 1
  
-Mosaic images output by selfcal or image_line worker.
+Mosaic the images and cubes made with the self_cal and image_line workers. If not available on disc, the primary beam is built by this worker assuming a Gaussian shape with FWHM = 1.02 lambda/D.
 
 
 
@@ -24,7 +24,7 @@ Mosaic images output by selfcal or image_line worker.
 
   *bool*
 
-  Execute mosaic segment(yes/no). Default is no.
+  Execute mosaic segment.
 
 
 
@@ -34,9 +34,9 @@ Mosaic images output by selfcal or image_line worker.
 **mosaic_type**
 --------------------------------------------------
 
-  *str*
+  *{"continuum", "spectral"}*
 
-  Type of mosaic to be made(continuum/spectral). Default is continuum.
+  Type of mosaic to be made, either continuum or spectral.
 
 
 
@@ -46,7 +46,7 @@ Mosaic images output by selfcal or image_line worker.
 **domontage**
 --------------------------------------------------
 
-  Re-grid the input images, and associated beams. Default is true.
+  Re-grid the input images, and associated beams.
 
   **enable**
 
@@ -64,7 +64,7 @@ Mosaic images output by selfcal or image_line worker.
 
   *float*, *optional*, *default = 0.1*
 
-  The cutoff in the primary beam to use, assuming a Gaussian at the moment. Default is 0.1 (signifying 10 per cent).
+  The cutoff in the primary beam. It should be a number between 0 and 1.
 
 
 
@@ -76,7 +76,7 @@ Mosaic images output by selfcal or image_line worker.
 
   *bool*, *optional*, *default = False*
 
-  Indicate that the images to be mosaicked were created using MFS. Default is false.
+  Indicate that the images to be mosaicked were created using MFS.
 
 
 
@@ -136,7 +136,7 @@ Mosaic images output by selfcal or image_line worker.
 
   *str*, *optional*, *default = corr*
 
-  For autoselection of images, this needs to match the label setting used for the self_cal worker(when mosaicking continuum images) or the image_line worker(when mosaicking cubes).
+  For autoselection of images, this needs to match the label setting used for the self_cal worker (when mosaicking continuum images) or the image_line worker (when mosaicking cubes).
 
 
 
@@ -148,5 +148,5 @@ Mosaic images output by selfcal or image_line worker.
 
   *str*, *optional*, *default = HI*
 
-  Spectral mode only - - If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker. Default is HI.
+  Spectral mode only -- If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker.
 
