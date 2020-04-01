@@ -12,20 +12,21 @@ Configuration file
 .. toctree::
    :maxdepth: 1
  
-Brief description of workers
-----------------------------
+Users settings are passed to Caracal through a .YML configuration file. This must follow
+the YAML syntax rules (see https://yaml.readthedocs.io). The complete list of al parameters
+that can be set with the configuration file is available at :ref:`workers`.
 
-Users settings are passed to Caracal through a .YML configuration file, which follows the
-YAML rules (see https://yaml.readthedocs.io). The complete list of all parameters is
-available at 
+Most parameters are optional and do not need to be included in the configuration file.
+Their default values are set to work in as many cases as possible. A few parameters are
+compulsory. The pages at :ref:`workers` indicate whether a parameter is optional, its data
+type, allowed values (if necessary) and default value.
 
-The following workers are available in Caracal. Typically, they are executed in the
-same order in which they are given below. Only the first three workers (general, get_data
-and  observation_config) should always be executed. All other workers are optional.
+Caracal comes with a set of sample configuration files. These are available at
+caracal/sample_configurations and include:
 
-:ref:`general`
-^^^^^^^^^^^^^^
+* minimalConfig.yml, which includes as few parameters as possible and performs a basic
+  data reduction;
+* meerkat-continuum-defaults.yml, which is optimised for the reduction of data taken with
+  the MeerKAT telescope for the purpose of total-intensity continuum imaging.
 
-This worker sets the name of various input/output directories
-and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).
- 
+Users could take these sample configuration files as a starting point for their work.

@@ -105,16 +105,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../image_line/index.html">image_line</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">mosaic</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mosaic-type"><strong>mosaic_type</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#domontage"><strong>domontage</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cutoff"><strong>cutoff</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-mfs-images"><strong>use_MFS_images</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#name"><strong>name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#target-images"><strong>target_images</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dish-diameter"><strong>dish_diameter</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ref-frequency"><strong>ref_frequency</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mosaic-type"><strong>mosaic_type</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-mfs-images"><strong>use_MFS_images</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#name"><strong>name</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#domontage"><strong>domontage</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cutoff"><strong>cutoff</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dish-diameter"><strong>dish_diameter</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ref-frequency"><strong>ref_frequency</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -202,11 +202,46 @@
 <p>Execute mosaic segment.</p>
 </div></blockquote>
 </div>
+<div class="section" id="target-images">
+<span id="mosaic-target-images"></span><h2><strong>target_images</strong><a class="headerlink" href="#target-images" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>seq</em>, <em>optional</em>, <em>default = directory/first_image.fits, directory/second_image.fits</em></p>
+<p>List of images to be mosaicked, with suffix of image.fits being expected.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label">
+<span id="mosaic-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
+<p>For autoselection of images, this needs to match the label setting used for the self_cal worker (when mosaicking continuum images) or the image_line worker (when mosaicking cubes).</p>
+</div></blockquote>
+</div>
+<div class="section" id="line-name">
+<span id="mosaic-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
+<p>Spectral mode only – If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker.</p>
+</div></blockquote>
+</div>
 <div class="section" id="mosaic-type">
 <span id="mosaic-mosaic-type"></span><h2><strong>mosaic_type</strong><a class="headerlink" href="#mosaic-type" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>{“continuum”, “spectral”}</em></p>
 <p>Type of mosaic to be made, either continuum or spectral.</p>
+</div></blockquote>
+</div>
+<div class="section" id="use-mfs-images">
+<span id="mosaic-use-mfs-images"></span><h2><strong>use_MFS_images</strong><a class="headerlink" href="#use-mfs-images" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Indicate that the images to be mosaicked were created using MFS.</p>
+</div></blockquote>
+</div>
+<div class="section" id="name">
+<span id="mosaic-name"></span><h2><strong>name</strong><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>The prefix to be used for output files. Default is the pipeline prefix(pipeline.prefix).</p>
 </div></blockquote>
 </div>
 <div class="section" id="domontage">
@@ -227,27 +262,6 @@
 <p>The cutoff in the primary beam. It should be a number between 0 and 1.</p>
 </div></blockquote>
 </div>
-<div class="section" id="use-mfs-images">
-<span id="mosaic-use-mfs-images"></span><h2><strong>use_MFS_images</strong><a class="headerlink" href="#use-mfs-images" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Indicate that the images to be mosaicked were created using MFS.</p>
-</div></blockquote>
-</div>
-<div class="section" id="name">
-<span id="mosaic-name"></span><h2><strong>name</strong><a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>The prefix to be used for output files. Default is the pipeline prefix(pipeline.prefix).</p>
-</div></blockquote>
-</div>
-<div class="section" id="target-images">
-<span id="mosaic-target-images"></span><h2><strong>target_images</strong><a class="headerlink" href="#target-images" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>seq</em>, <em>optional</em>, <em>default = directory/first_image.fits, directory/second_image.fits</em></p>
-<p>List of images to be mosaicked, with suffix of image.fits being expected.</p>
-</div></blockquote>
-</div>
 <div class="section" id="dish-diameter">
 <span id="mosaic-dish-diameter"></span><h2><strong>dish_diameter</strong><a class="headerlink" href="#dish-diameter" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -260,20 +274,6 @@
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1383685546.875</em></p>
 <p>If no continuum pb.fits are already in place, user needs to specify the reference frequency(in units of Hz) so that rudimentary primary beams can be created.</p>
-</div></blockquote>
-</div>
-<div class="section" id="label">
-<span id="mosaic-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>For autoselection of images, this needs to match the label setting used for the self_cal worker (when mosaicking continuum images) or the image_line worker (when mosaicking cubes).</p>
-</div></blockquote>
-</div>
-<div class="section" id="line-name">
-<span id="mosaic-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
-<p>Spectral mode only – If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker.</p>
 </div></blockquote>
 </div>
 </div>
