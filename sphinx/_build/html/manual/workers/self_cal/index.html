@@ -128,8 +128,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-amplitude-clip-high"><strong>cal_gain_amplitude_clip_high</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-at-iter"><strong>start_at_iter</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cal-time-chunk"><strong>cal_time_chunk</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cal-freq-chunk"><strong>cal_freq_chunk</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cal-timeslots-chunk"><strong>cal_timeslots_chunk</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cal-channel-chunk"><strong>cal_channel_chunk</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aimfast"><strong>aimfast</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image"><strong>image</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extract-sources"><strong>extract_sources</strong></a></li>
@@ -402,18 +402,18 @@
 <p>Start self-cal iteration loop at this start value, 1-based.</p>
 </div></blockquote>
 </div>
-<div class="section" id="cal-time-chunk">
-<span id="self-cal-cal-time-chunk"></span><h2><strong>cal_time_chunk</strong><a class="headerlink" href="#cal-time-chunk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cal-timeslots-chunk">
+<span id="self-cal-cal-timeslots-chunk"></span><h2><strong>cal_timeslots_chunk</strong><a class="headerlink" href="#cal-timeslots-chunk" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means use full time axis but does not cross scan boundaries.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means use full time axis but does not cross scan boundaries. -1 Uses largest solution interval</p>
 </div></blockquote>
 </div>
-<div class="section" id="cal-freq-chunk">
-<span id="self-cal-cal-freq-chunk"></span><h2><strong>cal_freq_chunk</strong><a class="headerlink" href="#cal-freq-chunk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cal-channel-chunk">
+<span id="self-cal-cal-channel-chunk"></span><h2><strong>cal_channel_chunk</strong><a class="headerlink" href="#cal-channel-chunk" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries. -1 Uses largest solution interval</p>
 </div></blockquote>
 </div>
 <div class="section" id="aimfast">
@@ -622,7 +622,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Add/Use clean components from latest imaging step to/as sky model for calibation</p>
 </div></blockquote>
-<p><strong>Gsols_time</strong></p>
+<p><strong>Gsols_timeslots</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>G-Jones time solution interval. The parameter cal_time_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time chunk.</p>
@@ -637,7 +637,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable Bjones</p>
 </div></blockquote>
-<p><strong>Bsols_time</strong></p>
+<p><strong>Bsols_timeslots</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Gsols for individual calibration steps, if not given will default to cal_Gsols</p>
@@ -652,7 +652,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable direction dependent calibration, currently experimental.</p>
 </div></blockquote>
-<p><strong>DDsols_time</strong></p>
+<p><strong>DDsols_timeslots</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Calibration solution intervals</p>
@@ -762,25 +762,25 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Enable gain interpolation.</p>
 </div></blockquote>
-<p><strong>time_int</strong></p>
+<p><strong>timeslots_int</strong></p>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>Solution interval in time (units of timeslots/intergration time) to transfer gains.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Solution interval in time (units of timeslots/intergration time) to transfer gains. -1 uses the solution interval from the calibration that is applied.</p>
 </div></blockquote>
-<p><strong>freq_int</strong></p>
+<p><strong>channel_int</strong></p>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Solution interval in frequency (units of channels) to transfer gains.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Solution interval in frequency (units of channels) to transfer gains. -1 uses the solution interval from the calibration that is applied.</p>
 </div></blockquote>
-<p><strong>time_chunk</strong></p>
+<p><strong>timeslots_chunk</strong></p>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 128</em></p>
-<p>Time chunk in units of timeslots for transferring gains with Cubical.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Time chunk in units of timeslots for transferring gains with Cubical. -1 uses the solution interval from the calibration that is applied.</p>
 </div></blockquote>
-<p><strong>freq_chunk</strong></p>
+<p><strong>channel_chunk</strong></p>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Frequency chunk in units of channels for transferring gains with Cubical. ‘0’ means the whole spw.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Frequency chunk in units of channels for transferring gains with Cubical. ‘0’ means the whole spw. -1 uses the solution interval from the calibration that is applied.</p>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>

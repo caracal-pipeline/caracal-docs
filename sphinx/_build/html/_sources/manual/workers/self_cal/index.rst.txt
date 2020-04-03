@@ -328,27 +328,27 @@ Perform Self calibration on the data
 
 
 
-.. _self_cal_cal_time_chunk:
+.. _self_cal_cal_timeslots_chunk:
 
 --------------------------------------------------
-**cal_time_chunk**
+**cal_timeslots_chunk**
 --------------------------------------------------
 
-  *int*, *optional*, *default = 1*
+  *int*, *optional*, *default = -1*
 
-  Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means use full time axis but does not cross scan boundaries.
+  Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means use full time axis but does not cross scan boundaries. -1 Uses largest solution interval
 
 
 
-.. _self_cal_cal_freq_chunk:
+.. _self_cal_cal_channel_chunk:
 
 --------------------------------------------------
-**cal_freq_chunk**
+**cal_channel_chunk**
 --------------------------------------------------
 
-  *int*, *optional*, *default = 0*
+  *int*, *optional*, *default = -1*
 
-  Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries.
+  Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries. -1 Uses largest solution interval
 
 
 
@@ -610,7 +610,7 @@ Perform Self calibration on the data
 
     Add/Use clean components from latest imaging step to/as sky model for calibation
 
-  **Gsols_time**
+  **Gsols_timeslots**
 
     *list* *of float*, *optional*, *default = 1*
 
@@ -628,7 +628,7 @@ Perform Self calibration on the data
 
     Enable Bjones
 
-  **Bsols_time**
+  **Bsols_timeslots**
 
     *list* *of int*, *optional*, *default = 0*
 
@@ -646,7 +646,7 @@ Perform Self calibration on the data
 
     Enable direction dependent calibration, currently experimental.
 
-  **DDsols_time**
+  **DDsols_timeslots**
 
     *list* *of float*, *optional*, *default = 0*
 
@@ -786,29 +786,29 @@ Perform Self calibration on the data
 
       Enable gain interpolation.
 
-    **time_int**
+    **timeslots_int**
 
-      *int*, *optional*, *default = 1*
+      *int*, *optional*, *default = -1*
 
-      Solution interval in time (units of timeslots/intergration time) to transfer gains.
+      Solution interval in time (units of timeslots/intergration time) to transfer gains. -1 uses the solution interval from the calibration that is applied.
 
-    **freq_int**
+    **channel_int**
 
-      *int*, *optional*, *default = 0*
+      *int*, *optional*, *default = -1*
 
-      Solution interval in frequency (units of channels) to transfer gains.
+      Solution interval in frequency (units of channels) to transfer gains. -1 uses the solution interval from the calibration that is applied.
 
-    **time_chunk**
+    **timeslots_chunk**
 
-      *int*, *optional*, *default = 128*
+      *int*, *optional*, *default = -1*
 
-      Time chunk in units of timeslots for transferring gains with Cubical.
+      Time chunk in units of timeslots for transferring gains with Cubical. -1 uses the solution interval from the calibration that is applied.
 
-    **freq_chunk**
+    **channel_chunk**
 
-      *int*, *optional*, *default = 0*
+      *int*, *optional*, *default = -1*
 
-      Frequency chunk in units of channels for transferring gains with Cubical. '0' means the whole spw.
+      Frequency chunk in units of channels for transferring gains with Cubical. '0' means the whole spw. -1 uses the solution interval from the calibration that is applied.
 
 
 
