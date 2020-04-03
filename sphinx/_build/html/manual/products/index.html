@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -90,12 +90,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../configfile/index.html">Configuration file</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Data products</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#diagnostic-plots">Diagnostic Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-tables">Calibration Tables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#continuum-images">Continuum Images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spectral-line-cubes">Spectral-line Cubes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spectral-line-moment-images">Spectral-line Moment Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mask-files">Mask Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#log-files">Log Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reports">Reports</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#caltables-masking">Caltables / Masking</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reduction/index.html">Data reduction</a></li>
@@ -178,6 +179,10 @@
 <h2>Diagnostic Plots<a class="headerlink" href="#diagnostic-plots" title="Permalink to this headline">¶</a></h2>
 <p>Diagnostic plots are located in the output/diagnostic_plots directory, where the cross and self calibration plots are separated into their respective subdirectory.</p>
 </div>
+<div class="section" id="calibration-tables">
+<h2>Calibration Tables<a class="headerlink" href="#calibration-tables" title="Permalink to this headline">¶</a></h2>
+<p>Calibration tables produced by the pipeline in the cross calibration process can be found in the output/caltables directory, while the self calibration products can be found in the output/continuum/selfcal_products directory.</p>
+</div>
 <div class="section" id="continuum-images">
 <h2>Continuum Images<a class="headerlink" href="#continuum-images" title="Permalink to this headline">¶</a></h2>
 <p>Continuum images are located in the output/continuum directory, labeled as image_N where N is the number in the self calibration process.</p>
@@ -190,6 +195,10 @@
 <h2>Spectral-line Moment Images<a class="headerlink" href="#spectral-line-moment-images" title="Permalink to this headline">¶</a></h2>
 <p>Spectral-line moment images are located (when source finding is enabled) in the respective cube_N directory. For example, the moment maps of cube_3 are located in output/cubes/cube_3.</p>
 </div>
+<div class="section" id="mask-files">
+<h2>Mask Files<a class="headerlink" href="#mask-files" title="Permalink to this headline">¶</a></h2>
+<p>Mask files produced by the pipeline are located in the output/masking directory. Self-provided masks to be used by the pipeline also need to be located in this directory.</p>
+</div>
 <div class="section" id="log-files">
 <h2>Log Files<a class="headerlink" href="#log-files" title="Permalink to this headline">¶</a></h2>
 <p>A copy of the pipeline log is located in the output directory. All logs are located in the output/logs directory, with the timestamp YYYYMM-HHMM. A copy of the config file is located in the output/cfgFiles directory, with the same timestamp.</p>
@@ -197,10 +206,6 @@
 <div class="section" id="reports">
 <h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h2>
 <p>(Interactive?) HTML Reports on the observation(s) and sources are located in the output/reports directory. I think Oleg / Athanaseus should fill this out. What about RFInder?</p>
-</div>
-<div class="section" id="caltables-masking">
-<h2>Caltables / Masking<a class="headerlink" href="#caltables-masking" title="Permalink to this headline">¶</a></h2>
-<p>Do we want to document anything about these?</p>
 </div>
 </div>
 

@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -158,15 +158,15 @@
 <div class="section" id="on-linux">
 <h2>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li>Clone this repository
-Use https and your github credentials, then go to the pipeline folder ‘meerkathi’.</li>
+<li><p>Clone this repository
+Use https and your github credentials, then go to the pipeline folder ‘meerkathi’.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/ska-sa/meerkathi.git
 $ cd meerkathi
 </pre></div>
 </div>
 <ol class="simple">
-<li>Start and activate virtual environment outside the meerkathi directory</li>
+<li><p>Start and activate virtual environment outside the meerkathi directory</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ..
 $ virtualenv -p python3 meerkathi-venv 
@@ -174,39 +174,39 @@ $ source meerkathi-venv/bin/activate
 </pre></div>
 </div>
 <ol class="simple">
-<li>If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:</li>
+<li><p>If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U -r &lt;absolute path to meerkathi folder&gt;/requirements.txt
 </pre></div>
 </div>
 <ol class="simple">
-<li>Install meerKATHI</li>
+<li><p>Install meerKATHI</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;absolute path to meerkathi folder&gt;&quot;[extra_diagnostics]&quot;
 </pre></div>
 </div>
 <p>If the requirements cannot be installed on your system you may omit [extra_diagnostics]. This will disable report rendering.</p>
 <ol class="simple">
-<li>Pull and/or build stimela images</li>
+<li><p>Pull and/or build stimela images</p></li>
 </ol>
 <ul>
-<li><p class="first"><strong>Podman</strong>[Recommended]</p>
+<li><p><strong>Podman</strong>[Recommended]</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull -p
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Singularity</strong>[Recommended]
+<li><p><strong>Singularity</strong>[Recommended]
 Requires versions &gt;= 2.6.0-dist</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull --singularity --pull-folder &lt;folder to store stimela singularity images&gt;
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>uDocker</strong>[Recommended]&lt;note: no python3 support&gt;</p>
+<li><p><strong>uDocker</strong>[Recommended]&lt;note: no python3 support&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Docker</strong></p>
+<li><p><strong>Docker</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull -d
 $ stimela build -nc
 </pre></div>
@@ -214,24 +214,24 @@ $ stimela build -nc
 </li>
 </ul>
 <ol class="simple">
-<li>run meerkathi</li>
+<li><p>run meerkathi</p></li>
 </ol>
 <ul class="simple">
-<li><strong>Podman</strong>[Recommended]
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">podman</span></code></li>
-<li><strong>Singularity</strong>[Recommended]
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">&lt;folder</span> <span class="pre">where</span> <span class="pre">singularity</span> <span class="pre">images</span> <span class="pre">are</span> <span class="pre">stored&gt;</span></code></li>
-<li><strong>uDocker</strong>[no python3 support]
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">udocker</span></code></li>
-<li><strong>Docker</strong>
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c&lt;</span> <span class="pre">path</span> <span class="pre">to</span> <span class="pre">configuration</span> <span class="pre">file&gt;</span></code></li>
+<li><p><strong>Podman</strong>[Recommended]
+<code class="docutils literal notranslate"> <span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">podman</span></code></p></li>
+<li><p><strong>Singularity</strong>[Recommended]
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">&lt;folder</span> <span class="pre">where</span> <span class="pre">singularity</span> <span class="pre">images</span> <span class="pre">are</span> <span class="pre">stored&gt;</span></code></p></li>
+<li><p><strong>uDocker</strong>[no python3 support]
+<code class="docutils literal notranslate"> <span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">udocker</span></code></p></li>
+<li><p><strong>Docker</strong>
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c&lt;</span> <span class="pre">path</span> <span class="pre">to</span> <span class="pre">configuration</span> <span class="pre">file&gt;</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>Stimela cache file</strong>
-When re-building/pullng/updating stimela (any stimela call above), sometimes problems will arise with the cache file of stimela, whose standard location is</li>
+<li><p><strong>Stimela cache file</strong>
+When re-building/pullng/updating stimela (any stimela call above), sometimes problems will arise with the cache file of stimela, whose standard location is</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">stimela</span>
 </pre></div>
@@ -251,22 +251,22 @@ When re-building/pullng/updating stimela (any stimela call above), sometimes pro
 <div class="section" id="on-mac">
 <h2>On Mac<a class="headerlink" href="#on-mac" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li>create a python environment</li>
+<li><p>create a python environment</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">env</span> <span class="pre">--name</span> <span class="pre">meer_venv</span></code></p>
 <ol class="simple">
-<li>activate environment</li>
+<li><p>activate environment</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">activate</span> <span class="pre">meer_venv</span></code></p>
 <ol class="simple">
-<li>clone <code class="docutils literal notranslate"><span class="pre">meerkathi</span></code></li>
+<li><p>clone <code class="docutils literal notranslate"><span class="pre">meerkathi</span></code></p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/ska-sa/meerkathi.git
 $ cd meerkathi
 </pre></div>
 </div>
 <ol class="simple">
-<li>Start and activate virtual environment</li>
+<li><p>Start and activate virtual environment</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virtualenv meerkathi-venv
 $ source meerkathi-venv/bin/activate
@@ -274,33 +274,33 @@ $ pip install pip wheel setuptools -U
 </pre></div>
 </div>
 <ol class="simple">
-<li>If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:</li>
+<li><p>If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U -r &lt;absolute path to meerkathi folder&gt;/requirements.txt
 </pre></div>
 </div>
 <ol class="simple">
-<li>Install meerKATHI</li>
+<li><p>Install meerKATHI</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;absolute path to meerkathi folder&gt;
 $ export PYTHONPATH=&#39;&#39; # Ensure that you use venv Python
 </pre></div>
 </div>
 <ol class="simple">
-<li>Pull and/or build stimela images</li>
+<li><p>Pull and/or build stimela images</p></li>
 </ol>
 <ul>
-<li><p class="first"><strong>uDocker</strong>[Recommended]</p>
+<li><p><strong>uDocker</strong>[Recommended]</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Singularity</strong>[Recommended]</p>
+<li><p><strong>Singularity</strong>[Recommended]</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull --singularity --pull-folder &lt;folder to store stimela singularity images&gt;
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Docker</strong></p>
+<li><p><strong>Docker</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull
 $ stimela build
 </pre></div>
@@ -308,15 +308,15 @@ $ stimela build
 </li>
 </ul>
 <ol class="simple">
-<li>run meerkathi</li>
+<li><p>run meerkathi</p></li>
 </ol>
 <ul class="simple">
-<li><strong>uDocker</strong>[Recommended]
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">udocker</span></code></li>
-<li><strong>Singularity</strong>[Recommended]
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">&lt;folder</span> <span class="pre">where</span> <span class="pre">singularity</span> <span class="pre">images</span> <span class="pre">are</span> <span class="pre">stored&gt;</span></code></li>
-<li><strong>Docker</strong>
-<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c&lt;</span> <span class="pre">path</span> <span class="pre">to</span> <span class="pre">configuration</span> <span class="pre">file&gt;</span></code></li>
+<li><p><strong>uDocker</strong>[Recommended]
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">udocker</span></code></p></li>
+<li><p><strong>Singularity</strong>[Recommended]
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">path_to_configuration_file</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">&lt;folder</span> <span class="pre">where</span> <span class="pre">singularity</span> <span class="pre">images</span> <span class="pre">are</span> <span class="pre">stored&gt;</span></code></p></li>
+<li><p><strong>Docker</strong>
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c&lt;</span> <span class="pre">path</span> <span class="pre">to</span> <span class="pre">configuration</span> <span class="pre">file&gt;</span></code></p></li>
 </ul>
 </div>
 </div>
