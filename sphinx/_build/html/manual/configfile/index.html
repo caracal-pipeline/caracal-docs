@@ -166,9 +166,20 @@
 <span id="configfile"></span><h1>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Users settings are passed to Caracal through a YAML configuration file. This must follow
-the YAML syntax rules (see <a class="reference external" href="https://yaml.readthedocs.io">https://yaml.readthedocs.io</a>). The complete list of all workers’
-parameters that users can set through the configuration file is available at <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>,
+<p>Users settings are passed to Caracal through a configuration file. This consists of a
+sequence of blocks, one per run of a Caracal worker. Within each block the worker’s
+parameters are arranged in a nested structure following the YAML syntax rules
+(see <a class="reference external" href="https://yaml.readthedocs.io">https://yaml.readthedocs.io</a>). As an example, a block of the config file may look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some_worker</span><span class="p">:</span>
+  <span class="n">enable</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">parameter1</span><span class="p">:</span> <span class="n">value1</span>
+  <span class="n">parameter2</span><span class="p">:</span>
+    <span class="n">subpar1</span><span class="p">:</span> <span class="n">value2_1</span>
+    <span class="n">subpar2</span><span class="p">:</span> <span class="n">value2_2</span>
+  <span class="n">parameter3</span><span class="p">:</span> <span class="n">value3</span>
+</pre></div>
+</div>
+<p>The complete list of all workers’ parameters that users can set through the configuration file is available at <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>,
 where the parameters’ nesting is also explained.</p>
 <p>Most parameters are optional and do not need to be included in the configuration file.
 Their default values are set to work in as many cases as possible. A few parameters are

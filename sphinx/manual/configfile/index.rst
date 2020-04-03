@@ -12,9 +12,20 @@ Configuration file
 .. toctree::
    :maxdepth: 1
  
-Users settings are passed to Caracal through a YAML configuration file. This must follow
-the YAML syntax rules (see https://yaml.readthedocs.io). The complete list of all workers'
-parameters that users can set through the configuration file is available at :ref:`workers`,
+Users settings are passed to Caracal through a configuration file. This consists of a
+sequence of blocks, one per run of a Caracal worker. Within each block the worker's
+parameters are arranged in a nested structure following the YAML syntax rules
+(see https://yaml.readthedocs.io). As an example, a block of the config file may look like::
+
+  some_worker:
+    enable: true
+    parameter1: value1
+    parameter2:
+      subpar1: value2_1
+      subpar2: value2_2
+    parameter3: value3
+
+The complete list of all workers' parameters that users can set through the configuration file is available at :ref:`workers`,
 where the parameters' nesting is also explained.
 
 Most parameters are optional and do not need to be included in the configuration file.

@@ -120,9 +120,9 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   **meerkathi_model**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
-    Force disable built-in models in MeerKATHI (NOT RECOMMENDED!)
+    Use built-in sky models in MeerKATHI
 
   **no_verify**
 
