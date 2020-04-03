@@ -256,6 +256,30 @@ Perform Self calibration on the data
 
 
 
+.. _self_cal_img_multi_scale:
+
+--------------------------------------------------
+**img_multi_scale**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  switch on multiscale cleaning
+
+
+
+.. _self_cal_img_multi_scale_scales:
+
+--------------------------------------------------
+**img_multi_scale_scales**
+--------------------------------------------------
+
+  *list* *of int*, *optional*, *default = 10, 20, 30*
+
+  scales of multiscale [0,10,20,etc, etc] in pixels
+
+
+
 .. _self_cal_cal_gain_amplitude_clip_low:
 
 --------------------------------------------------
@@ -388,123 +412,99 @@ Perform Self calibration on the data
 
     Execute this segment
 
-  **auto_mask**
-
-    *list* *of float*, *optional*, *default = 30, 10, 7*
-
-    Auto masking threshold
-
-  **auto_threshold**
-
-    *list* *of float*, *optional*, *default = 0.5*
-
-    Auto clean threshold
-
   **column**
 
     *list* *of str*, *optional*, *default = DATA, CORRECTED_DATA*
 
     Column to image
 
-  **mask_from_sky**
+  **clean_mask_method**
 
-    *bool*, *optional*, *default = False*
+    *list* *of str*, *optional*, *default = auto_mask, auto_mask*
 
-    switch on cleaning within mask from fits file
+    indicate masking method and name of mask, (possible values catalog, auto_mask, sofia. Or name of user-mask located in output/masking/, enabled only if 1 target is provided)
 
-  **fits_mask**
+  **clean_mask_threshold**
 
-    *list* *of str*, *optional*, *default = catalog_mask.fits*
+    *list* *of float*, *optional*, *default = 10.0, 6.0*
 
-    filename of fits mask (in output/masking folder)
+    Masking threshold (either for auto-masking or SoFiA)
 
-  **multi_scale**
+  **clean_threshold**
 
-    *bool*, *optional*, *default = False*
+    *list* *of float*, *optional*, *default = 0.5, 0.5*
 
-    switch on multiscale cleaning
-
-  **multi_scale_scales**
-
-    *list* *of int*, *optional*, *default = 10, 20, 30*
-
-    scales of multiscale [0,10,20,etc, etc] in pixels
+    Auto clean threshold
 
   **local_rms**
 
-    *bool*, *optional*, *default = False*
+    *list* *of bool*, *optional*, *default = False, False*
 
     switch on local rms measurement for cleaning
 
+  **sofia_settings**
 
+    SoFiA source finder settings to produce a clean mask
 
-.. _self_cal_sofia_mask:
+    **flag**
 
---------------------------------------------------
-**sofia_mask**
---------------------------------------------------
+      *bool*, *optional*, *default = False*
 
-  Run SoFiA source finder to produce a source mask and a Moment-0 map
+      Use flag regions (yes/no)?
 
-  **enable**
+    **kernels**
 
-    *bool*, *optional*, *default = False*
+      *list* *of float*, *optional*, *default = 0., 3., 6., 9.*
 
-    Execute segment sofia (yes/no)?
+      FWHM of spatial kernels
 
-  **threshold**
+    **merge_positivity**
 
-    *float*, *optional*, *default = 4.0*
+      *list* *of bool*, *optional*, *default = True, true*
 
-    SoFiA source finding threshold.
+      If set to true, only positive signals will be merged into detections, and all negative signals will be discarded. This is useful for data sets with significant negative artefacts, such as sidelobes.
 
-  **flag**
+    **flagregion**
 
-    *bool*, *optional*, *default = False*
+      *list* *of str*, *optional*, *default = ' '*
 
-    Use flag regions (yes/no)?
+      Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
 
-  **flagregion**
+    **inputmask**
 
-    *list* *of str*, *optional*, *default = ' '*
+      *str*, *optional*, *default = ' '*
 
-    Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
+      input mask over which add Sofia's
 
-  **inputmask**
+    **fornax_special**
 
-    *str*, *optional*, *default = ' '*
+      *bool*, *optional*, *default = False*
 
-    input mask over which add Sofia's
+      Activates masking of Fornax A using Sofia
 
-  **fornax_special**
+    **fornax_thresh**
 
-    *bool*, *optional*, *default = False*
+      *list* *of float*, *optional*, *default = 4.0*
 
-    Activates masking of Fornax A using Sofia
+      SoFiA source finding threshold. Default is 4.0.
 
-  **fornax_thresh**
+    **fornax_use_sofia**
 
-    *list* *of float*, *optional*, *default = 4.0*
+      *bool*, *optional*, *default = False*
 
-    SoFiA source finding threshold. Default is 4.0.
+      use sofia for mask of Fornax A instead of Fomalont mask
 
-  **use_sofia**
+    **scale_noise_window**
 
-    *bool*, *optional*, *default = False*
+      *int*, *optional*, *default = 31*
 
-    use sofia for mask of Fornax A instead of Fomalont mask
+      window size where to measure local rms in pixels
 
-  **scale_noise_window**
+    **positivity**
 
-    *int*, *optional*, *default = 31*
+      *bool*, *optional*, *default = False*
 
-    window size where to measure local rms in pixels
-
-  **positivity**
-
-    *bool*, *optional*, *default = False*
-
-    merges only positive pixesl of sources in mask
+      merges only positive pixesl of sources in mask
 
 
 

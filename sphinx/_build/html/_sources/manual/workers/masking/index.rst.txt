@@ -28,18 +28,6 @@ Create mask from catalog and/or merge with mask of extended source
 
 
 
-.. _masking_centre_coord:
-
---------------------------------------------------
-**centre_coord**
---------------------------------------------------
-
-  *list* *of str*, *optional*, *default = HH:MM:SS , DD:MM:SS*
-
-  Coordinates of the centre of the field of view read from reference_dir by default
-
-
-
 .. _masking_label:
 
 --------------------------------------------------
@@ -49,6 +37,18 @@ Create mask from catalog and/or merge with mask of extended source
   *str*, *optional*, *default = corr*
 
   Label of the .MS file where to find information about the target
+
+
+
+.. _masking_centre_coord:
+
+--------------------------------------------------
+**centre_coord**
+--------------------------------------------------
+
+  *list* *of str*, *optional*, *default = HH:MM:SS , DD:MM:SS*
+
+  Coordinates of the centre of the field of view read from reference_dir by default
 
 
 

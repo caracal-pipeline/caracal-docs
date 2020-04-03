@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -122,6 +122,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-joinchannels"><strong>img_joinchannels</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-fit-spectral-pol"><strong>img_fit_spectral_pol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-pol"><strong>img_pol</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-multi-scale"><strong>img_multi_scale</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-multi-scale-scales"><strong>img_multi_scale_scales</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-amplitude-clip-low"><strong>cal_gain_amplitude_clip_low</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-amplitude-clip-high"><strong>cal_gain_amplitude_clip_high</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
@@ -130,7 +132,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#cal-freq-chunk"><strong>cal_freq_chunk</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aimfast"><strong>aimfast</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image"><strong>image</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sofia-mask"><strong>sofia_mask</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extract-sources"><strong>extract_sources</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calibrate"><strong>calibrate</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#restore-model"><strong>restore_model</strong></a></li>
@@ -359,6 +360,20 @@
 <p>Stokes image to create</p>
 </div></blockquote>
 </div>
+<div class="section" id="img-multi-scale">
+<span id="self-cal-img-multi-scale"></span><h2><strong>img_multi_scale</strong><a class="headerlink" href="#img-multi-scale" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>switch on multiscale cleaning</p>
+</div></blockquote>
+</div>
+<div class="section" id="img-multi-scale-scales">
+<span id="self-cal-img-multi-scale-scales"></span><h2><strong>img_multi_scale_scales</strong><a class="headerlink" href="#img-multi-scale-scales" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 10, 20, 30</em></p>
+<p>scales of multiscale [0,10,20,etc, etc] in pixels</p>
+</div></blockquote>
+</div>
 <div class="section" id="cal-gain-amplitude-clip-low">
 <span id="self-cal-cal-gain-amplitude-clip-low"></span><h2><strong>cal_gain_amplitude_clip_low</strong><a class="headerlink" href="#cal-gain-amplitude-clip-low" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -446,66 +461,48 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Execute this segment</p>
 </div></blockquote>
-<p><strong>auto_mask</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 30, 10, 7</em></p>
-<p>Auto masking threshold</p>
-</div></blockquote>
-<p><strong>auto_threshold</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0.5</em></p>
-<p>Auto clean threshold</p>
-</div></blockquote>
 <p><strong>column</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = DATA, CORRECTED_DATA</em></p>
 <p>Column to image</p>
 </div></blockquote>
-<p><strong>mask_from_sky</strong></p>
+<p><strong>clean_mask_method</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>switch on cleaning within mask from fits file</p>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = auto_mask, auto_mask</em></p>
+<p>indicate masking method and name of mask, (possible values catalog, auto_mask, sofia. Or name of user-mask located in output/masking/, enabled only if 1 target is provided)</p>
 </div></blockquote>
-<p><strong>fits_mask</strong></p>
+<p><strong>clean_mask_threshold</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = catalog_mask.fits</em></p>
-<p>filename of fits mask (in output/masking folder)</p>
+<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 10.0, 6.0</em></p>
+<p>Masking threshold (either for auto-masking or SoFiA)</p>
 </div></blockquote>
-<p><strong>multi_scale</strong></p>
+<p><strong>clean_threshold</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>switch on multiscale cleaning</p>
-</div></blockquote>
-<p><strong>multi_scale_scales</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 10, 20, 30</em></p>
-<p>scales of multiscale [0,10,20,etc, etc] in pixels</p>
+<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0.5, 0.5</em></p>
+<p>Auto clean threshold</p>
 </div></blockquote>
 <p><strong>local_rms</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<div><p><em>list</em> <em>of bool</em>, <em>optional</em>, <em>default = False, False</em></p>
 <p>switch on local rms measurement for cleaning</p>
 </div></blockquote>
-</div></blockquote>
-</div>
-<div class="section" id="sofia-mask">
-<span id="self-cal-sofia-mask"></span><h2><strong>sofia_mask</strong><a class="headerlink" href="#sofia-mask" title="Permalink to this headline">¶</a></h2>
+<p><strong>sofia_settings</strong></p>
 <blockquote>
-<div><p>Run SoFiA source finder to produce a source mask and a Moment-0 map</p>
-<p><strong>enable</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment sofia (yes/no)?</p>
-</div></blockquote>
-<p><strong>threshold</strong></p>
-<blockquote>
-<div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
-<p>SoFiA source finding threshold.</p>
-</div></blockquote>
+<div><p>SoFiA source finder settings to produce a clean mask</p>
 <p><strong>flag</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Use flag regions (yes/no)?</p>
+</div></blockquote>
+<p><strong>kernels</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0., 3., 6., 9.</em></p>
+<p>FWHM of spatial kernels</p>
+</div></blockquote>
+<p><strong>merge_positivity</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of bool</em>, <em>optional</em>, <em>default = True, true</em></p>
+<p>If set to true, only positive signals will be merged into detections, and all negative signals will be discarded. This is useful for data sets with significant negative artefacts, such as sidelobes.</p>
 </div></blockquote>
 <p><strong>flagregion</strong></p>
 <blockquote>
@@ -527,7 +524,7 @@
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 4.0</em></p>
 <p>SoFiA source finding threshold. Default is 4.0.</p>
 </div></blockquote>
-<p><strong>use_sofia</strong></p>
+<p><strong>fornax_use_sofia</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>use sofia for mask of Fornax A instead of Fomalont mask</p>
@@ -541,6 +538,7 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>merges only positive pixesl of sources in mask</p>
+</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div>
