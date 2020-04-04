@@ -88,7 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is Caracal?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#brief-description-of-workers">Brief description of workers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-and-brief-description-of-caracal-workers">List and Brief description of Caracal workers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#general"><code class="docutils literal notranslate"><span class="pre">general</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-data"><code class="docutils literal notranslate"><span class="pre">get_data</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#observation-config"><code class="docutils literal notranslate"><span class="pre">observation_config</span></code></a></li>
@@ -196,12 +196,12 @@ execute tasks from many different data reduction packages in Python without havi
 install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc.).
 Using Stimela, the different software packages are available through a unified scheme.
 Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
-<p>Within Caracal – and throughout this documentation – the individual Stimela scripts are called
+<p>Within Caracal — and throughout this documentation — the individual Stimela scripts are called
 “workers”. Each Caracal worker corresponds to a specific&nbsp;section of the data reduction
 process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).</p>
-<p>In practice, users tell Caracal what to do – and how to do it – via a YAML configuration file.
+<p>In practice, users tell Caracal what to do — and how to do it — via a YAML configuration file.
 The configuration file has one section for each run of a worker (some workers, e.g., the flagging
 one, might need to be run multiple times). By editing the configuration
 file users control the workers’ options, deciding which tasks to run and with what settings.
@@ -210,14 +210,15 @@ section of this manual.</p>
 <p>Normally, users will not have to touch anything but the configuration file. They can check
 what has happened through a variety of data products, including images, diagnostic plots and log files.
 A list of all Caracal data products is available at the <a class="reference internal" href="../products/index.html#products"><span class="std std-ref">Data products</span></a> section of this manual.</p>
-<p>In the rest of this Introduction we give a brief description of each worker. A more comprehensive
+<p>In the rest of this Introduction we give the complete list and a brief description of each worker.
+A more comprehensive
 description is available in the <a class="reference internal" href="../reduction/index.html#reduction"><span class="std std-ref">Data reduction</span></a> section of this manual, which follows
 the flow of a typical data reduction process. The full list of parameters available for
 the individual workers through the configuration file can be found at the <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>
 section of this manual or following the links below.</p>
 </div>
-<div class="section" id="brief-description-of-workers">
-<h2>Brief description of workers<a class="headerlink" href="#brief-description-of-workers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-and-brief-description-of-caracal-workers">
+<span id="workerlist"></span><h2>List and Brief description of Caracal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Permalink to this headline">¶</a></h2>
 <p>The following workers are available in Caracal. Typically, they are executed in the
 same order in which they are given below. Only the first three workers (general, get_data
 and  observation_config) should always be executed. All other workers are optional.</p>

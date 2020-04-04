@@ -13,20 +13,45 @@ Configuration file
    :maxdepth: 1
  
 Users settings are passed to Caracal through a configuration file. This consists of a
-sequence of blocks, one per run of a Caracal worker. Within each block the worker's
-parameters are arranged in a nested structure following the YAML syntax rules
-(see https://yaml.readthedocs.io). As an example, a block of the config file may look like::
+sequence of blocks --- one for each run of a Caracal worker. The workers are executed
+following their order in the configuration file. See :ref:`workerlist`.
 
-  some_worker:
+The following workers must always be executed and, therefore, must appear in the configuration
+file: :ref:`general`, :ref:`get_data` and :ref:`observation_config`. All other workers are optional.
+
+Within each worker's block of the configuration file, the worker's parameters are arranged
+in a nested structure following the YAML syntax rules (see https://yaml.readthedocs.io).
+As an example, a block of the config file may look like::
+
+  worker_name:
     enable: true
-    parameter1: value1
-    parameter2:
-      subpar1: value2_1
-      subpar2: value2_2
-    parameter3: value3
+    parameter_1: value_1
+    parameter_2:
+      parameter_2_1: value_2_1
+      parameter_2_2: value_2_2
+    parameter_3: value_3
+    ...
 
-The complete list of all workers' parameters that users can set through the configuration file is available at :ref:`workers`,
-where the parameters' nesting is also explained.
+The complete list of all workers' parameters is available at :ref:`workers`,
+where the parameters' nesting is also illustrated.
+
+Workers can be executed more than once in a single run of Caracal. This could be useful,
+for example, if a user wants to flag the data both before and after cross-calibration.
+To indicate a repeated run of a worker the worker name must be followed by "__N" in the
+configuration file (N > 1; note the double underscore). In the example above, the flagging
+worker must thus appear twice in the configuration file::
+
+   flagging:
+     enable: true
+     parameter_1: value_1A
+     ...
+
+   [other workers]
+   
+   flagging__2:
+     enable: true
+     parameter_1: value_1B
+     ...
 
 Most parameters are optional and do not need to be included in the configuration file.
 Their default values are set to work in as many cases as possible. A few parameters are

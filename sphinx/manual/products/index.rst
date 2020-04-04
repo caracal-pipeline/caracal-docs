@@ -44,4 +44,4 @@ A copy of the pipeline log is located in the output directory. All logs are loca
 
 Reports
 ^^^^^^^
-(Interactive?) HTML Reports on the observation(s) and sources are located in the output/reports directory. I think Oleg / Athanaseus should fill this out. What about RFInder?
+HTML Reports on the observation(s) and sources are located in the output/reports directory.

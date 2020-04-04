@@ -26,13 +26,13 @@ install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc
 Using Stimela, the different software packages are available through a unified scheme.
 Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.
 
-Within Caracal – and throughout this documentation – the individual Stimela scripts are called
+Within Caracal --- and throughout this documentation --- the individual Stimela scripts are called
 "workers". Each Caracal worker corresponds to a specific section of the data reduction
 process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).
 
-In practice, users tell Caracal what to do – and how to do it – via a YAML configuration file.
+In practice, users tell Caracal what to do --- and how to do it --- via a YAML configuration file.
 The configuration file has one section for each run of a worker (some workers, e.g., the flagging
 one, might need to be run multiple times). By editing the configuration
 file users control the workers' options, deciding which tasks to run and with what settings.
@@ -43,14 +43,17 @@ Normally, users will not have to touch anything but the configuration file. They
 what has happened through a variety of data products, including images, diagnostic plots and log files.
 A list of all Caracal data products is available at the :ref:`products` section of this manual.
 
-In the rest of this Introduction we give a brief description of each worker. A more comprehensive
+In the rest of this Introduction we give the complete list and a brief description of each worker.
+A more comprehensive
 description is available in the :ref:`reduction` section of this manual, which follows
 the flow of a typical data reduction process. The full list of parameters available for
 the individual workers through the configuration file can be found at the :ref:`workers`
 section of this manual or following the links below.
 
-Brief description of workers
-----------------------------
+.. _workerlist:
+
+List and Brief description of Caracal workers
+---------------------------------------------
 
 The following workers are available in Caracal. Typically, they are executed in the
 same order in which they are given below. Only the first three workers (general, get_data
