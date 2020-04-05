@@ -28,10 +28,22 @@ Dignostic plots of the first-pass cross-calibrated data.
 
 
 
-.. _inspect_data_label:
+.. _inspect_data_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  Label of the input dataset
+
+
+
+.. _inspect_data_label_out:
+
+--------------------------------------------------
+**label_out**
 --------------------------------------------------
 
   *str*, *optional*, *default = ' '*

@@ -28,15 +28,27 @@ Flagging of the data.
 
 
 
-.. _flagging_label:
+.. _flagging_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = ' '*
 
   The label is added to the input .MS file name to define the name of the .MS file that should be flagged, <input>-<label>.ms. Default is an empty string, i.e., the original .MS is flagged.
+
+
+
+.. _flagging_field:
+
+--------------------------------------------------
+**field**
+--------------------------------------------------
+
+  *str*, *optional*, *default = calibrators*
+
+  Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string
 
 
 

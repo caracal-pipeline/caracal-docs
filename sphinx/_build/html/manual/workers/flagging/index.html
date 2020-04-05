@@ -97,7 +97,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../prepare_data/index.html">prepare_data</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">flagging</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-flags"><strong>load_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#autoflag-autocorr-powerspectra"><strong>autoflag_autocorr_powerspectra</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-autocorr"><strong>flag_autocorr</strong></a></li>
@@ -117,7 +118,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../cross_cal/index.html">cross_cal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../inspect_data/index.html">inspect_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../split_target/index.html">split_target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transform_data/index.html">transform_data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../masking/index.html">masking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../self_cal/index.html">self_cal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../image_line/index.html">image_line</a></li>
@@ -207,11 +208,18 @@
 <p>Execute flagging of the data.</p>
 </div></blockquote>
 </div>
-<div class="section" id="label">
-<span id="flagging-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="label-in">
+<span id="flagging-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>The label is added to the input .MS file name to define the name of the .MS file that should be flagged, &lt;input&gt;-&lt;label&gt;.ms. Default is an empty string, i.e., the original .MS is flagged.</p>
+</div></blockquote>
+</div>
+<div class="section" id="field">
+<span id="flagging-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = calibrators</em></p>
+<p>Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string</p>
 </div></blockquote>
 </div>
 <div class="section" id="load-flags">

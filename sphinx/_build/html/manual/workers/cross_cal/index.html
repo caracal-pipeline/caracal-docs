@@ -98,10 +98,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../flagging/index.html">flagging</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">cross_cal</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-flags"><strong>load_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#otfdelay"><strong>otfdelay</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#casa-version"><strong>casa_version</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-model"><strong>set_model</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#primary-cal"><strong>primary_cal</strong></a></li>
@@ -112,7 +113,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../inspect_data/index.html">inspect_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../split_target/index.html">split_target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transform_data/index.html">transform_data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../masking/index.html">masking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../self_cal/index.html">self_cal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../image_line/index.html">image_line</a></li>
@@ -202,6 +203,20 @@
 <p>Execute this segment.</p>
 </div></blockquote>
 </div>
+<div class="section" id="label-in">
+<span id="cross-cal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em></p>
+<p>Label of measurement set to work on.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-cal">
+<span id="cross-cal-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = 1gc1</em></p>
+<p>Label for output files.</p>
+</div></blockquote>
+</div>
 <div class="section" id="load-flags">
 <span id="cross-cal-load-flags"></span><h2><strong>load_flags</strong><a class="headerlink" href="#load-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -237,13 +252,6 @@
 <p>Set the U-V range for data selection, e.g. ‘&gt;50’.</p>
 </div></blockquote>
 </div>
-<div class="section" id="label">
-<span id="cross-cal-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = 1gc1</em></p>
-<p>Label for output files.</p>
-</div></blockquote>
-</div>
 <div class="section" id="casa-version">
 <span id="cross-cal-casa-version"></span><h2><strong>casa_version</strong><a class="headerlink" href="#casa-version" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -262,7 +270,7 @@
 </div></blockquote>
 <p><strong>meerkathi_model</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Use built-in sky models in MeerKATHI</p>
 </div></blockquote>
 <p><strong>no_verify</strong></p>

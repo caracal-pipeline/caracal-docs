@@ -21,7 +21,7 @@ sortedWorkers = [
   'cross_cal',
   'polcal',
   'inspect_data',
-  'split_target',
+  'transform_data',
   'masking',
   'self_cal',
   'image_line',

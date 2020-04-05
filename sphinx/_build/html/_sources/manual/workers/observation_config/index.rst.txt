@@ -54,7 +54,7 @@ Setup some basic observation information
 
     **enable**
 
-      *bool*, *optional*, *default = True*
+      *bool*, *optional*, *default = False*
 
       Enable this segment
 

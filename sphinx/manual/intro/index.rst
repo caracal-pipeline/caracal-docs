@@ -115,8 +115,8 @@ TBD
 
 This worker produces diagnostic plots based on the calibrated calibrators' visibilities.
 
-:ref:`split_target`
-^^^^^^^^^^^^^^^^^^^
+:ref:`transform_data`
+^^^^^^^^^^^^^^^^^^^^^
 
 This worker creates new .MS files which contain the targets' calibrated
 visibilities only. Time and frequency averaging is available, as well as phase rotation to

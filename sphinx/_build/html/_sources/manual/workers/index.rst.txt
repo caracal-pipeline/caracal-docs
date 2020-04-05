@@ -20,7 +20,7 @@ Workers parameters
    cross_cal/index.rst
    polcal/index.rst
    inspect_data/index.rst
-   split_target/index.rst
+   transform_data/index.rst
    masking/index.rst
    self_cal/index.rst
    image_line/index.rst

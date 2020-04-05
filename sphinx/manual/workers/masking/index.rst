@@ -28,10 +28,10 @@ Create mask from catalog and/or merge with mask of extended source
 
 
 
-.. _masking_label:
+.. _masking_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = corr*

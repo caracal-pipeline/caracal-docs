@@ -28,6 +28,30 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
 
 
+.. _cross_cal_label_in:
+
+--------------------------------------------------
+**label_in**
+--------------------------------------------------
+
+  *str*
+
+  Label of measurement set to work on.
+
+
+
+.. _cross_cal_label_cal:
+
+--------------------------------------------------
+**label_cal**
+--------------------------------------------------
+
+  *str*, *optional*, *default = 1gc1*
+
+  Label for output files.
+
+
+
 .. _cross_cal_load_flags:
 
 --------------------------------------------------
@@ -80,18 +104,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
 
 
-.. _cross_cal_label:
-
---------------------------------------------------
-**label**
---------------------------------------------------
-
-  *str*, *optional*, *default = 1gc1*
-
-  Label for output files.
-
-
-
 .. _cross_cal_casa_version:
 
 --------------------------------------------------
@@ -120,7 +132,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   **meerkathi_model**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Use built-in sky models in MeerKATHI
 
