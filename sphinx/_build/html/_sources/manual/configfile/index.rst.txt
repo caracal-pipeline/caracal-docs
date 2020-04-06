@@ -12,13 +12,14 @@ Configuration file
 .. toctree::
    :maxdepth: 1
  
-Users settings are passed to Caracal through a configuration file. This consists of a
+Users settings are passed to Caracal through a configuration file consisting of a
 sequence of blocks --- each corresponding to the run of a Caracal worker. The workers
-are run following the order of these blocks. For reference see :ref:`workerlist`.
+are run following the order in which they appear in the configuration file.
+For reference see :ref:`workerlist`.
 
-The following workers must always run and, therefore, must appear in the configuration
-file: :ref:`general`, :ref:`get_data` and :ref:`observation_config`. All other workers are
-optional.
+The following workers must always run be and, therefore, must always appear in the
+configuration file: :ref:`general`, :ref:`get_data` and :ref:`observation_config`. All
+other workers are optional.
 
 Within each worker's block of the configuration file, the worker's parameters are arranged
 in a nested structure following the YAML syntax rules (see https://yaml.readthedocs.io).
