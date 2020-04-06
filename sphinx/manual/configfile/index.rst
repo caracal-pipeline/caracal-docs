@@ -14,7 +14,7 @@ Configuration file
  
 Users settings are passed to Caracal through a configuration file. This consists of a
 sequence of blocks --- one for each run of a Caracal worker. The workers are executed
-following their order in the configuration file. See :ref:`workerlist`.
+following the order of these blocks. For reference, see :ref:`workerlist`.
 
 The following workers must always be executed and, therefore, must appear in the configuration
 file: :ref:`general`, :ref:`get_data` and :ref:`observation_config`. All other workers are optional.
