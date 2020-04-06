@@ -167,10 +167,11 @@
 <div class="toctree-wrapper compound">
 </div>
 <p>Users settings are passed to Caracal through a configuration file. This consists of a
-sequence of blocks — one for each run of a Caracal worker. The workers are executed
-following the order of these blocks. For reference, see <a class="reference internal" href="../intro/index.html#workerlist"><span class="std std-ref">List and Brief description of Caracal workers</span></a>.</p>
-<p>The following workers must always be executed and, therefore, must appear in the configuration
-file: <a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../workers/get_data/index.html#get-data"><span class="std std-ref">get_data</span></a> and <a class="reference internal" href="../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>. All other workers are optional.</p>
+sequence of blocks — each corresponding to the run of a Caracal worker. The workers
+are run following the order of these blocks. For reference see <a class="reference internal" href="../intro/index.html#workerlist"><span class="std std-ref">List and Brief description of Caracal workers</span></a>.</p>
+<p>The following workers must always run and, therefore, must appear in the configuration
+file: <a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../workers/get_data/index.html#get-data"><span class="std std-ref">get_data</span></a> and <a class="reference internal" href="../workers/observation_config/index.html#observation-config"><span class="std std-ref">observation_config</span></a>. All other workers are
+optional.</p>
 <p>Within each worker’s block of the configuration file, the worker’s parameters are arranged
 in a nested structure following the YAML syntax rules (see <a class="reference external" href="https://yaml.readthedocs.io">https://yaml.readthedocs.io</a>).
 As an example, a block of the config file may look like:</p>
