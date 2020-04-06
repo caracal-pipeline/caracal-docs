@@ -103,12 +103,11 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">masking</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#centre-coord"><strong>centre_coord</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mask-size"><strong>mask_size</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cell-size"><strong>cell_size</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#name-mask"><strong>name_mask</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extended-source-input"><strong>extended_source_input</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#final-mask"><strong>final_mask</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#query-catalog"><strong>query_catalog</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pb-correction"><strong>pb_correction</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-mask"><strong>make_mask</strong></a></li>
@@ -195,7 +194,7 @@
 <span id="id1"></span><h1>masking<a class="headerlink" href="#masking" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Create mask from catalog and/or merge with mask of extended source</p>
+<p>Create .FITS mask from catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.</p>
 <div class="section" id="enable">
 <span id="masking-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -207,7 +206,14 @@
 <span id="masking-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label of the .MS file where to find information about the target</p>
+<p>Label of the .MS file where to find information about the target.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-out">
+<span id="masking-label-out"></span><h2><strong>label_out</strong><a class="headerlink" href="#label-out" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = catalog_mask</em></p>
+<p>Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of clean_mask_method to label_out.</p>
 </div></blockquote>
 </div>
 <div class="section" id="centre-coord">
@@ -220,7 +226,7 @@
 <div class="section" id="mask-size">
 <span id="masking-mask-size"></span><h2><strong>mask_size</strong><a class="headerlink" href="#mask-size" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 900</em></p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 1800</em></p>
 <p>Number of pixels in the mask (must be the same as img_npix in selfcal worker)</p>
 </div></blockquote>
 </div>
@@ -231,25 +237,11 @@
 <p>Size of pixel in the mask (arcsec, must be the same as img_cell in selfcal worker)</p>
 </div></blockquote>
 </div>
-<div class="section" id="name-mask">
-<span id="masking-name-mask"></span><h2><strong>name_mask</strong><a class="headerlink" href="#name-mask" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = catalog_mask.fits</em></p>
-<p>Name of the output mask generated from catalog</p>
-</div></blockquote>
-</div>
 <div class="section" id="extended-source-input">
 <span id="masking-extended-source-input"></span><h2><strong>extended_source_input</strong><a class="headerlink" href="#extended-source-input" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = Fornaxa_vla.FITS</em></p>
 <p>Name of the input mask for particularly extended sources in the field</p>
-</div></blockquote>
-</div>
-<div class="section" id="final-mask">
-<span id="masking-final-mask"></span><h2><strong>final_mask</strong><a class="headerlink" href="#final-mask" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = final_mask.fits</em></p>
-<p>Name of the output final mask</p>
 </div></blockquote>
 </div>
 <div class="section" id="query-catalog">

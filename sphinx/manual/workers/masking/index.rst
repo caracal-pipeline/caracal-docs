@@ -12,7 +12,7 @@ masking
 .. toctree::
    :maxdepth: 1
  
-Create mask from catalog and/or merge with mask of extended source
+Create .FITS mask from catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.
 
 
 
@@ -36,7 +36,19 @@ Create mask from catalog and/or merge with mask of extended source
 
   *str*, *optional*, *default = corr*
 
-  Label of the .MS file where to find information about the target
+  Label of the .MS file where to find information about the target.
+
+
+
+.. _masking_label_out:
+
+--------------------------------------------------
+**label_out**
+--------------------------------------------------
+
+  *str*, *optional*, *default = catalog_mask*
+
+  Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of clean_mask_method to label_out.
 
 
 
@@ -58,7 +70,7 @@ Create mask from catalog and/or merge with mask of extended source
 **mask_size**
 --------------------------------------------------
 
-  *int*, *optional*, *default = 900*
+  *int*, *optional*, *default = 1800*
 
   Number of pixels in the mask (must be the same as img_npix in selfcal worker)
 
@@ -76,18 +88,6 @@ Create mask from catalog and/or merge with mask of extended source
 
 
 
-.. _masking_name_mask:
-
---------------------------------------------------
-**name_mask**
---------------------------------------------------
-
-  *str*, *optional*, *default = catalog_mask.fits*
-
-  Name of the output mask generated from catalog
-
-
-
 .. _masking_extended_source_input:
 
 --------------------------------------------------
@@ -97,18 +97,6 @@ Create mask from catalog and/or merge with mask of extended source
   *str*, *optional*, *default = Fornaxa_vla.FITS*
 
   Name of the input mask for particularly extended sources in the field
-
-
-
-.. _masking_final_mask:
-
---------------------------------------------------
-**final_mask**
---------------------------------------------------
-
-  *str*, *optional*, *default = final_mask.fits*
-
-  Name of the output final mask
 
 
 

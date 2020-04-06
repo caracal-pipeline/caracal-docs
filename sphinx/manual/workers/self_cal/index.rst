@@ -422,29 +422,29 @@ Perform Self calibration on the data
 
     *list* *of str*, *optional*, *default = auto_mask, auto_mask*
 
-    indicate masking method and name of mask, (possible values catalog, auto_mask, sofia. Or name of user-mask located in output/masking/, enabled only if 1 target is provided)
+    Method used to create a clean mask for cleaning with WSclean. The possible values are 1) "auto_mask" to use WSclean auto-masking method with threshold set by clean_mask_threshold; 2) "sofia" to create a clean mask using SoFiA with threshold set by clean_mask_threshold and additional settings in sofia_settings; 3) an prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
 
   **clean_mask_threshold**
 
     *list* *of float*, *optional*, *default = 10.0, 6.0*
 
-    Masking threshold (either for auto-masking or SoFiA)
+    Masking threshold in units of the (local) noise (for either WSclean auto-masking or SoFiA).
 
   **clean_threshold**
 
     *list* *of float*, *optional*, *default = 0.5, 0.5*
 
-    Auto clean threshold
+    WSclean clean threshold in units of the (local) noise.
 
   **local_rms**
 
     *list* *of bool*, *optional*, *default = False, False*
 
-    switch on local rms measurement for cleaning
+    Use a local rms measurement both when cleaning and creating a clean mask (both WSClean and SoFiA).
 
   **sofia_settings**
 
-    SoFiA source finder settings to produce a clean mask
+    SoFiA source finder settings to produce a .FITS clean mask. The mask is located in output/masking.
 
     **flag**
 
