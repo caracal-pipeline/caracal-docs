@@ -278,7 +278,7 @@ Flagging of the data.
 
     *str*, *optional*, *default = ' '*
 
-    Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS-YYYY/MM/DD/HH:MM:SS'.
+    Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'.
 
   **ensure_valid_selection**
 

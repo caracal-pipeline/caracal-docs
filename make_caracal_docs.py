@@ -41,7 +41,7 @@ def getCaracalReadme(pipeDr,dcsDr):
   readme=f.readlines()
   f.close()
   f=open(dcsDr+'caracalREADME.md','w')
-  nn=readme.index('## Download & Install\n')
+  nn=readme.index('# Download & Install\n')
   while nn<len(readme) and '## Running the pipeline' not in readme[nn]:
     f.write(readme[nn])
     nn+=1

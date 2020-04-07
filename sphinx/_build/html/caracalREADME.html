@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manual" href="manual/index.html" />
+    <link rel="prev" title="Caracal" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,8 +83,17 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="meerkathiREADME.html">Download &amp; Install</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download &amp; Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage-and-publication-policy">Usage and publication policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-using-caratekit-sh">Installation using caratekit.sh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-linux">On Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-mac">On Mac</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="manual/index.html">Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits/index.html">Acknowledgements</a></li>
 </ul>
@@ -153,10 +164,34 @@
 <h1>Download &amp; Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="usage-and-publication-policy">
 <h2>Usage and publication policy<a class="headerlink" href="#usage-and-publication-policy" title="Permalink to this headline">¶</a></h2>
-<p>When using MeerKATHI/CARACal please be aware of and adhere to the <a class="reference external" href="https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU">MeerKATHI publication policy</a>.</p>
+<p>When using CARACal please be aware of and adhere to the <a class="reference external" href="https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU">MeerKATHI publication policy</a>.</p>
 </div>
+<div class="section" id="installation-using-caratekit-sh">
+<h2>Installation using caratekit.sh<a class="headerlink" href="#installation-using-caratekit-sh" title="Permalink to this headline">¶</a></h2>
+<p>To newly install MeerKATHI usig caratekit, download <a class="reference external" href="https://github.com/ska-sa/meerkathi/raw/master/meerkathi/utils/caratekit.sh">caratekit.sh</a> and make it executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod u+x caratekit.sh 
+</pre></div>
+</div>
+<p>Then select a parent directory <code class="docutils literal notranslate"><span class="pre">$parent</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">/home/pete</span></code>) to the installation and a name $installation_name (e.g. <code class="docutils literal notranslate"><span class="pre">caracal</span></code>) for the installation. Then do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws $parent -ct  $installation_name -kh -di -op -ur
+</pre></div>
+</div>
+<p>for a docker installation and:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws $parent -ct  $installation_name -kh -si -op -ur -sr
+</pre></div>
+</div>
+<p>for a singularity installation.</p>
+<p>Each time you want to run meerkathi using the docker installation do:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">$parent/$installation_name/caracal_venv/bin/activate</span></code> (bash)
+or
+<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">source</span> <span class="pre">$parent/$installation_name/caracal_venv/bin/activate.csh</span></code> (csh or tcsh)
+then create a data reduction directory $datared and put the configuration file $config.yml into that directory. Also create a directory msdir in $datared and put your raw measurement set data sets therein. Then</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">$datared</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">$config.yml</span></code> (Docker)</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">meerkathi</span> <span class="pre">-c</span> <span class="pre">$config.yml</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">$parent/$installation_name/stimela_singularity</span></code> (Singularity)</p>
+<p>For details on caratekit.sh type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caratekit.sh</span> <span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caratekit.sh</span> <span class="pre">-v</span></code>.</p>
 <div class="section" id="on-linux">
-<h2>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">¶</a></h2>
+<h3>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li>Clone this repository
 Use https and your github credentials, then go to the pipeline folder ‘meerkathi’.</li>
@@ -228,7 +263,7 @@ $ stimela build -nc
 </ul>
 </div>
 <div class="section" id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Stimela cache file</strong>
 When re-building/pullng/updating stimela (any stimela call above), sometimes problems will arise with the cache file of stimela, whose standard location is</li>
@@ -249,7 +284,7 @@ When re-building/pullng/updating stimela (any stimela call above), sometimes pro
 </div>
 </div>
 <div class="section" id="on-mac">
-<h2>On Mac<a class="headerlink" href="#on-mac" title="Permalink to this headline">¶</a></h2>
+<h3>On Mac<a class="headerlink" href="#on-mac" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li>create a python environment</li>
 </ol>
@@ -320,12 +355,22 @@ $ stimela build
 </ul>
 </div>
 </div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manual/index.html" class="btn btn-neutral float-right" title="Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Caracal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

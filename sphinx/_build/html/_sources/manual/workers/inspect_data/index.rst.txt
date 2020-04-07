@@ -12,7 +12,7 @@ inspect_data
 .. toctree::
    :maxdepth: 1
  
-Dignostic plots of the first-pass cross-calibrated data.
+Diagnostic plots of the first-pass cross-calibrated data.
 
 
 
@@ -58,7 +58,7 @@ Dignostic plots of the first-pass cross-calibrated data.
 **plotter**
 --------------------------------------------------
 
-  *{"plotms", "shadems"}*, *optional*, *default = shadems*
+  *{"plotms", "shadems", "ragavi_vis"}*, *optional*, *default = shadems*
 
   Application to use for making plots
 

@@ -15,7 +15,7 @@ It works on data from any radio interferometer as long as they are in "measureme
 .. toctree::
    :maxdepth: 2
  
-   meerkathiREADME.md
+   caracalREADME.md
    manual/index.rst
    credits/index.rst
 .. tutorial/index.rst
