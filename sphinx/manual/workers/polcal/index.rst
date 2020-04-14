@@ -150,7 +150,7 @@ Carry out crosshand calibration of the data (X and D) on boresight, after parall
 
     Execute this segment.
 
-  **meerkathi_model**
+  **caracal_model**
 
     *bool*, *optional*, *default = True*
 

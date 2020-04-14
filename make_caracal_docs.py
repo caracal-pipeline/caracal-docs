@@ -3,7 +3,7 @@
 ########################
 
 # Where to find the Caracal schema directory
-caracalDir='../meerkathi'
+caracalDir='../caracal'
 
 # Where to write the doc files
 docsDir='sphinx/'
@@ -218,7 +218,7 @@ import ruamel.yaml
 ### DO IT! ###
 ##############
 
-schemaDir=caracalDir+'/meerkathi/schema/'
+schemaDir=caracalDir+'/caracal/schema/'
 
 print('  INFO: Browsing Caracal schema directory {0:s} ...'.format(schemaDir))
 # Get list of workers and their .yml files from the schema directory

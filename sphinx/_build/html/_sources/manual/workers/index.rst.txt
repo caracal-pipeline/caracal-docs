@@ -25,3 +25,4 @@ Workers parameters
    self_cal/index.rst
    image_line/index.rst
    mosaic/index.rst
+   direction_dependent_calibration/index.rst

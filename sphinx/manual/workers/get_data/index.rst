@@ -24,7 +24,7 @@ Download and/or convert/unarchive data so that its in the MS format for further 
 
   *list* *of str*
 
-  Basename of MS. For MeerKAT data to be downloaded by MeerKATHI, this should be the data ID of the observation
+  Basename of MS. For MeerKAT data to be downloaded by CARACal, this should be the data ID of the observation
 
 
 

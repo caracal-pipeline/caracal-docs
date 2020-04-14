@@ -130,11 +130,11 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
     Execute the setjy task.
 
-  **meerkathi_model**
+  **caracal_model**
 
     *bool*, *optional*, *default = False*
 
-    Use built-in sky models in MeerKATHI
+    Use built-in sky models in CARACal
 
   **no_verify**
 

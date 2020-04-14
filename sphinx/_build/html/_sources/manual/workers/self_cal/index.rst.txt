@@ -384,6 +384,12 @@ Perform Self calibration on the data
 
     Peak flux source area multiplying factor i.e tot_area = psf-size\*af
 
+  **radius**
+
+    *float*, *optional*, *default = 0.6*
+
+    Radius to cross-match sources in arcsec
+
   **normality_model**
 
     *{"normaltest", "shapiro"}*, *optional*, *default = normaltest*
@@ -418,51 +424,57 @@ Perform Self calibration on the data
 
     Column to image
 
-  **clean_mask_method**
-
-    *list* *of str*, *optional*, *default = auto_mask, auto_mask*
-
-    Method used to create a clean mask for cleaning with WSclean. The possible values are 1) "auto_mask" to use WSclean auto-masking method with threshold set by clean_mask_threshold; 2) "sofia" to create a clean mask using SoFiA with threshold set by clean_mask_threshold and additional settings in sofia_settings; 3) an prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
-
-  **clean_mask_threshold**
-
-    *list* *of float*, *optional*, *default = 10.0, 6.0*
-
-    Masking threshold in units of the (local) noise (for either WSclean auto-masking or SoFiA).
-
   **clean_threshold**
 
     *list* *of float*, *optional*, *default = 0.5, 0.5*
 
     WSclean clean threshold in units of the (local) noise.
 
-  **local_rms**
+  **clean_mask_method**
+
+    *list* *of str*, *optional*, *default = wsclean, wsclean*
+
+    Method used to create the clean mask. The possible values are 1) "wsclean" to use WSclean's auto-masking (threshold set by clean_mask_threshold below); 2) "sofia" to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
+
+  **clean_mask_threshold**
+
+    *list* *of float*, *optional*, *default = 10.0, 6.0*
+
+    Threshold used to create the clean mask when clean_mask_method = wsclean or sofia, in units of the (local) noise.
+
+  **clean_mask_local_rms**
 
     *list* *of bool*, *optional*, *default = False, False*
 
-    Use a local rms measurement both when cleaning and creating a clean mask (both WSClean and SoFiA).
+    Use a local rms measurement when creating a clean mask with clean_mask_method = wsclean or sofia. If clean_mask_method = wsclean, this local_rms setting is used also for the clean_threshold above. Otherwise it is only used to define the clean mask, while clean_threshold is in units of the global noise.
+
+  **clean_mask_local_rms_window**
+
+    *list* *of int*, *optional*, *default = 31, 31*
+
+    Width of the window used to measure the local rms when creating the clean mask. The window width is in pixels for clean_mask_method = sofia, in PSF for clean_mask_method = wsclean.
 
   **sofia_settings**
 
     SoFiA source finder settings to produce a .FITS clean mask. The mask is located in output/masking.
+
+    **kernels**
+
+      *list* *of float*, *optional*, *default = 0., 3., 6., 9.*
+
+      FWHM of spatial Gaussian kernels in pixels.
+
+    **only_positive_pix**
+
+      *bool*, *optional*, *default = True*
+
+      Merges only positive pixels of sources in mask
 
     **flag**
 
       *bool*, *optional*, *default = False*
 
       Use flag regions (yes/no)?
-
-    **kernels**
-
-      *list* *of float*, *optional*, *default = 0., 3., 6., 9.*
-
-      FWHM of spatial kernels
-
-    **merge_positivity**
-
-      *list* *of bool*, *optional*, *default = True, true*
-
-      If set to true, only positive signals will be merged into detections, and all negative signals will be discarded. This is useful for data sets with significant negative artefacts, such as sidelobes.
 
     **flagregion**
 
@@ -493,18 +505,6 @@ Perform Self calibration on the data
       *bool*, *optional*, *default = False*
 
       use sofia for mask of Fornax A instead of Fomalont mask
-
-    **scale_noise_window**
-
-      *int*, *optional*, *default = 31*
-
-      window size where to measure local rms in pixels
-
-    **positivity**
-
-      *bool*, *optional*, *default = False*
-
-      merges only positive pixesl of sources in mask
 
 
 

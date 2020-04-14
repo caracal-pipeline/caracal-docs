@@ -1,10 +1,148 @@
 # Download & Install
+
 ## Usage and publication policy
-When using CARACal please be aware of and adhere to the [MeerKATHI publication policy](https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU).
 
-## Installation using caratekit.sh
+When using CARACal please be aware of and adhere to the [CARACal publication policy](https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU).
 
-To newly install MeerKATHI usig caratekit, download [caratekit.sh](https://github.com/ska-sa/meerkathi/raw/master/meerkathi/utils/caratekit.sh) and make it executable:
+## Software requirements and supported platforms
+Most dependencies are taken care of by using [pip](https://pypi.org/project/pip/) and [PiPy](https://pypi.org) to control Python dependencies and [Stimela](https://github.com/ratt-ru/Stimela/tree/master/stimela) as a platform-independent scripting framework. This leaves a small number of known dependencies (currently only one) that need to be installed prior to using CARACal:
+- [Python](https://www.python.org/) 3.6 or higher
+- [Singularity](https://github.com/sylabs/singularity) > 2.6.0-dist is required only if [Singularity](https://github.com/sylabs/singularity) is chosen as containerization technology to run [Stimela](https://github.com/ratt-ru/Stimela/tree/master/stimela) with (no known [Docker](https://www.docker.com/) dependencies).
+
+CARACal fully supports [Docker](https://www.docker.com/) and [Singularity](https://github.com/sylabs/singularity). It is also possible to use it in combination with [Podman](https://podman.io/).
+
+## Installing and running CARACal
+
+Shell-style is used to indicate names and paths of directories and files which can be chosen by the user: ``${name}``.
+
+### Installing and running manually
+We recommend and describe an installation using a virtual environment created with [Virtualenv](https://virtualenv.pypa.io/en/latest/). This is not a requirement, but strongly recommended.
+The user chooses:
+- the name (including path) ${caracal-venv} of the virtualenv
+- the location ``${singularity_pull_folder}`` of a [Singularity](https://github.com/sylabs/singularity) pull-folder, where [Singularity](https://github.com/sylabs/singularity) images are stored (not required when using only [Docker](https://www.docker.com/) or [Podman](https://podman.io/), the latter currently not being fully supported).
+#### Manual installation
+The latest CARACal release can be obtained by typing:
+```
+$ python3 -m venv ${caracal-venv}  
+$ source ${caracal-venv}/bin/activate
+$ pip install -U pip setuptools wheel
+$ pip install -U caracal
+```
+Using [Docker](https://www.docker.com/):
+```
+$ stimela build
+```
+Using [Singularity](https://github.com/sylabs/singularity) (choose a [Singularity](https://github.com/sylabs/singularity) pull-folder ``${singularity_pull_folder}``):  
+
+```  
+$ stimela pull --singularity --pull-folder ${singularity_pull_folder}
+```
+
+Using [Podman](https://podman.io/) (currently not fully supported):
+```
+$ stimela pull -p
+```
+Please see [Installing a Python 3 virtualenv](#Installing-a-Python-3-virtualenv) for more information on virtualenv.
+
+##### Current development branch
+*Warning: the current development branch obviously contains the most recent developments but it might contain bugs.*
+It is also possible not to install the release version but instead the current development version of CARACal. 
+
+*Warning: the current development branch obviously contains the most recent developments but it might contain bugs. We take no responsibility for development versions of CARACal.*
+
+Do do so, replace above pip installation of CARACal 
+```
+pip install -U caracal
+```
+with:
+```
+$ pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
+```
+#### Running CARACal manually
+The user needs to know the name ``${caracal-venv}`` of the virtualenv used during the installation and the name ``${singularity_pull_folder}`` of the [Singularity](https://github.com/sylabs/singularity) pull folder used when installing CARACal. For the most basic usage, the user generally chooses:
+- the name ${my_caracal_run_dir} (and hence the location) of a folder in which the data reduction takes place
+- a template configuration file ``${template_config}`` to use for the data reduction, as can be downloaded (and re-named to your choice) from the [sample_configurations](https://github.com/ska-sa/caracal/tree/master/caracal/sample_configurations) folder in the CARACal repository. To start, we recommend to use [``minimal_config.yml``](https://github.com/ska-sa/caracal/blob/master/caracal/sample_configurations/minimalConfig.yml).
+- a name for the final configuration file ``${my_config_file}`` to use.
+
+An example run then looks like:
+```
+$ mkdir ${my_caracal_run_dir}
+$ cd ${my_caracal_run_dir}
+```
+Copy ``${template_config}`` into ``${my_caracal_run_dir}``, then re-name (this is strictly not necessary):
+```
+$ mv ${template_config} ${my_config_file}
+```
+Create ``msdir`` inside ``${my_caracal_run_dir}`` 
+```
+$ mkdir ${my_caracal_run_dir}/msdir
+```
+and move/copy your raw measurement set files into that directory. Edit your ``${my_config_file}`` to link to those files. If the names of your measurement sets are ``a.ms b.ms c.ms``, then edit the line
+```
+dataid=[] -> dataid=['a','b','c']
+```
+in ${my_config_file}. Do analogously for different names of your measurement sets.
+
+Finally, run CARACal, after activating your virtualenv:
+```
+$ source ${caracal-venv}/bin/activate
+```
+Using [Docker](https://www.docker.com/):
+```
+$ caracal -c ${my_config_file}
+```
+Using [Singularity](https://github.com/sylabs/singularity) (using the [Singularity](https://github.com/sylabs/singularity) pull-folder ``${singularity_pull_folder}`` created during the installation):  
+
+```  
+$ caracal -c ${my_config_file} --container-tech singularity -sid ${singularity_pull_folder}
+```
+Using podman (currently not fully supported):
+```
+$ caracal -c ${my_config_file} --container-tech podman
+```
+#### Upgrading a manual CARACal installation
+The following steps should lead to an upgraded CARACal:
+Activate your virtualenv:
+```
+$ source ${caracal-venv}/bin/activate
+```
+Then run the following commands, like outlined in [Manual installation](#Manual-installation):
+```
+$ pip install -U caracal
+```
+Using [Docker](https://www.docker.com/):
+```
+$ stimela build
+```
+Using [Singularity](https://github.com/sylabs/singularity) (choose a [Singularity](https://github.com/sylabs/singularity) pull-folder ``${singularity_pull_folder}``):  
+
+```  
+$ stimela pull --singularity --pull-folder ${singularity_pull_folder}
+```
+
+Using [Podman](https://podman.io/) (currently not fully supported):
+```
+$ stimela pull -p
+```
+Please see [Stimela cache file](#stimela-cache-file) for troubleshooting for a more forceful upgrade.
+
+##### Current development branch
+*Warning: the current development branch obviously contains the most recent developments but it might contain bugs.*
+It is also possible not to install the release version but instead the current development version of CARACal. 
+
+*Warning: the current development branch obviously contains the most recent developments but it might contain bugs. We take no responsibility for development versions of CARACal.*
+
+Do do so, replace above pip installation of CARACal 
+```
+pip install -U --force-reinstall caracal
+```
+with:
+```
+$ pip install -U --force-reinstall git+https://github.com/ska-sa/caracal.git#egg=caracal
+```
+### Installation using caratekit.sh
+
+To newly install CARACal using caratekit, download [caratekit.sh](https://github.com/ska-sa/caracal/raw/master/caracal/utils/caratekit.sh) and make it executable (alternatively clone caracal and find ``caratekit.sh`` ):
 ```
 $ chmod u+x caratekit.sh 
 ```
@@ -18,7 +156,7 @@ caratekit.sh -ws $parent -ct  $installation_name -kh -si -op -ur -sr
 ```
 for a singularity installation.
 
-Each time you want to run meerkathi using the docker installation do:
+Each time you want to run caracal using the docker installation do:
 
 ``$ source $parent/$installation_name/caracal_venv/bin/activate`` (bash)
 or
@@ -27,149 +165,23 @@ then create a data reduction directory $datared and put the configuration file $
 
 ``$ cd $datared``
 
-``$ meerkathi -c $config.yml`` (Docker)
+``$ caracal -c $config.yml`` (Docker)
 
-``$ meerkathi -c $config.yml --container-tech singularity -sid $parent/$installation_name/stimela_singularity`` (Singularity)
+``$ caracal -c $config.yml --container-tech singularity -sid $parent/$installation_name/stimela_singularity`` (Singularity)
 
 For details on caratekit.sh type ``$ caratekit.sh -h`` or ``$ caratekit.sh -v``.
-
-### On Linux
-
-0. Clone this repository
-Use https and your github credentials, then go to the pipeline folder 'meerkathi'.
+## Using CARACal
+After activating the virtualenv
 ```
-$ git clone https://github.com/ska-sa/meerkathi.git
-$ cd meerkathi
+$ source ${caracal-venv}/bin/activate
 ```
-1. Start and activate virtual environment outside the meerkathi directory
+CARACal has several switches. In its entirety, they can be accessed by invoking help.
+### Getting help
 ```
-$ cd ..
-$ virtualenv -p python3 meerkathi-venv 
-$ source meerkathi-venv/bin/activate
+$ caracal --help
 ```
-2. If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:
+### Dumping a copy of the minimal default configuration file to the current directory
 ```
-$ pip install -U -r <absolute path to meerkathi folder>/requirements.txt
+$ caracal -gd ${configuration_file}
 ```
-3. Install meerKATHI
-```
-$ pip install <absolute path to meerkathi folder>"[extra_diagnostics]"
-```
-If the requirements cannot be installed on your system you may omit [extra_diagnostics]. This will disable report rendering.
-
-4. Pull and/or build stimela images
-
-  - **Podman**[Recommended]
-    ```
-    $ stimela pull -p
-    ```
-    
-  - **Singularity**[Recommended]
-    Requires versions >= 2.6.0-dist
-    ```
-    $ stimela pull --singularity --pull-folder <folder to store stimela singularity images>
-    ```
-
-  - **uDocker**[Recommended]<note: no python3 support>
-    ```
-    $ stimela pull
-    ```
-    
-  - **Docker**
-    ```
-    $ stimela pull -d
-    $ stimela build -nc
-    ```
-
-5. run meerkathi
-
-  - **Podman**[Recommended]
-    ``` $ meerkathi -c path_to_configuration_file --container-tech podman```
-
-  - **Singularity**[Recommended]
-    ```$ meerkathi -c path_to_configuration_file --container-tech singularity -sid <folder where singularity images are stored>```
-
-  - **uDocker**[no python3 support]
-    ``` $ meerkathi -c path_to_configuration_file --container-tech udocker```
-
-  - **Docker**
-    ```$ meerkathi -c< path to configuration file>```
-
-### Troubleshooting
-
-- **Stimela cache file**
-When re-building/pullng/updating stimela (any stimela call above), sometimes problems will arise with the cache file of stimela, whose standard location is
-```
-~/.stimela
-```
-If you run into unexplicable errors when installing a stimela version, including a failed update (possibly resulting in a repeating error when running CARACal), do:
-```
-> rm ~/.stimela/*
-> stimela ...
-```
-
-before re-building. If that does not work, re-building the dependencies might help.
-```
-> pip install --upgrade --force-reinstall -r <absolute path to meerkathi folder>/requirements.txt
-> rm ~/.stimela/*
-> stimela ...
-```
-### On Mac
-
-0. create a python environment
-
-`$ conda create env --name meer_venv`
-
-1. activate environment
-
-`$ source activate meer_venv`
-
-2. clone `meerkathi`
-```
-$ git clone https://github.com/ska-sa/meerkathi.git
-$ cd meerkathi
-```
-3. Start and activate virtual environment
-```
-$ virtualenv meerkathi-venv
-$ source meerkathi-venv/bin/activate
-$ pip install pip wheel setuptools -U
-```
-4. If working from master branch it may be necessary to install bleeding edge fixes from upstream dependencies. Please install the requirements.txt requirements:
-```
-$ pip install -U -r <absolute path to meerkathi folder>/requirements.txt
-```
-5. Install meerKATHI
-```
-$ pip install <absolute path to meerkathi folder>
-$ export PYTHONPATH='' # Ensure that you use venv Python
-```
-
-6. Pull and/or build stimela images
-  - **uDocker**[Recommended]
-    ```
-    $ stimela pull
-    ```
-    
-  - **Singularity**[Recommended]
-    ```
-    $ stimela pull --singularity --pull-folder <folder to store stimela singularity images>
-    ```
-
-  - **Docker**
-    ```
-    $ stimela pull
-    $ stimela build
-    ```
-
-7. run meerkathi
-  - **uDocker**[Recommended]
-    ```$ meerkathi -c path_to_configuration_file --container-tech udocker```
-
-  - **Singularity**[Recommended]
-    ```$ meerkathi -c path_to_configuration_file --container-tech singularity -sid <folder where singularity images are stored>```
-      
-  - **Docker**
-    ```$ meerkathi -c< path to configuration file>```
-    
-    
+where ${configuration_file} is the target name of the configuration file.

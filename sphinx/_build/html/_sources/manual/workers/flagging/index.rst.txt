@@ -28,18 +28,6 @@ Flagging of the data.
 
 
 
-.. _flagging_field:
-
---------------------------------------------------
-**field**
---------------------------------------------------
-
-  *{"target", "calibrators"}*, *optional*, *default = calibrators*
-
-  Fields that should be flagged. It can either be 'target' or 'calibrators'  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging steps flag_time, flag_scan and static_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
-
-
-
 .. _flagging_label_in:
 
 --------------------------------------------------
@@ -48,19 +36,19 @@ Flagging of the data.
 
   *str*, *optional*, *default = ' '*
 
-  This label is added to the input .MS file(s) name given in the get_data worker to define the name of the .MS file(s) that should be flagged. These are <input>_<label>.ms if 'field' (see above) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in 'field' above.
+  The label is added to the input .MS file name to define the name of the .MS file that should be flagged, <input>-<label>.ms. Default is an empty string, i.e., the original .MS is flagged.
 
 
 
-.. _flagging_calibrator_fields:
+.. _flagging_field:
 
 --------------------------------------------------
-**calibrator_fields**
+**field**
 --------------------------------------------------
 
-  *str*, *optional*, *default = auto*
+  *str*, *optional*, *default = calibrators*
 
-  If 'field' above is set to 'calibrators', users can specify here what subset of calibrators to process. This should be a comma-separated list of 'xcal' ,'bpcal', 'gcal' and/or 'fcal', which were all set by the observation_config worker. Alternatively, 'auto' selects all calibrators.
+  Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string
 
 
 
@@ -160,10 +148,10 @@ Flagging of the data.
 
 
 
-.. _flagging_flag_quack:
+.. _flagging_quack_flagging:
 
 --------------------------------------------------
-**flag_quack**
+**quack_flagging**
 --------------------------------------------------
 
   Do quack flagging, i.e. flag the begining and/or end chunks of each scan. Again, through FLAGDATA.
@@ -390,19 +378,25 @@ Flagging of the data.
 **autoflag_rfi**
 --------------------------------------------------
 
-  Flag RFI using AOFlagger, Tricolour or CASA flagdata with tfcrop.
+  Flag RFI using AOFlagger software.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable RFI flagging with AOFlagger, Tricolour or CASA flagdata with tfcrop.
+    Enable RFI flagging with AOFlagger or tricolour
 
   **flagger**
 
     *{"aoflagger", "tricolour", "tfcrop"}*, *optional*, *default = aoflagger*
 
-    Choose flagger for automatic flagging. Possible choices are 'aoflagger', 'tricolour' and 'tfcrop'.
+    Choose flagger for automatic flagging
+
+  **strategy**
+
+    *str*, *optional*, *default = firstpass_QUV.rfis*
+
+    The AOFlagger strategy file to use.
 
   **column**
 
@@ -410,73 +404,79 @@ Flagging of the data.
 
     Specify column to flag
 
-  **aoflagger**
+  **fields**
 
-    **strategy**
+    *str*, *optional*, *default = auto*
 
-      *str*, *optional*, *default = firstpass_Q.rfis*
+    comma separated list of (zero-indexed) field ids to process
 
-      The AOFlagger strategy file to use.
+  **calibrator_fields**
 
-  **tricolour**
+    *str*, *optional*, *default = auto*
 
-    **window_backend**
+    comma separated list of (zero-indexed) field ids to process
 
-      *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
+  **bands**
 
-      Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
+    *str*, *optional*, *default = auto*
 
-    **mode**
+    comma separated list of (zero-indexed) band ids to process
 
-      *{"auto", "manual"}*, *optional*, *default = auto*
+  **window_backend**
 
-      If set to 'manual' it uses the flagging strategy in 'strategy' below. If set to 'auto' it uses the strategy in 'strategy_narrowband' in case of small bandwidth of the .MS file(s).
+    *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
 
-    **strategy**
+    Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
 
-      *str*, *optional*, *default = mk_rfi_flagging_calibrator_fields_firstpass.yaml*
+  **tricolour_mode**
 
-    **strategy_narrowband**
+    *{"auto", "manual"}*, *optional*, *default = auto*
 
-      *str*, *optional*, *default = calibrator_mild_flagging.yaml*
+    If set to 'auto', decides the tricolour flagging strategy based on the bandwidth of the dataset. Else uses tricolour_calibrator_strat.
 
-  **tfcrop**
+  **tricolour_calibrator_strat_narrowband**
 
-    **usewindowstats**
+    *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
-      *{"none", "sum", "std", "both"}*, *optional*, *default = std*
+  **tricolour_calibrator_strat**
 
-      Calculate additional flags using sliding window statistics
+    *str*, *optional*, *default = mk_rfi_flagging_calibrator_fields_firstpass.yaml*
 
-    **combinescans**
+  **usewindowstats**
 
-      *bool*, *optional*, *default = False*
+    *{"none", "sum", "std", "both"}*, *optional*, *default = std*
 
-      Accumulate data across scans depending on the value of ntime
+    Calculate additional flags using sliding window statistics
 
-    **flagdimension**
+  **combinescans**
 
-      *{"freq", "time", "freqtime", "timefreq"}*, *optional*, *default = freqtime*
+    *bool*, *optional*, *default = False*
 
-      Dimensions along which to calculate fits (freq/time/freqtime/timefreq)
+    Accumulate data across scans depending on the value of ntime
 
-    **timecutoff**
+  **flagdimension**
 
-      *float*, *optional*, *default = 4.0*
+    *{"freq", "time", "freqtime", "timefreq"}*, *optional*, *default = freqtime*
 
-      Flagging thresholds in units of deviation from the fit
+    Dimensions along which to calculate fits (freq/time/freqtime/timefreq)
 
-    **freqcutoff**
+  **timecutoff**
 
-      *float*, *optional*, *default = 3.0*
+    *float*, *optional*, *default = 4.0*
 
-      Flagging thresholds in units of deviation from the fit
+    Flagging thresholds in units of deviation from the fit
 
-    **correlation**
+  **freqcutoff**
 
-      *str*, *optional*, *default = ' '*
+    *float*, *optional*, *default = 3.0*
 
-      Correlation
+    Flagging thresholds in units of deviation from the fit
+
+  **correlation**
+
+    *str*, *optional*, *default = ' '*
+
+    Correlation
 
 
 

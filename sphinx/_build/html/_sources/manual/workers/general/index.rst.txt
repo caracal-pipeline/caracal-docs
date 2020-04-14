@@ -24,7 +24,7 @@ General pipeline information, data IDs, prefixes for output
 
   *str*, *optional*, *default = ' '*
 
-  where MeerKATHI (over-) writes HDF5 files and JSON info files downloaded by get_data below
+  where CARACal (over-) writes HDF5 files and JSON info files downloaded by get_data below
 
 
 
@@ -36,7 +36,7 @@ General pipeline information, data IDs, prefixes for output
 
   *str*, *optional*, *default = msdir*
 
-  where MeerKATHI will write and expect to find measurement set (MS) files
+  where CARACal will write and expect to find measurement set (MS) files
 
 
 
@@ -48,7 +48,7 @@ General pipeline information, data IDs, prefixes for output
 
   *str*, *optional*, *default = input*
 
-  where MeerKATHI expects to find various input files (e.g., RFI flagging strategy files).
+  where CARACal expects to find various input files (e.g., RFI flagging strategy files).
 
 
 
@@ -60,7 +60,7 @@ General pipeline information, data IDs, prefixes for output
 
   *str*, *optional*, *default = output*
 
-  where MeerKATHI writes output products
+  where CARACal writes output products
 
 
 
@@ -70,9 +70,9 @@ General pipeline information, data IDs, prefixes for output
 **prefix**
 --------------------------------------------------
 
-  *str*, *optional*, *default = meerkathi*
+  *str*, *optional*, *default = caracal*
 
-  Prefix for MeerKATHI output products
+  Prefix for CARACal output products
 
 
 

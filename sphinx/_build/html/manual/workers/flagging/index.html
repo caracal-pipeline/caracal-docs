@@ -97,13 +97,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../prepare_data/index.html">prepare_data</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">flagging</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#calibrator-fields"><strong>calibrator_fields</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-flags"><strong>load_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#autoflag-autocorr-powerspectra"><strong>autoflag_autocorr_powerspectra</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-autocorr"><strong>flag_autocorr</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flag-quack"><strong>flag_quack</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quack-flagging"><strong>quack_flagging</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-elevation"><strong>flag_elevation</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-shadow"><strong>flag_shadow</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-spw"><strong>flag_spw</strong></a></li>
@@ -124,6 +123,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../self_cal/index.html">self_cal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../image_line/index.html">image_line</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosaic/index.html">mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../direction_dependent_calibration/index.html">direction_dependent_calibration</a></li>
 </ul>
 </li>
 </ul>
@@ -209,25 +209,18 @@
 <p>Execute flagging of the data.</p>
 </div></blockquote>
 </div>
-<div class="section" id="field">
-<span id="flagging-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>{“target”, “calibrators”}</em>, <em>optional</em>, <em>default = calibrators</em></p>
-<p>Fields that should be flagged. It can either be ‘target’ or ‘calibrators’  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging steps flag_time, flag_scan and static_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calibrator_fields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in ‘label_in’ below.</p>
-</div></blockquote>
-</div>
 <div class="section" id="label-in">
 <span id="flagging-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>This label is added to the input .MS file(s) name given in the get_data worker to define the name of the .MS file(s) that should be flagged. These are &lt;input&gt;_&lt;label&gt;.ms if ‘field’ (see above) is set to ‘calibrators’, or &lt;input&gt;-&lt;target&gt;_&lt;label&gt;.ms if ‘field’ is set to ‘target’ (one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in ‘field’ above.</p>
+<p>The label is added to the input .MS file name to define the name of the .MS file that should be flagged, &lt;input&gt;-&lt;label&gt;.ms. Default is an empty string, i.e., the original .MS is flagged.</p>
 </div></blockquote>
 </div>
-<div class="section" id="calibrator-fields">
-<span id="flagging-calibrator-fields"></span><h2><strong>calibrator_fields</strong><a class="headerlink" href="#calibrator-fields" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="field">
+<span id="flagging-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>If ‘field’ above is set to ‘calibrators’, users can specify here what subset of calibrators to process. This should be a comma-separated list of ‘xcal’ ,’bpcal’, ‘gcal’ and/or ‘fcal’, which were all set by the observation_config worker. Alternatively, ‘auto’ selects all calibrators.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = calibrators</em></p>
+<p>Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string</p>
 </div></blockquote>
 </div>
 <div class="section" id="load-flags">
@@ -303,8 +296,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="flag-quack">
-<span id="flagging-flag-quack"></span><h2><strong>flag_quack</strong><a class="headerlink" href="#flag-quack" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quack-flagging">
+<span id="flagging-quack-flagging"></span><h2><strong>quack_flagging</strong><a class="headerlink" href="#quack-flagging" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Do quack flagging, i.e. flag the begining and/or end chunks of each scan. Again, through FLAGDATA.</p>
 <p><strong>enable</strong></p>
@@ -474,52 +467,59 @@
 <div class="section" id="autoflag-rfi">
 <span id="flagging-autoflag-rfi"></span><h2><strong>autoflag_rfi</strong><a class="headerlink" href="#autoflag-rfi" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Flag RFI using AOFlagger, Tricolour or CASA flagdata with tfcrop.</p>
+<div><p>Flag RFI using AOFlagger software.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Enable RFI flagging with AOFlagger, Tricolour or CASA flagdata with tfcrop.</p>
+<p>Enable RFI flagging with AOFlagger or tricolour</p>
 </div></blockquote>
 <p><strong>flagger</strong></p>
 <blockquote>
 <div><p><em>{“aoflagger”, “tricolour”, “tfcrop”}</em>, <em>optional</em>, <em>default = aoflagger</em></p>
-<p>Choose flagger for automatic flagging. Possible choices are ‘aoflagger’, ‘tricolour’ and ‘tfcrop’.</p>
+<p>Choose flagger for automatic flagging</p>
+</div></blockquote>
+<p><strong>strategy</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = firstpass_QUV.rfis</em></p>
+<p>The AOFlagger strategy file to use.</p>
 </div></blockquote>
 <p><strong>column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = DATA</em></p>
 <p>Specify column to flag</p>
 </div></blockquote>
-<p><strong>aoflagger</strong></p>
+<p><strong>fields</strong></p>
 <blockquote>
-<div><p><strong>strategy</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = firstpass_Q.rfis</em></p>
-<p>The AOFlagger strategy file to use.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>comma separated list of (zero-indexed) field ids to process</p>
 </div></blockquote>
-</div></blockquote>
-<p><strong>tricolour</strong></p>
+<p><strong>calibrator_fields</strong></p>
 <blockquote>
-<div><p><strong>window_backend</strong></p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>comma separated list of (zero-indexed) field ids to process</p>
+</div></blockquote>
+<p><strong>bands</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>comma separated list of (zero-indexed) band ids to process</p>
+</div></blockquote>
+<p><strong>window_backend</strong></p>
 <blockquote>
 <div><p><em>{“numpy”, “zarr-disk”}</em>, <em>optional</em>, <em>default = numpy</em></p>
 <p>Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.</p>
 </div></blockquote>
-<p><strong>mode</strong></p>
+<p><strong>tricolour_mode</strong></p>
 <blockquote>
 <div><p><em>{“auto”, “manual”}</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>If set to ‘manual’ it uses the flagging strategy in ‘strategy’ below. If set to ‘auto’ it uses the strategy in ‘strategy_narrowband’ in case of small bandwidth of the .MS file(s).</p>
+<p>If set to ‘auto’, decides the tricolour flagging strategy based on the bandwidth of the dataset. Else uses tricolour_calibrator_strat.</p>
 </div></blockquote>
-<p><strong>strategy</strong></p>
-<blockquote>
-<div><em>str</em>, <em>optional</em>, <em>default = mk_rfi_flagging_calibrator_fields_firstpass.yaml</em></div></blockquote>
-<p><strong>strategy_narrowband</strong></p>
+<p><strong>tricolour_calibrator_strat_narrowband</strong></p>
 <blockquote>
 <div><em>str</em>, <em>optional</em>, <em>default = calibrator_mild_flagging.yaml</em></div></blockquote>
-</div></blockquote>
-<p><strong>tfcrop</strong></p>
+<p><strong>tricolour_calibrator_strat</strong></p>
 <blockquote>
-<div><p><strong>usewindowstats</strong></p>
+<div><em>str</em>, <em>optional</em>, <em>default = mk_rfi_flagging_calibrator_fields_firstpass.yaml</em></div></blockquote>
+<p><strong>usewindowstats</strong></p>
 <blockquote>
 <div><p><em>{“none”, “sum”, “std”, “both”}</em>, <em>optional</em>, <em>default = std</em></p>
 <p>Calculate additional flags using sliding window statistics</p>
@@ -548,7 +548,6 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Correlation</p>
-</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div>
