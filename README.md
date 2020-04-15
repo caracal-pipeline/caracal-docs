@@ -1,6 +1,6 @@
 # How to update the Caracal documentation
 
-Make sure that you've got the latest `meerkathi` and `caracal_docs` in the same parent directory.
+Make sure that you've got the latest `caracal` and `caracal_docs` in the same parent directory.
 
 Go into the `caracal_docs` directory and type the following:
 ```
