@@ -2,7 +2,7 @@
 
 Make sure that you've got the latest `caracal` and `caracal_docs` in the same parent directory.
 
-Go into the `caracal_docs` directory and type the following:
+Go into the `caracal_docs` directory and type the following (having installed some python modules to be listed here soon):
 ```
 python make_caracal_docs.py
 cd sphinx
