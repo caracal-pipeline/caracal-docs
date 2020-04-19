@@ -84,7 +84,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../meerkathiREADME.html">Download &amp; Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
@@ -184,7 +184,7 @@
 <p>Spectral line imaging runs on a combination of custom software, CASA, WSclean, SunBlocker and SoFiA in order to subtract the continuum,
 Doppler correct, flag solar RFI, create cleaned spectral line cubes and moment images.
 It can run on the input .MS files or on .MS files created by Caracal at various stages of the pipeline
-(e.g., by the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> worker). In the latter case the name of the .MS files to be imaged is based on that of the input .MS files,
+(e.g., by the <span class="xref std std-ref">split_target</span> worker). In the latter case the name of the .MS files to be imaged is based on that of the input .MS files,
 with a label added before the extension. Users can set the label with the <a class="reference internal" href="../../workers/image_line/index.html#image-line-label"><span class="std std-ref">image_line: label</span></a> parameter in this worker.</p>
 <p>The input .MS files may contain several targets. In this case, Caracal makes one HI cube per target, using all
 available visibilities for that target from all input .MS files. This worker does not mosaic line cubes made for different targets.</p>

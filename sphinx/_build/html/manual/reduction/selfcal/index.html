@@ -84,7 +84,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../meerkathiREADME.html">Download &amp; Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
@@ -178,15 +178,15 @@
 <h1>Continuum imaging and self-calibration<a class="headerlink" href="#continuum-imaging-and-self-calibration" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>, <a class="reference internal" href="../../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a>, <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a><strong>]</strong></p>
+<p><strong>[relevant workers:</strong> <span class="xref std std-ref">split_target</span>, <a class="reference internal" href="../../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a>, <a class="reference internal" href="../../workers/self_cal/index.html#self-cal"><span class="std std-ref">self_cal</span></a><strong>]</strong></p>
 <div class="section" id="split-average-and-flag-target-visibilities">
 <h2>Split, average and flag target visibilities<a class="headerlink" href="#split-average-and-flag-target-visibilities" title="Permalink to this headline">¶</a></h2>
 <p>Following cross-calibration Caracal creates a new .MS file which contains the
-cross-calibrated target visibilities only. This is done by the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a>
+cross-calibrated target visibilities only. This is done by the <span class="xref std std-ref">split_target</span>
 worker. In case the cross-calibration tables have not been applied to the target
-by the <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a> worker, <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> can do so on the fly while
+by the <a class="reference internal" href="../../workers/cross_cal/index.html#cross-cal"><span class="std std-ref">cross_cal</span></a> worker, <span class="xref std std-ref">split_target</span> can do so on the fly while
 splitting using the CASA task MSTRANSFORM.</p>
-<p>Optionally, the <a class="reference internal" href="../../workers/split_target/index.html#split-target"><span class="std std-ref">split_target</span></a> worker can average in time and/or frequency
+<p>Optionally, the <span class="xref std std-ref">split_target</span> worker can average in time and/or frequency
 while splitting. Depending on the science goals, it might be useful to run this
 worker more than once. E.g., the first time to create a frequency-averaged dataset
 for continuum imaging and self-calibration, and the second time to create a
@@ -222,7 +222,7 @@ iterations are performed. In this case therefore <a class="reference internal" h
 is the maximum number of iterations.</p>
 <p>While imaging, WSclean auto-mask and auto-threshold can be used, but it is also possible
 to use a clean mask made by SoFiA from the previous continuum image. This functionality
-is controlled through <a class="reference internal" href="../../workers/self_cal/index.html#self-cal-sofia-mask"><span class="std std-ref">self_cal: sofia_mask</span></a>.</p>
+is controlled through <span class="xref std std-ref">self_cal: sofia_mask</span>.</p>
 <p><strong>[missing a description of additional functionalities]</strong></p>
 </div>
 <div class="section" id="gain-and-model-transfer">

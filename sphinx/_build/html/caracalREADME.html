@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Download &amp; Install &mdash; Caracal  documentation</title>
+  <title>Installation &amp; Run &mdash; Caracal  documentation</title>
   
 
   
@@ -84,24 +84,12 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Download &amp; Install</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation &amp; Run</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#usage-and-publication-policy">Usage and publication policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#software-requirements-and-supported-platforms">Software requirements and supported platforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-running-caracal">Installing and running CARACal</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installing-and-running-manually">Installing and running manually</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-caracal-manually">Running CARACal manually</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#upgrading-a-manual-caracal-installation">Upgrading a manual CARACal installation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-using-caratekit-sh">Installation using caratekit.sh</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#using-caracal">Using CARACal</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#getting-help">Getting help</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dumping-a-copy-of-the-minimal-default-configuration-file-to-the-current-directory">Dumping a copy of the minimal default configuration file to the current directory</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-the-caratekit-sh-script">Installation with the caratekit.sh script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run">Run</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/index.html">Manual</a></li>
@@ -151,7 +139,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Download &amp; Install</li>
+      <li>Installation &amp; Run</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,198 +158,76 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="download-install">
-<h1>Download &amp; Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="installation-run">
+<h1>Installation &amp; Run<a class="headerlink" href="#installation-run" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="usage-and-publication-policy">
 <h2>Usage and publication policy<a class="headerlink" href="#usage-and-publication-policy" title="Permalink to this headline">¶</a></h2>
 <p>When using CARACal please be aware of and adhere to the <a class="reference external" href="https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU">CARACal publication policy</a>.</p>
 </div>
-<div class="section" id="software-requirements-and-supported-platforms">
-<h2>Software requirements and supported platforms<a class="headerlink" href="#software-requirements-and-supported-platforms" title="Permalink to this headline">¶</a></h2>
-<p>Most dependencies are taken care of by using <a class="reference external" href="https://pypi.org/project/pip/">pip</a> and <a class="reference external" href="https://pypi.org">PiPy</a> to control Python dependencies and <a class="reference external" href="https://github.com/ratt-ru/Stimela/tree/master/stimela">Stimela</a> as a platform-independent scripting framework. This leaves a small number of known dependencies (currently only one) that need to be installed prior to using CARACal:</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://www.python.org/">Python</a> 3.6 or higher</li>
-<li><a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> &gt; 2.6.0-dist is required only if <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> is chosen as containerization technology to run <a class="reference external" href="https://github.com/ratt-ru/Stimela/tree/master/stimela">Stimela</a> with (no known <a class="reference external" href="https://www.docker.com/">Docker</a> dependencies).</li>
+<li><a class="reference external" href="https://www.python.org">Python</a> 3.5 or higher.</li>
+<li>Container technology of your choice. It can be one of the following:<ul>
+<li><a class="reference external" href="https://www.docker.com">Docker</a>;</li>
+<li><a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> &gt; 2.6.0-dist;</li>
+<li><a class="reference external" href="https://podman.io">Podman</a> <strong>(currently not fully supported)</strong>.</li>
 </ul>
-<p>CARACal fully supports <a class="reference external" href="https://www.docker.com/">Docker</a> and <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>. It is also possible to use it in combination with <a class="reference external" href="https://podman.io/">Podman</a>.</p>
+</li>
+</ul>
 </div>
-<div class="section" id="installing-and-running-caracal">
-<h2>Installing and running CARACal<a class="headerlink" href="#installing-and-running-caracal" title="Permalink to this headline">¶</a></h2>
-<p>Shell-style is used to indicate names and paths of directories and files which can be chosen by the user: <code class="docutils literal notranslate"><span class="pre">${name}</span></code>.</p>
-<div class="section" id="installing-and-running-manually">
-<h3>Installing and running manually<a class="headerlink" href="#installing-and-running-manually" title="Permalink to this headline">¶</a></h3>
-<p>We recommend and describe an installation using a virtual environment created with <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">Virtualenv</a>. This is not a requirement, but strongly recommended.
-The user chooses:</p>
-<ul class="simple">
-<li>the name (including path) ${caracal-venv} of the virtualenv</li>
-<li>the location <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code> of a <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> pull-folder, where <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored (not required when using only <a class="reference external" href="https://www.docker.com/">Docker</a> or <a class="reference external" href="https://podman.io/">Podman</a>, the latter currently not being fully supported).</li>
-</ul>
 <div class="section" id="manual-installation">
-<h4>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h4>
-<p>The latest CARACal release can be obtained by typing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv ${caracal-venv}  
-$ source ${caracal-venv}/bin/activate
-$ pip install -U pip setuptools wheel
-$ pip install -U caracal
+<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h2>
+<p>We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing.</p>
+<p>Choose the name of the virtual environment <code class="docutils literal notranslate"><span class="pre">${caracal-venv}</span></code>. Then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python3 -m venv ${caracal-venv}
+# virtualenv -p python3 ${caracal-venv} # if the command above does not work
+source ${caracal-venv}/bin/activate
+pip install -U pip setuptools wheel
+pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
+# pip install -U caracal # available soon, once Caracal&#39;s first release is out
 </pre></div>
 </div>
-<p>Using <a class="reference external" href="https://www.docker.com/">Docker</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela build
+<p>If using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">build</span>
 </pre></div>
 </div>
-<p>Using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> (choose a <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> pull-folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull --singularity --pull-folder ${singularity_pull_folder}
+<p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>, choose a pull folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>, where the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>stimela pull --singularity --pull-folder ${singularity_pull_folder}
 </pre></div>
 </div>
-<p>Using <a class="reference external" href="https://podman.io/">Podman</a> (currently not fully supported):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull -p
-</pre></div>
-</div>
-<p>Please see <a class="reference external" href="#Installing-a-Python-3-virtualenv">Installing a Python 3 virtualenv</a> for more information on virtualenv.</p>
-<div class="section" id="current-development-branch">
-<h5>Current development branch<a class="headerlink" href="#current-development-branch" title="Permalink to this headline">¶</a></h5>
-<p><em>Warning: the current development branch obviously contains the most recent developments but it might contain bugs.</em>
-It is also possible not to install the release version but instead the current development version of CARACal.</p>
-<p><em>Warning: the current development branch obviously contains the most recent developments but it might contain bugs. We take no responsibility for development versions of CARACal.</em></p>
-<p>Do do so, replace above pip installation of CARACal</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">caracal</span>
-</pre></div>
-</div>
-<p>with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
+<p>If using <a class="reference external" href="https://podman.io">Podman</a> (currently not fully supported):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">pull</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="running-caracal-manually">
-<h4>Running CARACal manually<a class="headerlink" href="#running-caracal-manually" title="Permalink to this headline">¶</a></h4>
-<p>The user needs to know the name <code class="docutils literal notranslate"><span class="pre">${caracal-venv}</span></code> of the virtualenv used during the installation and the name <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code> of the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> pull folder used when installing CARACal. For the most basic usage, the user generally chooses:</p>
-<ul class="simple">
-<li>the name ${my_caracal_run_dir} (and hence the location) of a folder in which the data reduction takes place</li>
-<li>a template configuration file <code class="docutils literal notranslate"><span class="pre">${template_config}</span></code> to use for the data reduction, as can be downloaded (and re-named to your choice) from the <a class="reference external" href="https://github.com/ska-sa/caracal/tree/master/caracal/sample_configurations">sample_configurations</a> folder in the CARACal repository. To start, we recommend to use <a class="reference external" href="https://github.com/ska-sa/caracal/blob/master/caracal/sample_configurations/minimalConfig.yml"><code class="docutils literal notranslate"><span class="pre">minimal_config.yml</span></code></a>.</li>
-<li>a name for the final configuration file <code class="docutils literal notranslate"><span class="pre">${my_config_file}</span></code> to use.</li>
-</ul>
-<p>An example run then looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ${my_caracal_run_dir}
-$ cd ${my_caracal_run_dir}
+<div class="section" id="installation-with-the-caratekit-sh-script">
+<h2>Installation with the caratekit.sh script<a class="headerlink" href="#installation-with-the-caratekit-sh-script" title="Permalink to this headline">¶</a></h2>
+<p>Download the installation script https://github.com/ska-sa/caracal/blob/master/caratekit.sh . Choose the parent directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> and the name of the Caracal directory <code class="docutils literal notranslate"><span class="pre">${caracal_dir}</span></code>.</p>
+<p>If using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws ${workspace} -cr -di -ct ${caracal_dir} -rp install -f -kh
 </pre></div>
 </div>
-<p>Copy <code class="docutils literal notranslate"><span class="pre">${template_config}</span></code> into <code class="docutils literal notranslate"><span class="pre">${my_caracal_run_dir}</span></code>, then re-name (this is strictly not necessary):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv ${template_config} ${my_config_file}
-</pre></div>
-</div>
-<p>Create <code class="docutils literal notranslate"><span class="pre">msdir</span></code> inside <code class="docutils literal notranslate"><span class="pre">${my_caracal_run_dir}</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ${my_caracal_run_dir}/msdir
-</pre></div>
-</div>
-<p>and move/copy your raw measurement set files into that directory. Edit your <code class="docutils literal notranslate"><span class="pre">${my_config_file}</span></code> to link to those files. If the names of your measurement sets are <code class="docutils literal notranslate"><span class="pre">a.ms</span> <span class="pre">b.ms</span> <span class="pre">c.ms</span></code>, then edit the line</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataid</span><span class="o">=</span><span class="p">[]</span> <span class="o">-&gt;</span> <span class="n">dataid</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>in ${my_config_file}. Do analogously for different names of your measurement sets.</p>
-<p>Finally, run CARACal, after activating your virtualenv:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ${caracal-venv}/bin/activate
-</pre></div>
-</div>
-<p>Using <a class="reference external" href="https://www.docker.com/">Docker</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caracal -c ${my_config_file}
-</pre></div>
-</div>
-<p>Using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> (using the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> pull-folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code> created during the installation):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caracal -c ${my_config_file} --container-tech singularity -sid ${singularity_pull_folder}
-</pre></div>
-</div>
-<p>Using podman (currently not fully supported):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caracal -c ${my_config_file} --container-tech podman
+<p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws ${workspace} -cr -si -ct ${caracal_testdir} -rp install -f -kh
 </pre></div>
 </div>
 </div>
-<div class="section" id="upgrading-a-manual-caracal-installation">
-<h4>Upgrading a manual CARACal installation<a class="headerlink" href="#upgrading-a-manual-caracal-installation" title="Permalink to this headline">¶</a></h4>
-<p>The following steps should lead to an upgraded CARACal:
-Activate your virtualenv:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ${caracal-venv}/bin/activate
+<div class="section" id="run">
+<h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
+<p>If you installed Caracal manually, activate the virtual environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source ${caracal-venv}/bin/activate
 </pre></div>
 </div>
-<p>Then run the following commands, like outlined in <a class="reference external" href="#Manual-installation">Manual installation</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U caracal
+<p>If you installed Caracal with the caratekit.sh script, activate the virtual environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source ${workspace}/${caracal_dir}/caracal_venv/bin/activate
 </pre></div>
 </div>
-<p>Using <a class="reference external" href="https://www.docker.com/">Docker</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela build
+<p>Run Caracal with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caracal - c ${your-configuration-file}
 </pre></div>
 </div>
-<p>Using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> (choose a <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> pull-folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull --singularity --pull-folder ${singularity_pull_folder}
-</pre></div>
-</div>
-<p>Using <a class="reference external" href="https://podman.io/">Podman</a> (currently not fully supported):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stimela pull -p
-</pre></div>
-</div>
-<p>Please see <a class="reference external" href="#stimela-cache-file">Stimela cache file</a> for troubleshooting for a more forceful upgrade.</p>
-<div class="section" id="id1">
-<h5>Current development branch<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
-<p><em>Warning: the current development branch obviously contains the most recent developments but it might contain bugs.</em>
-It is also possible not to install the release version but instead the current development version of CARACal.</p>
-<p><em>Warning: the current development branch obviously contains the most recent developments but it might contain bugs. We take no responsibility for development versions of CARACal.</em></p>
-<p>Do do so, replace above pip installation of CARACal</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">caracal</span>
-</pre></div>
-</div>
-<p>with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U --force-reinstall git+https://github.com/ska-sa/caracal.git#egg=caracal
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="installation-using-caratekit-sh">
-<h3>Installation using caratekit.sh<a class="headerlink" href="#installation-using-caratekit-sh" title="Permalink to this headline">¶</a></h3>
-<p>To newly install CARACal using caratekit, download <a class="reference external" href="https://github.com/ska-sa/caracal/raw/master/caracal/utils/caratekit.sh">caratekit.sh</a> and make it executable (alternatively clone caracal and find <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> ):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod u+x caratekit.sh 
-</pre></div>
-</div>
-<p>Then select a parent directory <code class="docutils literal notranslate"><span class="pre">$parent</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">/home/pete</span></code>) to the installation and a name $installation_name (e.g. <code class="docutils literal notranslate"><span class="pre">caracal</span></code>) for the installation. Then do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws $parent -ct  $installation_name -kh -di -op -ur
-</pre></div>
-</div>
-<p>for a docker installation and:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws $parent -ct  $installation_name -kh -si -op -ur -sr
-</pre></div>
-</div>
-<p>for a singularity installation.</p>
-<p>Each time you want to run caracal using the docker installation do:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">$parent/$installation_name/caracal_venv/bin/activate</span></code> (bash)
-or
-<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">source</span> <span class="pre">$parent/$installation_name/caracal_venv/bin/activate.csh</span></code> (csh or tcsh)
-then create a data reduction directory $datared and put the configuration file $config.yml into that directory. Also create a directory msdir in $datared and put your raw measurement set data sets therein. Then</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">$datared</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caracal</span> <span class="pre">-c</span> <span class="pre">$config.yml</span></code> (Docker)</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caracal</span> <span class="pre">-c</span> <span class="pre">$config.yml</span> <span class="pre">--container-tech</span> <span class="pre">singularity</span> <span class="pre">-sid</span> <span class="pre">$parent/$installation_name/stimela_singularity</span></code> (Singularity)</p>
-<p>For details on caratekit.sh type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caratekit.sh</span> <span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">caratekit.sh</span> <span class="pre">-v</span></code>.</p>
-</div>
-</div>
-<div class="section" id="using-caracal">
-<h2>Using CARACal<a class="headerlink" href="#using-caracal" title="Permalink to this headline">¶</a></h2>
-<p>After activating the virtualenv</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ${caracal-venv}/bin/activate
-</pre></div>
-</div>
-<p>CARACal has several switches. In its entirety, they can be accessed by invoking help.</p>
-<div class="section" id="getting-help">
-<h3>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caracal --help
-</pre></div>
-</div>
-</div>
-<div class="section" id="dumping-a-copy-of-the-minimal-default-configuration-file-to-the-current-directory">
-<h3>Dumping a copy of the minimal default configuration file to the current directory<a class="headerlink" href="#dumping-a-copy-of-the-minimal-default-configuration-file-to-the-current-directory" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caracal -gd ${configuration_file}
-</pre></div>
-</div>
-<p>where ${configuration_file} is the target name of the configuration file.</p>
-</div>
+<p>For more detailed installation instructions, trouble-shooting tips and a full user manual please see https://caracal.readthedocs.io.</p>
 </div>
 </div>
 

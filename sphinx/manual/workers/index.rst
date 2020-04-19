@@ -23,6 +23,6 @@ Workers parameters
    transform_data/index.rst
    masking/index.rst
    self_cal/index.rst
+   direction_dependent_calibration/index.rst
    image_line/index.rst
    mosaic/index.rst
-   direction_dependent_calibration/index.rst
