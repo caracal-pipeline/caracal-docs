@@ -12,7 +12,7 @@ flagging
 .. toctree::
    :maxdepth: 1
  
-Flagging of the data.
+Flagging of the data. The selected flagging steps are executed in the same order in which they are given below.
 
 
 
@@ -24,7 +24,19 @@ Flagging of the data.
 
   *bool*
 
-  Execute flagging of the data.
+  Execute the flagging worker.
+
+
+
+.. _flagging_field:
+
+--------------------------------------------------
+**field**
+--------------------------------------------------
+
+  *{"target", "calibrators"}*, *optional*, *default = calibrators*
+
+  Fields that should be flagged. It can either be 'target' or 'calibrators'  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging steps flag_time, flag_scan and static_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
 
 
 
@@ -36,54 +48,76 @@ Flagging of the data.
 
   *str*, *optional*, *default = ' '*
 
-  The label is added to the input .MS file name to define the name of the .MS file that should be flagged, <input>-<label>.ms. Default is an empty string, i.e., the original .MS is flagged.
+  This label is added to the input .MS file(s) name given in the get_data worker to define the name of the .MS file(s) that should be flagged. These are <input>_<label>.ms if 'field' (see above) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in 'field' above.
 
 
 
-.. _flagging_field:
-
---------------------------------------------------
-**field**
---------------------------------------------------
-
-  *str*, *optional*, *default = calibrators*
-
-  Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string
-
-
-
-.. _flagging_load_flags:
+.. _flagging_calibrator_fields:
 
 --------------------------------------------------
-**load_flags**
+**calibrator_fields**
 --------------------------------------------------
 
-  Restore flags to specified state
+  *str*, *optional*, *default = auto*
+
+  If 'field' above is set to 'calibrators', users can specify here what subset of calibrators to process. This should be a comma-separated list of 'xcal' ,'bpcal', 'gcal' and/or 'fcal', which were all set by the observation_config worker. Alternatively, 'auto' selects all calibrators.
+
+
+
+.. _flagging_rewind_flags:
+
+--------------------------------------------------
+**rewind_flags**
+--------------------------------------------------
+
+  Rewind flags to specified version.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
-    enable this segement
+    Enable the rewind_flags segement.
 
   **version**
 
-    *str*, *optional*, *default = before_flagging_automatic*
+    *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
 
-    Flag version name
+    Flag version to restore. Note that all flag versions saved after this version will be deleted.
 
-  **merge**
+
+
+.. _flagging_overwrite_flag_versions:
+
+--------------------------------------------------
+**overwrite_flag_versions**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  Allow Caracal to ovewrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+
+
+
+.. _flagging_unflag:
+
+--------------------------------------------------
+**unflag**
+--------------------------------------------------
+
+  Unflag all visibilities for the selected field(s).
+
+  **enable**
 
     *bool*, *optional*, *default = False*
 
-    Merge flags to restored with current flags. (uses 'or')
+    Enable the unflag segment.
 
 
 
-.. _flagging_autoflag_autocorr_powerspectra:
+.. _flagging_flag_autopowerspec:
 
 --------------------------------------------------
-**autoflag_autocorr_powerspectra**
+**flag_autopowerspec**
 --------------------------------------------------
 
   Flags antennas based on drifts in the scan average of the auto correlation spectra per field. This doesn't strictly require any calibration. It is also not field structure dependent, since it is just based on the DC of the field. Compares scan to median power of scans per field per channel. Also compares antenna to median of the array per scan per field per channel. This should catch any antenna with severe temperature problems.
@@ -92,7 +126,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enables flagging of antennas based on drifts in the scan average of the auto correlation spectra per field.
+    Enable the flag_autopowerspec segment.
 
   **scan_to_scan_threshold**
 
@@ -111,18 +145,6 @@ Flagging of the data.
     *str*, *optional*, *default = DATA*
 
     Data column to flag.
-
-  **fields**
-
-    *str*, *optional*, *default = auto*
-
-    Fields to flag. Given as 'auto' or comma-seperated keys (keys in gcal, bpcal, target).
-
-  **calibrator_fields**
-
-    *str*, *optional*, *default = auto*
-
-    Calibrator fields. Given as 'auto' or comma-seperated keys (keys in gcal, bpcal).
 
   **threads**
 
@@ -144,14 +166,14 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enables flagging of autocorrelations.
+    Enable the flag_autocorr segment.
 
 
 
-.. _flagging_quack_flagging:
+.. _flagging_flag_quack:
 
 --------------------------------------------------
-**quack_flagging**
+**flag_quack**
 --------------------------------------------------
 
   Do quack flagging, i.e. flag the begining and/or end chunks of each scan. Again, through FLAGDATA.
@@ -160,7 +182,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enable quack flagging.
+    Enable the flag_quack segment.
 
   **quackinterval**
 
@@ -188,7 +210,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enable flagging based on pointing elevation.
+    Enable the flag_elevation segment.
 
   **low**
 
@@ -216,7 +238,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enables flagging of shadowed antennas.
+    Enables the flag_shadow segment.
 
   **tolerance**
 
@@ -244,7 +266,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enable flagging spectral windows/ channels.
+    Enable the flag_spw segment.
 
   **channels**
 
@@ -272,47 +294,13 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enabla flagging timeranges.
+    Enable the flag_time segment.
 
   **timerange**
 
     *str*, *optional*, *default = ' '*
 
     Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'.
-
-  **ensure_valid_selection**
-
-    *bool*, *optional*, *default = False*
-
-    Check whether the timerange is in the ms being considered. This stops the pipeline from crashing when multiple dataset are being processed.
-
-
-
-.. _flagging_flag_antennas:
-
---------------------------------------------------
-**flag_antennas**
---------------------------------------------------
-
-  Flag bad antennas. Or just the ones you have sworn a vendetta against.
-
-  **enable**
-
-    *bool*, *optional*, *default = False*
-
-    Enables flagging of bad antennas.
-
-  **antennas**
-
-    *str*, *optional*, *default = 0*
-
-    Antennas to flag. Follows the CASA Flagdata syntax.
-
-  **timerange**
-
-    *str*, *optional*, *default = ' '*
-
-    Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS-YYYY/MM/DD/HH:MM:SS'.
 
   **ensure_valid_selection**
 
@@ -334,7 +322,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enables flagging of bad scans.
+    Enable the flag_scan segment.
 
   **scans**
 
@@ -344,10 +332,44 @@ Flagging of the data.
 
 
 
-.. _flagging_static_mask:
+.. _flagging_flag_antennas:
 
 --------------------------------------------------
-**static_mask**
+**flag_antennas**
+--------------------------------------------------
+
+  Flag bad antennas. Or just the ones you have sworn a vendetta against.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the flag_antennas segment.
+
+  **antennas**
+
+    *str*, *optional*, *default = 0*
+
+    Antennas to flag. Follows the CASA Flagdata syntax.
+
+  **timerange**
+
+    *str*, *optional*, *default = ' '*
+
+    Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'.
+
+  **ensure_valid_selection**
+
+    *bool*, *optional*, *default = False*
+
+    Check whether the timerange is in the ms being considered. This stops the pipeline from crashing when multiple dataset are being processed.
+
+
+
+.. _flagging_flag_mask:
+
+--------------------------------------------------
+**flag_mask**
 --------------------------------------------------
 
   Apply static mask to flag out known RFI, Meerkat specific.
@@ -356,7 +378,7 @@ Flagging of the data.
 
     *bool*, *optional*, *default = False*
 
-    Enables the application of static mask on the data.
+    Enable the flag_mask segment.
 
   **mask**
 
@@ -372,133 +394,131 @@ Flagging of the data.
 
 
 
-.. _flagging_autoflag_rfi:
+.. _flagging_flag_rfi:
 
 --------------------------------------------------
-**autoflag_rfi**
+**flag_rfi**
 --------------------------------------------------
 
-  Flag RFI using AOFlagger software.
+  Flag RFI using AOFlagger, Tricolour or CASA flagdata with tfcrop.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable RFI flagging with AOFlagger or tricolour
+    Enable the flag_rfi segment.
 
   **flagger**
 
     *{"aoflagger", "tricolour", "tfcrop"}*, *optional*, *default = aoflagger*
 
-    Choose flagger for automatic flagging
-
-  **strategy**
-
-    *str*, *optional*, *default = firstpass_QUV.rfis*
-
-    The AOFlagger strategy file to use.
+    Choose flagger for automatic flagging. Possible choices are 'aoflagger', 'tricolour' and 'tfcrop'.
 
   **column**
 
     *str*, *optional*, *default = DATA*
 
-    Specify column to flag
+    Specify which column to flag.
 
-  **fields**
+  **aoflagger**
 
-    *str*, *optional*, *default = auto*
+    **strategy**
 
-    comma separated list of (zero-indexed) field ids to process
+      *str*, *optional*, *default = firstpass_Q.rfis*
 
-  **calibrator_fields**
+      The AOFlagger strategy file to use.
 
-    *str*, *optional*, *default = auto*
+    **ensure_valid_strategy**
 
-    comma separated list of (zero-indexed) field ids to process
+      *bool*, *optional*, *default = True*
 
-  **bands**
+      Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V an .MS with XX and YY only will result in an error and exit Caracal. The rules are 1) XY,YX present to flag on Stokes V,U or on XY,YX, 2) XX,YY present to flag on Stokes I,Q or on XX,YY. Disable only if you know what you are doing.
 
-    *str*, *optional*, *default = auto*
+  **tricolour**
 
-    comma separated list of (zero-indexed) band ids to process
+    **window_backend**
 
-  **window_backend**
+      *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
 
-    *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
+      Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
 
-    Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
+    **mode**
 
-  **tricolour_mode**
+      *{"auto", "manual"}*, *optional*, *default = auto*
 
-    *{"auto", "manual"}*, *optional*, *default = auto*
+      If set to 'manual' it uses the flagging strategy in 'strategy' below. If set to 'auto' it uses the strategy in 'strategy_narrowband' in case of small bandwidth of the .MS file(s).
 
-    If set to 'auto', decides the tricolour flagging strategy based on the bandwidth of the dataset. Else uses tricolour_calibrator_strat.
+    **strategy**
 
-  **tricolour_calibrator_strat_narrowband**
+      *str*, *optional*, *default = mk_rfi_flagging_calibrator_fields_firstpass.yaml*
 
-    *str*, *optional*, *default = calibrator_mild_flagging.yaml*
+      Tricolour strategy file.
 
-  **tricolour_calibrator_strat**
+    **strategy_narrowband**
 
-    *str*, *optional*, *default = mk_rfi_flagging_calibrator_fields_firstpass.yaml*
+      *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
-  **usewindowstats**
+      Tricolour strategy file to be used for an MS with narrow bandwidth if mode = auto (see above).
 
-    *{"none", "sum", "std", "both"}*, *optional*, *default = std*
+  **tfcrop**
 
-    Calculate additional flags using sliding window statistics
+    **usewindowstats**
 
-  **combinescans**
+      *{"none", "sum", "std", "both"}*, *optional*, *default = std*
 
-    *bool*, *optional*, *default = False*
+      Calculate additional flags using sliding window statistics.
 
-    Accumulate data across scans depending on the value of ntime
+    **combinescans**
 
-  **flagdimension**
+      *bool*, *optional*, *default = False*
 
-    *{"freq", "time", "freqtime", "timefreq"}*, *optional*, *default = freqtime*
+      Accumulate data across scans depending on the value of ntime.
 
-    Dimensions along which to calculate fits (freq/time/freqtime/timefreq)
+    **flagdimension**
 
-  **timecutoff**
+      *{"freq", "time", "freqtime", "timefreq"}*, *optional*, *default = freqtime*
 
-    *float*, *optional*, *default = 4.0*
+      Dimensions along which to calculate fits (freq/time/freqtime/timefreq).
 
-    Flagging thresholds in units of deviation from the fit
+    **timecutoff**
 
-  **freqcutoff**
+      *float*, *optional*, *default = 4.0*
 
-    *float*, *optional*, *default = 3.0*
+      Flagging thresholds in units of deviation from the fit.
 
-    Flagging thresholds in units of deviation from the fit
+    **freqcutoff**
 
-  **correlation**
+      *float*, *optional*, *default = 3.0*
 
-    *str*, *optional*, *default = ' '*
+      Flagging thresholds in units of deviation from the fit.
 
-    Correlation
+    **correlation**
+
+      *str*, *optional*, *default = ' '*
+
+      Correlation.
 
 
 
-.. _flagging_rfinder:
+.. _flagging_inspect:
 
 --------------------------------------------------
-**rfinder**
+**inspect**
 --------------------------------------------------
 
-  A tool to investigate the presence of RFI
+  Inspect the presence of RFI using the diagnostic products of RFInder.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable invsetigation of rfi with rfinder
+    Enable the inspect segment.
 
   **telescope**
 
     *str*, *optional*, *default = MeerKAT*
 
-    Name of telescope
+    Name of telescope.
 
   **field**
 
@@ -510,44 +530,44 @@ Flagging of the data.
 
     *{"xx", "XX", "yy", "YY", "xy", "XY", "yx", "YX", "q", "Q"}*, *optional*, *default = q*
 
-    Select polarisation e.g. xx, yy, xy, yx, q (also in CAPS)
+    Select polarisation e.g. xx, yy, xy, yx, q (also in CAPS).
 
   **spw_enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable spw for rebinning
+    Enable spw for rebinning.
 
   **spw_width**
 
     *int*, *optional*, *default = 10*
 
-    Channel width of rebinned output table (MHz)
+    Channel width of rebinned output table (MHz).
 
   **time_enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable time chunking
+    Enable time chunking.
 
   **time_step**
 
     *int*, *optional*, *default = 5*
 
-    Time chunks in minutes
+    Time chunks in minutes.
 
   **movies_in_report**
 
     *bool*, *optional*, *default = True*
 
-    Generate movies in a repo
+    Generate movies in a repo.
 
 
 
-.. _flagging_flagging_summary:
+.. _flagging_summary:
 
 --------------------------------------------------
-**flagging_summary**
+**summary**
 --------------------------------------------------
 
   Write flagging summary at the end of the pre-calibration flagging. Uses CASA FLAGDATA in "summary" mode.
@@ -556,5 +576,5 @@ Flagging of the data.
 
     *bool*, *optional*, *default = True*
 
-    Enables the writing of flagging summary.
+    Enable the summary segment.
 

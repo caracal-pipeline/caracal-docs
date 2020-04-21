@@ -52,6 +52,28 @@ Split, avg and/or calibrate data
 
 
 
+.. _transform_data_rewind_flags:
+
+--------------------------------------------------
+**rewind_flags**
+--------------------------------------------------
+
+  Rewind flags to specified version.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    enable this segement
+
+  **version**
+
+    *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
+
+    Flag version to restore. Note that all flag versions saved after this version will be deleted.
+
+
+
 .. _transform_data_split_field:
 
 --------------------------------------------------

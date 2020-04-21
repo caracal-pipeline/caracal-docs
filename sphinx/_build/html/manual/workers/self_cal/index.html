@@ -104,6 +104,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">self_cal</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calibrate-with"><strong>calibrate_with</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#spwid"><strong>spwid</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ncpu"><strong>ncpu</strong></a></li>
@@ -220,7 +222,7 @@
 <span id="id1"></span><h1>self_cal<a class="headerlink" href="#self-cal" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Perform Self calibration on the data</p>
+<p>Perform Self calibration on the data.</p>
 <div class="section" id="enable">
 <span id="self-cal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -232,7 +234,35 @@
 <span id="self-cal-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label of the .MS files to process</p>
+<p>Label of the .MS files to process.</p>
+</div></blockquote>
+</div>
+<div class="section" id="rewind-flags">
+<span id="self-cal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to .MS file(s) you might be running “transfer_apply_gains” on.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>enable this segement</p>
+</div></blockquote>
+<p><strong>version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
+<p><strong>transfer_apply_gains_version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “transfer_to_label” in the “transfer_apply_gains” section below. Set to “null” to skip this rewind step. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="overwrite-flag-versions">
+<span id="self-cal-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
 </div>
 <div class="section" id="calibrate-with">

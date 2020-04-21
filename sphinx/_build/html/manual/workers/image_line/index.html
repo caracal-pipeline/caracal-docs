@@ -108,6 +108,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#restfreq"><strong>restfreq</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subtractmodelcol"><strong>subtractmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#addmodelcol"><strong>addmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mstransform"><strong>mstransform</strong></a></li>
@@ -226,6 +228,34 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.420405752GHz</em></p>
 <p>Spectral line rest frequency.</p>
+</div></blockquote>
+</div>
+<div class="section" id="rewind-flags">
+<span id="image-line-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to .MS file(s) you might be running “transfer_apply_gains” on.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>enable this segement</p>
+</div></blockquote>
+<p><strong>version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
+<p><strong>mstransform_version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="overwrite-flag-versions">
+<span id="image-line-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
 </div>
 <div class="section" id="subtractmodelcol">

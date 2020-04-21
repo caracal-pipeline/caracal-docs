@@ -12,7 +12,7 @@ self_cal
 .. toctree::
    :maxdepth: 1
  
-Perform Self calibration on the data
+Perform Self calibration on the data.
 
 
 
@@ -36,7 +36,47 @@ Perform Self calibration on the data
 
   *str*, *optional*, *default = corr*
 
-  Label of the .MS files to process
+  Label of the .MS files to process.
+
+
+
+.. _self_cal_rewind_flags:
+
+--------------------------------------------------
+**rewind_flags**
+--------------------------------------------------
+
+  Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to .MS file(s) you might be running "transfer_apply_gains" on.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    enable this segement
+
+  **version**
+
+    *str*, *optional*, *default = null*
+
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. Note that all flag versions saved after this version will be deleted.
+
+  **transfer_apply_gains_version**
+
+    *str*, *optional*, *default = null*
+
+    Flag version to restore. This is applied to the .MS file(s) identified by "transfer_to_label" in the "transfer_apply_gains" section below. Set to "null" to skip this rewind step. Note that all flag versions saved after this version will be deleted.
+
+
+
+.. _self_cal_overwrite_flag_versions:
+
+--------------------------------------------------
+**overwrite_flag_versions**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 

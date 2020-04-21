@@ -103,6 +103,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#split-field"><strong>split_field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#changecentre"><strong>changecentre</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#obsinfo"><strong>obsinfo</strong></a></li>
@@ -210,6 +211,22 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
 <p>Label of the output dataset</p>
+</div></blockquote>
+</div>
+<div class="section" id="rewind-flags">
+<span id="transform-data-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Rewind flags to specified version.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>enable this segement</p>
+</div></blockquote>
+<p><strong>version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = INSERT_FLAG_VERSION_TO_BE_RESTORED</em></p>
+<p>Flag version to restore. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="split-field">

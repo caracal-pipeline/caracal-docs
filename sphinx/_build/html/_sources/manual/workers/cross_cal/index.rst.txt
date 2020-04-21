@@ -52,43 +52,37 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
 
 
-.. _cross_cal_load_flags:
+.. _cross_cal_rewind_flags:
 
 --------------------------------------------------
-**load_flags**
+**rewind_flags**
 --------------------------------------------------
 
-  Restore flags to specified state
+  Rewind flags to specified version.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     enable this segement
 
   **version**
 
-    *str*, *optional*, *default = after_flagging_automatic*
+    *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
 
-    Flag version name
-
-  **merge**
-
-    *bool*, *optional*, *default = False*
-
-    Merge flags to restored with current flags. (uses 'or')
+    Flag version to restore. Note that all flag versions saved after this version will be deleted.
 
 
 
-.. _cross_cal_otfdelay:
+.. _cross_cal_overwrite_flag_versions:
 
 --------------------------------------------------
-**otfdelay**
+**overwrite_flag_versions**
 --------------------------------------------------
 
-  *bool*, *optional*, *default = True*
+  *bool*, *optional*, *default = False*
 
-  Set whether to apply the delay calibration on the fly when solving for other calibration terms.
+  Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 

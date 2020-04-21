@@ -72,15 +72,21 @@ Prepare the data for calibration and imaging.
 
   **mode**
 
-    *{"initialize", "reset", "restore"}*, *optional*, *default = restore*
+    *{"save_legacy_flags", "restore"}*, *optional*, *default = save_legacy_flags*
 
-    Manage flag mode. reset: unflag all data and delete all flagsets. restore: Restore flags from user specified flagset. initialize: Save current FLAG column as 'caracal_legacy'
+    Manage flag mode. If "save_legacy_flags" save the current FLAG column as a "caracal_legacy" flag version (if that already exists, "overwrite_legacy_flags" below allows you to overwrite it, but think twice). If "restore" restore flags from the flag version specified by "version" below, and delete all flag versions created after that version.
 
   **version**
 
     *str*, *optional*, *default = caracal_legacy*
 
-    flagversion to restore
+    Flag version to restore. Note that all flag versions saved after this version will be deleted.
+
+  **overwrite_legacy_flags**
+
+    *bool*, *optional*, *default = False*
+
+    If "mode" above is "save_legacy_flags" but the "caracal_legacy" flag version already exists, allow Caracal to overwrite it. Think twice!
 
 
 

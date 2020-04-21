@@ -100,8 +100,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#load-flags"><strong>load_flags</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#otfdelay"><strong>otfdelay</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#casa-version"><strong>casa_version</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-model"><strong>set_model</strong></a></li>
@@ -218,32 +218,27 @@
 <p>Label for output files.</p>
 </div></blockquote>
 </div>
-<div class="section" id="load-flags">
-<span id="cross-cal-load-flags"></span><h2><strong>load_flags</strong><a class="headerlink" href="#load-flags" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rewind-flags">
+<span id="cross-cal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Restore flags to specified state</p>
+<div><p>Rewind flags to specified version.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>enable this segement</p>
 </div></blockquote>
 <p><strong>version</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = after_flagging_automatic</em></p>
-<p>Flag version name</p>
-</div></blockquote>
-<p><strong>merge</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Merge flags to restored with current flags. (uses ‘or’)</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = INSERT_FLAG_VERSION_TO_BE_RESTORED</em></p>
+<p>Flag version to restore. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="otfdelay">
-<span id="cross-cal-otfdelay"></span><h2><strong>otfdelay</strong><a class="headerlink" href="#otfdelay" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overwrite-flag-versions">
+<span id="cross-cal-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Set whether to apply the delay calibration on the fly when solving for other calibration terms.</p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
 </div>
 <div class="section" id="uvrange">
