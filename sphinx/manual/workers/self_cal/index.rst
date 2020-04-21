@@ -838,12 +838,6 @@ Perform Self calibration on the data
 
     Name of the sky model file (currently the only supported format is that of WSclean component lists). When 'auto', the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the 'output' directory.
 
-  **spectra**
-
-    *bool*, *optional*, *default = True*
-
-    Model sources as non-flat spectra. The spectral coefficients and reference frequency must be present in the sky model.
-
   **row_chunks**
 
     *int*, *optional*, *default = 0*
@@ -855,12 +849,6 @@ Perform Self calibration on the data
     *int*, *optional*, *default = 0*
 
     Number of sky model components that are processed in a single chunk.
-
-  **exp-sign-convention**
-
-    *str*, *optional*, *default = casa*
-
-    Sign convention to use for the complex exponential. 'casa' specifies the e^(2.pi.I) convention while 'thompson' specifies the e^(-2.pi.I) convention in the white book and Fourier analysis literature. Defaults to 'casa'.
 
   **within**
 

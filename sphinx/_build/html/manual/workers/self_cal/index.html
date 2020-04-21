@@ -805,11 +805,6 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>Name of the sky model file (currently the only supported format is that of WSclean component lists). When ‘auto’, the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the ‘output’ directory.</p>
 </div></blockquote>
-<p><strong>spectra</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Model sources as non-flat spectra. The spectral coefficients and reference frequency must be present in the sky model.</p>
-</div></blockquote>
 <p><strong>row_chunks</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
@@ -819,11 +814,6 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Number of sky model components that are processed in a single chunk.</p>
-</div></blockquote>
-<p><strong>exp-sign-convention</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = casa</em></p>
-<p>Sign convention to use for the complex exponential. ‘casa’ specifies the e^(2.pi.I) convention while ‘thompson’ specifies the e^(-2.pi.I) convention in the white book and Fourier analysis literature. Defaults to ‘casa’.</p>
 </div></blockquote>
 <p><strong>within</strong></p>
 <blockquote>
