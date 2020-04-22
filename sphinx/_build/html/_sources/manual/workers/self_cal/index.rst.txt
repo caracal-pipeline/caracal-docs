@@ -200,15 +200,39 @@ Perform Self calibration on the data.
 
 
 
-.. _self_cal_img_uvtaper:
+.. _self_cal_img_taper:
 
 --------------------------------------------------
-**img_uvtaper**
+**img_taper**
 --------------------------------------------------
 
-  *str*, *optional*, *default = 0*
+  *str*, *optional*, *default = 0.*
 
-  Taper for imaging (arcsec)
+  Gaussian taper for imaging (arcsec)
+
+
+
+.. _self_cal_img_maxuv_l:
+
+--------------------------------------------------
+**img_maxuv_l**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 0.*
+
+  Taper for imaging (lambda)
+
+
+
+.. _self_cal_img_transuv_l:
+
+--------------------------------------------------
+**img_transuv_l**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 10.*
+
+  Transition length of tukey taper (taper-tukey in wsclean, in % of maxuv)
 
 
 
@@ -341,6 +365,30 @@ Perform Self calibration on the data.
   *float*, *optional*, *default = 2.*
 
   Higher gain amplitude clipping
+
+
+
+.. _self_cal_cal_max_prior_error:
+
+--------------------------------------------------
+**cal_max_prior_error**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 0.1*
+
+  Flag solution intervals where the prior variance estimate is above this value.
+
+
+
+.. _self_cal_cal_max_post_error:
+
+--------------------------------------------------
+**cal_max_post_error**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 0.1*
+
+  Flag solution intervals where the posterior variance estimate is above this value.
 
 
 
@@ -618,13 +666,13 @@ Perform Self calibration on the data.
 
     *list* *of str*, *optional*, *default = CORR_DATA*
 
-    Data to output after calibration
+    Data to output after calibration. Options are 'CORR_DATA', 'CORR_RES' or 'CORRECTED_DATA' where CORR_DATA and CORRECTED_DATA are synonyms.
 
   **gain_matrix_type**
 
-    *list* *of str*, *optional*, *default = GainDiagPhase*
+    *list* *of str*, *optional*, *default = GainDiagPhase, GainDiag*
 
-    Gain matrix type
+    Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account.
 
   **model_mode**
 
@@ -642,7 +690,7 @@ Perform Self calibration on the data.
 
     *bool*, *optional*, *default = False*
 
-    Trigger a two step calibration process where the phase only calibration is applied before continuing with amplitude + phase cal. When cubical is used this happens simultaneous and gain parameters can be used with DDsols parameters. Set DDsol_time to -1 one to avoid amplitude calibration in an itereation. The parameter DDjones should be set to false.
+    Trigger a two step calibration process in MeqTrees where the phase only calibration is applied before continuing with amplitude + phase cal. Aimfast is turned on to determine the solution sizes automatically.
 
   **add_vis_model**
 
@@ -654,13 +702,13 @@ Perform Self calibration on the data.
 
     *list* *of float*, *optional*, *default = 1*
 
-    G-Jones time solution interval. The parameter cal_time_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time chunk.
+    G-Jones time solution interval. The parameter cal_timeslots_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time of the observations.
 
   **Gsols_channel**
 
     *list* *of float*, *optional*, *default = 0*
 
-    G-Jones frequency solution interval. The parameter cal_frq_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency chunk.
+    G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.
 
   **Bjones**
 
@@ -672,31 +720,25 @@ Perform Self calibration on the data.
 
     *list* *of int*, *optional*, *default = 0*
 
-    Gsols for individual calibration steps, if not given will default to cal_Gsols
+    Bsols for individual calibration steps.
 
   **Bsols_channel**
 
     *list* *of float*, *optional*, *default = 2*
 
-    Gsols for individual calibration steps, if not given will default to cal_Gsols
+    Bsols for individual calibration steps.
 
-  **DDjones**
+  **GAsols_timeslots**
 
-    *bool*, *optional*, *default = False*
+    *list* *of float*, *optional*, *default = -1*
 
-    Enable direction dependent calibration, currently experimental.
+    Time intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots a second matrix is used and applied.
 
-  **DDsols_timeslots**
+  **GAsols_channel**
 
-    *list* *of float*, *optional*, *default = 0*
+    *list* *of float*, *optional*, *default = -1*
 
-    Calibration solution intervals
-
-  **DDsols_channel**
-
-    *list* *of float*, *optional*, *default = 0*
-
-    Calibration solution intervals
+    Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.
 
   **weight_column**
 
@@ -721,6 +763,12 @@ Perform Self calibration on the data.
     *str*, *optional*, *default = auto*
 
     Number of iterations per Jones term. If set to 'auto', uses hardcoded iteration numbers depending on the jones chain.
+
+  **overwrite**
+
+    *bool*, *optional*, *default = True*
+
+    Allow cubical to overwrite existing output
 
   **dist_max_chunks**
 

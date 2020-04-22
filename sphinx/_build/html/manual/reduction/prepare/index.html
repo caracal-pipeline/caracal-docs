@@ -185,13 +185,13 @@
 names. This is done through the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> and <a class="reference internal" href="../../workers/get_data/index.html#get-data"><span class="std std-ref">get_data</span></a> workers.</p>
 <p>In the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> worker users give:</p>
 <ul class="simple">
-<li><p>if necessary, the <em>data_path</em> directory where to find the files that should be converted to .MS
-format (<a class="reference internal" href="../../workers/general/index.html#general-data-path"><span class="std std-ref">general: data_path</span></a>);</p></li>
-<li><p>the <em>msdir</em> directory where to find/write .MS files (<a class="reference internal" href="../../workers/general/index.html#general-msdir"><span class="std std-ref">general: msdir</span></a>);</p></li>
-<li><p>the <em>output</em> directory where to write all output data products (<a class="reference internal" href="../../workers/general/index.html#general-output"><span class="std std-ref">general: output</span></a>);</p></li>
-<li><p>the <em>input</em> directory where to find various input files, such as AOflagger strategies etc.
-(<a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>);</p></li>
-<li><p>the prefix for the output data products (<a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>).</p></li>
+<li>if necessary, the <em>data_path</em> directory where to find the files that should be converted to .MS
+format (<a class="reference internal" href="../../workers/general/index.html#general-data-path"><span class="std std-ref">general: data_path</span></a>);</li>
+<li>the <em>msdir</em> directory where to find/write .MS files (<a class="reference internal" href="../../workers/general/index.html#general-msdir"><span class="std std-ref">general: msdir</span></a>);</li>
+<li>the <em>output</em> directory where to write all output data products (<a class="reference internal" href="../../workers/general/index.html#general-output"><span class="std std-ref">general: output</span></a>);</li>
+<li>the <em>input</em> directory where to find various input files, such as AOflagger strategies etc.
+(<a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>);</li>
+<li>the prefix for the output data products (<a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>).</li>
 </ul>
 <p>If they do not exist yet, the above directories can be created by setting
 <a class="reference internal" href="../../workers/general/index.html#general-init-pipeline"><span class="std std-ref">general: init_pipeline</span></a> to <em>true</em>. This also copies
@@ -199,17 +199,16 @@ files from the caracal/data/meerkat_files directory to the <em>input</em> direct
 <p>In the <a class="reference internal" href="../../workers/get_data/index.html#get-data"><span class="std std-ref">get_data</span></a> worker users give the name of the .MS files to be processed
 (<a class="reference internal" href="../../workers/get_data/index.html#get-data-dataid"><span class="std std-ref">get_data: dataid</span></a>). Furthermore, the following optional steps are available:</p>
 <ul class="simple">
-<li><p>convert from HDF5/MVF format to .MS (<a class="reference internal" href="../../workers/get_data/index.html#get-data-mvftoms"><span class="std std-ref">get_data: mvftoms</span></a>);
-this step includes the following additional conversion options:</p>
-<ul>
-<li><p>create a .MS.TAR file,</p></li>
-<li><p>convert only visibilities in a selected channel range,</p></li>
-<li><p>discard cross-polarisation products;</p></li>
+<li>convert from HDF5/MVF format to .MS (<a class="reference internal" href="../../workers/get_data/index.html#get-data-mvftoms"><span class="std std-ref">get_data: mvftoms</span></a>);
+this step includes the following additional conversion options:<ul>
+<li>create a .MS.TAR file,</li>
+<li>convert only visibilities in a selected channel range,</li>
+<li>discard cross-polarisation products;</li>
 </ul>
 </li>
-<li><p>untar an existing .MS.TAR file (<a class="reference internal" href="../../workers/get_data/index.html#get-data-untar"><span class="std std-ref">get_data: untar</span></a>);</p></li>
-<li><p>virtually concatenate all .MS input files (<a class="reference internal" href="../../workers/get_data/index.html#get-data-combine"><span class="std std-ref">get_data: combine</span></a>);
-optionally users can delete an existing concatenate file and tar/untar the concatenated file.</p></li>
+<li>untar an existing .MS.TAR file (<a class="reference internal" href="../../workers/get_data/index.html#get-data-untar"><span class="std std-ref">get_data: untar</span></a>);</li>
+<li>virtually concatenate all .MS input files (<a class="reference internal" href="../../workers/get_data/index.html#get-data-combine"><span class="std std-ref">get_data: combine</span></a>);
+optionally users can delete an existing concatenate file and tar/untar the concatenated file.</li>
 </ul>
 </div>
 <div class="section" id="metadata">
@@ -219,11 +218,11 @@ info about the content of the input .MS files through the <a class="reference in
 (e.g., target and calibrators name, channelisation, etc.). In principle, this can be done
 by editing the relevant parameters of this worker:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-target"><span class="std std-ref">observation_config: target</span></a></p></li>
-<li><p><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-bpcal"><span class="std std-ref">observation_config: bpcal</span></a></p></li>
-<li><p><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-fcal"><span class="std std-ref">observation_config: fcal</span></a></p></li>
-<li><p><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-gcal"><span class="std std-ref">observation_config: gcal</span></a></p></li>
-<li><p><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-reference-antenna"><span class="std std-ref">observation_config: reference_antenna</span></a></p></li>
+<li><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-target"><span class="std std-ref">observation_config: target</span></a></li>
+<li><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-bpcal"><span class="std std-ref">observation_config: bpcal</span></a></li>
+<li><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-fcal"><span class="std std-ref">observation_config: fcal</span></a></li>
+<li><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-gcal"><span class="std std-ref">observation_config: gcal</span></a></li>
+<li><a class="reference internal" href="../../workers/observation_config/index.html#observation-config-reference-antenna"><span class="std std-ref">observation_config: reference_antenna</span></a></li>
 </ul>
 <p>In fact, Caracal can automatically extract
 most of these info from the .MS files themselves. To do so users should enable the

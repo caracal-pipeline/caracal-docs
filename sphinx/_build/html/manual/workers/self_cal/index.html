@@ -116,7 +116,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-cell"><strong>img_cell</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-weight"><strong>img_weight</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-robust"><strong>img_robust</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#img-uvtaper"><strong>img_uvtaper</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-taper"><strong>img_taper</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-maxuv-l"><strong>img_maxuv_l</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-transuv-l"><strong>img_transuv_l</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-niter"><strong>img_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-nmiter"><strong>img_nmiter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-cleanborder"><strong>img_cleanborder</strong></a></li>
@@ -128,6 +130,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-multi-scale-scales"><strong>img_multi_scale_scales</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-amplitude-clip-low"><strong>cal_gain_amplitude_clip_low</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-amplitude-clip-high"><strong>cal_gain_amplitude_clip_high</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cal-max-prior-error"><strong>cal_max_prior_error</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cal-max-post-error"><strong>cal_max_post_error</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-at-iter"><strong>start_at_iter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-timeslots-chunk"><strong>cal_timeslots_chunk</strong></a></li>
@@ -336,11 +340,25 @@
 <p>Briggs robust value</p>
 </div></blockquote>
 </div>
-<div class="section" id="img-uvtaper">
-<span id="self-cal-img-uvtaper"></span><h2><strong>img_uvtaper</strong><a class="headerlink" href="#img-uvtaper" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="img-taper">
+<span id="self-cal-img-taper"></span><h2><strong>img_taper</strong><a class="headerlink" href="#img-taper" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Taper for imaging (arcsec)</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = 0.</em></p>
+<p>Gaussian taper for imaging (arcsec)</p>
+</div></blockquote>
+</div>
+<div class="section" id="img-maxuv-l">
+<span id="self-cal-img-maxuv-l"></span><h2><strong>img_maxuv_l</strong><a class="headerlink" href="#img-maxuv-l" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.</em></p>
+<p>Taper for imaging (lambda)</p>
+</div></blockquote>
+</div>
+<div class="section" id="img-transuv-l">
+<span id="self-cal-img-transuv-l"></span><h2><strong>img_transuv_l</strong><a class="headerlink" href="#img-transuv-l" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 10.</em></p>
+<p>Transition length of tukey taper (taper-tukey in wsclean, in % of maxuv)</p>
 </div></blockquote>
 </div>
 <div class="section" id="img-niter">
@@ -418,6 +436,20 @@
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
 <p>Higher gain amplitude clipping</p>
+</div></blockquote>
+</div>
+<div class="section" id="cal-max-prior-error">
+<span id="self-cal-cal-max-prior-error"></span><h2><strong>cal_max_prior_error</strong><a class="headerlink" href="#cal-max-prior-error" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
+<p>Flag solution intervals where the prior variance estimate is above this value.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cal-max-post-error">
+<span id="self-cal-cal-max-post-error"></span><h2><strong>cal_max_post_error</strong><a class="headerlink" href="#cal-max-post-error" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
+<p>Flag solution intervals where the posterior variance estimate is above this value.</p>
 </div></blockquote>
 </div>
 <div class="section" id="cal-niter">
@@ -627,12 +659,12 @@
 <p><strong>output_data</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = CORR_DATA</em></p>
-<p>Data to output after calibration</p>
+<p>Data to output after calibration. Options are ‘CORR_DATA’, ‘CORR_RES’ or ‘CORRECTED_DATA’ where CORR_DATA and CORRECTED_DATA are synonyms.</p>
 </div></blockquote>
 <p><strong>gain_matrix_type</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = GainDiagPhase</em></p>
-<p>Gain matrix type</p>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = GainDiagPhase, GainDiag</em></p>
+<p>Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account.</p>
 </div></blockquote>
 <p><strong>model_mode</strong></p>
 <blockquote>
@@ -647,7 +679,7 @@
 <p><strong>two_step</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Trigger a two step calibration process where the phase only calibration is applied before continuing with amplitude + phase cal. When cubical is used this happens simultaneous and gain parameters can be used with DDsols parameters. Set DDsol_time to -1 one to avoid amplitude calibration in an itereation. The parameter DDjones should be set to false.</p>
+<p>Trigger a two step calibration process in MeqTrees where the phase only calibration is applied before continuing with amplitude + phase cal. Aimfast is turned on to determine the solution sizes automatically.</p>
 </div></blockquote>
 <p><strong>add_vis_model</strong></p>
 <blockquote>
@@ -657,12 +689,12 @@
 <p><strong>Gsols_timeslots</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>G-Jones time solution interval. The parameter cal_time_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time chunk.</p>
+<p>G-Jones time solution interval. The parameter cal_timeslots_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time of the observations.</p>
 </div></blockquote>
 <p><strong>Gsols_channel</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>G-Jones frequency solution interval. The parameter cal_frq_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency chunk.</p>
+<p>G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.</p>
 </div></blockquote>
 <p><strong>Bjones</strong></p>
 <blockquote>
@@ -672,27 +704,22 @@
 <p><strong>Bsols_timeslots</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Gsols for individual calibration steps, if not given will default to cal_Gsols</p>
+<p>Bsols for individual calibration steps.</p>
 </div></blockquote>
 <p><strong>Bsols_channel</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Gsols for individual calibration steps, if not given will default to cal_Gsols</p>
+<p>Bsols for individual calibration steps.</p>
 </div></blockquote>
-<p><strong>DDjones</strong></p>
+<p><strong>GAsols_timeslots</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Enable direction dependent calibration, currently experimental.</p>
+<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Time intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots a second matrix is used and applied.</p>
 </div></blockquote>
-<p><strong>DDsols_timeslots</strong></p>
+<p><strong>GAsols_channel</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Calibration solution intervals</p>
-</div></blockquote>
-<p><strong>DDsols_channel</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Calibration solution intervals</p>
+<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = -1</em></p>
+<p>Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.</p>
 </div></blockquote>
 <p><strong>weight_column</strong></p>
 <blockquote>
@@ -713,6 +740,11 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>Number of iterations per Jones term. If set to ‘auto’, uses hardcoded iteration numbers depending on the jones chain.</p>
+</div></blockquote>
+<p><strong>overwrite</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Allow cubical to overwrite existing output</p>
 </div></blockquote>
 <p><strong>dist_max_chunks</strong></p>
 <blockquote>

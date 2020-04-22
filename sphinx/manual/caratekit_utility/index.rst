@@ -62,7 +62,7 @@ We assume that you have chosen to make ``caratekit.sh`` visible in the ``${PATH}
 and follow the instructions.
 
 Installing and upgrading CARACal using ``caratekit.sh`` for further use with ``caratekit.sh``
--------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 The syntax is the same for upgrading or installing CARACal. The user chooses:
  
