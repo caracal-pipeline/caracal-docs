@@ -15,3 +15,4 @@ Manual
    products/index.rst
    reduction/index.rst
    workers/index.rst
+   caratekit_utility/index.rst

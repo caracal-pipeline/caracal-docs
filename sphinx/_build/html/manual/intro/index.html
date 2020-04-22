@@ -89,19 +89,19 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is Caracal?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#list-and-brief-description-of-caracal-workers">List and Brief description of Caracal workers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#general"><code class="docutils literal notranslate"><span class="pre">general</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-data"><code class="docutils literal notranslate"><span class="pre">get_data</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#observation-config"><code class="docutils literal notranslate"><span class="pre">observation_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#prepare-data"><code class="docutils literal notranslate"><span class="pre">prepare_data</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flagging"><code class="docutils literal notranslate"><span class="pre">flagging</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cross-cal"><code class="docutils literal notranslate"><span class="pre">cross_cal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#polcal"><code class="docutils literal notranslate"><span class="pre">polcal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inspect-data"><code class="docutils literal notranslate"><span class="pre">inspect_data</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#transform-data"><code class="docutils literal notranslate"><span class="pre">transform_data</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#masking"><code class="docutils literal notranslate"><span class="pre">masking</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#self-cal"><code class="docutils literal notranslate"><span class="pre">self_cal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#image-line"><code class="docutils literal notranslate"><span class="pre">image_line</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mosaic"><code class="docutils literal notranslate"><span class="pre">mosaic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general"><span class="xref std std-ref">general</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-data"><span class="xref std std-ref">get_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#observation-config"><span class="xref std std-ref">observation_config</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-data"><span class="xref std std-ref">prepare_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flagging"><span class="xref std std-ref">flagging</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-cal"><span class="xref std std-ref">cross_cal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polcal"><span class="xref std std-ref">polcal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspect-data"><span class="xref std std-ref">inspect_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transform-data"><span class="xref std std-ref">transform_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#masking"><span class="xref std std-ref">masking</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#self-cal"><span class="xref std std-ref">self_cal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-line"><span class="xref std std-ref">image_line</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mosaic"><span class="xref std std-ref">mosaic</span></a></li>
 </ul>
 </li>
 </ul>
@@ -110,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../products/index.html">Data products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reduction/index.html">Data reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../workers/index.html">Workers parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caratekit_utility/index.html">Caratekit utility</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../credits/index.html">Acknowledgements</a></li>
@@ -197,7 +198,7 @@ install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc
 Using Stimela, the different software packages are available through a unified scheme.
 Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
 <p>Within Caracal — and throughout this documentation — the individual Stimela scripts are called
-“workers”. Each Caracal worker corresponds to a specific&nbsp;section of the data reduction
+“workers”. Each Caracal worker corresponds to a specific section of the data reduction
 process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).</p>
@@ -247,7 +248,7 @@ weights based on Tsys measurements.</p>
 </div>
 <div class="section" id="flagging">
 <h3><a class="reference internal" href="../workers/flagging/index.html#flagging"><span class="std std-ref">flagging</span></a><a class="headerlink" href="#flagging" title="Permalink to this headline">¶</a></h3>
-<p>This worker flags the data and returns statistics&nbsp;on the flags. As all other
+<p>This worker flags the data and returns statistics on the flags. As all other
 workers, it can be run multiple times within a single Caracal run as explained at
 <a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a> (though this feature is not necessarily useful for many other workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
