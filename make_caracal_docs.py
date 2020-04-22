@@ -212,6 +212,7 @@ from glob import glob
 import os
 import sys
 import ruamel.yaml
+import shutil
 
 
 
@@ -242,10 +243,12 @@ for ww in sortedWorkers: print('        {0:s}'.format(ww))
 
 # For each docs (sub-)directories
 print('  INFO: Creating "Download & Install" and "Workers" (sub-)directories ...')
-[installDir,workersDir]=[docsDir+dd+'/' for dd in ['install','manual/workers']]
+[installDir,workersDir]=[docsDir+dd for dd in ['install','manual/workers']]
 for dd in [installDir,workersDir]:
-  if os.path.exists(dd): os.popen('rm -r '+dd)
+  shutil.rmtree(dd, ignore_errors=True)
   os.mkdir(dd)
+[installDir,workersDir]=[docsDir+dd+'/' for dd in ['install','manual/workers']]
+
 for ww in sortedWorkers: os.mkdir(workersDir+ww)
 
 # Copy Caracal readme from caracalDir and edit 
