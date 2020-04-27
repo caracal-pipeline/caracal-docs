@@ -460,12 +460,6 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       Tricolour strategy file to be used for an MS with narrow bandwidth if mode = auto (see above).
 
-    **ncpu**
-
-      *int*, *optional*, *default = 1*
-
-      Number of CPUs to use.
-
   **tfcrop**
 
     **usewindowstats**

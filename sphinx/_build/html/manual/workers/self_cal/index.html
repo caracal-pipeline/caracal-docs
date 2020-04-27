@@ -688,12 +688,12 @@
 </div></blockquote>
 <p><strong>Gsols_timeslots</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 1</em></p>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>G-Jones time solution interval. The parameter cal_timeslots_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time of the observations.</p>
 </div></blockquote>
 <p><strong>Gsols_channel</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 0</em></p>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.</p>
 </div></blockquote>
 <p><strong>Bjones</strong></p>
@@ -708,17 +708,17 @@
 </div></blockquote>
 <p><strong>Bsols_channel</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 2</em></p>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 2</em></p>
 <p>Bsols for individual calibration steps.</p>
 </div></blockquote>
 <p><strong>GAsols_timeslots</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = -1</em></p>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = -1</em></p>
 <p>Time intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots a second matrix is used and applied.</p>
 </div></blockquote>
 <p><strong>GAsols_channel</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = -1</em></p>
+<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = -1</em></p>
 <p>Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.</p>
 </div></blockquote>
 <p><strong>weight_column</strong></p>
@@ -741,10 +741,10 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>Number of iterations per Jones term. If set to ‘auto’, uses hardcoded iteration numbers depending on the jones chain.</p>
 </div></blockquote>
-<p><strong>overwrite</strong></p>
+<p><strong>overwrite_cubical</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Allow cubical to overwrite existing output</p>
+<p>Allow cubical to overwrite the existing gain_tables and other CubiCal output for self calibration that were produced in a previous run of the selfcal worker with the same prefix.</p>
 </div></blockquote>
 <p><strong>dist_max_chunks</strong></p>
 <blockquote>

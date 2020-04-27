@@ -700,13 +700,13 @@ Perform Self calibration on the data.
 
   **Gsols_timeslots**
 
-    *list* *of float*, *optional*, *default = 1*
+    *list* *of int*, *optional*, *default = 1*
 
     G-Jones time solution interval. The parameter cal_timeslots_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time of the observations.
 
   **Gsols_channel**
 
-    *list* *of float*, *optional*, *default = 0*
+    *list* *of int*, *optional*, *default = 0*
 
     G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.
 
@@ -724,19 +724,19 @@ Perform Self calibration on the data.
 
   **Bsols_channel**
 
-    *list* *of float*, *optional*, *default = 2*
+    *list* *of int*, *optional*, *default = 2*
 
     Bsols for individual calibration steps.
 
   **GAsols_timeslots**
 
-    *list* *of float*, *optional*, *default = -1*
+    *list* *of int*, *optional*, *default = -1*
 
     Time intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots a second matrix is used and applied.
 
   **GAsols_channel**
 
-    *list* *of float*, *optional*, *default = -1*
+    *list* *of int*, *optional*, *default = -1*
 
     Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.
 
@@ -764,11 +764,11 @@ Perform Self calibration on the data.
 
     Number of iterations per Jones term. If set to 'auto', uses hardcoded iteration numbers depending on the jones chain.
 
-  **overwrite**
+  **overwrite_cubical**
 
     *bool*, *optional*, *default = True*
 
-    Allow cubical to overwrite existing output
+    Allow cubical to overwrite the existing gain_tables and other CubiCal output for self calibration that were produced in a previous run of the selfcal worker with the same prefix.
 
   **dist_max_chunks**
 

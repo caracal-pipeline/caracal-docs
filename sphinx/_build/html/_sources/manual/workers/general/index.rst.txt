@@ -16,6 +16,18 @@ General pipeline information, data IDs, prefixes for output
 
 
 
+.. _general_title:
+
+--------------------------------------------------
+**title**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  an optional, descriptive, project title
+
+
+
 .. _general_data_path:
 
 --------------------------------------------------
