@@ -754,12 +754,6 @@ Perform Self calibration on the data.
 
     Source finder island threshold
 
-  **detection_image**
-
-    *bool*, *optional*, *default = False*
-
-    Constrain the pybdsm source finding to only find sources included in the clean model.
-
 
 
 .. _selfcal_calibrate:

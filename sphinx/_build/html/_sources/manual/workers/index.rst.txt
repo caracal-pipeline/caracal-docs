@@ -16,13 +16,13 @@ Workers parameters
    polcal/index.rst
    mosaic/index.rst
    getdata/index.rst
-   transform/index.rst
-   inspect/index.rst
-   ddcal/index.rst
-   mask/index.rst
    prep/index.rst
-   selfcal/index.rst
+   transform/index.rst
    flag/index.rst
    obsconf/index.rst
-   line/index.rst
    crosscal/index.rst
+   ddcal/index.rst
+   line/index.rst
+   inspect/index.rst
+   mask/index.rst
+   selfcal/index.rst
