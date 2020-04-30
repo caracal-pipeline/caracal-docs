@@ -7,14 +7,14 @@
     <br>
 
  
-=====================
+==========================
 CARACal publication policy
-=====================
+==========================
  
 Please notice that users that have been using CARACal/MeerKATHI before its release should instead adhere to the `MeerKATHI publication Policy - V2 <https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU>`_.
 
 Acknowledging CARACal
-________________
+_____________________
 
 We request the usage of CARACal to be acknowledged:
 
@@ -47,7 +47,7 @@ Please submit any of the following, along with an expressive permission to make 
   
 * `An explanation of your CARACal data reduction strategy pursued in the configuration file (e.g. the data reduction section of your paper) <https://github.com/caracal-pipeline/caracal-docs/issues/8>`_
   
-* `A reference to your publication (partly) based on a CARACal data reduction<https://github.com/caracal-pipeline/caracal-docs/issues/9>`_
+* `A reference to your publication (partly) based on a CARACal data reduction <https://github.com/caracal-pipeline/caracal-docs/issues/9>`_
 
 * `A (link to a) pretty astronomical image (partly) based on your CARACal data reduction <https://github.com/caracal-pipeline/caracal-docs/issues/6>`_
     
@@ -73,4 +73,4 @@ _______________
   series = {ASP Conf. Ser.}, |br|
   Pages = {635-638}, |br|
   Title = {MeerKATHI - an end-to-end data reduction pipeline for MeerKAT and other radio telescopes}, |br|
-}
+  }

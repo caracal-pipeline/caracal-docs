@@ -356,51 +356,61 @@ Perform Self calibration on the data.
 
 
 
-.. _selfcal_cal_gain_amplitude_clip_low:
+.. _selfcal_img_sofia_settings:
 
 --------------------------------------------------
-**cal_gain_amplitude_clip_low**
+**img_sofia_settings**
 --------------------------------------------------
 
-  *float*, *optional*, *default = 0.5*
+  SoFiA source finder settings used for the imaging iterations whose entry in 'image/clean_mask_method' below is 'sofia'. The resulting clean mask is located in <output>/masking.
 
-  Lower gain amplitude clipping
+  **kernels**
 
+    *list* *of float*, *optional*, *default = 0., 3., 6., 9.*
 
+    FWHM of spatial Gaussian kernels in pixels.
 
-.. _selfcal_cal_gain_amplitude_clip_high:
+  **only_positive_pix**
 
---------------------------------------------------
-**cal_gain_amplitude_clip_high**
---------------------------------------------------
+    *bool*, *optional*, *default = True*
 
-  *float*, *optional*, *default = 2.*
+    Merges only positive pixels of sources in mask
 
-  Higher gain amplitude clipping
+  **flag**
 
+    *bool*, *optional*, *default = False*
 
+    Use flag regions (yes/no)?
 
-.. _selfcal_cal_max_prior_error:
+  **flagregion**
 
---------------------------------------------------
-**cal_max_prior_error**
---------------------------------------------------
+    *list* *of str*, *optional*, *default = ' '*
 
-  *float*, *optional*, *default = 0.1*
+    Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
 
-  Flag solution intervals where the prior variance estimate is above this value.
+  **inputmask**
 
+    *str*, *optional*, *default = ' '*
 
+    input mask over which add Sofia's
 
-.. _selfcal_cal_max_post_error:
+  **fornax_special**
 
---------------------------------------------------
-**cal_max_post_error**
---------------------------------------------------
+    *bool*, *optional*, *default = False*
 
-  *float*, *optional*, *default = 0.1*
+    Activates masking of Fornax A using Sofia
 
-  Flag solution intervals where the posterior variance estimate is above this value.
+  **fornax_thresh**
+
+    *list* *of float*, *optional*, *default = 4.0*
+
+    SoFiA source finding threshold. Default is 4.0.
+
+  **fornax_use_sofia**
+
+    *bool*, *optional*, *default = False*
+
+    use sofia for mask of Fornax A instead of Fomalont mask
 
 
 
@@ -428,6 +438,30 @@ Perform Self calibration on the data.
 
 
 
+.. _selfcal_cal_gain_amplitude_clip_low:
+
+--------------------------------------------------
+**cal_gain_amplitude_clip_low**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 0.5*
+
+  Lower gain amplitude clipping
+
+
+
+.. _selfcal_cal_gain_amplitude_clip_high:
+
+--------------------------------------------------
+**cal_gain_amplitude_clip_high**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 2.*
+
+  Higher gain amplitude clipping
+
+
+
 .. _selfcal_cal_timeslots_chunk:
 
 --------------------------------------------------
@@ -440,15 +474,135 @@ Perform Self calibration on the data.
 
 
 
-.. _selfcal_cal_channel_chunk:
+.. _selfcal_cal_model_mode:
 
 --------------------------------------------------
-**cal_channel_chunk**
+**cal_model_mode**
 --------------------------------------------------
 
-  *int*, *optional*, *default = -1*
+  *str*, *optional*, *default = vis_only*
 
-  Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries. -1 Uses largest solution interval
+  pybdsm_vis, pybdsm_only,  vis_only are the possible options
+
+
+
+.. _selfcal_cal_Bjones:
+
+--------------------------------------------------
+**cal_Bjones**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  Enable Bjones
+
+
+
+.. _selfcal_cal_cubical:
+
+--------------------------------------------------
+**cal_cubical**
+--------------------------------------------------
+
+  Parameters that only apply when using Cubical for the calibration
+
+  **max_prior_error**
+
+    *float*, *optional*, *default = 0.1*
+
+    Flag solution intervals where the prior variance estimate is above this value in.
+
+  **max_post_error**
+
+    *float*, *optional*, *default = 0.1*
+
+    Flag solution intervals where the posterior variance estimate is above this value.
+
+  **channel_chunk**
+
+    *int*, *optional*, *default = -1*
+
+    Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries. -1 Uses largest solution interval
+
+  **weight_column**
+
+    *str*, *optional*, *default = WEIGHT*
+
+    Column with weights for use in Cubical.
+
+  **shared_memory**
+
+    *str*, *optional*, *default = 100Gb*
+
+    Set the amount of shared memory for cubical. Default '100Gb'
+
+  **madmax_flagging**
+
+    *bool*, *optional*, *default = True*
+
+    Flags based on maximum of mad in Cubical
+
+  **madmax_flag_thresh**
+
+    *list* *of int*, *optional*, *default = 0, 10*
+
+    Threshold for madmax flagging in Cubical the provided list works exactly as described in Cubical readthedocs for the parameter --madmax-threshold
+
+  **sol_term_iters**
+
+    *list* *of int*, *optional*, *default = 50, 50, 50*
+
+    Number of iterations per Jones term for cubical. Always a 3 digit array with iterations for 'G,B,GA' even when B or GA are not used.
+
+  **overwrite**
+
+    *bool*, *optional*, *default = True*
+
+    Allow cubical to overwrite the existing gain_tables and other CubiCal output for self calibration that were produced in a previous run of the selfcal worker with the same prefix.
+
+  **dist_max_chunks**
+
+    *int*, *optional*, *default = 4*
+
+    Maximum number of time/freq data-chunks to load into memory simultaneously. If 0, then as many as possible will be loaded.
+
+  **ragavi_plot**
+
+    Plotting dignostics plots for selfcal calibration.
+
+    **enable**
+
+      *bool*, *optional*, *default = False*
+
+      Enables plotting dignostics
+
+    **gaintype**
+
+      *list* *of str*, *optional*, *default = G*
+
+      List of gain solution types
+
+    **field**
+
+      *list* *of int*, *optional*, *default = 0*
+
+      Fields to plot. Specify by field id, index.
+
+
+
+.. _selfcal_cal_meqtrees:
+
+--------------------------------------------------
+**cal_meqtrees**
+--------------------------------------------------
+
+  Parameters that only apply when using MeqTrees for the calibration
+
+  **two_step**
+
+    *bool*, *optional*, *default = False*
+
+    Trigger a two step calibration process in MeqTrees where the phase only calibration is applied before continuing with amplitude + phase cal. Aimfast is turned on to determine the solution sizes automatically.
 
 
 
@@ -554,58 +708,6 @@ Perform Self calibration on the data.
 
     Width of the window used to measure the local rms when creating the clean mask. The window width is in pixels for clean_mask_method = sofia, in PSF for clean_mask_method = wsclean.
 
-  **sofia_settings**
-
-    SoFiA source finder settings to produce a .FITS clean mask. The mask is located in output/masking.
-
-    **kernels**
-
-      *list* *of float*, *optional*, *default = 0., 3., 6., 9.*
-
-      FWHM of spatial Gaussian kernels in pixels.
-
-    **only_positive_pix**
-
-      *bool*, *optional*, *default = True*
-
-      Merges only positive pixels of sources in mask
-
-    **flag**
-
-      *bool*, *optional*, *default = False*
-
-      Use flag regions (yes/no)?
-
-    **flagregion**
-
-      *list* *of str*, *optional*, *default = ' '*
-
-      Pixel/channel range(s) to be flagged prior to source finding. Format is [[x1, x2, y1, y2, z1, z2], ...].
-
-    **inputmask**
-
-      *str*, *optional*, *default = ' '*
-
-      input mask over which add Sofia's
-
-    **fornax_special**
-
-      *bool*, *optional*, *default = False*
-
-      Activates masking of Fornax A using Sofia
-
-    **fornax_thresh**
-
-      *list* *of float*, *optional*, *default = 4.0*
-
-      SoFiA source finding threshold. Default is 4.0.
-
-    **fornax_use_sofia**
-
-      *bool*, *optional*, *default = False*
-
-      use sofia for mask of Fornax A instead of Fomalont mask
-
 
 
 .. _selfcal_extract_sources:
@@ -652,6 +754,12 @@ Perform Self calibration on the data.
 
     Source finder island threshold
 
+  **detection_image**
+
+    *bool*, *optional*, *default = False*
+
+    Constrain the pybdsm source finding to only find sources included in the clean model.
+
 
 
 .. _selfcal_calibrate:
@@ -686,30 +794,6 @@ Perform Self calibration on the data.
 
     Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account.
 
-  **model_mode**
-
-    *str*, *optional*, *default = vis_only*
-
-    pybdsm_vis, pybdsm_only,  vis_only are the possible options
-
-  **shared_memory**
-
-    *str*, *optional*, *default = 100Gb*
-
-    Set the amount of shared memory for cubical. Default '100Gb'
-
-  **two_step**
-
-    *bool*, *optional*, *default = False*
-
-    Trigger a two step calibration process in MeqTrees where the phase only calibration is applied before continuing with amplitude + phase cal. Aimfast is turned on to determine the solution sizes automatically.
-
-  **add_vis_model**
-
-    *bool*, *optional*, *default = True*
-
-    Add/Use clean components from latest imaging step to/as sky model for calibation
-
   **Gsols_timeslots**
 
     *list* *of int*, *optional*, *default = 1*
@@ -721,12 +805,6 @@ Perform Self calibration on the data.
     *list* *of int*, *optional*, *default = 0*
 
     G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.
-
-  **Bjones**
-
-    *bool*, *optional*, *default = False*
-
-    Enable Bjones
 
   **Bsols_timeslots**
 
@@ -751,64 +829,6 @@ Perform Self calibration on the data.
     *list* *of int*, *optional*, *default = -1*
 
     Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.
-
-  **weight_column**
-
-    *str*, *optional*, *default = WEIGHT*
-
-    Column with weights
-
-  **madmax_flagging**
-
-    *bool*, *optional*, *default = True*
-
-    Flags based on maximum of mad
-
-  **madmax_flag_thresh**
-
-    *list* *of int*, *optional*, *default = 0, 10*
-
-    Threshold for madmax flagging
-
-  **sol_term_iters**
-
-    *str*, *optional*, *default = auto*
-
-    Number of iterations per Jones term. If set to 'auto', uses hardcoded iteration numbers depending on the jones chain.
-
-  **overwrite_cubical**
-
-    *bool*, *optional*, *default = True*
-
-    Allow cubical to overwrite the existing gain_tables and other CubiCal output for self calibration that were produced in a previous run of the selfcal worker with the same prefix.
-
-  **dist_max_chunks**
-
-    *int*, *optional*, *default = 4*
-
-    Maximum number of time/freq data-chunks to load into memory simultaneously. If 0, then as many as possible will be loaded.
-
-  **ragavi_plot**
-
-    Plotting dignostics plots for delay correction calibration.
-
-    **enable**
-
-      *bool*, *optional*, *default = False*
-
-      Enables plotting dignostics
-
-    **gaintype**
-
-      *list* *of str*, *optional*, *default = G*
-
-      List of gain solution types
-
-    **field**
-
-      *list* *of int*, *optional*, *default = 0*
-
-      Fields to plot. Specify by field id, index.
 
 
 

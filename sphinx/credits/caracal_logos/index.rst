@@ -3,11 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _logos:
 =====
 Logos
 =====
-
 
 Help us to make CARACal known to potential users by showing one of the logos below. We encourage users to use the rectangular logos with the software name, and to use high resolution, but also provide alternative, square logos that might be used as an alternative, and lower-resolution logos.
 

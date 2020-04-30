@@ -36,7 +36,7 @@ Prepare the data for calibration and imaging.
 
   *str*
 
-  If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string it is added to the input .MS file(s) name given in the getdata worker to define the name of the .MS file(s) to work on. These are <input>_<label>.ms if ‘field’ (see below) is set to ‘calibrators’, or <input>-<target>_<label>.ms if ‘field’ is set to ‘target’ (one .MS file for each target in the input .MS).
+  If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string it is added to the input .MS file(s) name given in the getdata worker to define the name of the .MS file(s) to work on. These are <input>_<label>.ms if 'field' (see below) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (one .MS file for each target in the input .MS).
 
 
 
