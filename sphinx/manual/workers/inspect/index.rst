@@ -1,0 +1,420 @@
+.. caracal documentation master file, created by
+   sphinx-quickstart on Mon Feb 18 15:04:26 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+ 
+.. _inspect:
+ 
+==========================================
+inspect
+==========================================
+ 
+.. toctree::
+   :maxdepth: 1
+ 
+Diagnostic plots of the first-pass cross-calibrated data.
+
+
+
+.. _inspect_enable:
+
+--------------------------------------------------
+**enable**
+--------------------------------------------------
+
+  *bool*
+
+  Executes dignostic plotting of the first-pass cross-calibrated data.
+
+
+
+.. _inspect_label_in:
+
+--------------------------------------------------
+**label_in**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  Label of the input dataset
+
+
+
+.. _inspect_label_out:
+
+--------------------------------------------------
+**label_out**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  Label for output products (plots etc.) for this step.
+
+
+
+.. _inspect_plotter:
+
+--------------------------------------------------
+**plotter**
+--------------------------------------------------
+
+  *{"plotms", "shadems", "ragavi_vis"}*, *optional*, *default = shadems*
+
+  Application to use for making plots
+
+
+
+.. _inspect_correlation:
+
+--------------------------------------------------
+**correlation**
+--------------------------------------------------
+
+  *str*, *optional*, *default = XX, YY*
+
+  Label specifying the correlations.
+
+
+
+.. _inspect_uvrange:
+
+--------------------------------------------------
+**uvrange**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  Set the U-V range for data selection, e.g. '>50'.
+
+
+
+.. _inspect_fields:
+
+--------------------------------------------------
+**fields**
+--------------------------------------------------
+
+  *list* *of str*, *optional*, *default = bpcal, gcal*
+
+  Fields to plot. Specify by field id, index or keys like, gcal, bpcal.
+
+
+
+.. _inspect_real_imag:
+
+--------------------------------------------------
+**real_imag**
+--------------------------------------------------
+
+  Plot real vs imaginary parts of data.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executed the real v/s imaginary data plotting.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like, gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_amp_phase:
+
+--------------------------------------------------
+**amp_phase**
+--------------------------------------------------
+
+  Plot Amplitude vs Phase for  data.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes the plotting of amplitude v/s phase for data.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_amp_uvwave:
+
+--------------------------------------------------
+**amp_uvwave**
+--------------------------------------------------
+
+  Plot data amplitude v/s  uvwave.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes plotting data amplitude as a function of uvwave.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_amp_ant:
+
+--------------------------------------------------
+**amp_ant**
+--------------------------------------------------
+
+  Plot data amplitde v/s antenna.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes plotting data amplitude v/s antennas.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_phase_uvwave:
+
+--------------------------------------------------
+**phase_uvwave**
+--------------------------------------------------
+
+  Plot data phase v/s uvwave.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes plotting data phase v/s uvwave.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_amp_scan:
+
+--------------------------------------------------
+**amp_scan**
+--------------------------------------------------
+
+  Plot data amplitude v/s scan number.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes plotting data amplitude v/s scan number.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_amp_chan:
+
+--------------------------------------------------
+**amp_chan**
+--------------------------------------------------
+
+  Plot Amplitude vs Channel data.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes the plotting of amplitude v/s phase for data.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+
+
+
+.. _inspect_phase_chan:
+
+--------------------------------------------------
+**phase_chan**
+--------------------------------------------------
+
+  Plot Phase vs Chan.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Executes the plotting of amplitude v/s phase for data.
+
+  **fields**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
+
+  **column**
+
+    *str*, *optional*, *default = corrected*
+
+    Data column to plot.
+
+  **avgtime**
+
+    *str*, *optional*, *default = 10*
+
+    Time to average for plotting, in seconds.
+
+  **avgchannel**
+
+    *str*, *optional*, *default = 10*
+
+    Number of channels to average for plotting.
+

@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cross-calibration &mdash; Caracal  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Continuum imaging and self-calibration" href="../selfcal/index.html" />
+    <link rel="prev" title="Flag data" href="../flag/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../products/index.html">Data products</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Data reduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../prepare/index.html">Prepare pipeline and data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flag/index.html">Flag data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Cross-calibration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preliminary-steps">Preliminary steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delay-calibration">Delay calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bandpass-calibration">Bandpass calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flux-scale-calibration">Flux scale calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gain-calibration">Gain calibration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flux-scale-bootstrapping">Flux scale bootstrapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-the-cross-calibration-and-diagnostic-plots">Apply the cross-calibration and diagnostic plots</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">Continuum imaging and self-calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../line/index.html">Spectral line imaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../workers/index.html">Workers parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../caratekit_utility/index.html">Caratekit utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits/index.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Caracal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Manual</a> &raquo;</li>
+        
+          <li><a href="../index.html">Data reduction</a> &raquo;</li>
+        
+      <li>Cross-calibration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manual/reduction/crosscal/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cross-calibration">
+<h1>Cross-calibration<a class="headerlink" href="#cross-calibration" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p><strong>[relevant workers:</strong> <span class="xref std std-ref">cross_cal</span>, <span class="xref std std-ref">inspect_data</span><strong>]</strong></p>
+<p>Cross-calibration runs largely on CASA tasks. Using these tasks, Caracal allows users to
+solve for delays, bandpass, gains and flux scale in several different ways.</p>
+<p>Just as an example, it is possible to solve for:
+1) time-independent antenna delays and normalised bandpass based on the observation of a
+bandpass calibrator;
+2) time-dependent antenna flux scale based on the observation of a flux calibrator;
+3) time-dependent antenna gains based on the observation of a secondary calibrator;
+4) time-dependent antenna flux scale at fine time resolution obtained by scaling the gains
+from step 3 above to the gains from step 2 above.</p>
+<p>Variations on the above scheme are possible by tuning the parameters of the various
+steps. However, be aware that Caracal does not check that the selected combination of
+settings makes physical sense.</p>
+<div class="section" id="preliminary-steps">
+<h2>Preliminary steps<a class="headerlink" href="#preliminary-steps" title="Permalink to this headline">¶</a></h2>
+<p>Before starting users can take the following optional steps.</p>
+<ul class="simple">
+<li><p>Set up a label which will be appended to all
+cross-calibration products (i.e., tables and plots; <span class="xref std std-ref">cross_cal: label</span>)</p></li>
+<li><p>Reinitialise the .MS for calibration with the CASA task CLEARCAL
+(<span class="xref std std-ref">cross_cal: clear_cal</span>). Given the users’ field selection
+for this task (with the <em>field</em> parameter) Caracal sets the MODEL_DATA column
+to unity in total intensity and zero in polarization, sets the
+CORRECTED_DATA column equal to the DATA column, and optionally adds a MODEL_DATA
+column if not already present. Selected fields can be specified with the field number or name
+as it appears in the metadata, or with the field code within Caracal (typically “fcal”, “bpcal”;
+field codes are set by the <span class="xref std std-ref">observation_config</span> worker).
+Multiple fields can be selected.</p></li>
+<li><p>Select the UV range that should be used to calibrate the data
+(<span class="xref std std-ref">cross_cal: uvrange</span>). This can be useful, for example,
+to exclude short baselines from the calibration.</p></li>
+<li><p>Fill the MODEL_DATA column based on a calibrator model with the CASA task SETJY
+(<span class="xref std std-ref">cross_cal: set_model</span>). Various models are available
+and can be chosen using a number of additional parameters.
+For PKS 1934-638, users can choose a sky model which includes confusing
+sources and their spectral shape as seen through a frequency-dependent MeerKAT primary beam.
+This is recommended for MeerKAT observations. Alternatively, users can choose a point
+source model. When available, SARAO models are adopted. Alternatively, Caracal uses the
+NRAO models.</p></li>
+</ul>
+</div>
+<div class="section" id="delay-calibration">
+<h2>Delay calibration<a class="headerlink" href="#delay-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Antenna-based delay calibration is performed with the CASA task GAINCAL. It results in the creation of a
+delay calibration table, which subsequent calibration steps can apply the on the fly (e.g., bandpass,
+gain and flux calibration). In order to do this set <span class="xref std std-ref">cross_cal: otfdelay</span> to <em>true</em>.</p>
+<p>In GAINCAL, the delay calibration is performed using only baselines with the reference antenna.
+Therefore, the choice of reference antennas is very important. For example, reference antennas
+involved in short baselines should probably be avoided. Also, care should be taken that the reference
+antenna is not involved in heavily flagged baselines, as this could result in loss of a much larger
+fraction of the array due to missing delay calibration.</p>
+<p>The delay calibration options are set at <span class="xref std std-ref">cross_cal: delay_cal</span>.
+Users can set the following parameters:</p>
+<ul class="simple">
+<li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
+field code within Caracal (“fcal”, “bpcal”, “gcal”; field codes are set by the <span class="xref std std-ref">observation_config</span>
+worker). Multiple fields can be used for the delay calibration.</p></li>
+<li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for time-independent delays. Note that for fully
+time-independent delays you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
+<li><p>Whether and how to combine the data (<em>combine</em>). If this is an empty string then data are not combined
+and at least one delay solution is calculated per observation, field, scan, spw (even for
+<em>solint=”inf”</em>).</p></li>
+<li><p>Minimum S/N ratio (<em>minsnr</em>). No delay is calculated for solution intervals with a S/N ratio
+below this value.</p></li>
+</ul>
+<p>Once a delay calibration has been obtaiend users can flag the data based on the delay solutions (<em>flag</em>).
+This is done with the CASA task FLAGDATA.
+For <em>mode=”clip”</em> all visibilities with a delay outside the <em>clipminmax</em> range are flagged.
+Other delay flagging modes are also available.</p>
+<p>Finally, the solutions can be plotted (<em>plot</em>). Normally, all plotting options can be kept to their
+default values.</p>
+</div>
+<div class="section" id="bandpass-calibration">
+<h2>Bandpass calibration<a class="headerlink" href="#bandpass-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Antenna-based bandpass calibration is performed with the CASA tasks BANDPASS and, optionally, GAINCAL.
+Its options are set at <span class="xref std std-ref">cross_cal: bp_cal</span>.
+The following bandpass calibration options are similar to those for the delay calibration (see above):</p>
+<ul class="simple">
+<li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
+field code within Caracal (typically “bpcal”; field codes are set by the <span class="xref std std-ref">observation_config</span>
+worker). Multiple fields can be used for the bandpass calibration.</p></li>
+<li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent bandpass. Note that for a fully
+time-independent bandpass you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
+<li><p>Whether and how to combine the data (<em>combine</em>). If this is an empty string then data are not combined
+and at least one bandpass solution is calculated per observation, field, scan (even for
+<em>solint=”inf”</em>).</p></li>
+<li><p>Minimum S/N ratio (<em>minsnr</em>). No bandpass is calculated for solution intervals with a S/N ratio
+below this value.</p></li>
+</ul>
+<p>Bandpass calibration has the following additional options:</p>
+<ul class="simple">
+<li><p>Minimum number of baselines (<em>minnrbl</em>). Given a solution interval, no bandpass is calculated for antennas
+with less baselines than this minimum number.</p></li>
+<li><p>Whether to set the reference antenna to the value given in the <span class="xref std std-ref">observation_config</span> worker
+(<em>set_refant</em>). If <em>false</em> then CASA BANDPASS will decide which reference antenna to use.</p></li>
+<li><p>Whether to normalise the bandpass to have average amplitude and phase of 1 and 0, repsectively (<em>solnorm</em>).</p></li>
+</ul>
+<p>Caracal can calibrate the bandpass with the above options in a single run of the CASA task BANDPASS.
+However, a single run of BANDPASS may not be ideal when calculating a time-independent bandpass from
+calibrator scans spread over a long time interval.
+This is because the vector time-average of the calibrator’s raw visibilities, which is calculated
+before solving for the time-independent bandpass, may be corrupted by the variation of
+the antenna gains with time. In this case it is better to correct for such gain variations <em>before</em>
+time-averaging the calibrator’s visibilities and calculating the time-independent bandpass.
+Caracal allows users to do this through the parameter <em>remove_ph_time_var</em>.
+Setting this parameter to <em>true</em> results in the following three steps (instead of a single run of BANDPASS):</p>
+<ul class="simple">
+<li><p>A first run of BANDPASS with the solution interval set by <em>solint</em> and with <em>combine=””</em> (regardless of
+what users set <em>combine</em> to be). This results in a preliminary
+bandpass solution per observation, field, scan even for <em>solint=”inf”</em>.</p></li>
+<li><p>A run of the the CASA task GAINCAL applying the above bandpass on the fly and solving for
+time-dependent antenna gains. The use of the preliminary bandpass ensures a good quality of the
+time-dependent gain calibration.</p></li>
+<li><p>A second run of BANDPASS with the solution interval set by <em>solint</em> and combining the data as
+requested by the user with <em>combine</em>. The above gain calibration is applied on the fly, resulting in
+a more accurate time-independent bandpass.</p></li>
+</ul>
+<p>Finally, the solutions can be plotted (<em>plot</em>). Normally, all plotting options can be kept to their
+default values.</p>
+</div>
+<div class="section" id="flux-scale-calibration">
+<h2>Flux scale calibration<a class="headerlink" href="#flux-scale-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Antenna-based flux scale calibration is performed with the CASA task GAINCAL. Its options are set at
+<span class="xref std std-ref">cross_cal: gain_cal_flux</span>.</p>
+<p>The flux scale calibration options are similar to those for the bandpass calibration (see above):</p>
+<ul class="simple">
+<li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
+field code within Caracal (typically “fcal”; field codes are set by the <span class="xref std std-ref">observation_config</span>
+worker). Multiple fields can be used for the flux scale calibration.</p></li>
+<li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent calibration. Note that for a fully
+time-independent calibration you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
+<li><p>Whether and how to combine the data (<em>combine</em>). If this is an empty string then data are not combined
+and at least one flux scale solution is calculated per observation, field, scan, spw (even for
+<em>solint=”inf”</em>).</p></li>
+<li><p>Minimum S/N ratio (<em>minsnr</em>). No flux scale calibration is calculated for solution intervals with a S/N ratio
+below this value.</p></li>
+<li><p>Minimum number of baselines (<em>minnrbl</em>). Given a solution interval, no flux scale calibration is calculated for
+antennas with less baselines than this minimum number.</p></li>
+<li><p>Whether to set the reference antenna to the value given in the <span class="xref std std-ref">observation_config</span> worker
+(<em>set_refant</em>). If <em>false</em> then CASA GAINCAL will decide which reference antenna to use.</p></li>
+</ul>
+<p>Finally, the solutions can be plotted (<em>plot</em>). Normally, all plotting options can be kept to their
+default values.</p>
+</div>
+<div class="section" id="gain-calibration">
+<h2>Gain calibration<a class="headerlink" href="#gain-calibration" title="Permalink to this headline">¶</a></h2>
+<p>Antenna-based gain calibration is performed with the CASA task GAINCAL. Its options are set at
+<span class="xref std std-ref">cross_cal: gain_cal_gain</span>.</p>
+<p>The gain scale calibration options are identical to those for the flux calibration (see above):</p>
+<ul class="simple">
+<li><p>Field to use (<em>field</em>). This can be the field number or name as it appears in the metadata, or the
+field code within Caracal (typically “gcal”; field codes are set by the <span class="xref std std-ref">observation_config</span>
+worker). Multiple fields can be used for the gain calibration.</p></li>
+<li><p>Solution time interval (<em>solint</em>). Set this to ‘inf’ for a time-independent calibration. Note that for a fully
+time-independent calibration you may need to set the <em>combine</em> option below to an appropriate value.</p></li>
+<li><p>Whether and how to combine the data (<em>combine</em>). If this is an empty string then data are not combined
+and at least one gain solution is calculated per observation, field, scan, spw (even for
+<em>solint=”inf”</em>). This is probably the mode of interest in most cases.</p></li>
+<li><p>Minimum S/N ratio (<em>minsnr</em>). No gain calibration is calculated for solution intervals with a S/N ratio
+below this value.</p></li>
+<li><p>Minimum number of baselines (<em>minnrbl</em>). Given a solution interval, no gain calibration is calculated for
+antennas with less baselines than this minimum number.</p></li>
+<li><p>Whether to set the reference antenna to the value given in the <span class="xref std std-ref">observation_config</span> worker
+(<em>set_refant</em>). If <em>false</em> then CASA GAINCAL will decide which reference antenna to use.</p></li>
+</ul>
+<p>Finally, the gain solutions can be plotted (<em>plot</em>). Normally, all plotting options can be kept to their
+default values.</p>
+</div>
+<div class="section" id="flux-scale-bootstrapping">
+<h2>Flux scale bootstrapping<a class="headerlink" href="#flux-scale-bootstrapping" title="Permalink to this headline">¶</a></h2>
+<p>Typically, the calibrator used for the flux scale calibration above is observed at low cadence. This
+results in a coarse time resolution (if any) for the flux calibration. Higher resolution mapping
+of the variation of the gain amplitude with time might be provided by the gain calibration step above,
+which is based on the typically more frequent observation of a gain calibrator.
+These gain amplitudes do not give a reliable, absolute flux scale, but can be scaled to the gain
+amplitudes obtained from the flux calibrator. Within Caracal, this step is performed with the CASA
+task FLUXSCALE. Its options are set at <span class="xref std std-ref">cross_cal: transfer_fluxscale</span>.</p>
+<p>The only availabel options are the field(s) from which the flux scale was derived (<em>reference</em>) and those
+whose gains should be scaled (<em>transfer</em>). As for all other steps above, fields can be specified
+with the field number or name as it appears in the metadata, or the field code within Caracal. Typically
+this will be <em>reference=”fcal”</em> and <em>transfer=”gcal”</em>.</p>
+<p>The CASA FLUXSCALE algorithm works initially on each antenna and each polarisation product separately.
+It calculates the ratio <em>R</em> ( <em>i</em> , <em>x</em> ) between the time-averaged gain amplitude derived from the flux calibrator
+and the time-averaged gain amplitude derived from the gain calibrator for antenna <em>i</em> and polarisation product <em>x</em>.
+This results in <em>N</em> (ant) x <em>N</em> (pol) values of the ratio <em>R</em> ( <em>i</em> , <em>x</em> ). The algorithm then takes the median of all such values,
+<em>F</em> = MEDIAN[ <em>R</em> ( <em>i</em> , <em>x</em> )]. Finally, all values of the gain amplitude derived from the gain calibrator for all antennas
+and polarisation products are multiplied by <em>F</em>. This means that the bootstrapping is done globally for the array
+as a whole, and not individually for each antenna and each polarisation product.</p>
+<p>The final flux scale solutions can be plotted (<em>plot</em>). Normally, all plotting options can be kept to their
+default values.</p>
+</div>
+<div class="section" id="apply-the-cross-calibration-and-diagnostic-plots">
+<h2>Apply the cross-calibration and diagnostic plots<a class="headerlink" href="#apply-the-cross-calibration-and-diagnostic-plots" title="Permalink to this headline">¶</a></h2>
+<p>Caracal can apply the cross calibration tables to all calibrators (useful for diagnostics) and to the science
+target. In doing so it will use the following interpolation rules:</p>
+<ul class="simple">
+<li><p>Delay calibration: applied to the fields bpcal, gcal, target with nearest, linear, linear interpolation, respectively.</p></li>
+<li><p>Bandpass calibration: applied to the fields bpcal, gcal, target with nearest, linear, linear interpolation, respectively.</p></li>
+<li><p>Gain calibration before bootstrapping the flux scale: applied to the fields bpcal, gcal, target
+with linear, linear, linear interpolation, respectively.</p></li>
+<li><p>Gain calibration after bootstrapping the flux scale: applied to the fields bpcal, gcal, target
+with linear, nearest, linear interpolation, repsectively.</p></li>
+</ul>
+<p>The calibrated caibrators’ visibilities can be inspected to check whether the calibration is correct. This is
+done by the <span class="xref std std-ref">inspect_data</span> worker. A number of .PNG plots are produced, such as phase-vs-amplitude and
+real-vs-imaginary.</p>
+<p><strong>[missing from this page: flag on closure errors and flag statistics]</strong></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../selfcal/index.html" class="btn btn-neutral float-right" title="Continuum imaging and self-calibration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../flag/index.html" class="btn btn-neutral float-left" title="Flag data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Caracal team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

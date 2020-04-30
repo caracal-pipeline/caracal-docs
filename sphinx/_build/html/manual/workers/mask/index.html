@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mask &mdash; Caracal  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="prep" href="../prep/index.html" />
+    <link rel="prev" title="ddcal" href="../ddcal/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../products/index.html">Data products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reduction/index.html">Data reduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Workers parameters</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/index.html">general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mosaic/index.html">mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getdata/index.html">getdata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inspect/index.html">inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddcal/index.html">ddcal</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mask</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#centre-coord"><strong>centre_coord</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mask-size"><strong>mask_size</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-size"><strong>cell_size</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extended-source-input"><strong>extended_source_input</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#query-catalog"><strong>query_catalog</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pb-correction"><strong>pb_correction</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-mask"><strong>make_mask</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merge-with-extended"><strong>merge_with_extended</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flag/index.html">flag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../obsconf/index.html">obsconf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../line/index.html">line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../crosscal/index.html">crosscal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../caratekit_utility/index.html">Caratekit utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits/index.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Caracal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Manual</a> &raquo;</li>
+        
+          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
+        
+      <li>mask</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manual/workers/mask/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mask">
+<span id="id1"></span><h1>mask<a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Create .FITS mask from catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.</p>
+<div class="section" id="enable">
+<span id="mask-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em></p>
+<p>Execute this segment</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-in">
+<span id="mask-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
+<p>Label of the .MS file where to find information about the target.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-out">
+<span id="mask-label-out"></span><h2><strong>label_out</strong><a class="headerlink" href="#label-out" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = catalog_mask</em></p>
+<p>Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of clean_mask_method to label_out.</p>
+</div></blockquote>
+</div>
+<div class="section" id="centre-coord">
+<span id="mask-centre-coord"></span><h2><strong>centre_coord</strong><a class="headerlink" href="#centre-coord" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = HH:MM:SS , DD:MM:SS</em></p>
+<p>Coordinates of the centre of the field of view read from reference_dir by default</p>
+</div></blockquote>
+</div>
+<div class="section" id="mask-size">
+<span id="mask-mask-size"></span><h2><strong>mask_size</strong><a class="headerlink" href="#mask-size" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 1800</em></p>
+<p>Number of pixels in the mask (must be the same as img_npix in selfcal worker)</p>
+</div></blockquote>
+</div>
+<div class="section" id="cell-size">
+<span id="mask-cell-size"></span><h2><strong>cell_size</strong><a class="headerlink" href="#cell-size" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
+<p>Size of pixel in the mask (arcsec, must be the same as img_cell in selfcal worker)</p>
+</div></blockquote>
+</div>
+<div class="section" id="extended-source-input">
+<span id="mask-extended-source-input"></span><h2><strong>extended_source_input</strong><a class="headerlink" href="#extended-source-input" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = Fornaxa_vla.FITS</em></p>
+<p>Name of the input mask for particularly extended sources in the field</p>
+</div></blockquote>
+</div>
+<div class="section" id="query-catalog">
+<span id="mask-query-catalog"></span><h2><strong>query_catalog</strong><a class="headerlink" href="#query-catalog" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Query catalog to select field/sources from which extract the mask</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
+<p>Execute this worker</p>
+</div></blockquote>
+<p><strong>catalog</strong></p>
+<blockquote>
+<div><p><em>{“NVSS”, “SUMSS”}</em>, <em>optional</em>, <em>default = SUMSS</em></p>
+<p>Name of catalog to query [NVSS/SUMSS]</p>
+</div></blockquote>
+<p><strong>width_image</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = 1.2d</em></p>
+<p>Width of the region of sky we want to mask (keep larger than dirty image)</p>
+</div></blockquote>
+<p><strong>thresh_nvss</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 10e-3</em></p>
+<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="pb-correction">
+<span id="mask-pb-correction"></span><h2><strong>pb_correction</strong><a class="headerlink" href="#pb-correction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Correct input image for primary beam before exctracting mask</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
+<p>Execute this worker</p>
+</div></blockquote>
+<p><strong>frequency</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 1.420405752</em></p>
+<p>Primary beam size changes with frequency, provide central frequency of considered dataset</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="make-mask">
+<span id="mask-make-mask"></span><h2><strong>make_mask</strong><a class="headerlink" href="#make-mask" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Build mask from existing image using SoFiA and/or threshold cutoff</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
+<p>Execute this worker</p>
+</div></blockquote>
+<p><strong>mask_with</strong></p>
+<blockquote>
+<div><p><em>{“thresh”, “sofia”}</em>, <em>optional</em>, <em>default = sofia</em></p>
+<p>Tool to use for masking</p>
+</div></blockquote>
+<p><strong>input_image</strong></p>
+<blockquote>
+<div><p><em>{“pbcorr”, “path_to_mask”}</em>, <em>optional</em>, <em>default = pbcorr</em></p>
+<p>Input image where to create mask ???? what is this ???</p>
+</div></blockquote>
+<p><strong>thresh_lev</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 5</em></p>
+<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+</div></blockquote>
+<p><strong>scale_noise_window</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 101</em></p>
+<p>window size where SoFiA measures the local rms, units of pixels</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="merge-with-extended">
+<span id="mask-merge-with-extended"></span><h2><strong>merge_with_extended</strong><a class="headerlink" href="#merge-with-extended" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Merge with mask of extended source</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Execute this worker</p>
+</div></blockquote>
+<p><strong>extended_source_input</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = extended_mask.fits</em></p>
+<p>name of image of extended source to merge with current image</p>
+</div></blockquote>
+<p><strong>mask_with</strong></p>
+<blockquote>
+<div><p><em>{“thresh”, “sofia”}</em>, <em>optional</em>, <em>default = thresh</em></p>
+<p>Tool to use for masking</p>
+</div></blockquote>
+<p><strong>thresh_lev</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 8e-2</em></p>
+<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../prep/index.html" class="btn btn-neutral float-right" title="prep" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ddcal/index.html" class="btn btn-neutral float-left" title="ddcal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Caracal team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

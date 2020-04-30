@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>crosscal &mdash; Caracal  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Caratekit utility" href="../../caratekit_utility/index.html" />
+    <link rel="prev" title="line" href="../line/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../intro/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../products/index.html">Data products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reduction/index.html">Data reduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Workers parameters</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../general/index.html">general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mosaic/index.html">mosaic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getdata/index.html">getdata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inspect/index.html">inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ddcal/index.html">ddcal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mask/index.html">mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flag/index.html">flag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../obsconf/index.html">obsconf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../line/index.html">line</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">crosscal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casa-version"><strong>casa_version</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-model"><strong>set_model</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#primary-cal"><strong>primary_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secondary-cal"><strong>secondary_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-cal"><strong>apply_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flagging-summary"><strong>flagging_summary</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../caratekit_utility/index.html">Caratekit utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits/index.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Caracal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Manual</a> &raquo;</li>
+        
+          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
+        
+      <li>crosscal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manual/workers/crosscal/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="crosscal">
+<span id="id1"></span><h1>crosscal<a class="headerlink" href="#crosscal" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Carry out Cross calibration of the data (delay, bandpass and gain calibration)</p>
+<div class="section" id="enable">
+<span id="crosscal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em></p>
+<p>Execute this segment.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-in">
+<span id="crosscal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em></p>
+<p>Label of measurement set to work on.</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-cal">
+<span id="crosscal-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = 1gc1</em></p>
+<p>Label for output files.</p>
+</div></blockquote>
+</div>
+<div class="section" id="rewind-flags">
+<span id="crosscal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Rewind flags to specified version.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>enable this segement</p>
+</div></blockquote>
+<p><strong>version</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = INSERT_FLAG_VERSION_TO_BE_RESTORED</em></p>
+<p>Flag version to restore. Note that all flag versions saved after this version will be deleted.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="overwrite-flag-versions">
+<span id="crosscal-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
+</div></blockquote>
+</div>
+<div class="section" id="uvrange">
+<span id="crosscal-uvrange"></span><h2><strong>uvrange</strong><a class="headerlink" href="#uvrange" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = &gt;50</em></p>
+<p>Set the U-V range for data selection, e.g. ‘&gt;50’.</p>
+</div></blockquote>
+</div>
+<div class="section" id="casa-version">
+<span id="crosscal-casa-version"></span><h2><strong>casa_version</strong><a class="headerlink" href="#casa-version" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = 47</em></p>
+<p>Casa version to carry out cross-calibration. ‘47’ means use CASA 4.7, which is recommended, unless you enjoy your data extra flag-gy. Leave empty to use the latest CASA.</p>
+</div></blockquote>
+</div>
+<div class="section" id="set-model">
+<span id="crosscal-set-model"></span><h2><strong>set_model</strong><a class="headerlink" href="#set-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Essentially setjy task from CASA.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Execute the setjy task.</p>
+</div></blockquote>
+<p><strong>caracal_model</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Use built-in sky models in CARACal</p>
+</div></blockquote>
+<p><strong>no_verify</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Enables setting standard manually.</p>
+</div></blockquote>
+<p><strong>field</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = fcal</em></p>
+<p>Set the field to carry out setjy on. Specify either the field number, name or even as ‘fcal’ corresponding to field specification in observation config.</p>
+</div></blockquote>
+<p><strong>threads</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 8</em></p>
+<p>Set the number of threads to use when predicting local sky model using MeqTrees.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="primary-cal">
+<span id="crosscal-primary-cal"></span><h2><strong>primary_cal</strong><a class="headerlink" href="#primary-cal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calibrating on the bandpass calibrator field</p>
+<p><strong>reuse_existing_gains</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Reuse gain tables if they exist</p>
+</div></blockquote>
+<p><strong>order</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = KGB</em></p>
+<p>Order in which to solve for gains for this field. E.g, if order is set to ‘KGB’, the we solve for delays, then the phase and amplitude, and finally the bandpass. The full options are: K-delay calibration; G-amplitude and phase calibration; B-bandpass calibration; A-automatic flagging (existing gains will be applied first).</p>
+</div></blockquote>
+<p><strong>solnorm</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Normalise average solution amplitude to 1.0</p>
+</div></blockquote>
+<p><strong>combine</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘’, ‘’, scan</em></p>
+<p>Parameter to combine different data axis for solving. Options are [‘’,’obs’, ‘scan’, ‘spw’, ‘field’, ‘obs,scan’, ‘scan,ob’]</p>
+</div></blockquote>
+<p><strong>solint</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = 120s, 120s, inf</em></p>
+<p>Solution interval for delay-correction calibration.</p>
+</div></blockquote>
+<p><strong>calmode</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = a, ap, ap</em></p>
+<p>Type of solution</p>
+</div></blockquote>
+<p><strong>B_fillgaps</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 70</em></p>
+<p>Fill flagged solution channels by interpolation</p>
+</div></blockquote>
+<p><strong>plotgains</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Plot gains</p>
+</div></blockquote>
+<p><strong>flag</strong></p>
+<blockquote>
+<div><p>Flagging settings used for all “A” (= auto-flagging) steps included in “order” above. These steps include applying the existing gains and flagging the corrected data.</p>
+<p><strong>column</strong></p>
+<blockquote>
+<div><p><em>{“corrected”, “residual”}</em>, <em>optional</em>, <em>default = corrected</em></p>
+<p>Data column to flag on</p>
+</div></blockquote>
+<p><strong>usewindowstats</strong></p>
+<blockquote>
+<div><p><em>{“none”, “sum”, “std”, “both”}</em>, <em>optional</em>, <em>default = std</em></p>
+<p>Calculate additional flags using sliding window statistics</p>
+</div></blockquote>
+<p><strong>combinescans</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Accumulate data across scans depending on the value of ntime</p>
+</div></blockquote>
+<p><strong>flagdimension</strong></p>
+<blockquote>
+<div><p><em>{“freq”, “time”, “freqtime”, “timefreq”}</em>, <em>optional</em>, <em>default = freqtime</em></p>
+<p>Dimensions along which to calculate fits (freq/time/freqtime/timefreq)</p>
+</div></blockquote>
+<p><strong>timecutoff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
+<p>Flagging thresholds in units of deviation from the fit</p>
+</div></blockquote>
+<p><strong>freqcutoff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 3.0</em></p>
+<p>Flagging thresholds in units of deviation from the fit</p>
+</div></blockquote>
+<p><strong>correlation</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Correlation</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="secondary-cal">
+<span id="crosscal-secondary-cal"></span><h2><strong>secondary_cal</strong><a class="headerlink" href="#secondary-cal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Calibrating on the amplitude/phase calibrator field</p>
+<p><strong>reuse_existing_gains</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Reuse gain tables if they exist</p>
+</div></blockquote>
+<p><strong>order</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = KG</em></p>
+<p>Order in which to solve for gains for this field. E.g, if order is set to ‘KGB’, the we solve for delays, then the phase and amplitude, and finally the bandpass. The full options are: K-delay calibration; G-amplitude and phase calibration; B-bandpass calibration; A-automatic flagging (existing gains will be applied first); I-Do a self-callibration</p>
+</div></blockquote>
+<p><strong>solnorm</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Normalise average solution amplitude to 1.0</p>
+</div></blockquote>
+<p><strong>combine</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘’, scan</em></p>
+<p>Parameter to combine different data axis for solving. Options are [‘’,’obs’, ‘scan’, ‘spw’, ‘field’, ‘obs,scan’, ‘scan,ob’]</p>
+</div></blockquote>
+<p><strong>solint</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = 120s, 120s</em></p>
+<p>Solution interval for delay-correction calibration.</p>
+</div></blockquote>
+<p><strong>calmode</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = a, ap, ap</em></p>
+<p>Type of solution</p>
+</div></blockquote>
+<p><strong>apply</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = B</em></p>
+<p>Gains to apply from calibration of bandpass field</p>
+</div></blockquote>
+<p><strong>plotgains</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Plot gains</p>
+</div></blockquote>
+<p><strong>flag</strong></p>
+<blockquote>
+<div><p>Flagging settings used for all “A” (= auto-flagging) steps included in “order” above. These steps include applying the existing gains and flagging the corrected data.</p>
+<p><strong>column</strong></p>
+<blockquote>
+<div><p><em>{“corrected”, “residual”}</em>, <em>optional</em>, <em>default = corrected</em></p>
+<p>Data column to flag on</p>
+</div></blockquote>
+<p><strong>usewindowstats</strong></p>
+<blockquote>
+<div><p><em>{“none”, “sum”, “std”, “both”}</em>, <em>optional</em>, <em>default = std</em></p>
+<p>Calculate additional flags using sliding window statistics</p>
+</div></blockquote>
+<p><strong>combinescans</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Accumulate data across scans depending on the value of ntime</p>
+</div></blockquote>
+<p><strong>flagdimension</strong></p>
+<blockquote>
+<div><p><em>{“freq”, “time”, “freqtime”, “timefreq”}</em>, <em>optional</em>, <em>default = freqtime</em></p>
+<p>Dimensions along which to calculate fits (freq/time/freqtime/timefreq)</p>
+</div></blockquote>
+<p><strong>timecutoff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
+<p>Flagging thresholds in units of deviation from the fit</p>
+</div></blockquote>
+<p><strong>freqcutoff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 3.0</em></p>
+<p>Flagging thresholds in units of deviation from the fit</p>
+</div></blockquote>
+<p><strong>correlation</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Correlation</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="apply-cal">
+<span id="crosscal-apply-cal"></span><h2><strong>apply_cal</strong><a class="headerlink" href="#apply-cal" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Apply calibration</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Execute this section</p>
+</div></blockquote>
+<p><strong>applyto</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = bpcal, gcal, target</em></p>
+<p>Fields to apply calibration to</p>
+</div></blockquote>
+<p><strong>calmode</strong></p>
+<blockquote>
+<div><p><em>{“=”, “calflag”, “calflagstrict”, “trial”, “flagonly”, “flagonlystrict”}</em>, <em>optional</em>, <em>default = calflag</em></p>
+<p>Calibration mode, the default being “calflag” - calibrates and applies flags from solutions. See CASA documentation for info on other modes.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="flagging-summary">
+<span id="crosscal-flagging-summary"></span><h2><strong>flagging_summary</strong><a class="headerlink" href="#flagging-summary" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Prints out the buther’s bill, i.e. data flagging summary at the end of cross calibration process.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Execute printing flagging summary.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../caratekit_utility/index.html" class="btn btn-neutral float-right" title="Caratekit utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../line/index.html" class="btn btn-neutral float-left" title="line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Caracal team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

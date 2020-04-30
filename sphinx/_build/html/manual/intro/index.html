@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; Caracal  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration file" href="../configfile/index.html" />
+    <link rel="prev" title="Manual" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../caracalREADME.html">Installation &amp; Run</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is Caracal?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-and-brief-description-of-caracal-workers">List and Brief description of Caracal workers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general"><span class="xref std std-ref">general</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-data"><span class="xref std std-ref">get_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#observation-config"><span class="xref std std-ref">observation_config</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-data"><span class="xref std std-ref">prepare_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flagging"><span class="xref std std-ref">flagging</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-cal"><span class="xref std std-ref">cross_cal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#polcal"><span class="xref std std-ref">polcal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspect-data"><span class="xref std std-ref">inspect_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transform-data"><span class="xref std std-ref">transform_data</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#masking"><span class="xref std std-ref">masking</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#self-cal"><span class="xref std std-ref">self_cal</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-line"><span class="xref std std-ref">image_line</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mosaic"><span class="xref std std-ref">mosaic</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configfile/index.html">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../products/index.html">Data products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reduction/index.html">Data reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workers/index.html">Workers parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caratekit_utility/index.html">Caratekit utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../credits/index.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Caracal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Manual</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/manual/intro/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="what-is-caracal">
+<h2>What is Caracal?<a class="headerlink" href="#what-is-caracal" title="Permalink to this headline">¶</a></h2>
+<p>Caracal is a pipeline to reduce radio interferometry continuum and spectral line data in
+full polarisation. It works on data from any radio interferometer as long as they are in
+“measurement set” format.</p>
+<p>In the simplest terms, Caracal is a collection of Python/Stimela scripts.
+<a class="reference external" href="https://github.com/SpheMakh/Stimela">Stimela</a> is a platform-independent radio
+interferometry scripting framework based on Python and Docker/Singularity.
+Stimela allows users to
+execute tasks from many different data reduction packages in Python without having to
+install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc.).
+Using Stimela, the different software packages are available through a unified scheme.
+Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
+<p>Within Caracal — and throughout this documentation — the individual Stimela scripts are called
+“workers”. Each Caracal worker corresponds to a specific section of the data reduction
+process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
+executes several tasks from the interferometry packages included in Stimela (e.g., the
+cross-calibration worker can calibrate delays, bandpass, gains and flux scale).</p>
+<p>In practice, users tell Caracal what to do — and how to do it — via a YAML configuration file.
+The configuration file has one section for each run of a worker (some workers, e.g., the flagging
+one, might need to be run multiple times). By editing the configuration
+file users control the workers’ options, deciding which tasks to run and with what settings.
+A detailed explanation of the configuration file syntax is given in the <a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a>
+section of this manual.</p>
+<p>Normally, users will not have to touch anything but the configuration file. They can check
+what has happened through a variety of data products, including images, diagnostic plots and log files.
+A list of all Caracal data products is available at the <a class="reference internal" href="../products/index.html#products"><span class="std std-ref">Data products</span></a> section of this manual.</p>
+<p>In the rest of this Introduction we give the complete list and a brief description of each worker.
+A more comprehensive
+description is available in the <a class="reference internal" href="../reduction/index.html#reduction"><span class="std std-ref">Data reduction</span></a> section of this manual, which follows
+the flow of a typical data reduction process. The full list of parameters available for
+the individual workers through the configuration file can be found at the <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>
+section of this manual or following the links below.</p>
+</div>
+<div class="section" id="list-and-brief-description-of-caracal-workers">
+<span id="workerlist"></span><h2>List and Brief description of Caracal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Permalink to this headline">¶</a></h2>
+<p>The following workers are available in Caracal. Typically, they are executed in the
+same order in which they are given below. Only the first three workers (general, get_data
+and  observation_config) should always be executed. All other workers are optional.</p>
+<div class="section" id="general">
+<h3><a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<p>This worker sets the name of various input/output directories
+and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).</p>
+</div>
+<div class="section" id="get-data">
+<h3><span class="xref std std-ref">get_data</span><a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h3>
+<p>This worker sets the name of the files to be processed and whether any conversion to
+.MS format is necessary. It can also virtually concatenate several .MS files together.</p>
+</div>
+<div class="section" id="observation-config">
+<h3><span class="xref std std-ref">observation_config</span><a class="headerlink" href="#observation-config" title="Permalink to this headline">¶</a></h3>
+<p>This worker collects basic information on the content of the .MS files to be
+processed (e.g., target and calibrators’ name, channelisation, etc.). The worker can also
+extract this information automatically from the .MS metadata. Finally, it can create a
+primary beam image cube on a user-defined pixel- and frequency grid.</p>
+</div>
+<div class="section" id="prepare-data">
+<h3><span class="xref std std-ref">prepare_data</span><a class="headerlink" href="#prepare-data" title="Permalink to this headline">¶</a></h3>
+<p>This worker prepares the data for calibration and imaging. For example, it can
+recalculate UVW coordinates, add a BITFLAG column to the input .MS files, or add spectral
+weights based on Tsys measurements.</p>
+</div>
+<div class="section" id="flagging">
+<h3><span class="xref std std-ref">flagging</span><a class="headerlink" href="#flagging" title="Permalink to this headline">¶</a></h3>
+<p>This worker flags the data and returns statistics on the flags. As all other
+workers, it can be run multiple times within a single Caracal run as explained at
+<a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a> (though this feature is not necessarily useful for many other workers).
+It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
+algorithms that run on autocorrelations (to catch antennas with clear problems) or
+crosscorrelations.</p>
+</div>
+<div class="section" id="cross-cal">
+<h3><span class="xref std std-ref">cross_cal</span><a class="headerlink" href="#cross-cal" title="Permalink to this headline">¶</a></h3>
+<p>This worker cross-calibrates the data. Users can calibrate delays, bandpass,
+gains and flux scale. The calibration can be applied to the calibrators’ visibilities (for
+later inspection) and to the target. Numerous parameters are available for users to decide
+how to calibrate. Flagging based on closure errors is available in this worker.</p>
+</div>
+<div class="section" id="polcal">
+<h3><a class="reference internal" href="../workers/polcal/index.html#polcal"><span class="std std-ref">polcal</span></a><a class="headerlink" href="#polcal" title="Permalink to this headline">¶</a></h3>
+<p>TBD</p>
+</div>
+<div class="section" id="inspect-data">
+<h3><span class="xref std std-ref">inspect_data</span><a class="headerlink" href="#inspect-data" title="Permalink to this headline">¶</a></h3>
+<p>This worker produces diagnostic plots based on the calibrated calibrators’ visibilities.</p>
+</div>
+<div class="section" id="transform-data">
+<h3><span class="xref std std-ref">transform_data</span><a class="headerlink" href="#transform-data" title="Permalink to this headline">¶</a></h3>
+<p>This worker creates new .MS files which contain the targets’ calibrated
+visibilities only. Time and frequency averaging is available, as well as phase rotation to
+a new phase centre. Crosscalibration can be applied on the fly while splitting.</p>
+</div>
+<div class="section" id="masking">
+<h3><span class="xref std std-ref">masking</span><a class="headerlink" href="#masking" title="Permalink to this headline">¶</a></h3>
+<p>This worker creates an a-priori clean mask based on NVSS or SUMSS catalogues,
+to be used during the continuum imaging/self-calibration loop. It can also merge the
+resulting mask with a mask based on an existing image.</p>
+</div>
+<div class="section" id="self-cal">
+<h3><span class="xref std std-ref">self_cal</span><a class="headerlink" href="#self-cal" title="Permalink to this headline">¶</a></h3>
+<p>This worker performs continuum imaging and standard (i.e., direction-independent)
+self-calibration. Automated convergence of the calibration procedure is optionally
+available. This worker can also interpolate and transfer sky model and calibration tables
+to another .MS (e.g., from a coarse- to a fine-channel .MS file).</p>
+</div>
+<div class="section" id="image-line">
+<h3><span class="xref std std-ref">image_line</span><a class="headerlink" href="#image-line" title="Permalink to this headline">¶</a></h3>
+<p>This worker creates spectral-line cubes and images. It can subtract the continuum via both
+model and UVLIN-like subtraction, Doppler correct, flag solar RFI, perform
+automated iterative cleaning with 3D clean masks, and, finally, run a spectral-line source
+finder.</p>
+</div>
+<div class="section" id="mosaic">
+<h3><a class="reference internal" href="../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a><a class="headerlink" href="#mosaic" title="Permalink to this headline">¶</a></h3>
+<p>This worker mosaics continuum images or line cubes using a Gaussian primary beam with FWHM
+= 1.02 lambda / antenna_diameter out to a cutoff level.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../configfile/index.html" class="btn btn-neutral float-right" title="Configuration file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Caracal team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
