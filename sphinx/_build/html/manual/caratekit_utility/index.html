@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Acknowledgements" href="../../credits/index.html" />
-    <link rel="prev" title="mosaic" href="../workers/mosaic/index.html" /> 
+    <link rel="prev" title="crosscal" href="../workers/crosscal/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,6 +96,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#updating-caratekit-sh">Updating <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-and-upgrading-caracal-using-caratekit-sh-for-further-use-with-caratekit-sh">Installing and upgrading CARACal using <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> for further use with <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-reduction-using-caratekit-sh">Data reduction using caratekit.sh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-the-data-to-be-reduced">Specifying the data to be reduced</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-and-single-caracal-run">Start and single CARACal run</a></li>
 </ul>
 </li>
@@ -181,8 +182,8 @@ once it is installed. Here, we restrict the description to two standard use-case
 <p>Choose:</p>
 <blockquote>
 <div><ul class="simple">
-<li>A workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></li>
-<li>A target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> in. By default, this is <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Some of those locations require a sudo password. If you don’t have one, choose a directory to which you have write access.</li>
+<li><p>A workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></p></li>
+<li><p>A target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> in. By default, this is <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Some of those locations require a sudo password. If you don’t have one, choose a directory to which you have write access.</p></li>
 </ul>
 </div></blockquote>
 <p>Then type:</p>
@@ -218,8 +219,8 @@ $ caracal/caratekit.sh -i
 <p>The syntax is the same for upgrading or installing CARACal. The user chooses:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The location <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> of a parent directory to a <code class="docutils literal notranslate"><span class="pre">caratekit</span></code> test directory.</li>
-<li>A name <code class="docutils literal notranslate"><span class="pre">${caracal_testdir}</span></code> of the caracal test directory Installation/upgrade with <a class="reference external" href="https://www.docker.com/">Docker</a> as containerisation technology:</li>
+<li><p>The location <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> of a parent directory to a <code class="docutils literal notranslate"><span class="pre">caratekit</span></code> test directory.</p></li>
+<li><p>A name <code class="docutils literal notranslate"><span class="pre">${caracal_testdir}</span></code> of the caracal test directory Installation/upgrade with <a class="reference external" href="https://www.docker.com/">Docker</a> as containerisation technology:</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caratekit.sh -ws ${workspace} -cr -di -ct ${caracal_testdir} -rp install -f
@@ -248,15 +249,18 @@ $ caracal/caratekit.sh -i
 <h2>Data reduction using caratekit.sh<a class="headerlink" href="#data-reduction-using-caratekit-sh" title="Permalink to this headline">¶</a></h2>
 <p>Multiple variants are possible, here we present three.</p>
 <p>The user uses the same - Workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> as has been used to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> - The same target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> that <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> has been installed in.</p>
-<dl class="docutils">
-<dt>The user chooses:</dt>
-<dd><ul class="first last simple">
-<li>The name <code class="docutils literal notranslate"><span class="pre">${project}</span></code> of the data reduction project</li>
-<li>The location <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> of a CARACal configuration file. Templates can be found in the directory <code class="docutils literal notranslate"><span class="pre">${workspace}/${caracal_testdir}/caracal/caracal/sample_configurations</span></code>. A choice to start with is the file <code class="docutils literal notranslate"><span class="pre">minimalConfig.yml</span></code>.</li>
-<li>The name <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> of a directory containing the measurement sets (which have to have the suffix <code class="docutils literal notranslate"><span class="pre">.ms</span></code>) that are supposed to be processed in the data reduction.</li>
+<dl class="simple">
+<dt>The user chooses:</dt><dd><ul class="simple">
+<li><p>The name <code class="docutils literal notranslate"><span class="pre">${project}</span></code> of the data reduction project</p></li>
+<li><p>The location <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> of a CARACal configuration file. Templates can be found in the directory <code class="docutils literal notranslate"><span class="pre">${workspace}/${caracal_testdir}/caracal/caracal/sample_configurations</span></code>. A choice to start with is the file <code class="docutils literal notranslate"><span class="pre">minimalConfig.yml</span></code>.</p></li>
+<li><p>The name <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> of a directory containing the measurement sets (which have to have the suffix <code class="docutils literal notranslate"><span class="pre">.ms</span></code>) that are supposed to be processed in the data reduction.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="section" id="specifying-the-data-to-be-reduced">
+<h3>Specifying the data to be reduced<a class="headerlink" href="#specifying-the-data-to-be-reduced" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> assumes by default, that any measurement sets in the <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> file are meant to be processed by the pipeline. A copy of the <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> configuration file will be modified accordingly before the data reduction process is started. This can be changed by adding the switch <code class="docutils literal notranslate"><span class="pre">--copy-config-data</span></code> or  <code class="docutils literal notranslate"><span class="pre">-cc</span></code> to the <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> calls below. In that case, only measurement sets with the data ids specified in the configuration file will be processed. Alternatively, the user can specify explicityly the ids (the names of the measurement sets removing the suffix <code class="docutils literal notranslate"><span class="pre">.ms</span></code>) using the switch <code class="docutils literal notranslate"><span class="pre">--copy-data-id</span> <span class="pre">ARG</span></code> <code class="docutils literal notranslate"><span class="pre">-ci</span> <span class="pre">ARG</span></code>, where <code class="docutils literal notranslate"><span class="pre">ARG</span></code> is a comma- separated list of the ids to use.</p>
+</div>
 <div class="section" id="start-and-single-caracal-run">
 <h3>Start and single CARACal run<a class="headerlink" href="#start-and-single-caracal-run" title="Permalink to this headline">¶</a></h3>
 <p>If the user assumes to run CARACal only once but also at the beginning of any other data reduction process the user edits the file <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> following the CARACal description. Notice that using <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> the default is that the contents of the parameter <code class="docutils literal notranslate"><span class="pre">dataid</span></code> will be replaced to reflect the measurement sets found in the <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> directory. This can be overridden by using the <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> <code class="docutils literal notranslate"><span class="pre">-kc</span></code> switch. A (partial) data reduction is then conducted following the command <a class="reference external" href="https://www.docker.com/">Docker</a>:</p>
@@ -414,7 +418,7 @@ This method is described for the user who does not want to use <code class="docu
         <a href="../../credits/index.html" class="btn btn-neutral float-right" title="Acknowledgements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../workers/mosaic/index.html" class="btn btn-neutral float-left" title="mosaic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../workers/crosscal/index.html" class="btn btn-neutral float-left" title="crosscal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

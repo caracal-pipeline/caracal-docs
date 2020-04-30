@@ -13,16 +13,16 @@ Workers parameters
    :maxdepth: 1
  
    general/index.rst
-   get_data/index.rst
-   observation_config/index.rst
-   prepare_data/index.rst
-   flagging/index.rst
-   cross_cal/index.rst
    polcal/index.rst
-   inspect_data/index.rst
-   transform_data/index.rst
-   masking/index.rst
-   self_cal/index.rst
-   direction_dependent_calibration/index.rst
-   image_line/index.rst
    mosaic/index.rst
+   getdata/index.rst
+   transform/index.rst
+   inspect/index.rst
+   ddcal/index.rst
+   mask/index.rst
+   prep/index.rst
+   selfcal/index.rst
+   flag/index.rst
+   obsconf/index.rst
+   line/index.rst
+   crosscal/index.rst
