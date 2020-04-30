@@ -10,7 +10,7 @@ Cross-calibration
 .. toctree::
    :maxdepth: 1
  
-**[relevant workers:** :ref:`cross_cal`, :ref:`inspect_data`\ **]**
+**[relevant workers:** :ref:`crosscal`, :ref:`inspect`\ **]**
 
 Cross-calibration runs largely on CASA tasks. Using these tasks, Caracal allows users to
 solve for delays, bandpass, gains and flux scale in several different ways.
@@ -34,9 +34,9 @@ Preliminary steps
 Before starting users can take the following optional steps.
 
 * Set up a label which will be appended to all
-  cross-calibration products (i.e., tables and plots; :ref:`cross_cal: label <cross_cal_label>`)
+  cross-calibration products (i.e., tables and plots; :ref:`crosscal: label <crosscal_label>`)
 * Reinitialise the .MS for calibration with the CASA task CLEARCAL
-  (:ref:`cross_cal: clear_cal <cross_cal_clear_cal>`). Given the users' field selection
+  (:ref:`crosscal: clear_cal <crosscal_clear_cal>`). Given the users' field selection
   for this task (with the *field* parameter) Caracal sets the MODEL_DATA column
   to unity in total intensity and zero in polarization, sets the
   CORRECTED_DATA column equal to the DATA column, and optionally adds a MODEL_DATA
@@ -45,10 +45,10 @@ Before starting users can take the following optional steps.
   field codes are set by the :ref:`observation_config` worker).
   Multiple fields can be selected.
 * Select the UV range that should be used to calibrate the data
-  (:ref:`cross_cal: uvrange <cross_cal_uvrange>`). This can be useful, for example,
+  (:ref:`crosscal: uvrange <crosscal_uvrange>`). This can be useful, for example,
   to exclude short baselines from the calibration.
 * Fill the MODEL_DATA column based on a calibrator model with the CASA task SETJY
-  (:ref:`cross_cal: set_model <cross_cal_set_model>`). Various models are available
+  (:ref:`crosscal: set_model <crosscal_set_model>`). Various models are available
   and can be chosen using a number of additional parameters.
   For PKS 1934-638, users can choose a sky model which includes confusing
   sources and their spectral shape as seen through a frequency-dependent MeerKAT primary beam.
@@ -62,7 +62,7 @@ Delay calibration
 
 Antenna-based delay calibration is performed with the CASA task GAINCAL. It results in the creation of a
 delay calibration table, which subsequent calibration steps can apply the on the fly (e.g., bandpass,
-gain and flux calibration). In order to do this set :ref:`cross_cal: otfdelay <cross_cal_otfdelay>` to *true*.
+gain and flux calibration). In order to do this set :ref:`crosscal: otfdelay <crosscal_otfdelay>` to *true*.
 
 In GAINCAL, the delay calibration is performed using only baselines with the reference antenna.
 Therefore, the choice of reference antennas is very important. For example, reference antennas
@@ -70,7 +70,7 @@ involved in short baselines should probably be avoided. Also, care should be tak
 antenna is not involved in heavily flagged baselines, as this could result in loss of a much larger
 fraction of the array due to missing delay calibration.
 
-The delay calibration options are set at :ref:`cross_cal: delay_cal <cross_cal_delay_cal>`.
+The delay calibration options are set at :ref:`crosscal: delay_cal <crosscal_delay_cal>`.
 Users can set the following parameters:
 
 * Field to use (*field*). This can be the field number or name as it appears in the metadata, or the
@@ -97,7 +97,7 @@ Bandpass calibration
 --------------------
 
 Antenna-based bandpass calibration is performed with the CASA tasks BANDPASS and, optionally, GAINCAL.
-Its options are set at :ref:`cross_cal: bp_cal <cross_cal_bp_cal>`.
+Its options are set at :ref:`crosscal: bp_cal <crosscal_bp_cal>`.
 The following bandpass calibration options are similar to those for the delay calibration (see above):
 
 * Field to use (*field*). This can be the field number or name as it appears in the metadata, or the
@@ -147,7 +147,7 @@ Flux scale calibration
 ----------------------
 
 Antenna-based flux scale calibration is performed with the CASA task GAINCAL. Its options are set at
-:ref:`cross_cal: gain_cal_flux <cross_cal_gain_cal_flux>`.
+:ref:`crosscal: gain_cal_flux <crosscal_gain_cal_flux>`.
 
 The flux scale calibration options are similar to those for the bandpass calibration (see above):
 
@@ -174,7 +174,7 @@ Gain calibration
 ----------------
 
 Antenna-based gain calibration is performed with the CASA task GAINCAL. Its options are set at
-:ref:`cross_cal: gain_cal_gain <cross_cal_gain_cal_gain>`.
+:ref:`crosscal: gain_cal_gain <crosscal_gain_cal_gain>`.
 
 The gain scale calibration options are identical to those for the flux calibration (see above):
 
@@ -206,7 +206,7 @@ of the variation of the gain amplitude with time might be provided by the gain c
 which is based on the typically more frequent observation of a gain calibrator.
 These gain amplitudes do not give a reliable, absolute flux scale, but can be scaled to the gain
 amplitudes obtained from the flux calibrator. Within Caracal, this step is performed with the CASA
-task FLUXSCALE. Its options are set at :ref:`cross_cal: transfer_fluxscale <cross_cal_transfer_fluxscale>`.
+task FLUXSCALE. Its options are set at :ref:`crosscal: transfer_fluxscale <crosscal_transfer_fluxscale>`.
 
 The only availabel options are the field(s) from which the flux scale was derived (*reference*) and those
 whose gains should be scaled (*transfer*). As for all other steps above, fields can be specified
@@ -239,7 +239,7 @@ target. In doing so it will use the following interpolation rules:
   with linear, nearest, linear interpolation, repsectively.
 
 The calibrated caibrators' visibilities can be inspected to check whether the calibration is correct. This is
-done by the :ref:`inspect_data` worker. A number of .PNG plots are produced, such as phase-vs-amplitude and
+done by the :ref:`inspect` worker. A number of .PNG plots are produced, such as phase-vs-amplitude and
 real-vs-imaginary.
 
 **[missing from this page: flag on closure errors and flag statistics]**

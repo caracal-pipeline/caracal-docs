@@ -18,7 +18,7 @@ are run following the order in which they appear in the configuration file.
 For reference see :ref:`workerlist`.
 
 The following workers must always run be and, therefore, must always appear in the
-configuration file: :ref:`general`, :ref:`get_data` and :ref:`observation_config`. All
+configuration file: :ref:`general`, :ref:`getdata` and :ref:`obsconf`. All
 other workers are optional.
 
 Within each worker's block of the configuration file, the worker's parameters are arranged
@@ -40,17 +40,17 @@ where the parameters' nesting is also illustrated.
 Workers can be executed more than once in a single run of Caracal. This could be useful,
 for example, if a user wants to flag the data both before and after cross-calibration.
 To indicate a repeated run of a worker the worker name must be followed by "__N" in the
-configuration file (N > 1; note the double underscore). In the example above, the flagging
+configuration file (N > 1; note the double underscore). In the example above, the flag
 worker must thus appear twice in the configuration file::
 
-   flagging:
+   flag:
      enable: true
      parameter_1: value_1A
      ...
 
    [other workers]
    
-   flagging__2:
+   flag__2:
      enable: true
      parameter_1: value_1B
      ...
@@ -61,7 +61,7 @@ compulsory. The pages at :ref:`workers` indicate whether a parameter is optional
 type, allowed values (if necessary) and default value.
 
 Caracal comes with a set of sample configuration files. These are available at
-caracal/sample_configurations/ and include:
+caracal/sample_configurations/ and include, for example:
 
 * minimalConfig.yml, which includes as few parameters as possible and performs a basic
   data reduction including both continuum and spectral line imaging;

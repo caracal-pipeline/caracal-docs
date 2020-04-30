@@ -56,8 +56,8 @@ List and Brief description of Caracal workers
 ---------------------------------------------
 
 The following workers are available in Caracal. Typically, they are executed in the
-same order in which they are given below. Only the first three workers (general, get_data
-and  observation_config) should always be executed. All other workers are optional.
+same order in which they are given below. Only the first three workers (general, getdata
+and  obsconf) should always be executed. All other workers are optional.
 
 :ref:`general`
 ^^^^^^^^^^^^^^
@@ -65,14 +65,14 @@ and  observation_config) should always be executed. All other workers are option
 This worker sets the name of various input/output directories
 and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).
 
-:ref:`get_data`
-^^^^^^^^^^^^^^^
+:ref:`getdata`
+^^^^^^^^^^^^^^
 
 This worker sets the name of the files to be processed and whether any conversion to
 .MS format is necessary. It can also virtually concatenate several .MS files together.
 
-:ref:`observation_config`
-^^^^^^^^^^^^^^^^^^^^^^^^^
+:ref:`obsconf`
+^^^^^^^^^^^^^^
 
 This worker collects basic information on the content of the .MS files to be
 processed (e.g., target and calibrators' name, channelisation, etc.). The worker can also
@@ -80,15 +80,15 @@ extract this information automatically from the .MS metadata. Finally, it can cr
 primary beam image cube on a user-defined pixel- and frequency grid.
 
 
-:ref:`prepare_data`
-^^^^^^^^^^^^^^^^^^^
+:ref:`prep`
+^^^^^^^^^^^
 
 This worker prepares the data for calibration and imaging. For example, it can
 recalculate UVW coordinates, add a BITFLAG column to the input .MS files, or add spectral
 weights based on Tsys measurements.
 
-:ref:`flagging`
-^^^^^^^^^^^^^^^
+:ref:`flag`
+^^^^^^^^^^^
 
 This worker flags the data and returns statistics on the flags. As all other
 workers, it can be run multiple times within a single Caracal run as explained at
@@ -97,8 +97,8 @@ It can flag data based on, e.g., channel-, antenna- and time selection, or using
 algorithms that run on autocorrelations (to catch antennas with clear problems) or
 crosscorrelations.
 
-:ref:`cross_cal`
-^^^^^^^^^^^^^^^^
+:ref:`crosscal`
+^^^^^^^^^^^^^^^
 
 This worker cross-calibrates the data. Users can calibrate delays, bandpass,
 gains and flux scale. The calibration can be applied to the calibrators' visibilities (for
@@ -106,39 +106,39 @@ later inspection) and to the target. Numerous parameters are available for users
 how to calibrate. Flagging based on closure errors is available in this worker.
 
 :ref:`polcal`
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 TBD
 
-:ref:`inspect_data`
-^^^^^^^^^^^^^^^^^^^
+:ref:`inspect`
+^^^^^^^^^^^^^^
 
 This worker produces diagnostic plots based on the calibrated calibrators' visibilities.
 
-:ref:`transform_data`
-^^^^^^^^^^^^^^^^^^^^^
+:ref:`transform`
+^^^^^^^^^^^^^^^^
 
 This worker creates new .MS files which contain the targets' calibrated
 visibilities only. Time and frequency averaging is available, as well as phase rotation to
 a new phase centre. Crosscalibration can be applied on the fly while splitting.
 
-:ref:`masking`
-^^^^^^^^^^^^^^
+:ref:`mask`
+^^^^^^^^^^^
 
 This worker creates an a-priori clean mask based on NVSS or SUMSS catalogues, 
 to be used during the continuum imaging/self-calibration loop. It can also merge the
 resulting mask with a mask based on an existing image.
 
-:ref:`self_cal`
-^^^^^^^^^^^^^^^
+:ref:`selfcal`
+^^^^^^^^^^^^^^
 
 This worker performs continuum imaging and standard (i.e., direction-independent)
 self-calibration. Automated convergence of the calibration procedure is optionally
 available. This worker can also interpolate and transfer sky model and calibration tables
 to another .MS (e.g., from a coarse- to a fine-channel .MS file).
 
-:ref:`image_line`
-^^^^^^^^^^^^^^^^^
+:ref:`line`
+^^^^^^^^^^^
 
 This worker creates spectral-line cubes and images. It can subtract the continuum via both
 model and UVLIN-like subtraction, Doppler correct, flag solar RFI, perform
@@ -146,7 +146,7 @@ automated iterative cleaning with 3D clean masks, and, finally, run a spectral-l
 finder.
 
 :ref:`mosaic`
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 This worker mosaics continuum images or line cubes using a Gaussian primary beam with FWHM
 = 1.02 lambda / antenna_diameter out to a cutoff level.
