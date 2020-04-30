@@ -13,16 +13,16 @@ Workers parameters
    :maxdepth: 1
  
    general/index.rst
-   polcal/index.rst
-   mosaic/index.rst
    getdata/index.rst
-   prep/index.rst
-   transform/index.rst
-   flag/index.rst
    obsconf/index.rst
+   transform/index.rst
+   prep/index.rst
+   flag/index.rst
    crosscal/index.rst
-   ddcal/index.rst
-   line/index.rst
+   polcal/index.rst
    inspect/index.rst
    mask/index.rst
    selfcal/index.rst
+   ddcal/index.rst
+   line/index.rst
+   mosaic/index.rst
