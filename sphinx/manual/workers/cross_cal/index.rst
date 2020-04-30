@@ -158,12 +158,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   Calibrating on the bandpass calibrator field
 
-  **enable**
-
-    *bool*, *optional*, *default = True*
-
-    Execute this section
-
   **reuse_existing_gains**
 
     *bool*, *optional*, *default = False*
@@ -267,12 +261,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 --------------------------------------------------
 
   Calibrating on the amplitude/phase calibrator field
-
-  **enable**
-
-    *bool*, *optional*, *default = True*
-
-    Execute this section
 
   **reuse_existing_gains**
 

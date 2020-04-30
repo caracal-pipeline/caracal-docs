@@ -54,7 +54,7 @@ Setup some basic observation information
 
     **enable**
 
-      *bool*, *optional*, *default = False*
+      *bool*, *optional*, *default = True*
 
       Enable this segment
 
@@ -134,5 +134,5 @@ Setup some basic observation information
 
   *str*
 
-  Reference antenna.
+  Reference antenna, which can be identified by an antenna name or number.
 

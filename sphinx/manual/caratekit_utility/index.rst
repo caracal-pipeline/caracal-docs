@@ -106,7 +106,12 @@ The user uses the same - Workspace directory ``${workspace}`` as has been used t
 The user chooses:
   - The name ``${project}`` of the data reduction project
   - The location ``${configfile}.yml`` of a CARACal configuration file. Templates can be found in the directory ``${workspace}/${caracal_testdir}/caracal/caracal/sample_configurations``. A choice to start with is the file ``minimalConfig.yml``.
-  - The name ``${rawdata}`` of a directory containing the measurement sets (which have to have the suffix ``.ms``) that are supposed to be processed in the data reduction.
+- The name ``${rawdata}`` of a directory containing the measurement sets (which have to have the suffix ``.ms``) that are supposed to be processed in the data reduction.
+
+Specifying the data to be reduced
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``caratekit.sh`` assumes by default, that any measurement sets in the ``${rawdata}`` file are meant to be processed by the pipeline. A copy of the ``${configfile}.yml`` configuration file will be modified accordingly before the data reduction process is started. This can be changed by adding the switch ``--copy-config-data`` or  ``-cc`` to the ``caratekit.sh`` calls below. In that case, only measurement sets with the data ids specified in the configuration file will be processed. Alternatively, the user can specify explicityly the ids (the names of the measurement sets removing the suffix ``.ms``) using the switch ``--copy-data-id ARG`` ``-ci ARG``, where ``ARG`` is a comma- separated list of the ids to use.
 
 Start and single CARACal run
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

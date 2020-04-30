@@ -28,6 +28,30 @@ Prepare the data for calibration and imaging.
 
 
 
+.. _prepare_data_label_in:
+
+--------------------------------------------------
+**label_in**
+--------------------------------------------------
+
+  *str*
+
+  If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string it is added to the input .MS file(s) name given in the getdata worker to define the name of the .MS file(s) to work on. These are <input>_<label>.ms if ‘field’ (see below) is set to ‘calibrators’, or <input>-<target>_<label>.ms if ‘field’ is set to ‘target’ (one .MS file for each target in the input .MS).
+
+
+
+.. _prepare_data_field:
+
+--------------------------------------------------
+**field**
+--------------------------------------------------
+
+  *{"target", "calibrators"}*, *optional*, *default = calibrators*
+
+  In combination with a non-empty 'label_in' (see above), 'field' defines which .MS file(s) to work on. This parameter is ignored if 'label_in' is empty.
+
+
+
 .. _prepare_data_fixvis:
 
 --------------------------------------------------
