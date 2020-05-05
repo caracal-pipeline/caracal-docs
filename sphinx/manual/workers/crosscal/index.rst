@@ -12,7 +12,7 @@ crosscal
 .. toctree::
    :maxdepth: 1
  
-Carry out Cross calibration of the data (delay, bandpass and gain calibration)
+Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
 
 
@@ -24,7 +24,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   *bool*
 
-  Execute this segment.
+  Execute the crosscal worker.
 
 
 
@@ -36,7 +36,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   *str*
 
-  Label of measurement set to work on.
+  Label of the .MS file(s) to work on.
 
 
 
@@ -48,7 +48,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   *str*, *optional*, *default = 1gc1*
 
-  Label for output files.
+  Label for output files (calibration tables, images).
 
 
 
@@ -58,19 +58,19 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 **rewind_flags**
 --------------------------------------------------
 
-  Rewind flags to specified version.
+  Rewind flags to version specified by "version" below, and delete all flag versions that had been saved after it.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    enable this segement
+    Execute the rewind_flags segement.
 
   **version**
 
     *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
 
-    Flag version to restore. Note that all flag versions saved after this version will be deleted.
+    Flag version to rewind to. Note that all flag versions that had been saved after this version will be deleted.
 
 
 
@@ -94,7 +94,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
   *str*, *optional*, *default = >50*
 
-  Set the U-V range for data selection, e.g. '>50'.
+  Select what UV range should be used throughout this worker following the CASA notation (e.g., ">100"). The default units are metres but other units can be used (e.g., ">0.5klambda").
 
 
 
@@ -116,37 +116,37 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 **set_model**
 --------------------------------------------------
 
-  Essentially setjy task from CASA.
+  Fill in the MODEL column of the .MS file(s) for the field selected by "field" below in preparation for crosscalibration. This can use CASA setjy for point-source models, or MeqTrees for available local sky models.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute the setjy task.
+    Execute the set_model segment.
 
   **caracal_model**
 
     *bool*, *optional*, *default = False*
 
-    Use built-in sky models in CARACal
+    Use sky models available in CARACal. At the moment this includes PKS1934-638 and 0408-6545 MeerKAT sky models.
 
   **no_verify**
 
     *bool*, *optional*, *default = False*
 
-    Enables setting standard manually.
+    Enables setting standard manually [???].
 
   **field**
 
     *str*, *optional*, *default = fcal*
 
-    Set the field to carry out setjy on. Specify either the field number, name or even as 'fcal' corresponding to field specification in observation config.
+    Set the field to execute the set_model segment on. Specify either the field number, field name or field specification as per obsconf worker (e.g., "fcal").
 
   **threads**
 
     *int*, *optional*, *default = 8*
 
-    Set the number of threads to use when predicting local sky model using MeqTrees.
+    Number of threads used by MeqTrees if caracal_model above is enabled.
 
 
 
@@ -156,55 +156,55 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 **primary_cal**
 --------------------------------------------------
 
-  Calibrating on the bandpass calibrator field
+  Calibrating on the bandpass/flux calibrator field.
 
   **reuse_existing_gains**
 
     *bool*, *optional*, *default = False*
 
-    Reuse gain tables if they exist
+    Reuse gain tables if they exist. Note that this does not check whether the existing tables were obtained with the same Caracal settings. Use with caution.
 
   **order**
 
     *str*, *optional*, *default = KGB*
 
-    Order in which to solve for gains for this field. E.g, if order is set to 'KGB', the we solve for delays, then the phase and amplitude, and finally the bandpass. The full options are: K-delay calibration; G-amplitude and phase calibration; B-bandpass calibration; A-automatic flagging (existing gains will be applied first).
+    Order in which to solve for gains for this field. E.g, if order is set to 'KGB', then we solve for delays, then gains and finally bandpass. The full options are 1) K - delay calibration, 2) G - gain calibration (decide whether to solve for amplitude, phase or  both with 'calmode' below), 3) B - bandpass calibration, 4) A - automatic flagging with CASA tfcrop (existing gains will be applied first).
 
-  **solnorm**
+  **B_solnorm**
 
     *bool*, *optional*, *default = False*
 
     Normalise average solution amplitude to 1.0
 
-  **combine**
+  **calmode**
 
-    *list* *of str*, *optional*, *default = '', '', scan*
+    *list* *of str*, *optional*, *default = a, ap, ap*
 
-    Parameter to combine different data axis for solving. Options are ['','obs', 'scan', 'spw', 'field', 'obs,scan', 'scan,ob']
+    For each step in 'order' above, set whether to solve for phase ('p'), amplitude ('a') or both ('ap'). This is actually only relevant when solving for the gains, i.e., for the G steps in 'order' above. However, users should include an entry (even just an empty string) for all steps in 'order'.
 
   **solint**
 
     *list* *of str*, *optional*, *default = 120s, 120s, inf*
 
-    Solution interval for delay-correction calibration.
+    For each step in 'order' above, set the solution interval. Set to 'inf' to obtain a single solution (see also 'combine' below). Include time units, e.g., '120s' or '2min'.
 
-  **calmode**
+  **combine**
 
-    *list* *of str*, *optional*, *default = a, ap, ap*
+    *list* *of str*, *optional*, *default = '', '', scan*
 
-    Type of solution
+    For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
   **B_fillgaps**
 
     *int*, *optional*, *default = 70*
 
-    Fill flagged solution channels by interpolation
+    Fill flagged solution channels by interpolation.
 
   **plotgains**
 
     *bool*, *optional*, *default = True*
 
-    Plot gains
+    Plot gains with ragavi-gains. The .html plots are located in <output>/diagnostic_plots/crosscal/.
 
   **flag**
 
@@ -260,55 +260,55 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 **secondary_cal**
 --------------------------------------------------
 
-  Calibrating on the amplitude/phase calibrator field
+  Calibrating on the gain calibrator field.
 
   **reuse_existing_gains**
 
     *bool*, *optional*, *default = False*
 
-    Reuse gain tables if they exist
-
-  **order**
-
-    *str*, *optional*, *default = KG*
-
-    Order in which to solve for gains for this field. E.g, if order is set to 'KGB', the we solve for delays, then the phase and amplitude, and finally the bandpass. The full options are: K-delay calibration; G-amplitude and phase calibration; B-bandpass calibration; A-automatic flagging (existing gains will be applied first); I-Do a self-callibration
-
-  **solnorm**
-
-    *bool*, *optional*, *default = False*
-
-    Normalise average solution amplitude to 1.0
-
-  **combine**
-
-    *list* *of str*, *optional*, *default = '', scan*
-
-    Parameter to combine different data axis for solving. Options are ['','obs', 'scan', 'spw', 'field', 'obs,scan', 'scan,ob']
-
-  **solint**
-
-    *list* *of str*, *optional*, *default = 120s, 120s*
-
-    Solution interval for delay-correction calibration.
-
-  **calmode**
-
-    *list* *of str*, *optional*, *default = a, ap, ap*
-
-    Type of solution
+    Reuse gain tables if they exist. Note that this does not check whether the existing tables were obtained with the same Caracal settings. Use with caution.
 
   **apply**
 
     *str*, *optional*, *default = B*
 
-    Gains to apply from calibration of bandpass field
+    Calibration terms solved for in the primary_cal segment that should be applied to the secondary calibrator before solving for the terms in 'order' below.
+
+  **order**
+
+    *str*, *optional*, *default = KGAF*
+
+    Order of the calibration/flagging/imaging steps for the secondary calibrator. E.g, if order is set to 'KGAF', we solve for delays, then for gains, after that the existing gains (KG) are applied before flagging the calibrated data, and finally, we solve for gains and transfer the flux scale from the primary_cal step. The full options are 1) K - delay calibration; 2) G - gain calibration (set whether to solve for amplitude, phase or both with 'calmode' below); 3) F - same as G, but imedietly followed by a fluxscale. Note that a G table must exist from the primary_cal step for this work; 4) B - bandpass calibration; 5) A - automatic flagging with CASA tfcrop (existing gains will be applied first); 6) I - imaging with WSClean using the settings in 'image' below, which fills the MODEL column of  the .MS file(s) with a sky model and, therefore, enables self-calibration with a subsequent G step.
+
+  **calmode**
+
+    *list* *of str*, *optional*, *default = a, ap, None, ap*
+
+    For each step in 'order' above, set whether to solve for phase ('p'), amplitude ('a') or both ('ap'). This is actually only relevant when solving for the gains, i.e., for the G steps in 'order' above. However, users should include an entry (even just an empty string) for all steps in 'order'.
+
+  **solint**
+
+    *list* *of str*, *optional*, *default = 120s, inf, None 120s*
+
+    For each step in 'order' above, set the solution interval. Set to 'inf' to obtain a single solution (see also 'combine' below). Include time units, e.g., '120s' or '2min'.
+
+  **combine**
+
+    *list* *of str*, *optional*, *default = '', '', None, ''*
+
+    For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
+
+  **B_solnorm**
+
+    *bool*, *optional*, *default = False*
+
+    Normalise average solution amplitude to 1.0
 
   **plotgains**
 
     *bool*, *optional*, *default = True*
 
-    Plot gains
+    Plot gains with ragavi-gains. The .html plots are located in <output>/diagnostic_plots/crosscal/.
 
   **flag**
 
@@ -356,6 +356,88 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 
       Correlation
 
+  **image**
+
+    Image settings for imaging secondary calibrator
+
+    **npix**
+
+      *int*, *optional*, *default = 4096*
+
+      Number of pixels in output image
+
+    **padding**
+
+      *float*, *optional*, *default = 1.5*
+
+      Padding in WSclean
+
+    **mgain**
+
+      *float*, *optional*, *default = 0.85*
+
+      Image CLEANing gain
+
+    **cell**
+
+      *float*, *optional*, *default = 0.5*
+
+      Image pixel size (arcsec)
+
+    **weight**
+
+      *{"briggs", "uniform", "natural"}*, *optional*, *default = briggs -1.0*
+
+      Image weighting type. If Briggs, set the img robust parameter
+
+    **auto_mask**
+
+      *float*, *optional*, *default = 10*
+
+      Auto masking threshold
+
+    **auto_threshold**
+
+      *float*, *optional*, *default = 1.5*
+
+      Auto clean threshold
+
+    **column**
+
+      *str*, *optional*, *default = CORRECTED_DATA*
+
+      Column to image
+
+    **local_rms**
+
+      *bool*, *optional*, *default = True*
+
+      switch on local rms measurement for cleaning
+
+    **rms_window**
+
+      *int*, *optional*, *default = 150*
+
+      switch on local rms measurement for cleaning
+
+    **niter**
+
+      *int*, *optional*, *default = 120000*
+
+      Number of cleaning iterations
+
+    **nchans**
+
+      *int*, *optional*, *default = 7*
+
+      Number of channesls in output image
+
+    **fit_spectral_pol**
+
+      *int*, *optional*, *default = 2*
+
+      Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1.
+
 
 
 .. _crosscal_apply_cal:
@@ -365,12 +447,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration)
 --------------------------------------------------
 
   Apply calibration
-
-  **enable**
-
-    *bool*, *optional*, *default = True*
-
-    Execute this section
 
   **applyto**
 

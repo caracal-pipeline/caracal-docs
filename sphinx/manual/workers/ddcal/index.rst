@@ -294,7 +294,7 @@ Perform direction dependent calibration on the data
 
   **de_sources_manual**
 
-    *list* *of str*, *optional*, *default =  *
+    *list* *of str*, *optional*, *default = ' '*
 
     List of sources per target to tag for DD calibration, in the same order as the de_target_manual list. Separate different sources per target by using ";".
 

@@ -103,7 +103,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#plotter"><strong>plotter</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dirname"><strong>dirname</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shadems"><strong>shadems</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-plotter"><strong>standard_plotter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#correlation"><strong>correlation</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fields"><strong>fields</strong></a></li>
@@ -200,7 +202,7 @@
 <span id="id1"></span><h1>inspect<a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Diagnostic plots of the first-pass cross-calibrated data.</p>
+<p>Diagnostic plots for data</p>
 <div class="section" id="enable">
 <span id="inspect-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -222,11 +224,49 @@
 <p>Label for output products (plots etc.) for this step.</p>
 </div></blockquote>
 </div>
-<div class="section" id="plotter">
-<span id="inspect-plotter"></span><h2><strong>plotter</strong><a class="headerlink" href="#plotter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dirname">
+<span id="inspect-dirname"></span><h2><strong>dirname</strong><a class="headerlink" href="#dirname" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>{“plotms”, “shadems”, “ragavi_vis”}</em>, <em>optional</em>, <em>default = shadems</em></p>
-<p>Application to use for making plots</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Subdirectory (under diagnostic plots) where the plots are to go.</p>
+</div></blockquote>
+</div>
+<div class="section" id="shadems">
+<span id="inspect-shadems"></span><h2><strong>shadems</strong><a class="headerlink" href="#shadems" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Direct list of shadems plots.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Execute series of “extended” shadems plots.</p>
+</div></blockquote>
+<p><strong>default_column</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = CORRECTED_DATA</em></p>
+<p>Data column to plot.</p>
+</div></blockquote>
+<p><strong>plots_by_field</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Sequence of shadems plot specifications, made per field</p>
+</div></blockquote>
+<p><strong>plots_by_corr</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Sequence of shadems plot specifications, made per correlation</p>
+</div></blockquote>
+<p><strong>ignore_errors</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Don’t halt the pipeline for shadems plotting errors.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="standard-plotter">
+<span id="inspect-standard-plotter"></span><h2><strong>standard_plotter</strong><a class="headerlink" href="#standard-plotter" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>{“plotms”, “shadems”, “ragavi_vis”, “none”}</em>, <em>optional</em>, <em>default = ragavi_vis</em></p>
+<p>Application to use for making “standard” plots. Use “none” to disable.</p>
 </div></blockquote>
 </div>
 <div class="section" id="correlation">
@@ -287,7 +327,7 @@
 <div><p>Plot Amplitude vs Phase for  data.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes the plotting of amplitude v/s phase for data.</p>
 </div></blockquote>
 <p><strong>fields</strong></p>
@@ -349,7 +389,7 @@
 <div><p>Plot data amplitde v/s antenna.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data amplitude v/s antennas.</p>
 </div></blockquote>
 <p><strong>fields</strong></p>
@@ -411,7 +451,7 @@
 <div><p>Plot data amplitude v/s scan number.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data amplitude v/s scan number.</p>
 </div></blockquote>
 <p><strong>fields</strong></p>

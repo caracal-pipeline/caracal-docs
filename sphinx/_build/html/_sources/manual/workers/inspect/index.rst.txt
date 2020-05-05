@@ -12,7 +12,7 @@ inspect
 .. toctree::
    :maxdepth: 1
  
-Diagnostic plots of the first-pass cross-calibrated data.
+Diagnostic plots for data
 
 
 
@@ -52,15 +52,67 @@ Diagnostic plots of the first-pass cross-calibrated data.
 
 
 
-.. _inspect_plotter:
+.. _inspect_dirname:
 
 --------------------------------------------------
-**plotter**
+**dirname**
 --------------------------------------------------
 
-  *{"plotms", "shadems", "ragavi_vis"}*, *optional*, *default = shadems*
+  *str*, *optional*, *default = ' '*
 
-  Application to use for making plots
+  Subdirectory (under diagnostic plots) where the plots are to go.
+
+
+
+.. _inspect_shadems:
+
+--------------------------------------------------
+**shadems**
+--------------------------------------------------
+
+  Direct list of shadems plots.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Execute series of "extended" shadems plots.
+
+  **default_column**
+
+    *str*, *optional*, *default = CORRECTED_DATA*
+
+    Data column to plot.
+
+  **plots_by_field**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Sequence of shadems plot specifications, made per field
+
+  **plots_by_corr**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Sequence of shadems plot specifications, made per correlation
+
+  **ignore_errors**
+
+    *bool*, *optional*, *default = True*
+
+    Don't halt the pipeline for shadems plotting errors.
+
+
+
+.. _inspect_standard_plotter:
+
+--------------------------------------------------
+**standard_plotter**
+--------------------------------------------------
+
+  *{"plotms", "shadems", "ragavi_vis", "none"}*, *optional*, *default = ragavi_vis*
+
+  Application to use for making "standard" plots. Use "none" to disable.
 
 
 
@@ -150,7 +202,7 @@ Diagnostic plots of the first-pass cross-calibrated data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes the plotting of amplitude v/s phase for data.
 
@@ -230,7 +282,7 @@ Diagnostic plots of the first-pass cross-calibrated data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes plotting data amplitude v/s antennas.
 
@@ -310,7 +362,7 @@ Diagnostic plots of the first-pass cross-calibrated data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes plotting data amplitude v/s scan number.
 

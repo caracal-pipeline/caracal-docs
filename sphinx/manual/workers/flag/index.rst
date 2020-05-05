@@ -276,7 +276,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **ensure_valid_selection**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
     Check whether the channel selection returns any data. If it does not FLAGDATA is not executed preventing the pipeline from crashing. This check only works with the following spw formats (multiple, comma-separated selections allowed), "\*:firstchan~lastchan"; "firstspw~lastspw:firstchan~lastchan"; "spw:firstchan~lastchan"; "firstchan~lastchan". Channels are assumed to be in frequency (Hz, kHz, MHz, GHz allowed; if no units are given it assumes Hz).
 
