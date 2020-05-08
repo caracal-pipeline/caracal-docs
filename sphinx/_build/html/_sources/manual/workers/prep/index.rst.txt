@@ -96,21 +96,15 @@ Prepare the data for calibration and imaging.
 
   **mode**
 
-    *{"save_legacy_flags", "restore"}*, *optional*, *default = save_legacy_flags*
+    *{"legacy", "restore"}*, *optional*, *default = legacy*
 
-    Manage flag mode. If "save_legacy_flags" save the current FLAG column as a "caracal_legacy" flag version (if that already exists, "overwrite_legacy_flags" below allows you to overwrite it, but think twice). If "restore" restore flags from the flag version specified by "version" below, and delete all flag versions created after that version.
+    Manage flag mode. With mode = 'legacy', if the 'caracal_legacy' flag version does not yet exist, save the current FLAG column as the 'caracal_legacy flag version; else restore the 'caracal_legacy' flag version and delete all flag versions created after it. With mode = 'restore', restore flags from the flag version specified by 'version' below, and delete all flag versions created after that version.
 
   **version**
 
-    *str*, *optional*, *default = caracal_legacy*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. Note that all flag versions saved after this version will be deleted.
-
-  **overwrite_legacy_flags**
-
-    *bool*, *optional*, *default = False*
-
-    If "mode" above is "save_legacy_flags" but the "caracal_legacy" flag version already exists, allow Caracal to overwrite it. Think twice!
+    Flag version to restore. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 

@@ -68,9 +68,9 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
   **version**
 
-    *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
+    *str*, *optional*, *default = auto*
 
-    Flag version to rewind to. Note that all flag versions that had been saved after this version will be deleted.
+    Flag version to rewind to. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.
 
 
 

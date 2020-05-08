@@ -56,15 +56,15 @@ Perform Self calibration on the data.
 
   **version**
 
-    *str*, *optional*, *default = null*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
   **transfer_apply_gains_version**
 
-    *str*, *optional*, *default = null*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "transfer_to_label" in the "transfer_apply_gains" section below. Set to "null" to skip this rewind step. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "transfer_to_label" in the "transfer_apply_gains" section below. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 
@@ -688,7 +688,7 @@ Perform Self calibration on the data.
 
     *list* *of str*, *optional*, *default = wsclean, wsclean*
 
-    Method used to create the clean mask. The possible values are 1) "wsclean" to use WSclean's auto-masking (threshold set by clean_mask_threshold below); 2) "sofia" to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
+    Method used to create the clean mask. The possible values are 1) "wsclean" to use WSclean's auto-masking (threshold set by clean_mask_threshold below); 2) "sofia" to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
 
   **clean_mask_threshold**
 
@@ -792,7 +792,7 @@ Perform Self calibration on the data.
 
     *list* *of str*, *optional*, *default = GainDiagPhase, GainDiag*
 
-    Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account.
+    Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account, Fslope does delay selfcal, please set solution intervals at least twice as big as what you would for GainDiagPhase. Fslope does not work with MeqTrees.
 
   **Gsols_timeslots**
 

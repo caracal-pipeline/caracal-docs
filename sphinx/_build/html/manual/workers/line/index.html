@@ -242,13 +242,13 @@
 </div></blockquote>
 <p><strong>version</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
-<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. Note that all flag versions saved after this version will be deleted.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 <p><strong>mstransform_version</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = null</em></p>
-<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. Note that all flag versions saved after this version will be deleted.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
 </div>

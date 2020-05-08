@@ -80,15 +80,15 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **version**
 
-    *str*, *optional*, *default = null*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
   **mstransform_version**
 
-    *str*, *optional*, *default = null*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above plus the "_mst" suffix. Set to "null" to skip this rewind step. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above plus the "_mst" suffix. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 

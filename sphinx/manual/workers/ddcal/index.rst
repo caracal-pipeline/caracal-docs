@@ -312,13 +312,13 @@ Perform direction dependent calibration on the data
 
   **madmax_threshold**
 
-    *list* *of float*, *optional*, *default = 0*
+    *list* *of int*, *optional*, *default = 0, 10*
 
     Threshold for MAD flagging per baseline (specified in sigmas). Residuals exceeding mad-thr\*MAD/1.428 will be flagged. MAD is computed per baseline. This can be specified as a list e.g. N1,N2,N3,... The first value is used to flag residuals before a solution starts (use 0 to disable), the next value is used when the residuals are first recomputed during the solution several iteratins later (see -chi-int), etc. A final pass may be done at the end of the solution. The last value in the list is reused if necessary. Using a list with gradually decreasing values may be sensible.
 
   **madmax_global_threshold**
 
-    *list* *of float*, *optional*, *default = 10.0*
+    *list* *of int*, *optional*, *default = 0, 12*
 
     Threshold for global median MAD (MMAD) flagging. MMAD is computed as the median of the per-baseline MADs. Residuals exceeding S\*MMAD/1.428 will be flagged.
 

@@ -68,9 +68,9 @@ Split, avg and/or calibrate data
 
   **version**
 
-    *str*, *optional*, *default = INSERT_FLAG_VERSION_TO_BE_RESTORED*
+    *str*, *optional*, *default = auto*
 
-    Flag version to restore. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 
