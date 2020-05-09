@@ -128,6 +128,30 @@ Diagnostic plots for data
 
 
 
+.. _inspect_num_cores:
+
+--------------------------------------------------
+**num_cores**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 8*
+
+  number of CPUs to use
+
+
+
+.. _inspect_mem_limit:
+
+--------------------------------------------------
+**mem_limit**
+--------------------------------------------------
+
+  *str*, *optional*, *default = 8GB*
+
+  Amount of memory (RAM) to use
+
+
+
 .. _inspect_uvrange:
 
 --------------------------------------------------

@@ -508,13 +508,13 @@ Perform Self calibration on the data.
 
   **max_prior_error**
 
-    *float*, *optional*, *default = 0.1*
+    *float*, *optional*, *default = 0.3*
 
     Flag solution intervals where the prior variance estimate is above this value in.
 
   **max_post_error**
 
-    *float*, *optional*, *default = 0.1*
+    *float*, *optional*, *default = 0.3*
 
     Flag solution intervals where the posterior variance estimate is above this value.
 

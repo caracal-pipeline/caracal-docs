@@ -34,9 +34,9 @@ Perform direction dependent calibration on the data
 **label**
 --------------------------------------------------
 
-  *str*, *optional*, *default = DD*
+  *str*, *optional*, *default = corr*
 
-  Label of the .MS files to process.
+  Label of the .MS files to process. By default uses the 'corr' label for self-calibrated dataset.
 
 
 
@@ -58,7 +58,7 @@ Perform direction dependent calibration on the data
 **image_dd**
 --------------------------------------------------
 
-  Imaging parameters for DD calibration loop with DDFacet
+  Imaging parameters for DD calibration with DDFacet.
 
   **enable**
 
@@ -70,13 +70,13 @@ Perform direction dependent calibration on the data
 
     *int*, *optional*, *default = 8000*
 
-    Number of pixels in the image.
+    Number of pixels in the image. Note that DDFacet has its own super-special scheme to decide the actual number of pixels, so this is only an approximation.
 
   **use_mask**
 
     *bool*, *optional*, *default = True*
 
-    Enable masks for DDfacet initial imaging.
+    Enable clean mask for DDfacet initial imaging. Doubles the imaging time since it runs DDFacet twice, once to get a preliminary image to make a mask with (mask is made by the cleanmask tool) and once the final image with masking. Previous wsclean masks can't be used because pixel numbers might be different.
 
   **mask_sigma**
 
@@ -100,7 +100,7 @@ Perform direction dependent calibration on the data
 
     *float*, *optional*, *default = 0.3*
 
-    Overlap region for the boxes. As a fraction of -nb/--boxes
+    Overlap region for the boxes. As a fraction of number of boxes.
 
   **mask_tolerance**
 
@@ -118,7 +118,7 @@ Perform direction dependent calibration on the data
 
     *int*, *optional*, *default = 24*
 
-    Number of facets to use, same as Facets-NFacets.
+    Number of facets to use, same as Facets-NFacets parameter of DDFacet.
 
   **weight_column**
 
@@ -130,49 +130,49 @@ Perform direction dependent calibration on the data
 
     *{"Natural", "Uniform", "Robust", "Briggs"}*, *optional*, *default = Briggs*
 
-    UV weighting mode
+    UV weighting mode.
 
   **weight_robust**
 
     *float*, *optional*, *default = -0.4*
 
-    Briggs robustness parameter, from -2 (more uniform) to 2 (more natural)
+    Briggs robustness parameter, from -2 (more uniform) to 2 (more natural).
 
   **deconv_maxminoriter**
 
     *int*, *optional*, *default = 100000*
 
-    Number of clean iterations
+    Number of clean iterations.
 
   **freq_nband**
 
     *int*, *optional*, *default = 10*
 
-    N Number of image bands for gridding.
+    Number of image bands for gridding.
 
   **freq_ndegridband**
 
     *int*, *optional*, *default = 15*
 
-    N Number of image bands for degridding. 0 means degrid each channel.
+    Number of image bands for degridding. 0 means degrid each channel.
 
   **deconv_rmsfactor**
 
     *float*, *optional*, *default = 0.0*
 
-    X Set minor cycle stopping threshold to X\*{residual RMS} (HMP, Hogbom).
+    Set minor cycle stopping threshold to X\*{residual RMS} (HMP, Hogbom), where X is this parameter value.
 
   **deconv_peakfactor**
 
     *float*, *optional*, *default = 0.25*
 
-    X Set minor cycle stopping threshold to X\*{peak residual} (HMP, Hogbom).
+    Sets minor cycle stopping threshold to X\*{peak residual} (HMP, Hogbom), where X is this parameter value.
 
   **deconv_mode**
 
     *{"HMP", "Hogbom", "SSD", "GAClean"}*, *optional*, *default = Hogbom*
 
-    Deconvolution algorithm.
+    Deconvolution algorithm. Direct your queries to DDFacet Developers for more details on this.
 
   **deconv_gain**
 
@@ -190,25 +190,25 @@ Perform direction dependent calibration on the data
 
     *bool*, *optional*, *default = True*
 
-    Allow negative components (HMP, Hogbom).
+    Allow negative components for cleaning (valid for HMP, Hogbom modes).
 
   **hogbom_polyfitorder**
 
     *int*, *optional*, *default = 6*
 
-    HOGBOM_POLYFITORDER polynomial order for frequency fitting
+    Polynomial order for frequency fitting.
 
   **parallel_ncpu**
 
     *int*, *optional*, *default = 0*
 
-    Number of processes / threads to use in parallel mode. 0 - all available. 1 - disable parallelism
+    Number of processes / threads to use in parallel mode. 0 - all available. 1 - disable parallelism.
 
   **predict_colname**
 
     *str*, *optional*, *default = MODEL_DATA*
 
-    MS column to write predict to. Can be left empty to disable
+    MS column to write predict to. Can be left empty to disable.
 
   **log_memory**
 
@@ -226,7 +226,7 @@ Perform direction dependent calibration on the data
 
     *bool*, *optional*, *default = True*
 
-    Enable progress bars and other pretty console output. Doesn't seem to work.
+    Enable progress bars and other pretty console output. Doesn't seem to work. But who knows, try it out.
 
   **data_colname**
 
@@ -238,13 +238,13 @@ Perform direction dependent calibration on the data
 
     *float*, *optional*, *default = 0.05*
 
-    Chunk data into time bins of x hours to conserve memory
+    Chunk data into time bins of X hours to conserve memory, where X is this parameter.
 
   **output_mode**
 
     *{"Dirty", "Clean", "Predict", "PSF"}*, *optional*, *default = Clean*
 
-    Output mode
+    Output mode. Defaults to cleaning, since that's what we want to do in this worker.
 
 
 
@@ -254,7 +254,7 @@ Perform direction dependent calibration on the data
 **calibrate_dd**
 --------------------------------------------------
 
-  Direction dependent calibration parameters
+  Direction dependent calibration parameters.
 
   **enable**
 
@@ -266,7 +266,7 @@ Perform direction dependent calibration on the data
 
     *float*, *optional*, *default = 4.5*
 
-    Threshold to use in detecting outlier regions in images by using CatDagger. 4.5 is a good value (also default), but may need a lower value for some images.
+    Threshold to use in detecting outlier regions in images by using CatDagger, which is enabled by auto mode for de_sources_mode. 4.5 is a good value (also default), but may need a lower value for some images.
 
   **min_dist_from_phcentre**
 
@@ -332,25 +332,25 @@ Perform direction dependent calibration on the data
 
     *str*, *optional*, *default = CORRECTED_DATA*
 
-    Column to calibrate
+    Column to calibrate. Assumption being that you have already run the selfcal worker.
 
   **dd_out_data_column**
 
     *str*, *optional*, *default = SUBDD_DATA*
 
-    Output data column
+    Output data column.
 
   **dd_weight_column**
 
     *str*, *optional*, *default = WEIGHT*
 
-    Column to read weights from. Weights are applied by default. Specify an\nempty string to disable.
+    Column to read weights from. Weights are applied by default. Specify an empty string to disable.
 
   **dd_sol_stall_quorum**
 
     *float*, *optional*, *default = 0.95*
 
-    Minimum percentage of solutions which must have stalled before terminating\nthe solver.
+    Minimum percentage of solutions which must have stalled before terminating the solver.
 
   **dd_g_type**
 
@@ -362,13 +362,13 @@ Perform direction dependent calibration on the data
 
     *float*, *optional*, *default = 1.5*
 
-    Amplitude clipping - flag solutions with any amplitudes above this value for g Jones
+    Amplitude clipping - flag solutions with any amplitudes above this value for g Jones.
 
   **dd_g_clip_low**
 
     *float*, *optional*, *default = 0.5*
 
-    Amplitude clipping - flag solutions with any amplitudes below this value for g Jones
+    Amplitude clipping - flag solutions with any amplitudes below this value for g Jones.
 
   **dd_g_update_type**
 
@@ -438,13 +438,13 @@ Perform direction dependent calibration on the data
 **copy_data**
 --------------------------------------------------
 
-  Copy DD-calibrated data to CORRECTED_DATA column
+  Copy DD-calibrated data to CORRECTED_DATA column. THIS IS DANGEROUS - only if you want to go ahead with line imaging.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable copying of DD-calibrated data to CORRECTED_DATA column
+    Enable copying of DD-calibrated data to CORRECTED_DATA column.
 
 
 
@@ -454,7 +454,7 @@ Perform direction dependent calibration on the data
 **image_wsclean**
 --------------------------------------------------
 
-  Wsclean imaging paramaters for DD worker
+  Wsclean imaging paramaters for DD worker.
 
   **enable**
 
@@ -650,7 +650,7 @@ Perform direction dependent calibration on the data
 
     *int*, *optional*, *default = 0*
 
-    Select only N brightest sources. Default is 0
+    Select only N brightest sources. Default is 0.
 
   **dd_num_workers**
 

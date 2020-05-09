@@ -382,7 +382,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **mask**
 
-    *str*, *optional*, *default = labelled_rfimask.pickle.npy*
+    *str*, *optional*, *default = ' '*
 
     The mask to apply.
 
