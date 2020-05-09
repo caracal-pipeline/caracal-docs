@@ -104,7 +104,7 @@ Simple workflow
 ---------------
 
 Simpler workflows than the recommended one are possible. For example, the workflow
-below employs less worker runs but modifies the input .MS file(s), results into
+below employs less worker runs. However, it modifies the input .MS file(s), results into
 a larger data volume increase, and runs the self-calibration loop on larger .MS files.
 
 | :ref:`general`

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Prepare pipeline and data &mdash; Caracal  documentation</title>
+  <title>Prepare &mdash; Caracal  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Flag data" href="../flag/index.html" />
+    <link rel="next" title="Flagging and flag versions" href="../flag/index.html" />
     <link rel="prev" title="Caracal workflow" href="../workflow/index.html" /> 
 </head>
 
@@ -91,18 +91,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../../products/index.html">Data products</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Data reduction</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../workflow/index.html">Caracal workflow</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Prepare pipeline and data</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Prepare</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#directories-and-input-file-names">Directories and input file names</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-info">Additional info</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../flag/index.html">Flag data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flag/index.html">Flagging and flag versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../crosscal/index.html">Cross-calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">Continuum imaging and self-calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../line/index.html">Spectral line imaging</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../workers/index.html">Workers parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by Caracal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../caratekit_utility/index.html">Caratekit utility</a></li>
 </ul>
 </li>
@@ -156,7 +158,7 @@
         
           <li><a href="../index.html">Data reduction</a> &raquo;</li>
         
-      <li>Prepare pipeline and data</li>
+      <li>Prepare</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,11 +177,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="prepare-pipeline-and-data">
-<h1>Prepare pipeline and data<a class="headerlink" href="#prepare-pipeline-and-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="prepare">
+<h1>Prepare<a class="headerlink" href="#prepare" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a>, <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a>, <a class="reference internal" href="../../workers/prep/index.html#prep"><span class="std std-ref">prep</span></a><strong>]</strong></p>
+<p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a>, <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a><strong>]</strong></p>
 <div class="section" id="directories-and-input-file-names">
 <h2>Directories and input file names<a class="headerlink" href="#directories-and-input-file-names" title="Permalink to this headline">¶</a></h2>
 <p>A run of Caracal must always start by setting up a number of directory and file
@@ -208,33 +210,37 @@ this step includes the following additional conversion options:<ul>
 </ul>
 </li>
 <li>untar an existing .MS.TAR file (<a class="reference internal" href="../../workers/getdata/index.html#getdata-untar"><span class="std std-ref">getdata: untar</span></a>);</li>
-<li>virtually concatenate all .MS input files (<a class="reference internal" href="../../workers/getdata/index.html#getdata-combine"><span class="std std-ref">getdata: combine</span></a>);
+<li>EXPERIMENTAL – virtually concatenate all .MS input files (<a class="reference internal" href="../../workers/getdata/index.html#getdata-combine"><span class="std std-ref">getdata: combine</span></a>);
 optionally users can delete an existing concatenate file and tar/untar the concatenated file.</li>
 </ul>
 </div>
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p>Finally, before starting the actual data processing users need to provide some
-info about the content of the input .MS files through the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a> worker
-(e.g., target and calibrators name, channelisation, etc.). In principle, this can be done
-by editing the relevant parameters of this worker:</p>
+info about the content of the input .MS files through the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a> worker.
+Target and calibrators name can be set by editing the relevant parameters of
+this worker:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-target"><span class="std std-ref">obsconf: target</span></a></li>
 <li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-bpcal"><span class="std std-ref">obsconf: bpcal</span></a></li>
 <li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-fcal"><span class="std std-ref">obsconf: fcal</span></a></li>
 <li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-gcal"><span class="std std-ref">obsconf: gcal</span></a></li>
-<li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-reference-antenna"><span class="std std-ref">obsconf: reference_antenna</span></a></li>
 </ul>
-<p>In fact, Caracal can automatically extract
-most of these info from the .MS files themselves. To do so users should enable the
-<a class="reference internal" href="../../workers/obsconf/index.html#obsconf-obsinfo"><span class="std std-ref">obsconf: obsinfo</span></a> parameter. This writes a .JSON and a .TXT file to disc. Once
-the .JSON file is on disc, parameters set to <em>auto</em> (or in some cases to 0) in the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a>
-worker will be automatically read from that file.</p>
-<p>Note that the reference antenna information is often missing from the metadata. In those
-cases, users should carefully select a good reference antenna for calibration and set it
+<p>In fact, Caracal can automatically extract most of these info from the .MS files
+themselves. To do so users should enable the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf-obsinfo"><span class="std std-ref">obsconf: obsinfo</span></a>
+parameter. This writes a .JSON and a .TXT file to disc. Once the .JSON file is
+on disc, the  above parameters can be read automatically from that file.
+Users can, however, set any of the above manually.</p>
+<p>Special attention should be paid to the choice of a reference antenna.
+Users should carefully select a good reference antenna for calibration
 with the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf-reference-antenna"><span class="std std-ref">obsconf: reference_antenna</span></a>
 parameter.</p>
-<p><strong>[missing from this page: vampirisms]</strong></p>
+</div>
+<div class="section" id="additional-info">
+<h2>Additional info<a class="headerlink" href="#additional-info" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a> worker can also produce a plot showing the elevation track of all
+targets and calibrators, and return the time range during which the data were
+taken with the Sun below the horizon.</p>
 </div>
 </div>
 
@@ -246,7 +252,7 @@ parameter.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../flag/index.html" class="btn btn-neutral float-right" title="Flag data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../flag/index.html" class="btn btn-neutral float-right" title="Flagging and flag versions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../workflow/index.html" class="btn btn-neutral float-left" title="Caracal workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

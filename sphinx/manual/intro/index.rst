@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
  
+.. _intro:
+
 ============
 Introduction
 ============
@@ -18,7 +20,7 @@ total intensity. It works on data from any radio interferometer as long as they 
 “measurement set” format.
 
 Caracal is essentially a collection of Python/Stimela scripts.
-`Stimela <https://github.com/SpheMakh/Stimela>`_ is a platform-independent radio
+`Stimela <https://github.com/ratt-ru/Stimela>`_ is a platform-independent radio
 interferometry scripting framework based on Python and container technology
 (e.g., Docker, Singularity). Stimela allows users to
 execute tasks from many different data reduction packages in Python without having to
