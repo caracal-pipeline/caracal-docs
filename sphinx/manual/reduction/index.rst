@@ -11,7 +11,8 @@ Data reduction
  
 .. toctree::
    :maxdepth: 1
- 
+
+   workflow/index.rst 
    prepare/index.rst
    flag/index.rst
    crosscal/index.rst

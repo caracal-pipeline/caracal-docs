@@ -14,13 +14,13 @@ What is Caracal?
 ------------------
 
 Caracal is a pipeline to reduce radio interferometry continuum and spectral line data in
-full polarisation. It works on data from any radio interferometer as long as they are in
+total intensity. It works on data from any radio interferometer as long as they are in
 “measurement set” format.
 
-In the simplest terms, Caracal is a collection of Python/Stimela scripts.
+Caracal is essentially a collection of Python/Stimela scripts.
 `Stimela <https://github.com/SpheMakh/Stimela>`_ is a platform-independent radio
-interferometry scripting framework based on Python and Docker/Singularity.
-Stimela allows users to
+interferometry scripting framework based on Python and container technology
+(e.g., Docker, Singularity). Stimela allows users to
 execute tasks from many different data reduction packages in Python without having to
 install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc.).
 Using Stimela, the different software packages are available through a unified scheme.
@@ -28,7 +28,7 @@ Caracal consists of a sequence of Stimela scripts, which it links and runs seque
 
 Within Caracal --- and throughout this documentation --- the individual Stimela scripts are called
 "workers". Each Caracal worker corresponds to a specific section of the data reduction
-process (e.g., flagging, cross-calibration, spectral line imaging, etc.). Each worker
+process (e.g., flagging, cross-calibration). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).
 
@@ -36,10 +36,10 @@ In practice, users tell Caracal what to do --- and how to do it --- via a YAML c
 The configuration file has one section for each run of a worker (some workers, e.g., the flagging
 one, might need to be run multiple times). By editing the configuration
 file users control the workers' options, deciding which tasks to run and with what settings.
-A detailed explanation of the configuration file syntax is given in the :ref:`configfile`
+An explanation of the configuration file syntax is given in the :ref:`configfile`
 section of this manual.
 
-Normally, users will not have to touch anything but the configuration file. They can check
+Users will not have to touch anything but the configuration file. They can check
 what has happened through a variety of data products, including images, diagnostic plots and log files.
 A list of all Caracal data products is available at the :ref:`products` section of this manual.
 
@@ -69,63 +69,62 @@ and the prefix used for the output data products (e.g., diagnostic plots, images
 ^^^^^^^^^^^^^^
 
 This worker sets the name of the files to be processed and whether any conversion to
-.MS format is necessary. It can also virtually concatenate several .MS files together.
+.MS format is necessary.
 
 :ref:`obsconf`
 ^^^^^^^^^^^^^^
 
 This worker collects basic information on the content of the .MS files to be
 processed (e.g., target and calibrators' name, channelisation, etc.). The worker can also
-extract this information automatically from the .MS metadata. Finally, it can create a
-primary beam image cube on a user-defined pixel- and frequency grid.
+extract this information automatically from the .MS metadata.
 
+:ref:`transform`
+^^^^^^^^^^^^^^^^
+
+This worker splits the calibrators (in preparation for
+cross-calibration) or the targets (in preparation for imaging) to new .MS files.
+Time and frequency averaging is available, as well as phase rotation to
+a new phase centre. Crosscalibration can be applied on the fly while splitting.
 
 :ref:`prep`
 ^^^^^^^^^^^
 
 This worker prepares the data for calibration and imaging. For example, it can
-recalculate UVW coordinates, add a BITFLAG column to the input .MS files, or add spectral
-weights based on Tsys measurements.
+recalculate UVW coordinates, add spectral weights based on Tsys measurements, and
+flag a "legacy" flag version.
 
 :ref:`flag`
 ^^^^^^^^^^^
 
 This worker flags the data and returns statistics on the flags. As all other
 workers, it can be run multiple times within a single Caracal run as explained at
-:ref:`configfile` (though this feature is not necessarily useful for many other workers).
+:ref:`configfile` (though this feature is not necessarily useful for all workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
 algorithms that run on autocorrelations (to catch antennas with clear problems) or
-crosscorrelations.
+crosscorrelations. It can also unflag all data.
 
 :ref:`crosscal`
 ^^^^^^^^^^^^^^^
 
-This worker cross-calibrates the data. Users can calibrate delays, bandpass,
-gains and flux scale. The calibration can be applied to the calibrators' visibilities (for
-later inspection) and to the target. Numerous parameters are available for users to decide
-how to calibrate. Flagging based on closure errors is available in this worker.
+This worker cross-calibrates the data. Users can design their own calibration strategy including
+delay, bandpass, gains and flux scale calibration, self-calibration of the secondary, and flagging.
+The calibration is applied to the calibrators' visibilities for later inspection.
+Numerous settings are available for users to decide how to calibrate. Gain plots are produced.
 
 :ref:`polcal`
 ^^^^^^^^^^^^^
 
-TBD
+NOT AVAILABLE. This worker is still experimental and we do not recommend that  users run it.
 
 :ref:`inspect`
 ^^^^^^^^^^^^^^
 
-This worker produces diagnostic plots based on the calibrated calibrators' visibilities.
-
-:ref:`transform`
-^^^^^^^^^^^^^^^^
-
-This worker creates new .MS files which contain the targets' calibrated
-visibilities only. Time and frequency averaging is available, as well as phase rotation to
-a new phase centre. Crosscalibration can be applied on the fly while splitting.
+This worker plot the visibilities for diagnostic purpose. Several different kinds of plots can be made.
 
 :ref:`mask`
 ^^^^^^^^^^^
 
-This worker creates an a-priori clean mask based on NVSS or SUMSS catalogues, 
+This worker creates an a-priori clean mask based on NVSS or SUMSS, 
 to be used during the continuum imaging/self-calibration loop. It can also merge the
 resulting mask with a mask based on an existing image.
 

@@ -39,18 +39,19 @@ where the parameters' nesting is also illustrated.
 
 Workers can be executed more than once in a single run of Caracal. This could be useful,
 for example, if a user wants to flag the data both before and after cross-calibration.
-To indicate a repeated run of a worker the worker name must be followed by "__N" in the
-configuration file (N > 1; note the double underscore). In the example above, the flag
+To indicate a new run of a worker the worker name must be followed by "__<suffix>" in the
+configuration file (note the double underscore). The first run of a worker can also have
+a "__<suffix>" but does not have to. In the example above, the flag
 worker must thus appear twice in the configuration file::
 
-   flag:
+   flag__beforecrosscal:
      enable: true
      parameter_1: value_1A
      ...
 
    [other workers]
    
-   flag__2:
+   flag__aftercrosscal:
      enable: true
      parameter_1: value_1B
      ...
@@ -58,10 +59,11 @@ worker must thus appear twice in the configuration file::
 Most parameters are optional and do not need to be included in the configuration file.
 Their default values are set to work in as many cases as possible. A few parameters are
 compulsory. The pages at :ref:`workers` indicate whether a parameter is optional, its data
-type, allowed values (if necessary) and default value.
+type, allowed values (if applicable) and default value.
 
 Caracal comes with a set of sample configuration files. These are available at
-caracal/sample_configurations/ and include, for example:
+https://github.com/caracal-pipeline/caracal/caracal/sample_configurations/
+and include, for example:
 
 * minimalConfig.yml, which includes as few parameters as possible and performs a basic
   data reduction including both continuum and spectral line imaging;
