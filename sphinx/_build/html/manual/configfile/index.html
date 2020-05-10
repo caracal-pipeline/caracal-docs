@@ -93,7 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../products/index.html">Data products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reduction/index.html">Data reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../workers/index.html">Workers parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../packages/index.html">Software used by Caracal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/index.html">Software used by CARACal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../caratekit_utility/index.html">Caratekit utility</a></li>
 </ul>
 </li>
@@ -168,10 +168,10 @@
 <span id="configfile"></span><h1>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Users settings are passed to Caracal through a configuration file consisting of a
-sequence of blocks — each corresponding to the run of a Caracal worker. The workers
+<p>Users settings are passed to CARACal through a configuration file consisting of a
+sequence of blocks — each corresponding to the run of a CARACal worker. The workers
 are run following the order in which they appear in the configuration file.
-For reference see <a class="reference internal" href="../intro/index.html#workerlist"><span class="std std-ref">List and Brief description of Caracal workers</span></a>.</p>
+For reference see <a class="reference internal" href="../intro/index.html#workerlist"><span class="std std-ref">List and Brief description of CARACal workers</span></a>.</p>
 <p>The following workers must always run be and, therefore, must always appear in the
 configuration file: <a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a> and <a class="reference internal" href="../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a>. All
 other workers are optional.</p>
@@ -190,7 +190,7 @@ As an example, a block of the config file may look like:</p>
 </div>
 <p>The complete list of all workers’ parameters is available at <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>,
 where the parameters’ nesting is also illustrated.</p>
-<p>Workers can be executed more than once in a single run of Caracal. This could be useful,
+<p>Workers can be executed more than once in a single run of CARACal. This could be useful,
 for example, if a user wants to flag the data both before and after cross-calibration.
 To indicate a new run of a worker the worker name must be followed by “__&lt;suffix&gt;” in the
 configuration file (note the double underscore). The first run of a worker can also have
@@ -213,7 +213,7 @@ worker must thus appear twice in the configuration file:</p>
 Their default values are set to work in as many cases as possible. A few parameters are
 compulsory. The pages at <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a> indicate whether a parameter is optional, its data
 type, allowed values (if applicable) and default value.</p>
-<p>Caracal comes with a set of sample configuration files. These are available at
+<p>CARACal comes with a set of sample configuration files. These are available at
 <a class="reference external" href="https://github.com/caracal-pipeline/caracal/caracal/sample_configurations/">https://github.com/caracal-pipeline/caracal/caracal/sample_configurations/</a>
 and include, for example:</p>
 <ul class="simple">

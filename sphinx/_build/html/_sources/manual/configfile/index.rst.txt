@@ -12,8 +12,8 @@ Configuration file
 .. toctree::
    :maxdepth: 1
  
-Users settings are passed to Caracal through a configuration file consisting of a
-sequence of blocks --- each corresponding to the run of a Caracal worker. The workers
+Users settings are passed to CARACal through a configuration file consisting of a
+sequence of blocks --- each corresponding to the run of a CARACal worker. The workers
 are run following the order in which they appear in the configuration file.
 For reference see :ref:`workerlist`.
 
@@ -37,7 +37,7 @@ As an example, a block of the config file may look like::
 The complete list of all workers' parameters is available at :ref:`workers`,
 where the parameters' nesting is also illustrated.
 
-Workers can be executed more than once in a single run of Caracal. This could be useful,
+Workers can be executed more than once in a single run of CARACal. This could be useful,
 for example, if a user wants to flag the data both before and after cross-calibration.
 To indicate a new run of a worker the worker name must be followed by "__<suffix>" in the
 configuration file (note the double underscore). The first run of a worker can also have
@@ -61,7 +61,7 @@ Their default values are set to work in as many cases as possible. A few paramet
 compulsory. The pages at :ref:`workers` indicate whether a parameter is optional, its data
 type, allowed values (if applicable) and default value.
 
-Caracal comes with a set of sample configuration files. These are available at
+CARACal comes with a set of sample configuration files. These are available at
 https://github.com/caracal-pipeline/caracal/caracal/sample_configurations/
 and include, for example:
 
