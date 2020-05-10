@@ -17,34 +17,61 @@ worker. However, the :ref:`crosscal` and :ref:`selfcal` workers can also flag ba
 both  gains and visibilities; and the :ref:`line` worker can flag solar RFI and potential
 continuum subtraction errors.
 
-Users can navigate through the different flagging steps thanks to the flag versions saved
-by Caracal to disk. Most workers can indeed rewind the flags to a specified version, which
+If necessary, users can navigate through the different flagging steps thanks to the flag
+versions saved to disk by Caracal.
+Most workers can indeed rewind the flags to a specified version, which
 allows users to correct errors or repeat certain processing steps without too much effort.
 
 Here we explain the Caracal's management of flag versions, and describe the :ref:`flag`
-worker. The flagging done by the other workers mentioned above is described in other
-paper of the Data Reduction section of this Caracal manual.
+worker. The flagging done by the other workers mentioned above is described
+elsewhere in the :ref:`reduction` section of this Caracal :ref:`manual`.
 
 ---------------------------
 Management of flag versions
 ---------------------------
 
-General principle.
+Every run of a Caracal worker that can result in new flags saves two flag version to disc:
+one before and one after the worker run. These flag versions are called:
+
+* *<prefix>_<worker_name>_before*
+* *<prefix>_<worker_name>_after*
+
+where <prefix> is set by :ref:`general: prefix <general_prefix>`, and the worker name is taken from the 
+:ref:`configfile`.
+
+Furthermore, the :ref:`prep` worker (which does not flag) saves a flag version called
+*caracal_legacy* for the input .MS (unless that flag version exists already); and the
+:ref:`transform` worker (which does not flag either) saves a flag version called
+*caracal_legacy* for the .MS file that it creates. A typical :ref:`workflow` starts with one of
+these two workers. Thus, .MS files processed by Caracal should always have *caracal_legacy*
+as first item of the time-ordered list of flag versions.
+
+Flag versions are stored following the order in which they were created. This makes it
+possible to rewind flags to a specified state. All Caracal workers where this operation
+is useful have indeed a *rewind_flags* section. When rewinding flags to a certain version,
+all versions saved after that are deleted. The exact usage of flags rewinding is
+explained in the :ref:`workers` pages.
 
 ---------------
 The flag worker
 ---------------
 
-The :ref:`flag` worker can run on the input .MS files or on .MS files created by
+The :ref:`flag` worker can run on the input .MS files given in :ref:`getdata: dataid <getdata_dataid>`
+or on .MS files created by
 Caracal at various stages of the pipeline (e.g., by the :ref:`transform` worker).
-In the latter case the name of the .MS files to be flagged is based on that of the input
-.MS files, with a label added before the extension. Users can set the label with the
-:ref:`flag: label_in <flag_label_in>` parameter in this worker.
+The name of the .MS files to be flagged (if other than the input files) is based on the name of
+the input .MS files and a label set by the :ref:`flag: label_in <flag_label_in>` parameter
+in this worker. As an example, if the .MS files were created by the :ref:`transform` worker
+then :ref:`flag: label_in <flag_label_in>` should be  the same as :ref:`transform: label_out <transform_label_out>`.
+
+The :ref:`flag` worker cannot flag both calibrators and target in one go. To flag both,
+two separate :ref:`flag` blocks are required in the :ref:`configfile`, as show in
+:ref:`workflow`. In each block the user can set what to flag through the :ref:`flag: field <flag_field>`
+parameter.
 
 The :ref:`flag` worker allows users to flag the data in a variety of ways. Unless
 otherwise stated below, flagging is done with the CASA task FLAGDATA. Follow the links
 below for a detailed documentation of the individual flagging modes.
-
 
 * Unflag all data.
 * Flag on autocorrelations to catch antennas with obvious problems using the custom
@@ -77,8 +104,9 @@ below for a detailed documentation of the individual flagging modes.
   Possible choices include AOFlagger, Tricolour, CASA tfcrop. The requested
   AOFlagger or tricolour strategy file should be located in the *input* directory set by
   :ref:`general: input <general_input>`.
-  Caracal comes with a number of strategy files, which are located in the
-  caracal/data/meerkat_files directory and are copied to the *input* directory by the
+  Caracal comes with a number of strategy files, which are located in
+  https://github.com/caracal-pipeline/caracal/caracal/data/meerkat_files/
+  and are copied to the *input* directory by the
   :ref:`general` worker. However, users can copy their own strategy file to the same
   *input* directory and use it within Caracal.
 

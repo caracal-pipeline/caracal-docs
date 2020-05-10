@@ -13,20 +13,20 @@ docsDir='sphinx/'
 # Workers in the schema directory that are missing from this list will be appended to it
 # (I.e., this list could include all kind of garbage or be empty and the code would still work)
 sortedWorkers = [
+  'crosscal',
+  'ddcal',
+  'flag',
   'general',
   'getdata',
-  'obsconf',
-  'transform',
-  'prep',
-  'flag',
-  'crosscal',
-  'polcal',
   'inspect',
-  'mask',
-  'selfcal',
-  'ddcal',
   'line',
+  'mask',
   'mosaic',
+  'obsconf',
+  'polcal',
+  'prep',
+  'selfcal',
+  'transform',
   ]
 
 

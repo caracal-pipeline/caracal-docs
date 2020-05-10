@@ -12,17 +12,17 @@ Workers parameters
 .. toctree::
    :maxdepth: 1
  
+   crosscal/index.rst
+   ddcal/index.rst
+   flag/index.rst
    general/index.rst
    getdata/index.rst
-   obsconf/index.rst
-   transform/index.rst
-   prep/index.rst
-   flag/index.rst
-   crosscal/index.rst
-   polcal/index.rst
    inspect/index.rst
-   mask/index.rst
-   selfcal/index.rst
-   ddcal/index.rst
    line/index.rst
+   mask/index.rst
    mosaic/index.rst
+   obsconf/index.rst
+   polcal/index.rst
+   prep/index.rst
+   selfcal/index.rst
+   transform/index.rst

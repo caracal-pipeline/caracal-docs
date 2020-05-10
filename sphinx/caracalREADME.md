@@ -19,33 +19,51 @@ Choose the name of the virtual environment `${caracal-venv}`. Then:
 
 ```
 python3 -m venv ${caracal-venv}
-# virtualenv -p python3 ${caracal-venv} # if the command above does not work
+# OR, if the command above does not work
+#virtualenv -p python3 ${caracal-venv}
+
 source ${caracal-venv}/bin/activate
 pip install -U pip setuptools wheel
-pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
-# pip install -U caracal # available soon, once Caracal's first release is out
-```
-**Ignore any error messages concerning pyregion**
 
-If using [Docker](https://www.docker.com):
+# Caracal stable release
+pip install -U caracal
+# OR Caracal developer version
+#pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
 ```
-stimela build
+*(Ignore any error messages concerning pyregion.)*
+
+In case you are *not* carrying out a fresh installation, remove earlier Stimela images with:
+
+```
+stimela clean -ac
 ```
 
-If using [Singularity](https://github.com/sylabs/singularity), choose a pull folder `${singularity_pull_folder}`, where the [Singularity](https://github.com/sylabs/singularity) images are stored:
+Then, if using [Docker](https://www.docker.com):
 
-```  
-stimela pull --singularity --pull-folder ${singularity_pull_folder}
+```
+stimela pull
+```
+
+If using [Singularity](https://github.com/sylabs/singularity), choose a pull folder `${singularity_pull_folder}`, where the [Singularity](https://github.com/sylabs/singularity) images are stored and define an environment variable by adding this in the rc file of your shell (e.g. .bashrc) :
+
+```
+export SINGULARITY_PULLFOLDER=${WORKSPACE_ROOT}/singularity_images
+```
+and run:
+
+``` 
+stimela pull -s
 ```
 
 If using [Podman](https://podman.io) (currently not fully supported):
+
 ```
 stimela pull -p
 ``` 
 
 ## Installation with the caratekit.sh script
 
-Download the installation script https://github.com/ska-sa/caracal/blob/master/caratekit.sh . Choose the parent directory `${workspace}` and the name of the Caracal directory `${caracal_dir}`.
+Download the installation script https://github.com/ska-sa/caracal/blob/master/caratekit.sh . Choose the parent directory `${workspace}` and the name of the CARACal directory `${caracal_dir}`.
 
 If using [Docker](https://www.docker.com):
 
@@ -61,17 +79,17 @@ caratekit.sh -ws ${workspace} -cr -si -ct ${caracal_testdir} -rp install -f -kh
 
 ## Run
 
-If you installed Caracal manually, activate the virtual environment with:
+If you installed CARACal manually, activate the virtual environment with:
 ```
 source ${caracal-venv}/bin/activate
 ```
 
-If you installed Caracal with the caratekit.sh script, activate the virtual environment with:
+If you installed CARACal with the caratekit.sh script, activate the virtual environment with:
 ```
 source ${workspace}/${caracal_dir}/caracal_venv/bin/activate
 ```
 
-Run Caracal with:
+Run CARACal with:
 
 ```
 caracal - c ${your-configuration-file}

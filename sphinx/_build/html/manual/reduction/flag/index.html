@@ -185,23 +185,48 @@
 worker. However, the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> and <a class="reference internal" href="../../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a> workers can also flag based on
 both  gains and visibilities; and the <a class="reference internal" href="../../workers/line/index.html#line"><span class="std std-ref">line</span></a> worker can flag solar RFI and potential
 continuum subtraction errors.</p>
-<p>Users can navigate through the different flagging steps thanks to the flag versions saved
-by Caracal to disk. Most workers can indeed rewind the flags to a specified version, which
+<p>If necessary, users can navigate through the different flagging steps thanks to the flag
+versions saved to disk by Caracal.
+Most workers can indeed rewind the flags to a specified version, which
 allows users to correct errors or repeat certain processing steps without too much effort.</p>
 <p>Here we explain the Caracal’s management of flag versions, and describe the <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a>
-worker. The flagging done by the other workers mentioned above is described in other
-paper of the Data Reduction section of this Caracal manual.</p>
+worker. The flagging done by the other workers mentioned above is described
+elsewhere in the <a class="reference internal" href="../index.html#reduction"><span class="std std-ref">Data reduction</span></a> section of this Caracal <a class="reference internal" href="../../index.html#manual"><span class="std std-ref">Manual</span></a>.</p>
 <div class="section" id="management-of-flag-versions">
 <h2>Management of flag versions<a class="headerlink" href="#management-of-flag-versions" title="Permalink to this headline">¶</a></h2>
-<p>General principle.</p>
+<p>Every run of a Caracal worker that can result in new flags saves two flag version to disc:
+one before and one after the worker run. These flag versions are called:</p>
+<ul class="simple">
+<li><em>&lt;prefix&gt;_&lt;worker_name&gt;_before</em></li>
+<li><em>&lt;prefix&gt;_&lt;worker_name&gt;_after</em></li>
+</ul>
+<p>where &lt;prefix&gt; is set by <a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>, and the worker name is taken from the
+<a class="reference internal" href="../../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a>.</p>
+<p>Furthermore, the <a class="reference internal" href="../../workers/prep/index.html#prep"><span class="std std-ref">prep</span></a> worker (which does not flag) saves a flag version called
+<em>caracal_legacy</em> for the input .MS (unless that flag version exists already); and the
+<a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a> worker (which does not flag either) saves a flag version called
+<em>caracal_legacy</em> for the .MS file that it creates. A typical <a class="reference internal" href="../workflow/index.html#workflow"><span class="std std-ref">Caracal workflow</span></a> starts with one of
+these two workers. Thus, .MS files processed by Caracal should always have <em>caracal_legacy</em>
+as first item of the time-ordered list of flag versions.</p>
+<p>Flag versions are stored following the order in which they were created. This makes it
+possible to rewind flags to a specified state. All Caracal workers where this operation
+is useful have indeed a <em>rewind_flags</em> section. When rewinding flags to a certain version,
+all versions saved after that are deleted. The exact usage of flags rewinding is
+explained in the <a class="reference internal" href="../../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a> pages.</p>
 </div>
 <div class="section" id="the-flag-worker">
 <h2>The flag worker<a class="headerlink" href="#the-flag-worker" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> worker can run on the input .MS files or on .MS files created by
+<p>The <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> worker can run on the input .MS files given in <a class="reference internal" href="../../workers/getdata/index.html#getdata-dataid"><span class="std std-ref">getdata: dataid</span></a>
+or on .MS files created by
 Caracal at various stages of the pipeline (e.g., by the <a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a> worker).
-In the latter case the name of the .MS files to be flagged is based on that of the input
-.MS files, with a label added before the extension. Users can set the label with the
-<a class="reference internal" href="../../workers/flag/index.html#flag-label-in"><span class="std std-ref">flag: label_in</span></a> parameter in this worker.</p>
+The name of the .MS files to be flagged (if other than the input files) is based on the name of
+the input .MS files and a label set by the <a class="reference internal" href="../../workers/flag/index.html#flag-label-in"><span class="std std-ref">flag: label_in</span></a> parameter
+in this worker. As an example, if the .MS files were created by the <a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a> worker
+then <a class="reference internal" href="../../workers/flag/index.html#flag-label-in"><span class="std std-ref">flag: label_in</span></a> should be  the same as <a class="reference internal" href="../../workers/transform/index.html#transform-label-out"><span class="std std-ref">transform: label_out</span></a>.</p>
+<p>The <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> worker cannot flag both calibrators and target in one go. To flag both,
+two separate <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> blocks are required in the <a class="reference internal" href="../../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a>, as show in
+<a class="reference internal" href="../workflow/index.html#workflow"><span class="std std-ref">Caracal workflow</span></a>. In each block the user can set what to flag through the <a class="reference internal" href="../../workers/flag/index.html#flag-field"><span class="std std-ref">flag: field</span></a>
+parameter.</p>
 <p>The <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> worker allows users to flag the data in a variety of ways. Unless
 otherwise stated below, flagging is done with the CASA task FLAGDATA. Follow the links
 below for a detailed documentation of the individual flagging modes.</p>
@@ -237,8 +262,9 @@ to flag short baselines only.</li>
 Possible choices include AOFlagger, Tricolour, CASA tfcrop. The requested
 AOFlagger or tricolour strategy file should be located in the <em>input</em> directory set by
 <a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>.
-Caracal comes with a number of strategy files, which are located in the
-caracal/data/meerkat_files directory and are copied to the <em>input</em> directory by the
+Caracal comes with a number of strategy files, which are located in
+<a class="reference external" href="https://github.com/caracal-pipeline/caracal/caracal/data/meerkat_files/">https://github.com/caracal-pipeline/caracal/caracal/data/meerkat_files/</a>
+and are copied to the <em>input</em> directory by the
 <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> worker. However, users can copy their own strategy file to the same
 <em>input</em> directory and use it within Caracal.</li>
 </ul>

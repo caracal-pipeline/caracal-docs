@@ -181,20 +181,33 @@
 <p>We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing.</p>
 <p>Choose the name of the virtual environment <code class="docutils literal notranslate"><span class="pre">${caracal-venv}</span></code>. Then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python3 -m venv ${caracal-venv}
-# virtualenv -p python3 ${caracal-venv} # if the command above does not work
+# OR, if the command above does not work
+#virtualenv -p python3 ${caracal-venv}
+
 source ${caracal-venv}/bin/activate
 pip install -U pip setuptools wheel
-pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
-# pip install -U caracal # available soon, once Caracal&#39;s first release is out
+
+# Caracal stable release
+pip install -U caracal
+# OR Caracal developer version
+#pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
 </pre></div>
 </div>
-<p><strong>Ignore any error messages concerning pyregion</strong></p>
-<p>If using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">build</span>
+<p><em>(Ignore any error messages concerning pyregion.)</em></p>
+<p>In case you are <em>not</em> carrying out a fresh installation, remove earlier Stimela images with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">clean</span> <span class="o">-</span><span class="n">ac</span>
 </pre></div>
 </div>
-<p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>, choose a pull folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>, where the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>stimela pull --singularity --pull-folder ${singularity_pull_folder}
+<p>Then, if using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>, choose a pull folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>, where the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored and define an environment variable by adding this in the rc file of your shell (e.g. .bashrc) :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export SINGULARITY_PULLFOLDER=${WORKSPACE_ROOT}/singularity_images
+</pre></div>
+</div>
+<p>and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">pull</span> <span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>
 <p>If using <a class="reference external" href="https://podman.io">Podman</a> (currently not fully supported):</p>
@@ -204,7 +217,7 @@ pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
 </div>
 <div class="section" id="installation-with-the-caratekit-sh-script">
 <h2>Installation with the caratekit.sh script<a class="headerlink" href="#installation-with-the-caratekit-sh-script" title="Permalink to this headline">¶</a></h2>
-<p>Download the installation script https://github.com/ska-sa/caracal/blob/master/caratekit.sh . Choose the parent directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> and the name of the Caracal directory <code class="docutils literal notranslate"><span class="pre">${caracal_dir}</span></code>.</p>
+<p>Download the installation script https://github.com/ska-sa/caracal/blob/master/caratekit.sh . Choose the parent directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> and the name of the CARACal directory <code class="docutils literal notranslate"><span class="pre">${caracal_dir}</span></code>.</p>
 <p>If using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws ${workspace} -cr -di -ct ${caracal_dir} -rp install -f -kh
 </pre></div>
@@ -216,15 +229,15 @@ pip install -U git+https://github.com/ska-sa/caracal.git#egg=caracal
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
-<p>If you installed Caracal manually, activate the virtual environment with:</p>
+<p>If you installed CARACal manually, activate the virtual environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source ${caracal-venv}/bin/activate
 </pre></div>
 </div>
-<p>If you installed Caracal with the caratekit.sh script, activate the virtual environment with:</p>
+<p>If you installed CARACal with the caratekit.sh script, activate the virtual environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source ${workspace}/${caracal_dir}/caracal_venv/bin/activate
 </pre></div>
 </div>
-<p>Run Caracal with:</p>
+<p>Run CARACal with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caracal - c ${your-configuration-file}
 </pre></div>
 </div>

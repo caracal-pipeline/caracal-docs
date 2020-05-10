@@ -11,7 +11,7 @@
 CARACal publication policy
 ==========================
  
-Please notice that users that have been using CARACal/MeerKATHI before its release should instead adhere to the `MeerKATHI publication Policy - V2 <https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU>`_.
+Please notice that users that have been using CARACal/MeerKATHI before its release should instead adhere to the `Caracal publication Policy - V2 <https://docs.google.com/document/d/12LjHM_e1G4kWRfCLcz0GgM8rlXOny23vVdcriiA8ayU>`_.
 
 Acknowledging CARACal
 _____________________
