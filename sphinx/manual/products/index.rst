@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -12,7 +12,7 @@ Data products
 .. toctree::
    :maxdepth: 1
 
-The following data products are written by Caracal.
+The following data products are written by CARACal.
  
 Diagnostic Plots
 ^^^^^^^^^^^^^^^^

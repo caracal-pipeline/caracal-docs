@@ -48,7 +48,7 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
   *str*, *optional*, *default = catalog_mask*
 
-  Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the obsconf worker. To use this output .FITS mask as a clean mask in the selfcal worker, users should set the relevant entry of clean_mask_method to label_out.
+  Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of cleanmask_method to label_out.
 
 
 
@@ -88,10 +88,10 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
 
 
-.. _mask_extended_source_input:
+.. _mask_extended_source_map:
 
 --------------------------------------------------
-**extended_source_input**
+**extended_source_map**
 --------------------------------------------------
 
   *str*, *optional*, *default = Fornaxa_vla.FITS*
@@ -100,10 +100,10 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
 
 
-.. _mask_query_catalog:
+.. _mask_catalog_query:
 
 --------------------------------------------------
-**query_catalog**
+**catalog_query**
 --------------------------------------------------
 
   Query catalog to select field/sources for constructing the mask.
@@ -120,13 +120,13 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
     Name of catalog to query. Options are 'NVSS' and 'SUMSS'.
 
-  **width_image**
+  **image_width**
 
     *str*, *optional*, *default = 1.2d*
 
     Angular size of the region of sky that we want to mask (e.g. '1.2d', where 'd' indicates degrees). This should be kept larger than the dirty image.
 
-  **thresh_nvss**
+  **nvss_thr**
 
     *float*, *optional*, *default = 10e-3*
 
@@ -134,10 +134,10 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
 
 
-.. _mask_pb_correction:
+.. _mask_pbcorr:
 
 --------------------------------------------------
-**pb_correction**
+**pbcorr**
 --------------------------------------------------
 
   Apply a primary-beam correction to the input image before extracting the mask.
@@ -170,7 +170,7 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
     Enable the 'make_mask' segment.
 
-  **mask_with**
+  **mask_method**
 
     *{"thresh", "sofia"}*, *optional*, *default = sofia*
 
@@ -182,7 +182,7 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
     Input image where to create mask ???? what is this ???
 
-  **thresh_lev**
+  **thr_lev**
 
     *int*, *optional*, *default = 5*
 
@@ -210,19 +210,19 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
     Execute segment 'merge_with_extended'.
 
-  **extended_source_input**
+  **extended_source_map**
 
     *str*, *optional*, *default = extended_mask.fits*
 
     Name of the mask-image of the extended source to merge with the current mask-image.
 
-  **mask_with**
+  **mask_method**
 
     *{"thresh", "sofia"}*, *optional*, *default = thresh*
 
     The tool to use for masking. Options are 'thresh' and 'sofia'.
 
-  **thresh_lev**
+  **thr_lev**
 
     *float*, *optional*, *default = 8e-2*
 

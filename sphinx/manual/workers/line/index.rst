@@ -28,10 +28,10 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
-.. _line_label:
+.. _line_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = corr*
@@ -98,10 +98,10 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
-.. _line_overwrite_flag_versions:
+.. _line_overwrite_flagvers:
 
 --------------------------------------------------
-**overwrite_flag_versions**
+**overwrite_flagvers**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -156,7 +156,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Enable the 'mstransform' segment.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -184,7 +184,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
       Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently, only frequency mode is supported. Other modes will throw an error.
 
-    **outframe**
+    **frame**
 
       *{"", "topo", "geo", "lsrk", "lsrd", "bary", "galacto", "lgroup", "cmb", "source"}*, *optional*, *default = bary*
 
@@ -196,7 +196,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
       Velocity used when regridding if mode = velocity. Current options are radio,and optical.
 
-    **outchangrid**
+    **changrid**
 
       *str*, *optional*, *default = auto*
 
@@ -286,7 +286,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Pixel size (arcsec). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.
 
-  **threshold**
+  **thr**
 
     *float*, *optional*, *default = 4.*
 
@@ -338,7 +338,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Image the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).
 
-  **pol**
+  **stokes**
 
     *str*, *optional*, *default = I*
 
@@ -434,7 +434,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Stop the WSClean + SoFiA iterations if the cube RMS has dropped by a factor < wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the change in RMS.
 
-  **wscl_keep_final_products_only**
+  **wscl_removeintermediate**
 
     *bool*, *optional*, *default = False*
 
@@ -452,7 +452,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Cleaning threshold used only during the first iteration of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration. WSClean will clean blindly down to this threshold (wscl_auto_mask), before switching to the auto-threshold set via wscl_auto_threshold.
 
-  **wscl_auto_threshold**
+  **wscl_auto_thr**
 
     *float*, *optional*, *default = 0.5*
 
@@ -464,31 +464,31 @@ Process visibilities for spectral line work and create line cubes and images.
 
     If set to true, the output of WSClean is a data cube. If set to false, the output is one .FITS image per spectral channel.
 
-  **wscl_no_update_mod**
+  **wscl_noupdatemod**
 
     *bool*, *optional*, *default = True*
 
     If set to true, WSClean will not store the line clean model in MODEL_DATA.
 
-  **wscl_multi_scale**
+  **wscl_multiscale**
 
     *bool*, *optional*, *default = False*
 
     Switch on WSClean multiscale cleaning.
 
-  **wscl_multi_scale_scales**
+  **wscl_multiscale_scales**
 
     *list* *of int*, *optional*, *default = 0, 10, 20, 30*
 
     List of scales for WSClean multiscale, in units of pixels. Only used is wscl_multi_scale is set to True.
 
-  **wscl_multi_scale_bias**
+  **wscl_multiscale_bias**
 
     *float*, *optional*, *default = 0.6*
 
     Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.
 
-  **casa_threshold**
+  **casa_thr**
 
     *str*, *optional*, *default = 10mJy*
 
@@ -594,7 +594,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Method to determine rms ('mad' for using median absolute deviation, 'std' for using standard deviation, 'negative' for using Gaussian fit to negative voxels).
 
-  **threshold**
+  **thr**
 
     *float*, *optional*, *default = 4.0*
 
@@ -642,19 +642,19 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Minimum size (in channels) in the Z direction (spectral axis).
 
-  **do_cubelets**
+  **cubelets**
 
     *bool*, *optional*, *default = True*
 
     Create a cubelet for each detected emission-line object.
 
-  **do_mom0**
+  **mom0**
 
     *bool*, *optional*, *default = True*
 
     Create a moment-0 image of the field.
 
-  **do_mom1**
+  **mom1**
 
     *bool*, *optional*, *default = True*
 
@@ -682,13 +682,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Type of catalogue to use. Options are PYBDSF and NVSS.
 
-  **channels_per_plot**
+  **chans_per_plot**
 
     *int*, *optional*, *default = 50*
 
     Number of channels to plot per detailed plot.
 
-  **thresh**
+  **thr**
 
     *float*, *optional*, *default = 20*
 

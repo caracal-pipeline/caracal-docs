@@ -18,4 +18,4 @@ Data reduction
    crosscal/index.rst
    selfcal/index.rst
    line/index.rst
- 
+   mosaic/index.rst

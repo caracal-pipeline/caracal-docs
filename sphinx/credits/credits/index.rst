@@ -7,7 +7,7 @@
 Support and Funding
 ===================
  
-The Caracal team acknowledges support from the following institutes:
+The CARACal team acknowledges support from the following institutes:
  
 * South African Radio Astronomy Observatory (SARAO)
 * Rhodes University

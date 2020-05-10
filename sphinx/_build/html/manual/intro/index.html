@@ -87,8 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../caracalREADME.html">Installation &amp; Run</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is Caracal?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#list-and-brief-description-of-caracal-workers">List and Brief description of Caracal workers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-caracal">What is CARACal?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-and-brief-description-of-caracal-workers">List and Brief description of CARACal workers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#general"><code class="docutils literal notranslate"><span class="pre">general</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#getdata"><code class="docutils literal notranslate"><span class="pre">getdata</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#obsconf"><code class="docutils literal notranslate"><span class="pre">obsconf</span></code></a></li>
@@ -110,7 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../products/index.html">Data products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reduction/index.html">Data reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../workers/index.html">Workers parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../packages/index.html">Software used by Caracal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/index.html">Software used by CARACal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../caratekit_utility/index.html">Caratekit utility</a></li>
 </ul>
 </li>
@@ -186,24 +186,24 @@
 <div class="toctree-wrapper compound">
 </div>
 <div class="section" id="what-is-caracal">
-<h2>What is Caracal?<a class="headerlink" href="#what-is-caracal" title="Permalink to this headline">¶</a></h2>
-<p>Caracal is a pipeline to reduce radio interferometry continuum and spectral line data in
+<h2>What is CARACal?<a class="headerlink" href="#what-is-caracal" title="Permalink to this headline">¶</a></h2>
+<p>CARACal is a pipeline to reduce radio interferometry continuum and spectral line data in
 total intensity. It works on data from any radio interferometer as long as they are in
 “measurement set” format.</p>
-<p>Caracal is essentially a collection of Python/Stimela scripts.
+<p>CARACal is essentially a collection of Python/Stimela scripts.
 <a class="reference external" href="https://github.com/ratt-ru/Stimela">Stimela</a> is a platform-independent radio
 interferometry scripting framework based on Python and container technology
 (e.g., Docker, Singularity). Stimela allows users to
 execute tasks from many different data reduction packages in Python without having to
 install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc.).
 Using Stimela, the different software packages are available through a unified scheme.
-Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
-<p>Within Caracal — and throughout this documentation — the individual Stimela scripts are called
-“workers”. Each Caracal worker corresponds to a specific section of the data reduction
+CARACal consists of a sequence of Stimela scripts, which it links and runs sequentially.</p>
+<p>Within CARACal — and throughout this documentation — the individual Stimela scripts are called
+“workers”. Each CARACal worker corresponds to a specific section of the data reduction
 process (e.g., flagging, cross-calibration). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).</p>
-<p>In practice, users tell Caracal what to do — and how to do it — via a YAML configuration file.
+<p>In practice, users tell CARACal what to do — and how to do it — via a YAML configuration file.
 The configuration file has one section for each run of a worker (some workers, e.g., the flagging
 one, might need to be run multiple times). By editing the configuration
 file users control the workers’ options, deciding which tasks to run and with what settings.
@@ -211,7 +211,7 @@ An explanation of the configuration file syntax is given in the <a class="refere
 section of this manual.</p>
 <p>Users will not have to touch anything but the configuration file. They can check
 what has happened through a variety of data products, including images, diagnostic plots and log files.
-A list of all Caracal data products is available at the <a class="reference internal" href="../products/index.html#products"><span class="std std-ref">Data products</span></a> section of this manual.</p>
+A list of all CARACal data products is available at the <a class="reference internal" href="../products/index.html#products"><span class="std std-ref">Data products</span></a> section of this manual.</p>
 <p>In the rest of this Introduction we give the complete list and a brief description of each worker.
 A more comprehensive
 description is available in the <a class="reference internal" href="../reduction/index.html#reduction"><span class="std std-ref">Data reduction</span></a> section of this manual, which follows
@@ -220,8 +220,8 @@ the individual workers through the configuration file can be found at the <a cla
 section of this manual or following the links below.</p>
 </div>
 <div class="section" id="list-and-brief-description-of-caracal-workers">
-<span id="workerlist"></span><h2>List and Brief description of Caracal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Permalink to this headline">¶</a></h2>
-<p>The following workers are available in Caracal. Typically, they are executed in the
+<span id="workerlist"></span><h2>List and Brief description of CARACal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Permalink to this headline">¶</a></h2>
+<p>The following workers are available in CARACal. Typically, they are executed in the
 same order in which they are given below. Only the first three workers (general, getdata
 and  obsconf) should always be executed. All other workers are optional.</p>
 <div class="section" id="general">
@@ -256,7 +256,7 @@ flag a “legacy” flag version.</p>
 <div class="section" id="flag">
 <h3><a class="reference internal" href="../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a><a class="headerlink" href="#flag" title="Permalink to this headline">¶</a></h3>
 <p>This worker flags the data and returns statistics on the flags. As all other
-workers, it can be run multiple times within a single Caracal run as explained at
+workers, it can be run multiple times within a single CARACal run as explained at
 <a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a> (though this feature is not necessarily useful for all workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
 algorithms that run on autocorrelations (to catch antennas with clear problems) or

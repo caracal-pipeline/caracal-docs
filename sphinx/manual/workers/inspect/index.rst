@@ -40,10 +40,10 @@ Diagnostic plots for data
 
 
 
-.. _inspect_label_out:
+.. _inspect_label_cal:
 
 --------------------------------------------------
-**label_out**
+**label_cal**
 --------------------------------------------------
 
   *str*, *optional*, *default = ' '*
@@ -196,7 +196,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like, gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -208,7 +208,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -236,7 +236,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -248,7 +248,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -276,7 +276,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -288,7 +288,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -316,7 +316,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -328,7 +328,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -356,7 +356,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -368,7 +368,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -396,7 +396,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -408,7 +408,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -436,7 +436,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -448,7 +448,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 
@@ -476,7 +476,7 @@ Diagnostic plots for data
 
     Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -488,7 +488,7 @@ Diagnostic plots for data
 
     Time to average for plotting, in seconds.
 
-  **avgchannel**
+  **avgchan**
 
     *str*, *optional*, *default = 10*
 

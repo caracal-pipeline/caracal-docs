@@ -246,17 +246,17 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = target</em></p>
 <p>Fields to be split off from the input MS. Options are (separately) ‘target’, ‘calibrators’, ‘bpcal’, ‘gcal’ and ‘fcal’. Also valid is any combination of ‘bpcal’, ‘gcal’ and ‘fcal’ in a comma-separated string (e.g. ‘bpcal, fcal’).</p>
 </div></blockquote>
-<p><strong>time_average</strong></p>
+<p><strong>time_avg</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Time averaging to apply to the data, in units of seconds. If this parameter is instead set to ‘’ or ‘0s’ then no time averaging is applied.</p>
 </div></blockquote>
-<p><strong>freq_average</strong></p>
+<p><strong>chan_avg</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>Frequency averaging to apply to the data, given as the number of channels per frequency bin. If this parameter is set to ‘’, ‘0’, or ‘1’, then no frequency averaging is applied.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Column to be split, where the default is ‘corrected’.</p>
@@ -266,7 +266,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Select the correlations, e.g. ‘XX’, ‘YY’. Setting this to ‘’ means that all correlations are selected.</p>
 </div></blockquote>
-<p><strong>usewtspectrum</strong></p>
+<p><strong>create_specweights</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Create a WEIGHT_SPECTRUM column in the output MS.</p>

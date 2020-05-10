@@ -28,10 +28,10 @@ General pipeline information, including data IDs, and prefixes for output files.
 
 
 
-.. _general_data_path:
+.. _general_rawdatadir:
 
 --------------------------------------------------
-**data_path**
+**rawdatadir**
 --------------------------------------------------
 
   *str*, *optional*, *default = ' '*
@@ -88,10 +88,10 @@ General pipeline information, including data IDs, and prefixes for output files.
 
 
 
-.. _general_init_pipeline:
+.. _general_prep_workspace:
 
 --------------------------------------------------
-**init_pipeline**
+**prep_workspace**
 --------------------------------------------------
 
   *bool*, *optional*, *default = True*

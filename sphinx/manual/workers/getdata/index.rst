@@ -48,13 +48,13 @@ Download and/or convert/unarchive data so that it is in the measurement set (MS)
 
     Create a tarball of the converted MS.
 
-  **channel_range**
+  **chanrange**
 
     *str*, *optional*, *default = all*
 
     Only extract channels in this range (0-based, inclusive; comma-separated string). It is also possible to specify 'all'.
 
-  **full_poll**
+  **fullpol**
 
     *bool*, *optional*, *default = False*
 

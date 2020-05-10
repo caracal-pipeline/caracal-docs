@@ -36,7 +36,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *{"target", "calibrators"}*, *optional*, *default = calibrators*
 
-  Fields that should be flagged. It can be set to either 'target' or 'calibrators' (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step 'flag_mask' (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
+  Fields that should be flagged. It can either be 'target' or 'calibrators'  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step flag_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calfields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
 
 
 
@@ -52,10 +52,10 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
 
 
-.. _flag_calibrator_fields:
+.. _flag_calfields:
 
 --------------------------------------------------
-**calibrator_fields**
+**calfields**
 --------------------------------------------------
 
   *str*, *optional*, *default = auto*
@@ -92,15 +92,15 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
 
 
-.. _flag_overwrite_flag_versions:
+.. _flag_overwrite_flagvers:
 
 --------------------------------------------------
-**overwrite_flag_versions**
+**overwrite_flagvers**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
 
-  Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+  Allow Caracal to ovewrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 
@@ -134,19 +134,19 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Enable the 'flag_autopowerspec' segment.
 
-  **scan_to_scan_threshold**
+  **scan_thr**
 
     *int*, *optional*, *default = 3*
 
     Threshold for flagging (in sigma) above the rest of the scans per field per channel.
 
-  **antenna_to_group_threshold**
+  **ant_group_thr**
 
     *int*, *optional*, *default = 5*
 
     Threshold for flagging (in sigma) above array median-power spectra per scan per field per channel.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = DATA*
 
@@ -190,13 +190,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Enable the 'flag_quack' segment.
 
-  **quackinterval**
+  **interval**
 
     *float*, *optional*, *default = 8.*
 
     Time interval (in seconds) to flag.
 
-  **quackmode**
+  **mode**
 
     *{"beg", "endb", "tail", "end"}*, *optional*, *default = beg*
 
@@ -246,13 +246,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Enable the 'flag_shadow' segment.
 
-  **tolerance**
+  **tol**
 
     *float*, *optional*, *default = 0.*
 
     Amount of shadow allowed (in metres). A positive number allows antennas to overlap in projection. A negative number forces antennas apart in projection.
 
-  **include_full_mk64**
+  **full_mk64**
 
     *bool*, *optional*, *default = False*
 
@@ -274,13 +274,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Enable the 'flag_spw' segment.
 
-  **channels**
+  **chans**
 
     *str*, *optional*, *default = *:856~880MHz , *:1658~1800MHz, *:1419.8~1421.3MHz*
 
     Channels to flag. Given as "spectral window index:start channel ~ end channel" e.g. "\*:856~880MHz". End channels are not inclusive.
 
-  **ensure_valid_selection**
+  **ensure_valid**
 
     *bool*, *optional*, *default = True*
 
@@ -308,7 +308,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'.
 
-  **ensure_valid_selection**
+  **ensure_valid**
 
     *bool*, *optional*, *default = False*
 
@@ -364,7 +364,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Timerange to flag. Required in the format 'YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'.
 
-  **ensure_valid_selection**
+  **ensure_valid**
 
     *bool*, *optional*, *default = False*
 
@@ -420,7 +420,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     Choose flagger for automatic flagging. Options are 'aoflagger', 'tricolour' and 'tfcrop'.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = DATA*
 
@@ -434,7 +434,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       The AOFlagger strategy file to use.
 
-    **ensure_valid_strategy**
+    **ensure_valid**
 
       *bool*, *optional*, *default = True*
 
@@ -442,7 +442,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **tricolour**
 
-    **window_backend**
+    **backend**
 
       *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
 
@@ -460,7 +460,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       Name of the Tricolour strategy file.
 
-    **strategy_narrowband**
+    **strat_narrow**
 
       *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
@@ -561,12 +561,6 @@ Flagging of the data. The selected flagging steps are executed in the same order
     *int*, *optional*, *default = 5*
 
     Time steps (in units of minutes).
-
-  **movies_in_report**
-
-    *bool*, *optional*, *default = True*
-
-    Generate movies in a report.
 
 
 

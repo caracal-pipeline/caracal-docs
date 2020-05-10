@@ -52,10 +52,10 @@ Prepare the data for calibration and imaging.
 
 
 
-.. _prep_fixvis:
+.. _prep_fixuvw:
 
 --------------------------------------------------
-**fixvis**
+**fixuvw**
 --------------------------------------------------
 
   Fix the UVW coordinates through the CASA task 'fixvis'.
@@ -68,10 +68,10 @@ Prepare the data for calibration and imaging.
 
 
 
-.. _prep_clear_cal:
+.. _prep_clearcal:
 
 --------------------------------------------------
-**clear_cal**
+**clearcal**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -108,10 +108,10 @@ Prepare the data for calibration and imaging.
 
 
 
-.. _prep_spectral_weights:
+.. _prep_specweights:
 
 --------------------------------------------------
-**spectral_weights**
+**specweights**
 --------------------------------------------------
 
   How to initialize spectral weights.
@@ -128,29 +128,29 @@ Prepare the data for calibration and imaging.
 
     Mode for spectral weights. Options are 'uniform' (set all weights to unity), 'estimate' (estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, and see 'estimate' segment of this section), and 'delete' (delete WEIGHT_SPECTRUM column if it exists).
 
-  **estimate**
+  **calculate**
 
-    Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values.
+    Calculate spectral weights from frequency-dependent SEFD/Tsys/Noise values.
 
-    **stats_data**
+    **statsfile**
 
       *str*, *optional*, *default = use_package_meerkat_spec*
 
       File with SEFD/Tsys/Noise data. If data is from the MeerKAT telescope, you can specify 'use_package_meerkat_spec' to use package data.
 
-    **weight_columns**
+    **weightcols**
 
       *list* *of str*, *optional*, *default = WEIGHT, WEIGHT_SPECTRUM*
 
       Column names for spectral weights.
 
-    **noise_columns**
+    **noisecols**
 
       *list* *of str*, *optional*, *default = SIGMA, SIGMA_SPECTRUM*
 
       Column names for noise values.
 
-    **write_to_ms**
+    **apply**
 
       *bool*, *optional*, *default = True*
 

@@ -107,7 +107,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#bpcal"><strong>bpcal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fcal"><strong>fcal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xcal"><strong>xcal</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-antenna"><strong>reference_antenna</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refant"><strong>refant</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
@@ -219,7 +219,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Return the time range over which observations were taken at night.</p>
 </div></blockquote>
-<p><strong>plot_elevation_tracks</strong></p>
+<p><strong>plotelev</strong></p>
 <blockquote>
 <div><p>Make Elevation vs Hour-angle plots for observed fields.</p>
 <p><strong>enable</strong></p>
@@ -270,8 +270,8 @@
 <p>The field name(s) of the crosshand phase-angle calibrator field(s). Or set ‘all’ to select all of the xcal fields, ‘longest’ to select the xcal field observed for the longest time, or ‘nearest’ to select the xcal field closest to the target. This calibrator must be linearly polarized and have a non-zero parallactic angle coverage at the time of observation in order to solve for the X-Y offsets in digitizers and the absolute polarization angle of the system. Successful calibration derotates U from V.</p>
 </div></blockquote>
 </div>
-<div class="section" id="reference-antenna">
-<span id="obsconf-reference-antenna"></span><h2><strong>reference_antenna</strong><a class="headerlink" href="#reference-antenna" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="refant">
+<span id="obsconf-refant"></span><h2><strong>refant</strong><a class="headerlink" href="#refant" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em></p>
 <p>The reference antenna, which can be identified by an antenna name or number.</p>

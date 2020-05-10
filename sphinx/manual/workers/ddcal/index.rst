@@ -28,15 +28,15 @@ Perform direction-dependent calibration on the data.
 
 
 
-.. _ddcal_label:
+.. _ddcal_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = corr*
 
-  Label of the .MS files to process. By default uses the 'corr' label for self-calibrated dataset.
+  Label of the .MS files to process. By default uses the 'corr' label_in for self-calibrated dataset.
 
 
 
@@ -90,7 +90,7 @@ Perform direction-dependent calibration on the data.
 
     Divide the initial image (for making the mask) into this number of boxes, then perform sigma clipping in each of these boxes.
 
-  **mask_iters**
+  **mask_niter**
 
     *int*, *optional*, *default = 20*
 
@@ -102,7 +102,7 @@ Perform direction-dependent calibration on the data.
 
     Overlap region for the boxes, given as a fraction of the number of boxes.
 
-  **mask_tolerance**
+  **mask_tol**
 
     *float*, *optional*, *default = 0.75*
 
@@ -120,7 +120,7 @@ Perform direction-dependent calibration on the data.
 
     Number of facets to use, and is the same as the Facets-NFacets parameter of DDFacet.
 
-  **weight_column**
+  **weight_col**
 
     *{"WEIGHT_SPECTRUM", "WEIGHT", "IMAGING_WEIGHT"}*, *optional*, *default = WEIGHT*
 
@@ -180,7 +180,7 @@ Perform direction-dependent calibration on the data.
 
     Gain setting for the deconvolution loops.
 
-  **deconv_fluxthreshold**
+  **deconv_fluxthr**
 
     *float*, *optional*, *default = 1.0e-6*
 
@@ -310,13 +310,13 @@ Perform direction-dependent calibration on the data.
 
     Enable madmax flagging in CubiCal.
 
-  **madmax_threshold**
+  **madmax_thr**
 
     *list* *of int*, *optional*, *default = 0, 10*
 
     Threshold for MAD flagging per baseline (specified in number of standard deviations). Residuals exceeding mad-thr\*MAD/1.428 will be flagged. MAD is computed per baseline. This can be specified as a list e.g. N1,N2,N3,... The first value is used to flag residuals before a solution starts (use 0 to disable), the next value is used when the residuals are first recomputed during the solution several iterations later (see -chi-int), etc. A final pass may be done at the end of the solution. The last value in the list is reused if necessary. Using a list with gradually-decreasing values may be sensible.
 
-  **madmax_global_threshold**
+  **madmax_global_thr**
 
     *list* *of int*, *optional*, *default = 0, 12*
 
@@ -328,19 +328,19 @@ Perform direction-dependent calibration on the data.
 
     MAD estimation mode. Use 'corr' for a separate estimate per baseline and correlation. Otherwise, a single estimate per baseline is computed using 'all' correlations, or only the 'diag' or 'offdiag' correlations.
 
-  **dd_data_column**
+  **dd_data_col**
 
     *str*, *optional*, *default = CORRECTED_DATA*
 
     Column to calibrate, with the assumption that you have already run the selfcal worker.
 
-  **dd_out_data_column**
+  **dd_out_data_col**
 
     *str*, *optional*, *default = SUBDD_DATA*
 
     Output data column. Note that the ddcal worker is currently hardcoded for this being set to 'SUBDD_DATA'.
 
-  **dd_weight_column**
+  **dd_weight_col**
 
     *str*, *optional*, *default = WEIGHT*
 
@@ -406,7 +406,7 @@ Perform direction-dependent calibration on the data.
 
     Time solution interval in timeslot units for G-Jones matrix.
 
-  **dd_g_channel_int**
+  **dd_g_chan_int**
 
     *int*, *optional*, *default = 0*
 
@@ -418,7 +418,7 @@ Perform direction-dependent calibration on the data.
 
     Time solution interval in timeslot units for DE-Jones matrix.
 
-  **dd_dd_channel_int**
+  **dd_dd_chan_int**
 
     *int*, *optional*, *default = 100*
 
@@ -528,19 +528,19 @@ Perform direction-dependent calibration on the data.
 
     Number of channels in output image.
 
-  **img_ws_joinchannels**
+  **img_ws_joinchans**
 
     *bool*, *optional*, *default = True*
 
     Join channels to create MFS image.
 
-  **img_ws_fit_spectral_pol**
+  **img_ws_specfit_nrcoeff**
 
     *int*, *optional*, *default = 2*
 
     Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1.
 
-  **img_ws_pol**
+  **img_ws_stokes**
 
     *{"I"}*, *optional*, *default = I*
 
@@ -552,13 +552,13 @@ Perform direction-dependent calibration on the data.
 
     Auto-masking threshold, given as the number of sigma_rms.
 
-  **img_ws_auto_threshold**
+  **img_ws_auto_thr**
 
     *float*, *optional*, *default = 0.5*
 
     Auto-clean threshold, given as the number of sigma_rms.
 
-  **img_ws_column**
+  **img_ws_col**
 
     *str*, *optional*, *default = CORRECTED_DATA*
 
@@ -658,7 +658,7 @@ Perform direction-dependent calibration on the data.
 
     Explicitly set the number of worker threads. Default is 0, meaning it uses all threads.
 
-  **dd_memory_fraction**
+  **dd_mem_frac**
 
     *float*, *optional*, *default = 0.5*
 

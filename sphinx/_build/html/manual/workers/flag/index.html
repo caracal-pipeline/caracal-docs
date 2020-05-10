@@ -97,9 +97,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#calibrator-fields"><strong>calibrator_fields</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calfields"><strong>calfields</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flagvers"><strong>overwrite_flagvers</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unflag"><strong>unflag</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-autopowerspec"><strong>flag_autopowerspec</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-autocorr"><strong>flag_autocorr</strong></a></li>
@@ -219,7 +219,7 @@
 <span id="flag-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>{“target”, “calibrators”}</em>, <em>optional</em>, <em>default = calibrators</em></p>
-<p>Fields that should be flagged. It can be set to either ‘target’ or ‘calibrators’ (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging step ‘flag_mask’ (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calibrator_fields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in ‘label_in’ below.</p>
+<p>Fields that should be flagged. It can either be ‘target’ or ‘calibrators’  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging step flag_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calfields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in ‘label_in’ below.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-in">
@@ -229,8 +229,8 @@
 <p>This label is added to the input .MS file(s) name, given in the getdata worker, to define the name of the .MS file(s) that should be flagged. These are &lt;input&gt;_&lt;label&gt;.ms if ‘field’ (see above) is set to ‘calibrators’, or &lt;input&gt;-&lt;target&gt;_&lt;label&gt;.ms if ‘field’ is set to ‘target’ (with one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in ‘field’ above.</p>
 </div></blockquote>
 </div>
-<div class="section" id="calibrator-fields">
-<span id="flag-calibrator-fields"></span><h2><strong>calibrator_fields</strong><a class="headerlink" href="#calibrator-fields" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="calfields">
+<span id="flag-calfields"></span><h2><strong>calfields</strong><a class="headerlink" href="#calfields" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>If ‘field’ above is set to ‘calibrators’, users can specify here what subset of calibrators to process. This should be a comma-separated list of ‘xcal’ ,’bpcal’, ‘gcal’ and/or ‘fcal’, which were all set by the obsconf worker. Alternatively, ‘auto’ selects all calibrators.</p>
@@ -257,11 +257,11 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="overwrite-flag-versions">
-<span id="flag-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overwrite-flagvers">
+<span id="flag-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
+<p>Allow Caracal to ovewrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
 </div>
 <div class="section" id="unflag">
@@ -284,17 +284,17 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘flag_autopowerspec’ segment.</p>
 </div></blockquote>
-<p><strong>scan_to_scan_threshold</strong></p>
+<p><strong>scan_thr</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
 <p>Threshold for flagging (in sigma) above the rest of the scans per field per channel.</p>
 </div></blockquote>
-<p><strong>antenna_to_group_threshold</strong></p>
+<p><strong>ant_group_thr</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 5</em></p>
 <p>Threshold for flagging (in sigma) above array median-power spectra per scan per field per channel.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = DATA</em></p>
 <p>Data column to flag.</p>
@@ -326,12 +326,12 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘flag_quack’ segment.</p>
 </div></blockquote>
-<p><strong>quackinterval</strong></p>
+<p><strong>interval</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 8.</em></p>
 <p>Time interval (in seconds) to flag.</p>
 </div></blockquote>
-<p><strong>quackmode</strong></p>
+<p><strong>mode</strong></p>
 <blockquote>
 <div><p><em>{“beg”, “endb”, “tail”, “end”}</em>, <em>optional</em>, <em>default = beg</em></p>
 <p>Quack flagging mode. Options are ‘beg’ (which flags the beginning of the scan), ‘endb’ (which flags the end of the scan), ‘tail’ (which flags everything but the first specified seconds of the scan), and ‘end’ (which flags all but the last specified seconds of the scan).</p>
@@ -368,12 +368,12 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘flag_shadow’ segment.</p>
 </div></blockquote>
-<p><strong>tolerance</strong></p>
+<p><strong>tol</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.</em></p>
 <p>Amount of shadow allowed (in metres). A positive number allows antennas to overlap in projection. A negative number forces antennas apart in projection.</p>
 </div></blockquote>
-<p><strong>include_full_mk64</strong></p>
+<p><strong>full_mk64</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Consider all MeerKAT-64 antennas in the shadowing calculation, even if only a subarray is used.</p>
@@ -389,12 +389,12 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘flag_spw’ segment.</p>
 </div></blockquote>
-<p><strong>channels</strong></p>
+<p><strong>chans</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = *:856~880MHz , *:1658~1800MHz, *:1419.8~1421.3MHz</em></p>
 <p>Channels to flag. Given as “spectral window index:start channel ~ end channel” e.g. “*:856~880MHz”. End channels are not inclusive.</p>
 </div></blockquote>
-<p><strong>ensure_valid_selection</strong></p>
+<p><strong>ensure_valid</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Check whether the channel selection returns any data. If it does not, FLAGDATA is not executed (preventing the pipeline from crashing). This check only works with the following spw formats (multiple, comma-separated selections allowed), “*:firstchan~lastchan”; “firstspw~lastspw:firstchan~lastchan”; “spw:firstchan~lastchan”; “firstchan~lastchan”. Channels are assumed to be in frequency (Hz, kHz, MHz, GHz allowed; if no units are given it assumes Hz).</p>
@@ -415,7 +415,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Timerange to flag. Required in the format ‘YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS’.</p>
 </div></blockquote>
-<p><strong>ensure_valid_selection</strong></p>
+<p><strong>ensure_valid</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.</p>
@@ -457,7 +457,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Timerange to flag. Required in the format ‘YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS’.</p>
 </div></blockquote>
-<p><strong>ensure_valid_selection</strong></p>
+<p><strong>ensure_valid</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.</p>
@@ -499,7 +499,7 @@
 <div><p><em>{“aoflagger”, “tricolour”, “tfcrop”}</em>, <em>optional</em>, <em>default = aoflagger</em></p>
 <p>Choose flagger for automatic flagging. Options are ‘aoflagger’, ‘tricolour’ and ‘tfcrop’.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = DATA</em></p>
 <p>Specify which column to flag.</p>
@@ -511,7 +511,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = firstpass_Q.rfis</em></p>
 <p>The AOFlagger strategy file to use.</p>
 </div></blockquote>
-<p><strong>ensure_valid_strategy</strong></p>
+<p><strong>ensure_valid</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V for an .MS with XX and YY only will result in an error and CARACal exiting. The rules are 1. XY,YX must be present in order to flag on Stokes V,U (or on XY,YX), and 2. XX,YY must be present in order to flag on Stokes I,Q (or on XX,YY). Disable this parameter only if you know what you are doing.</p>
@@ -519,7 +519,7 @@
 </div></blockquote>
 <p><strong>tricolour</strong></p>
 <blockquote>
-<div><p><strong>window_backend</strong></p>
+<div><p><strong>backend</strong></p>
 <blockquote>
 <div><p><em>{“numpy”, “zarr-disk”}</em>, <em>optional</em>, <em>default = numpy</em></p>
 <p>Visibility and flag data is re-ordered from an MS-row ordering into time-frequency windows ordered by baseline. Options are ‘numpy’ (if only a few scans worth of visibility data need to be re-ordered) and ‘zarr-disk’ (for larger data sizes, where re-ordering on disk, rather than in memory, is necessary).</p>
@@ -534,7 +534,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = mk_rfi_flagging_calibrator_fields_firstpass.yaml</em></p>
 <p>Name of the Tricolour strategy file.</p>
 </div></blockquote>
-<p><strong>strategy_narrowband</strong></p>
+<p><strong>strat_narrow</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = calibrator_mild_flagging.yaml</em></p>
 <p>Name of the Tricolour strategy file to be used for an MS with narrow bandwidth, if mode = ‘auto’ (see above).</p>
@@ -618,11 +618,6 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 5</em></p>
 <p>Time steps (in units of minutes).</p>
-</div></blockquote>
-<p><strong>movies_in_report</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Generate movies in a report.</p>
 </div></blockquote>
 </div></blockquote>
 </div>

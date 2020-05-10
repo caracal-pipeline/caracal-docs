@@ -6,17 +6,17 @@
 .. _workflow:
  
 ================
-Caracal workflow
+CARACal workflow
 ================
  
 .. toctree::
    :maxdepth: 1
 
-A Caracal run involves running a sequence of Caracal workers following the order in which they
+A CARACal run involves running a sequence of CARACal workers following the order in which they
 are listed in the user configuration file. For reference see :ref:`workerlist`.
 
-Users can design their own Caracal workflow with some level of flexibility. The exact workflow
-(i.e., the exact sequence of Caracal workers) will depend on science goals but also on I/O
+Users can design their own CARACal workflow with some level of flexibility. The exact workflow
+(i.e., the exact sequence of CARACal workers) will depend on science goals but also on I/O
 constraints. Below we provide two examples.
 
 .. _recommended:
@@ -24,8 +24,8 @@ constraints. Below we provide two examples.
 Recommended workflow
 --------------------
 
-The currently recommended Caracal workflow minimises the data volume increase
-during the course of a full Caracal run, and allows to treat the input .MS file(s)
+The currently recommended CARACal workflow minimises the data volume increase
+during the course of a full CARACal run, and allows to treat the input .MS file(s)
 as read-only.
 
 This workflow is implemented in all sample configuration files located at 

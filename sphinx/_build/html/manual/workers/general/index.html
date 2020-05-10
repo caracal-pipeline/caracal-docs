@@ -96,12 +96,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../flag/index.html">flag</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">general</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#title"><strong>title</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-path"><strong>data_path</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rawdatadir"><strong>rawdatadir</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#msdir"><strong>msdir</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#input"><strong>input</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output"><strong>output</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#prefix"><strong>prefix</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#init-pipeline"><strong>init_pipeline</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prep-workspace"><strong>prep_workspace</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#init-notebooks"><strong>init_notebooks</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report-notebooks"><strong>report_notebooks</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#final-report"><strong>final_report</strong></a></li>
@@ -204,8 +204,8 @@
 <p>Execute the ‘general’ worker.</p>
 </div></blockquote>
 </div>
-<div class="section" id="data-path">
-<span id="general-data-path"></span><h2><strong>data_path</strong><a class="headerlink" href="#data-path" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rawdatadir">
+<span id="general-rawdatadir"></span><h2><strong>rawdatadir</strong><a class="headerlink" href="#rawdatadir" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Location where CARACal (over-)writes HDF5 files and JSON info files downloaded by the getdata worker.</p>
@@ -239,8 +239,8 @@
 <p>Prefix for CARACal output products.</p>
 </div></blockquote>
 </div>
-<div class="section" id="init-pipeline">
-<span id="general-init-pipeline"></span><h2><strong>init_pipeline</strong><a class="headerlink" href="#init-pipeline" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prep-workspace">
+<span id="general-prep-workspace"></span><h2><strong>prep_workspace</strong><a class="headerlink" href="#prep-workspace" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Initialise the pipeline by copying input files (i.e. those that are MeerKAT specific, flagging strategies, beam model, etc.).</p>

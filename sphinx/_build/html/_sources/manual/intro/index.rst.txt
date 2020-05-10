@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -12,29 +12,29 @@ Introduction
 .. toctree::
    :maxdepth: 1
  
-What is Caracal?
+What is CARACal?
 ------------------
 
-Caracal is a pipeline to reduce radio interferometry continuum and spectral line data in
+CARACal is a pipeline to reduce radio interferometry continuum and spectral line data in
 total intensity. It works on data from any radio interferometer as long as they are in
 “measurement set” format.
 
-Caracal is essentially a collection of Python/Stimela scripts.
+CARACal is essentially a collection of Python/Stimela scripts.
 `Stimela <https://github.com/ratt-ru/Stimela>`_ is a platform-independent radio
 interferometry scripting framework based on Python and container technology
 (e.g., Docker, Singularity). Stimela allows users to
 execute tasks from many different data reduction packages in Python without having to
 install those packages individually (e.g., CASA, MeqTrees, AOflagger, SoFiA, etc.).
 Using Stimela, the different software packages are available through a unified scheme.
-Caracal consists of a sequence of Stimela scripts, which it links and runs sequentially.
+CARACal consists of a sequence of Stimela scripts, which it links and runs sequentially.
 
-Within Caracal --- and throughout this documentation --- the individual Stimela scripts are called
-"workers". Each Caracal worker corresponds to a specific section of the data reduction
+Within CARACal --- and throughout this documentation --- the individual Stimela scripts are called
+"workers". Each CARACal worker corresponds to a specific section of the data reduction
 process (e.g., flagging, cross-calibration). Each worker
 executes several tasks from the interferometry packages included in Stimela (e.g., the
 cross-calibration worker can calibrate delays, bandpass, gains and flux scale).
 
-In practice, users tell Caracal what to do --- and how to do it --- via a YAML configuration file.
+In practice, users tell CARACal what to do --- and how to do it --- via a YAML configuration file.
 The configuration file has one section for each run of a worker (some workers, e.g., the flagging
 one, might need to be run multiple times). By editing the configuration
 file users control the workers' options, deciding which tasks to run and with what settings.
@@ -43,7 +43,7 @@ section of this manual.
 
 Users will not have to touch anything but the configuration file. They can check
 what has happened through a variety of data products, including images, diagnostic plots and log files.
-A list of all Caracal data products is available at the :ref:`products` section of this manual.
+A list of all CARACal data products is available at the :ref:`products` section of this manual.
 
 In the rest of this Introduction we give the complete list and a brief description of each worker.
 A more comprehensive
@@ -54,10 +54,10 @@ section of this manual or following the links below.
 
 .. _workerlist:
 
-List and Brief description of Caracal workers
+List and Brief description of CARACal workers
 ---------------------------------------------
 
-The following workers are available in Caracal. Typically, they are executed in the
+The following workers are available in CARACal. Typically, they are executed in the
 same order in which they are given below. Only the first three workers (general, getdata
 and  obsconf) should always be executed. All other workers are optional.
 
@@ -99,7 +99,7 @@ flag a "legacy" flag version.
 ^^^^^^^^^^^
 
 This worker flags the data and returns statistics on the flags. As all other
-workers, it can be run multiple times within a single Caracal run as explained at
+workers, it can be run multiple times within a single CARACal run as explained at
 :ref:`configfile` (though this feature is not necessarily useful for all workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
 algorithms that run on autocorrelations (to catch antennas with clear problems) or

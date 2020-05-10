@@ -103,9 +103,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mosaic-type"><strong>mosaic_type</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#target-images"><strong>target_images</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#use-mfs-images"><strong>use_MFS_images</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-mfs"><strong>use_mfs</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#name"><strong>name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#domontage"><strong>domontage</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cutoff"><strong>cutoff</strong></a></li>
@@ -220,18 +220,11 @@
 <p>List of images to be mosaicked, with suffix of image.fits being expected.</p>
 </div></blockquote>
 </div>
-<div class="section" id="label">
-<span id="mosaic-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="label-in">
+<span id="mosaic-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
 <p>For autoselection of images, this needs to match the label/label_cal setting used for the selfcal/crosscal worker (when mosaicking continuum images) or the label setting used for the line worker (when mosaicking cubes).</p>
-</div></blockquote>
-</div>
-<div class="section" id="use-mfs-images">
-<span id="mosaic-use-mfs-images"></span><h2><strong>use_MFS_images</strong><a class="headerlink" href="#use-mfs-images" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Continuum mode only – If the images to be mosaicked were created using MFS, in the selfcal or crosscal worker, then this needs to be indicated via this parameter.</p>
 </div></blockquote>
 </div>
 <div class="section" id="line-name">
@@ -239,6 +232,13 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
 <p>Spectral mode only – If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the line worker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="use-mfs">
+<span id="mosaic-use-mfs"></span><h2><strong>use_mfs</strong><a class="headerlink" href="#use-mfs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Continuum mode only – If the images to be mosaicked were created using MFS, in the selfcal or crosscal worker, then this needs to be indicated via this parameter.</p>
 </div></blockquote>
 </div>
 <div class="section" id="name">

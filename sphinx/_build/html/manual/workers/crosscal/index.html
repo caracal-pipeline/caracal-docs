@@ -96,14 +96,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flagvers"><strong>overwrite_flagvers</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#casa-version"><strong>casa_version</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-model"><strong>set_model</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#primary-cal"><strong>primary_cal</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#secondary-cal"><strong>secondary_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#primary"><strong>primary</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secondary"><strong>secondary</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#apply-cal"><strong>apply_cal</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flagging-summary"><strong>flagging_summary</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary"><strong>summary</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
@@ -242,8 +241,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="overwrite-flag-versions">
-<span id="crosscal-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overwrite-flagvers">
+<span id="crosscal-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
@@ -256,13 +255,6 @@
 <p>Select what UV range should be used throughout this worker following the CASA notation (e.g., “&gt;100”). The default units are metres but other units can be used (e.g., “&gt;0.5klambda”).</p>
 </div></blockquote>
 </div>
-<div class="section" id="casa-version">
-<span id="crosscal-casa-version"></span><h2><strong>casa_version</strong><a class="headerlink" href="#casa-version" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = 47</em></p>
-<p>Casa version to carry out cross-calibration. ‘47’ means use CASA 4.7, which is recommended, unless you enjoy your data extra flag-gy. Leave empty to use the latest CASA.</p>
-</div></blockquote>
-</div>
 <div class="section" id="set-model">
 <span id="crosscal-set-model"></span><h2><strong>set_model</strong><a class="headerlink" href="#set-model" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -272,7 +264,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Execute the set_model segment.</p>
 </div></blockquote>
-<p><strong>caracal_model</strong></p>
+<p><strong>meerkat_skymodel</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Use the MeerkAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.</p>
@@ -290,12 +282,12 @@
 <p><strong>threads</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 8</em></p>
-<p>Number of threads used by MeqTrees if caracal_model above is enabled.</p>
+<p>Number of threads used by MeqTrees if meerkat_skymodel above is enabled.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="primary-cal">
-<span id="crosscal-primary-cal"></span><h2><strong>primary_cal</strong><a class="headerlink" href="#primary-cal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="primary">
+<span id="crosscal-primary"></span><h2><strong>primary</strong><a class="headerlink" href="#primary" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Calibrating on the bandpass/flux calibrator field.</p>
 <p><strong>reuse_existing_gains</strong></p>
@@ -308,7 +300,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = KGB</em></p>
 <p>Order in which to solve for gains for this field. E.g, if order is set to ‘KGB’, then we solve for delays, then gains and finally bandpass. The full options are 1) K - delay calibration, 2) G - gain calibration (decide whether to solve for amplitude, phase or  both with ‘calmode’ below), 3) B - bandpass calibration, 4) A - automatic flagging with CASA tfcrop (existing gains will be applied first).</p>
 </div></blockquote>
-<p><strong>B_solnorm</strong></p>
+<p><strong>b_solnorm</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Normalise average solution amplitude to 1.0</p>
@@ -328,7 +320,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘’, ‘’, scan</em></p>
 <p>For each step in ‘order’ above, set along what axis the data should be combined before solving. Options are ‘’ (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), ‘obs’, ‘scan’, ‘spw’, ‘field’. To combine along multiple axes use comma-separated axis names in a single string, e.g., ‘obs,scan’. This setting is only relevant for the steps of type K, G and B included in ‘order’ above. For A steps this setting is ignored and an empty string may be used.</p>
 </div></blockquote>
-<p><strong>B_fillgaps</strong></p>
+<p><strong>b_fillgaps</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 70</em></p>
 <p>Fill flagged solution channels by interpolation.</p>
@@ -341,7 +333,7 @@
 <p><strong>flag</strong></p>
 <blockquote>
 <div><p>Flagging settings used for all “A” (= auto-flagging) steps included in “order” above. These steps include applying the existing gains and flagging the corrected data.</p>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>{“corrected”, “residual”}</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to flag on</p>
@@ -379,8 +371,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="secondary-cal">
-<span id="crosscal-secondary-cal"></span><h2><strong>secondary_cal</strong><a class="headerlink" href="#secondary-cal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="secondary">
+<span id="crosscal-secondary"></span><h2><strong>secondary</strong><a class="headerlink" href="#secondary" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Calibrating on the gain calibrator field.</p>
 <p><strong>reuse_existing_gains</strong></p>
@@ -391,12 +383,12 @@
 <p><strong>apply</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = B</em></p>
-<p>Calibration terms solved for in the primary_cal segment that should be applied to the secondary calibrator before solving for the terms in ‘order’ below.</p>
+<p>Calibration terms solved for in the primary segment that should be applied to the secondary calibrator before solving for the terms in ‘order’ below.</p>
 </div></blockquote>
 <p><strong>order</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = KGAF</em></p>
-<p>Order of the calibration/flagging/imaging steps for the secondary calibrator. E.g, if order is set to ‘KGAF’, we solve for delays, then for gains, after that the existing gains (KG) are applied before flagging the calibrated data, and finally, we solve for gains and transfer the flux scale from the primary_cal step. The full options are 1) K - delay calibration; 2) G - gain calibration (set whether to solve for amplitude, phase or both with ‘calmode’ below); 3) F - same as G, but imedietly followed by a fluxscale. Note that a G table must exist from the primary_cal step for this work; 4) B - bandpass calibration; 5) A - automatic flagging with CASA tfcrop (existing gains will be applied first); 6) I - imaging with WSClean using the settings in ‘image’ below, which fills the MODEL column of  the .MS file(s) with a sky model and, therefore, enables self-calibration with a subsequent G step.</p>
+<p>Order of the calibration/flagging/imaging steps for the secondary calibrator. E.g, if order is set to ‘KGAF’, we solve for delays, then for gains, after that the existing gains (KG) are applied before flagging the calibrated data, and finally, we solve for gains and transfer the flux scale from the primary step. The full options are 1) K - delay calibration; 2) G - gain calibration (set whether to solve for amplitude, phase or both with ‘calmode’ below); 3) F - same as G, but imedietly followed by a fluxscale. Note that a G table must exist from the primary step for this work; 4) B - bandpass calibration; 5) A - automatic flagging with CASA tfcrop (existing gains will be applied first); 6) I - imaging with WSClean using the settings in ‘image’ below, which fills the MODEL column of  the .MS file(s) with a sky model and, therefore, enables self-calibration with a subsequent G step.</p>
 </div></blockquote>
 <p><strong>calmode</strong></p>
 <blockquote>
@@ -426,7 +418,7 @@
 <p><strong>flag</strong></p>
 <blockquote>
 <div><p>Flagging settings used for all “A” (= auto-flagging) steps included in “order” above. These steps include applying the existing gains and flagging the corrected data.</p>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>{“corrected”, “residual”}</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to flag on</p>
@@ -500,7 +492,7 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.5</em></p>
 <p>Auto clean threshold</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = CORRECTED_DATA</em></p>
 <p>Column to image</p>
@@ -549,8 +541,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="flagging-summary">
-<span id="crosscal-flagging-summary"></span><h2><strong>flagging_summary</strong><a class="headerlink" href="#flagging-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="summary">
+<span id="crosscal-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Prints out the buther’s bill, i.e. data flagging summary at the end of cross calibration process.</p>
 <p><strong>enable</strong></p>

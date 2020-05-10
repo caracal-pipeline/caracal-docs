@@ -1,4 +1,4 @@
-.. meerkathi documentation master file, created by
+.. caracal documentation master file, created by
    sphinx-quickstart on Mon Feb 18 15:04:26 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -6,33 +6,50 @@
 .. _packages:
  
 ========================
-Software used by Caracal
+Software used by CARACal
 ========================
  
 .. toctree::
    :maxdepth: 1
 
 
-As explained in the :ref:`intro`, Caracal execute tasks from many different
+As described in the :ref:`intro`, CARACal executes tasks from many different
 data reduction software packages thanks to the unifying scheme provided by
-`Stimela <https://github.com/ratt-ru/Stimela>`_. These software packages include:
 
-* `AOFlagger <https://sourceforge.net/p/aoflagger/wiki/Home/>`_ 2.13.0
+* `Stimela <https://github.com/ratt-ru/Stimela>`_
 
-* `Casa <https://casa.nrao.edu/>`_ 5.6
+The software packages used by CARACal include:
 
-* `Crystalball <https://github.com/paoloserra/crystalball>`_ 0.3.0
+* `Aimfast <https://github.com/Athanaseus/aimfast>`_
 
-* `Cubical <https://github.com/ratt-ru/CubiCal>`_ 1.5.1
+* `AOFlagger <https://sourceforge.net/p/aoflagger/wiki/Home/>`_
+
+* `Casa <https://casa.nrao.edu/>`_
+
+* `Crystalball <https://github.com/paoloserra/crystalball>`_
+
+* `Cubical <https://github.com/ratt-ru/CubiCal>`_
 
 * `MeqTrees <http://meqtrees.net/>`_
 
+* `Montage <http://montage.ipac.caltech.edu/>`_
+
+* `Ragavi <https://github.com/ratt-ru/ragavi>`_
+
+* `PyBDSF <https://www.astron.nl/citt/pybdsf/>`_
+
 * `RFInder <https://github.com/Fil8/RFInder>`_ 
 
-* `SoFiA <https://github.com/SoFiA-Admin/SoFiA>`_ 1.3.2
+* `ShadeMS <https://github.com/ratt-ru/shadeMS>`_
 
-* `Sunblocker <https://github.com/gigjozsa/sunblocker>`_ 1.0.0
+* `SHARPener <https://github.com/Fil8/SHARPener>`_
 
-* `WSclean <https://sourceforge.net/p/wsclean/wiki/Home/>`_ 2.8
+* `SoFiA <https://github.com/SoFiA-Admin/SoFiA>`_
+
+* `Sunblocker <https://github.com/gigjozsa/sunblocker>`_
+
+* `Tricolour <https://github.com/ska-sa/tricolour>`_
+
+* `WSclean <https://sourceforge.net/p/wsclean/wiki/Home/>`_
 
 We refer to the webpages linked above for references and manuals.

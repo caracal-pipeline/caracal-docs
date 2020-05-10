@@ -52,27 +52,15 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
 
 
 
-.. _mosaic_label:
+.. _mosaic_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = corr*
 
   For autoselection of images, this needs to match the label/label_cal setting used for the selfcal/crosscal worker (when mosaicking continuum images) or the label setting used for the line worker (when mosaicking cubes).
-
-
-
-.. _mosaic_use_MFS_images:
-
---------------------------------------------------
-**use_MFS_images**
---------------------------------------------------
-
-  *bool*, *optional*, *default = False*
-
-  Continuum mode only -- If the images to be mosaicked were created using MFS, in the selfcal or crosscal worker, then this needs to be indicated via this parameter.
 
 
 
@@ -85,6 +73,18 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
   *str*, *optional*, *default = HI*
 
   Spectral mode only -- If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the line worker.
+
+
+
+.. _mosaic_use_mfs:
+
+--------------------------------------------------
+**use_mfs**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  Continuum mode only -- If the images to be mosaicked were created using MFS, in the selfcal or crosscal worker, then this needs to be indicated via this parameter.
 
 
 

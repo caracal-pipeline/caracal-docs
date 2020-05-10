@@ -80,10 +80,10 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
 
 
-.. _crosscal_overwrite_flag_versions:
+.. _crosscal_overwrite_flagvers:
 
 --------------------------------------------------
-**overwrite_flag_versions**
+**overwrite_flagvers**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -104,18 +104,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
 
 
-.. _crosscal_casa_version:
-
---------------------------------------------------
-**casa_version**
---------------------------------------------------
-
-  *str*, *optional*, *default = 47*
-
-  Casa version to carry out cross-calibration. '47' means use CASA 4.7, which is recommended, unless you enjoy your data extra flag-gy. Leave empty to use the latest CASA.
-
-
-
 .. _crosscal_set_model:
 
 --------------------------------------------------
@@ -130,7 +118,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Execute the set_model segment.
 
-  **caracal_model**
+  **meerkat_skymodel**
 
     *bool*, *optional*, *default = False*
 
@@ -152,14 +140,14 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     *int*, *optional*, *default = 8*
 
-    Number of threads used by MeqTrees if caracal_model above is enabled.
+    Number of threads used by MeqTrees if meerkat_skymodel above is enabled.
 
 
 
-.. _crosscal_primary_cal:
+.. _crosscal_primary:
 
 --------------------------------------------------
-**primary_cal**
+**primary**
 --------------------------------------------------
 
   Calibrating on the bandpass/flux calibrator field.
@@ -176,7 +164,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Order in which to solve for gains for this field. E.g, if order is set to 'KGB', then we solve for delays, then gains and finally bandpass. The full options are 1) K - delay calibration, 2) G - gain calibration (decide whether to solve for amplitude, phase or  both with 'calmode' below), 3) B - bandpass calibration, 4) A - automatic flagging with CASA tfcrop (existing gains will be applied first).
 
-  **B_solnorm**
+  **b_solnorm**
 
     *bool*, *optional*, *default = False*
 
@@ -200,7 +188,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
-  **B_fillgaps**
+  **b_fillgaps**
 
     *int*, *optional*, *default = 70*
 
@@ -216,7 +204,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Flagging settings used for all "A" (= auto-flagging) steps included in "order" above. These steps include applying the existing gains and flagging the corrected data.
 
-    **column**
+    **col**
 
       *{"corrected", "residual"}*, *optional*, *default = corrected*
 
@@ -260,10 +248,10 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
 
 
-.. _crosscal_secondary_cal:
+.. _crosscal_secondary:
 
 --------------------------------------------------
-**secondary_cal**
+**secondary**
 --------------------------------------------------
 
   Calibrating on the gain calibrator field.
@@ -278,13 +266,13 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     *str*, *optional*, *default = B*
 
-    Calibration terms solved for in the primary_cal segment that should be applied to the secondary calibrator before solving for the terms in 'order' below.
+    Calibration terms solved for in the primary segment that should be applied to the secondary calibrator before solving for the terms in 'order' below.
 
   **order**
 
     *str*, *optional*, *default = KGAF*
 
-    Order of the calibration/flagging/imaging steps for the secondary calibrator. E.g, if order is set to 'KGAF', we solve for delays, then for gains, after that the existing gains (KG) are applied before flagging the calibrated data, and finally, we solve for gains and transfer the flux scale from the primary_cal step. The full options are 1) K - delay calibration; 2) G - gain calibration (set whether to solve for amplitude, phase or both with 'calmode' below); 3) F - same as G, but imedietly followed by a fluxscale. Note that a G table must exist from the primary_cal step for this work; 4) B - bandpass calibration; 5) A - automatic flagging with CASA tfcrop (existing gains will be applied first); 6) I - imaging with WSClean using the settings in 'image' below, which fills the MODEL column of  the .MS file(s) with a sky model and, therefore, enables self-calibration with a subsequent G step.
+    Order of the calibration/flagging/imaging steps for the secondary calibrator. E.g, if order is set to 'KGAF', we solve for delays, then for gains, after that the existing gains (KG) are applied before flagging the calibrated data, and finally, we solve for gains and transfer the flux scale from the primary step. The full options are 1) K - delay calibration; 2) G - gain calibration (set whether to solve for amplitude, phase or both with 'calmode' below); 3) F - same as G, but imedietly followed by a fluxscale. Note that a G table must exist from the primary step for this work; 4) B - bandpass calibration; 5) A - automatic flagging with CASA tfcrop (existing gains will be applied first); 6) I - imaging with WSClean using the settings in 'image' below, which fills the MODEL column of  the .MS file(s) with a sky model and, therefore, enables self-calibration with a subsequent G step.
 
   **calmode**
 
@@ -320,7 +308,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Flagging settings used for all "A" (= auto-flagging) steps included in "order" above. These steps include applying the existing gains and flagging the corrected data.
 
-    **column**
+    **col**
 
       *{"corrected", "residual"}*, *optional*, *default = corrected*
 
@@ -408,7 +396,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
       Auto clean threshold
 
-    **column**
+    **col**
 
       *str*, *optional*, *default = CORRECTED_DATA*
 
@@ -468,10 +456,10 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
 
 
-.. _crosscal_flagging_summary:
+.. _crosscal_summary:
 
 --------------------------------------------------
-**flagging_summary**
+**summary**
 --------------------------------------------------
 
   Prints out the buther's bill, i.e. data flagging summary at the end of cross calibration process.

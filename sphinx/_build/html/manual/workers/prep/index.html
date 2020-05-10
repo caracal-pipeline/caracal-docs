@@ -106,10 +106,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fixvis"><strong>fixvis</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#clear-cal"><strong>clear_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixuvw"><strong>fixuvw</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clearcal"><strong>clearcal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manage-flags"><strong>manage_flags</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#spectral-weights"><strong>spectral_weights</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specweights"><strong>specweights</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
@@ -216,8 +216,8 @@
 <p>In combination with a non-empty ‘label_in’ (see above), ‘field’ defines which .MS file(s) to work on. This parameter is ignored if ‘label_in’ is empty. Options are ‘target’ and ‘calibrators’.</p>
 </div></blockquote>
 </div>
-<div class="section" id="fixvis">
-<span id="prep-fixvis"></span><h2><strong>fixvis</strong><a class="headerlink" href="#fixvis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fixuvw">
+<span id="prep-fixuvw"></span><h2><strong>fixuvw</strong><a class="headerlink" href="#fixuvw" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Fix the UVW coordinates through the CASA task ‘fixvis’.</p>
 <p><strong>enable</strong></p>
@@ -227,8 +227,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="clear-cal">
-<span id="prep-clear-cal"></span><h2><strong>clear_cal</strong><a class="headerlink" href="#clear-cal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clearcal">
+<span id="prep-clearcal"></span><h2><strong>clearcal</strong><a class="headerlink" href="#clearcal" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Clear out calibrated data and reset the previous predicted model.</p>
@@ -255,8 +255,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="spectral-weights">
-<span id="prep-spectral-weights"></span><h2><strong>spectral_weights</strong><a class="headerlink" href="#spectral-weights" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="specweights">
+<span id="prep-specweights"></span><h2><strong>specweights</strong><a class="headerlink" href="#specweights" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>How to initialize spectral weights.</p>
 <p><strong>enable</strong></p>
@@ -269,25 +269,25 @@
 <div><p><em>{“uniform”, “estimate”, “delete”}</em>, <em>optional</em>, <em>default = uniform</em></p>
 <p>Mode for spectral weights. Options are ‘uniform’ (set all weights to unity), ‘estimate’ (estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, and see ‘estimate’ segment of this section), and ‘delete’ (delete WEIGHT_SPECTRUM column if it exists).</p>
 </div></blockquote>
-<p><strong>estimate</strong></p>
+<p><strong>calculate</strong></p>
 <blockquote>
-<div><p>Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values.</p>
-<p><strong>stats_data</strong></p>
+<div><p>Calculate spectral weights from frequency-dependent SEFD/Tsys/Noise values.</p>
+<p><strong>statsfile</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = use_package_meerkat_spec</em></p>
 <p>File with SEFD/Tsys/Noise data. If data is from the MeerKAT telescope, you can specify ‘use_package_meerkat_spec’ to use package data.</p>
 </div></blockquote>
-<p><strong>weight_columns</strong></p>
+<p><strong>weightcols</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = WEIGHT, WEIGHT_SPECTRUM</em></p>
 <p>Column names for spectral weights.</p>
 </div></blockquote>
-<p><strong>noise_columns</strong></p>
+<p><strong>noisecols</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = SIGMA, SIGMA_SPECTRUM</em></p>
 <p>Column names for noise values.</p>
 </div></blockquote>
-<p><strong>write_to_ms</strong></p>
+<p><strong>apply</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Write columns to file.</p>

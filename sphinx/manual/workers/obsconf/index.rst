@@ -48,7 +48,7 @@ Set up some basic information about the observation(s).
 
     Return the time range over which observations were taken at night.
 
-  **plot_elevation_tracks**
+  **plotelev**
 
     Make Elevation vs Hour-angle plots for observed fields.
 
@@ -126,10 +126,10 @@ Set up some basic information about the observation(s).
 
 
 
-.. _obsconf_reference_antenna:
+.. _obsconf_refant:
 
 --------------------------------------------------
-**reference_antenna**
+**refant**
 --------------------------------------------------
 
   *str*

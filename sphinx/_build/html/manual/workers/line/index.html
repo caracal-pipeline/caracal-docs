@@ -99,11 +99,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../inspect/index.html">inspect</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">line</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label"><strong>label</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#restfreq"><strong>restfreq</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#overwrite-flag-versions"><strong>overwrite_flag_versions</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overwrite-flagvers"><strong>overwrite_flagvers</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subtractmodelcol"><strong>subtractmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#addmodelcol"><strong>addmodelcol</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mstransform"><strong>mstransform</strong></a></li>
@@ -212,8 +212,8 @@
 <p>Execute the line worker.</p>
 </div></blockquote>
 </div>
-<div class="section" id="label">
-<span id="line-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="label-in">
+<span id="line-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
 <p>Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the getdata worker, followed by the target ID (one file per target), followed by this label. This is the format used by CARACal whenever it writes an .MS file to disk (e.g., in the transform worker).</p>
@@ -259,8 +259,8 @@
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="overwrite-flag-versions">
-<span id="line-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overwrite-flagvers">
+<span id="line-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
@@ -297,7 +297,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Enable the ‘mstransform’ segment.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Which column of the .MS file(s) to process.</p>
@@ -320,7 +320,7 @@
 <div><p><em>{“frequency”}</em>, <em>optional</em>, <em>default = frequency</em></p>
 <p>Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently, only frequency mode is supported. Other modes will throw an error.</p>
 </div></blockquote>
-<p><strong>outframe</strong></p>
+<p><strong>frame</strong></p>
 <blockquote>
 <div><p><em>{“”, “topo”, “geo”, “lsrk”, “lsrd”, “bary”, “galacto”, “lgroup”, “cmb”, “source”}</em>, <em>optional</em>, <em>default = bary</em></p>
 <p>Output reference frame. Current options are ‘’, topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, and source.</p>
@@ -330,7 +330,7 @@
 <div><p><em>{“radio”, “optical”}</em>, <em>optional</em>, <em>default = radio</em></p>
 <p>Velocity used when regridding if mode = velocity. Current options are radio,and optical.</p>
 </div></blockquote>
-<p><strong>outchangrid</strong></p>
+<p><strong>changrid</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>Output channel grid for Doppler correction. Default is ‘auto’, and the pipeline will calculate the appropriate channel grid. If not ‘auto’ then it must be in the format ‘nchan,chan0,chanw’ where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter ‘mode’ above).</p>
@@ -402,7 +402,7 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
 <p>Pixel size (arcsec). Use the same as in the make_cube section. This is used to set up the gridding of the visibilities.</p>
 </div></blockquote>
-<p><strong>threshold</strong></p>
+<p><strong>thr</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.</em></p>
 <p>Flag UV cells whose visibility deviates by more than this threshold from the average visibility on the UV plane. The threshold is in units of the rms dispersion of all visibilities.</p>
@@ -443,7 +443,7 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Image the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).</p>
 </div></blockquote>
-<p><strong>pol</strong></p>
+<p><strong>stokes</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = I</em></p>
 <p>Polarizations in output cube (I,Q,U,V,XX,YY,XY,YX,RR,LL,RL,LR and combinations).</p>
@@ -523,7 +523,7 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.1</em></p>
 <p>Stop the WSClean + SoFiA iterations if the cube RMS has dropped by a factor &lt; wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the change in RMS.</p>
 </div></blockquote>
-<p><strong>wscl_keep_final_products_only</strong></p>
+<p><strong>wscl_removeintermediate</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>If set to true, WSClean + SoFiA intermediate-cubes are deleted from the output directory. If set to false, WSClean + SoFiA intermediate-cubes are retained in the output directory.</p>
@@ -538,7 +538,7 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Cleaning threshold used only during the first iteration of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration. WSClean will clean blindly down to this threshold (wscl_auto_mask), before switching to the auto-threshold set via wscl_auto_threshold.</p>
 </div></blockquote>
-<p><strong>wscl_auto_threshold</strong></p>
+<p><strong>wscl_auto_thr</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
 <p>Cleaning threshold used for subsequent iterations of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration.</p>
@@ -548,27 +548,27 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>If set to true, the output of WSClean is a data cube. If set to false, the output is one .FITS image per spectral channel.</p>
 </div></blockquote>
-<p><strong>wscl_no_update_mod</strong></p>
+<p><strong>wscl_noupdatemod</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>If set to true, WSClean will not store the line clean model in MODEL_DATA.</p>
 </div></blockquote>
-<p><strong>wscl_multi_scale</strong></p>
+<p><strong>wscl_multiscale</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Switch on WSClean multiscale cleaning.</p>
 </div></blockquote>
-<p><strong>wscl_multi_scale_scales</strong></p>
+<p><strong>wscl_multiscale_scales</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0, 10, 20, 30</em></p>
 <p>List of scales for WSClean multiscale, in units of pixels. Only used is wscl_multi_scale is set to True.</p>
 </div></blockquote>
-<p><strong>wscl_multi_scale_bias</strong></p>
+<p><strong>wscl_multiscale_bias</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.6</em></p>
 <p>Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.</p>
 </div></blockquote>
-<p><strong>casa_threshold</strong></p>
+<p><strong>casa_thr</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10mJy</em></p>
 <p>Flux-density level to stop CASA cleaning. It must include units, e.g. ‘1.0mJy’.</p>
@@ -647,7 +647,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = mad</em></p>
 <p>Method to determine rms (‘mad’ for using median absolute deviation, ‘std’ for using standard deviation, ‘negative’ for using Gaussian fit to negative voxels).</p>
 </div></blockquote>
-<p><strong>threshold</strong></p>
+<p><strong>thr</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
 <p>SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).</p>
@@ -687,17 +687,17 @@
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
 <p>Minimum size (in channels) in the Z direction (spectral axis).</p>
 </div></blockquote>
-<p><strong>do_cubelets</strong></p>
+<p><strong>cubelets</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Create a cubelet for each detected emission-line object.</p>
 </div></blockquote>
-<p><strong>do_mom0</strong></p>
+<p><strong>mom0</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Create a moment-0 image of the field.</p>
 </div></blockquote>
-<p><strong>do_mom1</strong></p>
+<p><strong>mom1</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Create a moment-1 image of the field.</p>
@@ -718,12 +718,12 @@
 <div><p><em>{“NVSS”, “PYBDSF”}</em>, <em>optional</em>, <em>default = PYBDSF</em></p>
 <p>Type of catalogue to use. Options are PYBDSF and NVSS.</p>
 </div></blockquote>
-<p><strong>channels_per_plot</strong></p>
+<p><strong>chans_per_plot</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 50</em></p>
 <p>Number of channels to plot per detailed plot.</p>
 </div></blockquote>
-<p><strong>thresh</strong></p>
+<p><strong>thr</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 20</em></p>
 <p>Threshold to select sources in online catalogue (in units of mJy).</p>

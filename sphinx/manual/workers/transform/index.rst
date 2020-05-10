@@ -94,19 +94,19 @@ Split, average and/or calibrate the data.
 
     Fields to be split off from the input MS. Options are (separately) 'target', 'calibrators', 'bpcal', 'gcal' and 'fcal'. Also valid is any combination of 'bpcal', 'gcal' and 'fcal' in a comma-separated string (e.g. 'bpcal, fcal').
 
-  **time_average**
+  **time_avg**
 
     *str*, *optional*, *default = ' '*
 
     Time averaging to apply to the data, in units of seconds. If this parameter is instead set to '' or '0s' then no time averaging is applied.
 
-  **freq_average**
+  **chan_avg**
 
     *int*, *optional*, *default = 1*
 
     Frequency averaging to apply to the data, given as the number of channels per frequency bin. If this parameter is set to '', '0', or '1', then no frequency averaging is applied.
 
-  **column**
+  **col**
 
     *str*, *optional*, *default = corrected*
 
@@ -118,7 +118,7 @@ Split, average and/or calibrate the data.
 
     Select the correlations, e.g. 'XX', 'YY'. Setting this to '' means that all correlations are selected.
 
-  **usewtspectrum**
+  **create_specweights**
 
     *bool*, *optional*, *default = True*
 

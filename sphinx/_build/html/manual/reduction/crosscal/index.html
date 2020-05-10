@@ -90,8 +90,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../configfile/index.html">Configuration file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../products/index.html">Data products</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Data reduction</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../workflow/index.html">Caracal workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../prepare/index.html">Prepare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../workflow/index.html">CARACal workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../prepare/index.html">Set up</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../flag/index.html">Flagging and flag versions</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Cross-calibration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flexible-cross-calibration-strategies">Flexible cross-calibration strategies</a></li>
@@ -100,10 +100,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">Continuum imaging and self-calibration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../line/index.html">Spectral line imaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mosaic/index.html">Mosaicking</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../workers/index.html">Workers parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by Caracal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../caratekit_utility/index.html">Caratekit utility</a></li>
 </ul>
 </li>
@@ -181,7 +182,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a>, <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a><strong>]</strong></p>
-<p>Cross-calibration runs largely on CASA tasks. Using these tasks, Caracal allows users to
+<p>Cross-calibration runs largely on CASA tasks. Using these tasks, CARACal allows users to
 solve for delays, bandpass, gains and flux scale in several different ways. The <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a>
 worker operates within the framework that .MS files  include
 a primary (bandpass and flux) calibrator and, optionally, a secondary (gains) calibrator.</p>
@@ -194,15 +195,15 @@ primary calibrator;</li>
 <li>time-dependent antenna flux scale at fine time resolution obtained by scaling the gains
 from step 3 above to the gains from step 2 above.</li>
 </ol>
-<p>However, Caracal allows users to take less traditional cross-calibtation steps, too,
+<p>However, CARACal allows users to take less traditional cross-calibtation steps, too,
 such as self-calibration on the secondary calibrator, or delay
 calibration on the secondary, and to flag the calibrated visibilities in between
 calibration steps.</p>
 <div class="section" id="flexible-cross-calibration-strategies">
 <h2>Flexible cross-calibration strategies<a class="headerlink" href="#flexible-cross-calibration-strategies" title="Permalink to this headline">¶</a></h2>
-<p>Caracal allows for powerful and sophisticated cross-calibration strategies thanks
-to the flexibility provided by the parameters <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: order</span></a>
-and <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-secondary-cal"><span class="std std-ref">crosscal: secondary_cal: order</span></a>. These allow users to build
+<p>CARACal allows for powerful and sophisticated cross-calibration strategies thanks
+to the flexibility provided by the parameters <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: order</span></a>
+and <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-secondary"><span class="std std-ref">crosscal: secondary: order</span></a>. These allow users to build
 their favourite sequence of calibration/imaging/flagging steps choosing among:</p>
 <ul class="simple">
 <li>K = delay calibration with CASA GAINCAL</li>
@@ -216,7 +217,7 @@ of the flux scale from the primary calibrator with CASA FLUXSCALE (secondary cal
 <p>Each of these steps may have its own settings with respect to gain type (e.g., each G could
 be amplitude-only, phase-only, or both amplitude and phase), solution interval, normalisation,
 data combination at boundaries (e.g., scan, SPW), imaging and flagging settings.</p>
-<p>For example, <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: order</span></a>: KGBAKGB results in:</p>
+<p>For example, <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: order</span></a>: KGBAKGB results in:</p>
 <ul class="simple">
 <li>delay calibration (K);</li>
 <li>gain calibration (G) applying the intial K on the fly;</li>
@@ -227,13 +228,13 @@ data combination at boundaries (e.g., scan, SPW), imaging and flagging settings.
 <li>final B calibration applying the final K and G on the fly.</li>
 </ul>
 <p>In this example, it would be possible to set different solution intervals for the
-initial and final G through the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: solint</span></a>
+initial and final G through the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: solint</span></a>
 parameter, which is a sequence containing one entry per element in
-<a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: order</span></a>. In case the solution interval
+<a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: order</span></a>. In case the solution interval
 is not relevant (A and I steps) users can  give an empty string ‘’. The same applies to
-the calibration parameters <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: calmode</span></a> and
-<a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: primary_cal: combine</span></a>.</p>
-<p>An example for the secondary is <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary-cal"><span class="std std-ref">crosscal: secondary_cal: order</span></a>: FIG,
+the calibration parameters <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: calmode</span></a> and
+<a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: combine</span></a>.</p>
+<p>An example for the secondary is <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: secondary: order</span></a>: FIG,
 which results in:</p>
 <ul class="simple">
 <li>gain calibration and bootstrapping of the flux scale;</li>
@@ -247,7 +248,7 @@ a I sky model which, following the initial F, is already on the correct flux sca
 </div>
 <div class="section" id="apply-the-cross-calibration-and-diagnostic-plots">
 <h2>Apply the cross-calibration and diagnostic plots<a class="headerlink" href="#apply-the-cross-calibration-and-diagnostic-plots" title="Permalink to this headline">¶</a></h2>
-<p>Caracal can apply the cross calibration tables to all calibrators (useful for diagnostics).
+<p>CARACal can apply the cross calibration tables to all calibrators (useful for diagnostics).
 It can also apply it to the target, although this can also be done by the <a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a> worker
 on the fly while splitting the  target from the input .MS file.
 When applyin the calibration, the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> worker adopts the following interpolation rules:</p>
@@ -259,9 +260,14 @@ with linear, linear, linear interpolation, respectively.</li>
 <li>Gain calibration after bootstrapping the flux scale: applied to primary, secondary, target
 with linear, nearest, linear interpolation, repsectively.</li>
 </ul>
-<p>The calibrated caibrators’ visibilities can be inspected to check whether the calibration is correct. This is
-done by the <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> worker. A number of .PNG plots are produced, such as phase-vs-amplitude and
-real-vs-imaginary, and users can define their own plots as described in the <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> page.</p>
+<p>The <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> worker produces .HTML plots of the various calibration terms for later, interactive
+inspection. Furthermore, the <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> worker produces .PNG plots of the caibrators’
+calibrated visibilities to check the quality of the calibration. A variety of standard plots are produced,
+such as phase-vs-uvdistance and real-vs-imaginary. Furthermore, users can define their own plots as
+described in the <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> page.</p>
+<p><em>We strongly recommend that users inspect the .HTML and .PNG plots produced by the</em>
+<a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> <em>and</em> <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> <em>workers to ensure that the quality of the cross-calibration
+is adequate to their science goals.</em></p>
 </div>
 </div>
 

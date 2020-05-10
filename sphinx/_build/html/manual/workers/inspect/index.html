@@ -99,7 +99,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">inspect</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dirname"><strong>dirname</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#shadems"><strong>shadems</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#standard-plotter"><strong>standard_plotter</strong></a></li>
@@ -221,8 +221,8 @@
 <p>Label of the input dataset</p>
 </div></blockquote>
 </div>
-<div class="section" id="label-out">
-<span id="inspect-label-out"></span><h2><strong>label_out</strong><a class="headerlink" href="#label-out" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="label-cal">
+<span id="inspect-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Label for output products (plots etc.) for this step.</p>
@@ -322,7 +322,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like, gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -332,7 +332,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -353,7 +353,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -363,7 +363,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -384,7 +384,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -394,7 +394,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -415,7 +415,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -425,7 +425,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -446,7 +446,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -456,7 +456,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -477,7 +477,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -487,7 +487,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -508,7 +508,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -518,7 +518,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>
@@ -539,7 +539,7 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
-<p><strong>column</strong></p>
+<p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
 <p>Data column to plot.</p>
@@ -549,7 +549,7 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Time to average for plotting, in seconds.</p>
 </div></blockquote>
-<p><strong>avgchannel</strong></p>
+<p><strong>avgchan</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10</em></p>
 <p>Number of channels to average for plotting.</p>

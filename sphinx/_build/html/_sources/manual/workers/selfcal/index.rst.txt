@@ -28,10 +28,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_label:
+.. _selfcal_label_in:
 
 --------------------------------------------------
-**label**
+**label_in**
 --------------------------------------------------
 
   *str*, *optional*, *default = corr*
@@ -74,10 +74,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_overwrite_flag_versions:
+.. _selfcal_overwrite_flagvers:
 
 --------------------------------------------------
-**overwrite_flag_versions**
+**overwrite_flagvers**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -302,10 +302,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_img_joinchannels:
+.. _selfcal_img_joinchans:
 
 --------------------------------------------------
-**img_joinchannels**
+**img_joinchans**
 --------------------------------------------------
 
   *bool*, *optional*, *default = True*
@@ -314,10 +314,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_img_fit_spectral_pol:
+.. _selfcal_img_specfit_nrcoeff:
 
 --------------------------------------------------
-**img_fit_spectral_pol**
+**img_specfit_nrcoeff**
 --------------------------------------------------
 
   *int*, *optional*, *default = 2*
@@ -326,10 +326,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_img_pol:
+.. _selfcal_img_stokes:
 
 --------------------------------------------------
-**img_pol**
+**img_stokes**
 --------------------------------------------------
 
   *{"I"}*, *optional*, *default = I*
@@ -338,10 +338,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_img_multi_scale:
+.. _selfcal_img_multiscale:
 
 --------------------------------------------------
-**img_multi_scale**
+**img_multiscale**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -350,10 +350,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_img_multi_scale_scales:
+.. _selfcal_img_multiscale_scales:
 
 --------------------------------------------------
-**img_multi_scale_scales**
+**img_multiscale_scales**
 --------------------------------------------------
 
   *list* *of int*, *optional*, *default = 10, 20, 30*
@@ -368,7 +368,7 @@ Perform self-calibration on the data.
 **img_sofia_settings**
 --------------------------------------------------
 
-  SoFiA source-finder settings used for the imaging iterations whose entry in 'image/clean_mask_method' below is 'sofia'. The resulting clean-mask is located in <output>/masking.
+  SoFiA source finder settings used for the imaging iterations whose entry in 'image/cleanmask_method' below is 'sofia'. The resulting clean mask is located in <output>/masking.
 
   **kernels**
 
@@ -376,7 +376,7 @@ Perform self-calibration on the data.
 
     FWHM of spatial Gaussian kernels in pixels.
 
-  **only_positive_pix**
+  **pospix**
 
     *bool*, *optional*, *default = True*
 
@@ -406,13 +406,13 @@ Perform self-calibration on the data.
 
     Activate masking of Fornax A using SoFiA.
 
-  **fornax_thresh**
+  **fornax_thr**
 
     *list* *of float*, *optional*, *default = 4.0*
 
     SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).
 
-  **fornax_use_sofia**
+  **fornax_sofia**
 
     *bool*, *optional*, *default = False*
 
@@ -432,10 +432,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_start_at_iter:
+.. _selfcal_start_iter:
 
 --------------------------------------------------
-**start_at_iter**
+**start_iter**
 --------------------------------------------------
 
   *int*, *optional*, *default = 1*
@@ -444,10 +444,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_cal_gain_amplitude_clip_low:
+.. _selfcal_cal_gain_cliplow:
 
 --------------------------------------------------
-**cal_gain_amplitude_clip_low**
+**cal_gain_cliplow**
 --------------------------------------------------
 
   *float*, *optional*, *default = 0.5*
@@ -456,10 +456,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_cal_gain_amplitude_clip_high:
+.. _selfcal_cal_gain_cliphigh:
 
 --------------------------------------------------
-**cal_gain_amplitude_clip_high**
+**cal_gain_cliphigh**
 --------------------------------------------------
 
   *float*, *optional*, *default = 2.*
@@ -492,10 +492,10 @@ Perform self-calibration on the data.
 
 
 
-.. _selfcal_cal_Bjones:
+.. _selfcal_cal_bjones:
 
 --------------------------------------------------
-**cal_Bjones**
+**cal_bjones**
 --------------------------------------------------
 
   *bool*, *optional*, *default = False*
@@ -524,37 +524,37 @@ Perform self-calibration on the data.
 
     Flag solution intervals where the posterior variance estimate is above this value.
 
-  **channel_chunk**
+  **chan_chunk**
 
     *int*, *optional*, *default = -1*
 
     Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means 'use the full frequency-axis' but does not cross SPW boundaries. -1 means 'use the largest solution interval'.
 
-  **weight_column**
+  **weight_col**
 
     *str*, *optional*, *default = WEIGHT*
 
     Column with weights for use in CubiCal.
 
-  **shared_memory**
+  **shared_mem**
 
     *str*, *optional*, *default = 100Gb*
 
     Set the amount of shared memory for CubiCal.
 
-  **madmax_flagging**
+  **flag_madmax**
 
     *bool*, *optional*, *default = True*
 
     Flags based on maximum of mad in CubiCal.
 
-  **madmax_flag_thresh**
+  **madmax_flag_thr**
 
     *list* *of int*, *optional*, *default = 0, 10*
 
     Threshold for madmax flagging in CubiCal, where the provided list works exactly as described in CubiCal readthedocs for the parameter --madmax-threshold.
 
-  **sol_term_iters**
+  **solterm_niter**
 
     *list* *of int*, *optional*, *default = 50, 50, 50*
 
@@ -626,7 +626,7 @@ Perform self-calibration on the data.
 
     Enable the 'aimfast' segment.
 
-  **tolerance**
+  **tol**
 
     *float*, *optional*, *default = 0.02*
 
@@ -678,37 +678,37 @@ Perform self-calibration on the data.
 
     Enable the 'image' segment.
 
-  **column**
+  **col**
 
     *list* *of str*, *optional*, *default = DATA, CORRECTED_DATA*
 
     Column(s) to image.
 
-  **clean_threshold**
+  **clean_cutoff**
 
     *list* *of float*, *optional*, *default = 0.5, 0.5*
 
     Cleaning threshold to be used by WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration.
 
-  **clean_mask_method**
+  **cleanmask_method**
 
     *list* *of str*, *optional*, *default = wsclean, wsclean*
 
     Method used to create the clean mask. The possible values are 1) 'wsclean' to use WSClean's auto-masking (threshold set by clean_mask_threshold below); 2) 'sofia' to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
 
-  **clean_mask_threshold**
+  **cleanmask_thr**
 
     *list* *of float*, *optional*, *default = 10.0, 6.0*
 
     Threshold used to create the clean mask when clean_mask_method = 'wsclean' or 'sofia'. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.
 
-  **clean_mask_local_rms**
+  **cleanmask_localrms**
 
     *list* *of bool*, *optional*, *default = False, False*
 
     Use a local-rms measurement when creating a clean mask with clean_mask_method = 'wsclean' or 'sofia'. If clean_mask_method = 'wsclean', this local-rms setting is also used for the clean_threshold above. Otherwise it is only used to define the clean mask, and clean_threshold is in terms of the global noise (rather than the local noise).
 
-  **clean_mask_local_rms_window**
+  **cleanmask_localrms_window**
 
     *list* *of int*, *optional*, *default = 31, 31*
 
@@ -748,13 +748,13 @@ Perform self-calibration on the data.
 
     Extract the spectral index for the fitted sources.
 
-  **thresh_pix**
+  **thr_pix**
 
     *list* *of int*, *optional*, *default = 5*
 
     Pixel threshold to be used for the source finder. I.e. the minimum number of contiguous pixels for emission to be classed as a 'source'.
 
-  **thresh_isl**
+  **thr_isl**
 
     *list* *of int*, *optional*, *default = 3*
 
@@ -800,37 +800,37 @@ Perform self-calibration on the data.
 
     Gain matrix type. 'GainDiagPhase' = phase-only calibration, 'GainDiagAmp' = amplitude only, 'GainDiag' = Amplitude + Phase, 'Gain2x2' = Amplitude + Phase taking non-diagonal terms into account, 'Fslope' = delay selfcal (for which solution intervals should be set to at least twice the values you would use for GainDiagPhase). Note that Fslope does not work with MeqTrees.
 
-  **Gsols_timeslots**
+  **gsols_timeslots**
 
     *list* *of int*, *optional*, *default = 1*
 
     G-Jones time solution interval. The parameter cal_timeslots_chunk above should be a multiple of Gsols_time. 0 entails using a single solution for the full time of the observations.
 
-  **Gsols_channel**
+  **gsols_chan**
 
     *list* *of int*, *optional*, *default = 0*
 
-    G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 entails using a single solution for the full bandwidth.
+    G-Jones frequency solution interval. The parameter chan_chunk in calibrate section should a multiple of Gsols_channel. 0 entails using a single solution for the full bandwidth.
 
-  **Bsols_timeslots**
+  **bsols_timeslots**
 
     *list* *of int*, *optional*, *default = 0*
 
     B-Jones solutions for individual calibration steps in time.
 
-  **Bsols_channel**
+  **bsols_chan**
 
     *list* *of int*, *optional*, *default = 2*
 
     B-Jones solutions for individual calibration steps in frequency.
 
-  **GAsols_timeslots**
+  **gasols_timeslots**
 
     *list* *of int*, *optional*, *default = -1*
 
     Time intervals for amplitude calibration in CubiCal. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots, a second matrix is used and applied.
 
-  **GAsols_channel**
+  **gasols_chan**
 
     *list* *of int*, *optional*, *default = -1*
 
@@ -918,7 +918,7 @@ Perform self-calibration on the data.
 
       Solution interval in time (units of timeslots/integration time) for transferring gains. -1 means use the solution interval from the calibration that is applied.
 
-    **channel_int**
+    **chan_int**
 
       *int*, *optional*, *default = -1*
 
@@ -930,7 +930,7 @@ Perform self-calibration on the data.
 
       Time chunk in units of timeslots for transferring gains with CubiCal. -1 means use the solution interval from the calibration that is applied.
 
-    **channel_chunk**
+    **chan_chunk**
 
       *int*, *optional*, *default = -1*
 
@@ -1000,7 +1000,7 @@ Perform self-calibration on the data.
 
     Explicitly set the number of worker threads. Default is 0, meaning it uses all threads.
 
-  **memory_fraction**
+  **mem_frac**
 
     *float*, *optional*, *default = 0.5*
 
