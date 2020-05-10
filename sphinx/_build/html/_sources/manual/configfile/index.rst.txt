@@ -62,7 +62,7 @@ compulsory. The pages at :ref:`workers` indicate whether a parameter is optional
 type, allowed values (if applicable) and default value.
 
 CARACal comes with a set of sample configuration files. These are available at
-https://github.com/caracal-pipeline/caracal/caracal/sample_configurations/
+https://github.com/caracal-pipeline/caracal/tree/master/caracal/sample_configurations
 and include, for example:
 
 * minimalConfig.yml, which includes as few parameters as possible and performs a basic

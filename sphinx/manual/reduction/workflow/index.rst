@@ -29,7 +29,7 @@ during the course of a full CARACal run, and allows to treat the input .MS file(
 as read-only.
 
 This workflow is implemented in all sample configuration files located at 
-https://github.com/caracal-pipeline/caracal/caracal/sample_configurations .
+https://github.com/caracal-pipeline/caracal/tree/master/caracal/sample_configurations .
 
 | :ref:`general`
 | Compulsory worker to set up data/input/output directories.

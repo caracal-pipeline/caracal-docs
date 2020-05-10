@@ -105,7 +105,7 @@ below for a detailed documentation of the individual flagging modes.
   AOFlagger or tricolour strategy file should be located in the *input* directory set by
   :ref:`general: input <general_input>`.
   CARACal comes with a number of strategy files, which are located in
-  https://github.com/caracal-pipeline/caracal/caracal/data/meerkat_files/
+  https://github.com/caracal-pipeline/caracal/tree/master/caracal/data/meerkat_files
   and are copied to the *input* directory by the
   :ref:`general` worker. However, users can copy their own strategy file to the same
   *input* directory and use it within CARACal.
