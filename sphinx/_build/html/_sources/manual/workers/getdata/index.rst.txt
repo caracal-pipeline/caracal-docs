@@ -12,7 +12,7 @@ getdata
 .. toctree::
    :maxdepth: 1
  
-Download and/or convert/unarchive data so that its in the MS format for further processing
+Download and/or convert/unarchive data so that it is in the measurement set (MS) format for further processing.
 
 
 
@@ -24,7 +24,7 @@ Download and/or convert/unarchive data so that its in the MS format for further 
 
   *list* *of str*
 
-  Basename of MS. For MeerKAT data to be downloaded by CARACal, this should be the data ID of the observation
+  Basename of MS. For MeerKAT data to be downloaded by CARACal, this should be the data ID of the observation.
 
 
 
@@ -34,31 +34,31 @@ Download and/or convert/unarchive data so that its in the MS format for further 
 **mvftoms**
 --------------------------------------------------
 
-  Convert HDF5/MVF files in data_path to MS files; the latter are written to msdir; also creates a MS.TAR file. (This only works for MeerKAT HDF5 files)
+  For MeerKAT HDFS files only -- Convert HDF5/MVF files in data_path (specified for the general worker) to MS files. The latter are written to msdir (also as specified for the general worker), and an MS.TAR file is created.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'mvftoms' segment.
 
   **tar**
 
     *bool*, *optional*, *default = False*
 
-    Create a tarbal of the converted MS.
+    Create a tarball of the converted MS.
 
   **channel_range**
 
     *str*, *optional*, *default = all*
 
-    Only exctract channels in this range (0-based, inclusive; comma seperated string)
+    Only extract channels in this range (0-based, inclusive; comma-separated string). It is also possible to specify 'all'.
 
   **full_poll**
 
     *bool*, *optional*, *default = False*
 
-    Extract all four correlations instead of only the XX,YY
+    Extract all four correlations instead of only the XX and YY correlations.
 
 
 
@@ -68,19 +68,19 @@ Download and/or convert/unarchive data so that its in the MS format for further 
 **untar**
 --------------------------------------------------
 
-  Unarchive from MS from a archive file.
+  Unarchive MS from an archive file.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'untar' segment.
 
   **tar_options**
 
     *str*, *optional*, *default = -xvf*
 
-    Options to parse to 'tar' command
+    The tar options to pass to the 'tar' command.
 
 
 
@@ -90,49 +90,61 @@ Download and/or convert/unarchive data so that its in the MS format for further 
 **combine**
 --------------------------------------------------
 
-  Virtually concatenate MSs and proceed with the combined MS
+  Virtually concatenate MSs and proceed with the combined MS.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this section
+    Enable the 'combine' segment.
 
   **reset**
 
     *bool*, *optional*, *default = False*
 
-    Delete concatenated MS if it exists. Else, proceed with existing MS
+    Delete concatenated MS if it exists. Otherwise, proceed with the existing MS.
 
   **tar**
 
-    Create a tarbal of the converted MS
+    Create a tarball of the concatenated MS.
 
     **enable**
 
       *bool*, *optional*, *default = False*
 
-      Execute this section
+      Enable the 'tar' segment.
 
     **tar_options**
 
       *str*, *optional*, *default = -cvf*
 
-      Options to parse to the tar command
+      The tar options to pass to the 'tar' command.
 
   **untar**
 
-    Unarchive from MS from a archive file.
+    Unarchive MS from an archive file.
 
     **enable**
 
       *bool*, *optional*, *default = False*
 
-      Execute this section
+      Enable the 'untar' segment.
 
     **tar_options**
 
       *str*, *optional*, *default = -xvf*
 
-      Options to parse to the tar command
+      The tar options to pass to the 'tar' command.
+
+
+
+.. _getdata_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

@@ -24,7 +24,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *bool*
 
-  Execute the flagging worker.
+  Execute the flag worker.
 
 
 
@@ -36,7 +36,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *{"target", "calibrators"}*, *optional*, *default = calibrators*
 
-  Fields that should be flagged. It can either be 'target' or 'calibrators'  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step flag_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
+  Fields that should be flagged. It can be set to either 'target' or 'calibrators' (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step 'flag_mask' (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
 
 
 
@@ -48,7 +48,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *str*, *optional*, *default = ' '*
 
-  This label is added to the input .MS file(s) name given in the get_data worker to define the name of the .MS file(s) that should be flagged. These are <input>_<label>.ms if 'field' (see above) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in 'field' above.
+  This label is added to the input .MS file(s) name, given in the getdata worker, to define the name of the .MS file(s) that should be flagged. These are <input>_<label>.ms if 'field' (see above) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (with one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in 'field' above.
 
 
 
@@ -60,7 +60,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *str*, *optional*, *default = auto*
 
-  If 'field' above is set to 'calibrators', users can specify here what subset of calibrators to process. This should be a comma-separated list of 'xcal' ,'bpcal', 'gcal' and/or 'fcal', which were all set by the observation_config worker. Alternatively, 'auto' selects all calibrators.
+  If 'field' above is set to 'calibrators', users can specify here what subset of calibrators to process. This should be a comma-separated list of 'xcal' ,'bpcal', 'gcal' and/or 'fcal', which were all set by the obsconf worker. Alternatively, 'auto' selects all calibrators.
 
 
 
@@ -74,15 +74,21 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **enable**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
-    Enable the rewind_flags segement.
+    Enable the 'rewind_flags' segment.
+
+  **mode**
+
+    *{"reset_worker", "rewind_to_version"}*, *optional*, *default = reset_worker*
+
+    If mode = 'reset_worker' rewind to the flag version before this worker if it exists, or continue if it does not exist; if mode = 'rewind_to_version' rewind to the flag version given by 'version' below.
 
   **version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to rewind to. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.
+    Flag version to rewind to. If set to 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.
 
 
 
@@ -94,7 +100,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *bool*, *optional*, *default = False*
 
-  Allow Caracal to ovewrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+  Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 
@@ -110,7 +116,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *bool*, *optional*, *default = False*
 
-    Enable the unflag segment.
+    Enable the 'unflag' segment.
 
 
 
@@ -120,25 +126,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_autopowerspec**
 --------------------------------------------------
 
-  Flags antennas based on drifts in the scan average of the auto correlation spectra per field. This doesn't strictly require any calibration. It is also not field structure dependent, since it is just based on the DC of the field. Compares scan to median power of scans per field per channel. Also compares antenna to median of the array per scan per field per channel. This should catch any antenna with severe temperature problems.
+  Flags antennas based on drifts in the scan average of the auto-correlation spectra per field. This doesn't strictly require any calibration. It is also not field-structure dependent, since it is just based on the DC of the field. Compares scan to median power of scans per field per channel. Also compares antenna to median of the array per scan per field per channel. This should catch any antenna with severe temperature problems.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_autopowerspec segment.
+    Enable the 'flag_autopowerspec' segment.
 
   **scan_to_scan_threshold**
 
     *int*, *optional*, *default = 3*
 
-    Threshold for flagging in sigma above the rest of the scans per field per channel.
+    Threshold for flagging (in sigma) above the rest of the scans per field per channel.
 
   **antenna_to_group_threshold**
 
     *int*, *optional*, *default = 5*
 
-    Threshold for flagging in sigma above array median power spectra per scan per field per channel.
+    Threshold for flagging (in sigma) above array median-power spectra per scan per field per channel.
 
   **column**
 
@@ -160,13 +166,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_autocorr**
 --------------------------------------------------
 
-  Flag autocorrelations. Through CASA flagdata task.
+  Flag auto-correlations, through the FLAGDATA task in CASA.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_autocorr segment.
+    Enable the 'flag_autocorr' segment.
 
 
 
@@ -176,13 +182,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_quack**
 --------------------------------------------------
 
-  Do quack flagging, i.e. flag the begining and/or end chunks of each scan. Again, through FLAGDATA.
+  Do quack flagging, i.e. flag the beginning and/or end chunks of each scan. Again, this is done through FLAGDATA.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_quack segment.
+    Enable the 'flag_quack' segment.
 
   **quackinterval**
 
@@ -192,9 +198,9 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **quackmode**
 
-    *{"beg", "endb", "end", "tail"}*, *optional*, *default = beg*
+    *{"beg", "endb", "tail", "end"}*, *optional*, *default = beg*
 
-    Quack flagging mode. Either 'beg', which flags scan begining, 'endb', which flags end of the scan, 'end', which flags everything but the first specified seconds of the scan and 'tail' which flags all but the last specified seconds of the scan.
+    Quack flagging mode. Options are 'beg' (which flags the beginning of the scan), 'endb' (which flags the end of the scan), 'tail' (which flags everything but the first specified seconds of the scan), and 'end' (which flags all but the last specified seconds of the scan).
 
 
 
@@ -204,25 +210,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_elevation**
 --------------------------------------------------
 
-  Flag antennas with pointing elevation outisde the selected range through CASA FLAGDATA.
+  Use CASA FLAGDATA to flag antennas with pointing elevation outside the selected range.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_elevation segment.
+    Enable the 'flag_elevation' segment.
 
   **low**
 
     *float*, *optional*, *default = 0*
 
-    Lower elevation limit. Antennas pointing at elevation below this value are flagged.
+    Lower elevation limit. Antennas pointing at an elevation below this value are flagged.
 
   **high**
 
     *float*, *optional*, *default = 90*
 
-    Upper elevation limit. Antennas pointing at elevation above this value are flagged.
+    Upper elevation limit. Antennas pointing at an elevation above this value are flagged.
 
 
 
@@ -232,25 +238,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_shadow**
 --------------------------------------------------
 
-  Flag shadowed antennas through the CASA task FLAGDATA.
+  Use CASA FLAGDATA to flag shadowed antennas.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enables the flag_shadow segment.
+    Enable the 'flag_shadow' segment.
 
   **tolerance**
 
     *float*, *optional*, *default = 0.*
 
-    Amounts of shadow allowed (in metres). Default is 0. A positive number allows antennas to overlap in projection. A negative number forces antennas apart in projection.
+    Amount of shadow allowed (in metres). A positive number allows antennas to overlap in projection. A negative number forces antennas apart in projection.
 
   **include_full_mk64**
 
     *bool*, *optional*, *default = False*
 
-    Consider all MeerKAT-64 antennas in the shadowing calculation even if only a subarray is used. Default is False.
+    Consider all MeerKAT-64 antennas in the shadowing calculation, even if only a subarray is used.
 
 
 
@@ -260,25 +266,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_spw**
 --------------------------------------------------
 
-  Flag spectral windows/channels. Of course, through FLAGDATA.
+  Use CASA FLAGDATA to flag spectral windows/channels.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_spw segment.
+    Enable the 'flag_spw' segment.
 
   **channels**
 
     *str*, *optional*, *default = *:856~880MHz , *:1658~1800MHz, *:1419.8~1421.3MHz*
 
-    Channels to flag. Given as "spectral window index:start channel ~ end channel" e.g. "\*:856~880MHz". End channel not inclusive.
+    Channels to flag. Given as "spectral window index:start channel ~ end channel" e.g. "\*:856~880MHz". End channels are not inclusive.
 
   **ensure_valid_selection**
 
     *bool*, *optional*, *default = True*
 
-    Check whether the channel selection returns any data. If it does not FLAGDATA is not executed preventing the pipeline from crashing. This check only works with the following spw formats (multiple, comma-separated selections allowed), "\*:firstchan~lastchan"; "firstspw~lastspw:firstchan~lastchan"; "spw:firstchan~lastchan"; "firstchan~lastchan". Channels are assumed to be in frequency (Hz, kHz, MHz, GHz allowed; if no units are given it assumes Hz).
+    Check whether the channel selection returns any data. If it does not, FLAGDATA is not executed (preventing the pipeline from crashing). This check only works with the following spw formats (multiple, comma-separated selections allowed), "\*:firstchan~lastchan"; "firstspw~lastspw:firstchan~lastchan"; "spw:firstchan~lastchan"; "firstchan~lastchan". Channels are assumed to be in frequency (Hz, kHz, MHz, GHz allowed; if no units are given it assumes Hz).
 
 
 
@@ -288,13 +294,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_time**
 --------------------------------------------------
 
-  Flag timerange in the data using CASA FLAGDATA task.
+  Use CASA FLAGDATA to flag a specified timerange in the data.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_time segment.
+    Enable the 'flag_time' segment.
 
   **timerange**
 
@@ -306,7 +312,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *bool*, *optional*, *default = False*
 
-    Check whether the timerange is in the ms being considered. This stops the pipeline from crashing when multiple dataset are being processed.
+    Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.
 
 
 
@@ -316,19 +322,19 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_scan**
 --------------------------------------------------
 
-  Flag bad scans. Uses CASA Flagdata task.
+  Use CASA FLAGDATA to flag bad scans.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_scan segment.
+    Enable the 'flag_scan' segment.
 
   **scans**
 
     *str*, *optional*, *default = 0*
 
-    Scans to flag. CASA flagdata syntax.
+    Use CASA FLAGDATA syntax for selecting scans to flag.
 
 
 
@@ -344,13 +350,13 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_antennas segment.
+    Enable the 'flag_antennas' segment.
 
   **antennas**
 
     *str*, *optional*, *default = 0*
 
-    Antennas to flag. Follows the CASA Flagdata syntax.
+    Use CASA FLAGDATA syntax for selecting antennas to flag.
 
   **timerange**
 
@@ -362,7 +368,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *bool*, *optional*, *default = False*
 
-    Check whether the timerange is in the ms being considered. This stops the pipeline from crashing when multiple dataset are being processed.
+    Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.
 
 
 
@@ -372,25 +378,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_mask**
 --------------------------------------------------
 
-  Apply static mask to flag out known RFI, Meerkat specific.
+  Apply a static mask to flag known RFI.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_mask segment.
+    Enable the 'flag_mask' segment.
 
   **mask**
 
     *str*, *optional*, *default = ' '*
 
-    The mask to apply.
+    The mask to apply. This can be provided by the user, but CARACal provides an existing static mask ('labelled_rfimask.pickle.npy') that is specific to MeerKAT data.
 
   **uvrange**
 
     *str*, *optional*, *default = ' '*
 
-    UV range to select (CASA style range, e.g. lower~upper) for flagging. Leave blank for entire array.
+    Select range in UV-distance (CASA-style range, e.g. 'lower~upper') for flagging. This is in default units of metres but, e.g., '0~1000km' and '0-500klambda' can also be specified. Leaving this parameter blank will select the entire range in UV-distance.
 
 
 
@@ -400,19 +406,19 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_rfi**
 --------------------------------------------------
 
-  Flag RFI using AOFlagger, Tricolour or CASA flagdata with tfcrop.
+  Flag RFI using AOFlagger, Tricolour, or CASA FLAGDATA with tfcrop.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the flag_rfi segment.
+    Enable the 'flag_rfi' segment.
 
   **flagger**
 
     *{"aoflagger", "tricolour", "tfcrop"}*, *optional*, *default = aoflagger*
 
-    Choose flagger for automatic flagging. Possible choices are 'aoflagger', 'tricolour' and 'tfcrop'.
+    Choose flagger for automatic flagging. Options are 'aoflagger', 'tricolour' and 'tfcrop'.
 
   **column**
 
@@ -432,7 +438,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       *bool*, *optional*, *default = True*
 
-      Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V an .MS with XX and YY only will result in an error and exit Caracal. The rules are 1) XY,YX present to flag on Stokes V,U or on XY,YX, 2) XX,YY present to flag on Stokes I,Q or on XX,YY. Disable only if you know what you are doing.
+      Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V for an .MS with XX and YY only will result in an error and CARACal exiting. The rules are 1. XY,YX must be present in order to flag on Stokes V,U (or on XY,YX), and 2. XX,YY must be present in order to flag on Stokes I,Q (or on XX,YY). Disable this parameter only if you know what you are doing.
 
   **tricolour**
 
@@ -440,25 +446,25 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       *{"numpy", "zarr-disk"}*, *optional*, *default = numpy*
 
-      Visibility and flag data is re-ordered from a MS row ordering into time-frequency windows ordered by baseline.
+      Visibility and flag data is re-ordered from an MS-row ordering into time-frequency windows ordered by baseline. Options are 'numpy' (if only a few scans worth of visibility data need to be re-ordered) and 'zarr-disk' (for larger data sizes, where re-ordering on disk, rather than in memory, is necessary).
 
     **mode**
 
       *{"auto", "manual"}*, *optional*, *default = auto*
 
-      If set to 'manual' it uses the flagging strategy in 'strategy' below. If set to 'auto' it uses the strategy in 'strategy_narrowband' in case of small bandwidth of the .MS file(s).
+      If mode is set to 'manual', Tricolour uses the flagging strategy set via 'strategy' below. If mode is set to 'auto', it uses the strategy in 'strategy_narrowband' in case of small bandwidth of the .MS file(s).
 
     **strategy**
 
       *str*, *optional*, *default = mk_rfi_flagging_calibrator_fields_firstpass.yaml*
 
-      Tricolour strategy file.
+      Name of the Tricolour strategy file.
 
     **strategy_narrowband**
 
       *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
-      Tricolour strategy file to be used for an MS with narrow bandwidth if mode = auto (see above).
+      Name of the Tricolour strategy file to be used for an MS with narrow bandwidth, if mode = 'auto' (see above).
 
   **tfcrop**
 
@@ -466,37 +472,37 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
       *{"none", "sum", "std", "both"}*, *optional*, *default = std*
 
-      Calculate additional flags using sliding window statistics.
+      Calculate additional flags using sliding-window statistics. Options are 'none', 'sum', 'std', and 'both'. See usewindowstats, within documentation for CASA FLAGDATA, for further details.
 
     **combinescans**
 
       *bool*, *optional*, *default = False*
 
-      Accumulate data across scans depending on the value of ntime.
+      Accumulate data across scans, depending on the value set for the 'ntime' parameter.
 
     **flagdimension**
 
       *{"freq", "time", "freqtime", "timefreq"}*, *optional*, *default = freqtime*
 
-      Dimensions along which to calculate fits (freq/time/freqtime/timefreq).
+      Dimension(s) along which to calculate a fit(/fits) to the data. Options are 'freq', 'time', 'freqtime', and 'timefreq'. Note that the differences between 'freqtime' and 'timefreq' are only apparent if RFI in one dimension is signifcantly stronger than in the other.
 
     **timecutoff**
 
       *float*, *optional*, *default = 4.0*
 
-      Flagging thresholds in units of deviation from the fit.
+      Flagging threshold, in units of standard deviation (i.e. sigma) from the fit along the time axis.
 
     **freqcutoff**
 
       *float*, *optional*, *default = 3.0*
 
-      Flagging thresholds in units of deviation from the fit.
+      Flagging threshold, in units of standard deviation (i.e. sigma) from the fit along the frequency axis.
 
     **correlation**
 
       *str*, *optional*, *default = ' '*
 
-      Correlation.
+      Specify the correlation(s) to be considered for flagging with 'tfcrop'. E.g. 'XX,YY', or leave as '' to select all correlations.
 
 
 
@@ -506,61 +512,61 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **inspect**
 --------------------------------------------------
 
-  Inspect the presence of RFI using the diagnostic products of RFInder.
+  Use the diagnostic products of RFInder to inspect the presence of RFI.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable the inspect segment.
+    Enable the 'inspect' segment.
 
   **telescope**
 
-    *str*, *optional*, *default = MeerKAT*
+    *{"meerkat", "apertif", "wsrt"}*, *optional*, *default = meerkat*
 
-    Name of telescope.
+    Name of the telescope. Options are 'meerkat', 'apertif', and 'wsrt'.
 
   **field**
 
     *str*, *optional*, *default = target*
 
-    Field to get flag stats. Given as a key (key in [gcal, bpcal, target]).
+    Field over which to determine flag statistics. Options are 'gcal', 'bpcal', and 'target'.
 
   **polarization**
 
     *{"xx", "XX", "yy", "YY", "xy", "XY", "yx", "YX", "q", "Q"}*, *optional*, *default = q*
 
-    Select polarisation e.g. xx, yy, xy, yx, q (also in CAPS).
+    Select the polarization, e.g. 'xx', 'yy', 'xy', 'yx', 'q' (and also each of these in upper case).
 
   **spw_enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable spw for rebinning.
+    Enable averaging/rebinning in frequency.
 
   **spw_width**
 
     *int*, *optional*, *default = 10*
 
-    Channel width of rebinned output table (MHz).
+    Frequency width of rebinned output table (in units of MHz).
 
   **time_enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable time chunking.
+    Enable averaging/rebinning in time.
 
   **time_step**
 
     *int*, *optional*, *default = 5*
 
-    Time chunks in minutes.
+    Time steps (in units of minutes).
 
   **movies_in_report**
 
     *bool*, *optional*, *default = True*
 
-    Generate movies in a repo.
+    Generate movies in a report.
 
 
 
@@ -570,11 +576,23 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **summary**
 --------------------------------------------------
 
-  Write flagging summary at the end of the pre-calibration flagging. Uses CASA FLAGDATA in "summary" mode.
+  Use CASA FLAGDATA in 'summary' mode to write flagging summary at the end of the pre-calibration flagging.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable the summary segment.
+    Enable the 'summary' segment.
+
+
+
+.. _flag_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

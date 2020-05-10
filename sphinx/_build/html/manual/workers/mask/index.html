@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#pb-correction"><strong>pb_correction</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-mask"><strong>make_mask</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#merge-with-extended"><strong>merge_with_extended</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
@@ -197,111 +198,111 @@
 <span id="id1"></span><h1>mask<a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Create .FITS mask from catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.</p>
+<p>Create .FITS mask from a catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.</p>
 <div class="section" id="enable">
 <span id="mask-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute this segment</p>
+<p>Execute the mask worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-in">
 <span id="mask-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label of the .MS file where to find information about the target.</p>
+<p>Label of the .MS file that contains information about the target.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-out">
 <span id="mask-label-out"></span><h2><strong>label_out</strong><a class="headerlink" href="#label-out" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = catalog_mask</em></p>
-<p>Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of clean_mask_method to label_out.</p>
+<p>Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the obsconf worker. To use this output .FITS mask as a clean mask in the selfcal worker, users should set the relevant entry of clean_mask_method to label_out.</p>
 </div></blockquote>
 </div>
 <div class="section" id="centre-coord">
 <span id="mask-centre-coord"></span><h2><strong>centre_coord</strong><a class="headerlink" href="#centre-coord" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = HH:MM:SS , DD:MM:SS</em></p>
-<p>Coordinates of the centre of the field of view read from reference_dir by default</p>
+<p>Coordinates of the centre of the field-of-view (read from reference_dir by default).</p>
 </div></blockquote>
 </div>
 <div class="section" id="mask-size">
 <span id="mask-mask-size"></span><h2><strong>mask_size</strong><a class="headerlink" href="#mask-size" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1800</em></p>
-<p>Number of pixels in the mask (must be the same as img_npix in selfcal worker)</p>
+<p>Number of pixels in the mask. This must be the same as img_npix in the selfcal worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="cell-size">
 <span id="mask-cell-size"></span><h2><strong>cell_size</strong><a class="headerlink" href="#cell-size" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
-<p>Size of pixel in the mask (arcsec, must be the same as img_cell in selfcal worker)</p>
+<p>Size of pixels in the mask, in units of arcsec. This must be the same as img_cell in the selfcal worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="extended-source-input">
 <span id="mask-extended-source-input"></span><h2><strong>extended_source_input</strong><a class="headerlink" href="#extended-source-input" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = Fornaxa_vla.FITS</em></p>
-<p>Name of the input mask for particularly extended sources in the field</p>
+<p>Name of the input mask for particularly-extended sources in the field.</p>
 </div></blockquote>
 </div>
 <div class="section" id="query-catalog">
 <span id="mask-query-catalog"></span><h2><strong>query_catalog</strong><a class="headerlink" href="#query-catalog" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Query catalog to select field/sources from which extract the mask</p>
+<div><p>Query catalog to select field/sources for constructing the mask.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Execute this worker</p>
+<p>Enable the ‘query_catalog’ segment.</p>
 </div></blockquote>
 <p><strong>catalog</strong></p>
 <blockquote>
 <div><p><em>{“NVSS”, “SUMSS”}</em>, <em>optional</em>, <em>default = SUMSS</em></p>
-<p>Name of catalog to query [NVSS/SUMSS]</p>
+<p>Name of catalog to query. Options are ‘NVSS’ and ‘SUMSS’.</p>
 </div></blockquote>
 <p><strong>width_image</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.2d</em></p>
-<p>Width of the region of sky we want to mask (keep larger than dirty image)</p>
+<p>Angular size of the region of sky that we want to mask (e.g. ‘1.2d’, where ‘d’ indicates degrees). This should be kept larger than the dirty image.</p>
 </div></blockquote>
 <p><strong>thresh_nvss</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 10e-3</em></p>
-<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+<p>Flux-density threshold for selecting sources in the radio map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="pb-correction">
 <span id="mask-pb-correction"></span><h2><strong>pb_correction</strong><a class="headerlink" href="#pb-correction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Correct input image for primary beam before exctracting mask</p>
+<div><p>Apply a primary-beam correction to the input image before extracting the mask.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Execute this worker</p>
+<p>Enable the ‘pb_correction’ segment.</p>
 </div></blockquote>
 <p><strong>frequency</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.420405752</em></p>
-<p>Primary beam size changes with frequency, provide central frequency of considered dataset</p>
+<p>Since the primary-beam size changes with frequency, provide the central frequency of the considered dataset.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="make-mask">
 <span id="mask-make-mask"></span><h2><strong>make_mask</strong><a class="headerlink" href="#make-mask" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Build mask from existing image using SoFiA and/or threshold cutoff</p>
+<div><p>Build mask from an existing image using SoFiA and/or a threshold cutoff.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Execute this worker</p>
+<p>Enable the ‘make_mask’ segment.</p>
 </div></blockquote>
 <p><strong>mask_with</strong></p>
 <blockquote>
 <div><p><em>{“thresh”, “sofia”}</em>, <em>optional</em>, <em>default = sofia</em></p>
-<p>Tool to use for masking</p>
+<p>The tool to use for masking. Options are ‘thresh’ and ‘sofia’.</p>
 </div></blockquote>
 <p><strong>input_image</strong></p>
 <blockquote>
@@ -311,39 +312,46 @@
 <p><strong>thresh_lev</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 5</em></p>
-<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+<p>Flux-density threshold for selecting sources in the SUMSS map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.</p>
 </div></blockquote>
 <p><strong>scale_noise_window</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 101</em></p>
-<p>window size where SoFiA measures the local rms, units of pixels</p>
+<p>Size of the window over which SoFiA measures the local rms, in units of pixels.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="merge-with-extended">
 <span id="mask-merge-with-extended"></span><h2><strong>merge_with_extended</strong><a class="headerlink" href="#merge-with-extended" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Merge with mask of extended source</p>
+<div><p>Merge newly-determined mask components with the existing mask for the extended source.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this worker</p>
+<p>Execute segment ‘merge_with_extended’.</p>
 </div></blockquote>
 <p><strong>extended_source_input</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = extended_mask.fits</em></p>
-<p>name of image of extended source to merge with current image</p>
+<p>Name of the mask-image of the extended source to merge with the current mask-image.</p>
 </div></blockquote>
 <p><strong>mask_with</strong></p>
 <blockquote>
 <div><p><em>{“thresh”, “sofia”}</em>, <em>optional</em>, <em>default = thresh</em></p>
-<p>Tool to use for masking</p>
+<p>The tool to use for masking. Options are ‘thresh’ and ‘sofia’.</p>
 </div></blockquote>
 <p><strong>thresh_lev</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 8e-2</em></p>
-<p>Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder</p>
+<p>Flux-density threshold for selecting sources in the SUMSS map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.</p>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="report">
+<span id="mask-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>(Re)generate a full HTML report at the end of this segment.</p>
 </div></blockquote>
 </div>
 </div>

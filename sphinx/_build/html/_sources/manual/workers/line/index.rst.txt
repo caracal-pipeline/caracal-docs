@@ -24,7 +24,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *bool*
 
-  Execute the image_line worker.
+  Execute the line worker.
 
 
 
@@ -36,7 +36,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *str*, *optional*, *default = corr*
 
-  Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the get_data worker, followed by the target ID (one file per target), followed by this label. This is the format used by Caracal whenever it writes an .MS file to disk (e.g., in the split_target worker).
+  Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the getdata worker, followed by the target ID (one file per target), followed by this label. This is the format used by CARACal whenever it writes an .MS file to disk (e.g., in the transform worker).
 
 
 
@@ -70,25 +70,31 @@ Process visibilities for spectral line work and create line cubes and images.
 **rewind_flags**
 --------------------------------------------------
 
-  Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to .MS file(s) you might be running "transfer_apply_gains" on.
+  Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to the .MS file(s) you might be running "transfer_apply_gains" on.
 
   **enable**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
-    enable this segement
+    Enable the 'rewind_flags' segment.
+
+  **mode**
+
+    *{"reset_worker", "rewind_to_version"}*, *optional*, *default = reset_worker*
+
+    If set to 'reset_worker', rewind to the flag version before this worker if it exists, or continue if it does not exist; if set to 'rewind_to_version', rewind to the flag version given by 'version' and 'mstransform_version' below.
 
   **version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
   **mstransform_version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above plus the "_mst" suffix. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above plus the "_mst" suffix. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 
@@ -100,7 +106,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *bool*, *optional*, *default = False*
 
-  Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+  Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 
@@ -116,7 +122,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = True*
 
-    Execute the segment subtractmodelcol.
+    Enable the 'subtractmodelcol' segment.
 
 
 
@@ -132,7 +138,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute the segment addmodelcol.
+    Enable the 'addmodelcol' segment.
 
 
 
@@ -148,7 +154,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = True*
 
-    Execute the segment mstransform.
+    Enable the 'mstransform' segment.
 
   **column**
 
@@ -164,7 +170,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
       *bool*, *optional*, *default = True*
 
-      Enable the Doppler correction section.
+      Enable the 'doppler' (i.e. Doppler correction) segment.
 
     **telescope**
 
@@ -176,25 +182,25 @@ Process visibilities for spectral line work and create line cubes and images.
 
       *{"frequency"}*, *optional*, *default = frequency*
 
-      Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently only frequency mode is supported. Other modes will throw an error.
+      Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently, only frequency mode is supported. Other modes will throw an error.
 
     **outframe**
 
       *{"", "topo", "geo", "lsrk", "lsrd", "bary", "galacto", "lgroup", "cmb", "source"}*, *optional*, *default = bary*
 
-      Output reference frame. Current options are '', topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, source.
+      Output reference frame. Current options are '', topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, and source.
 
     **veltype**
 
       *{"radio", "optical"}*, *optional*, *default = radio*
 
-      Velocity used when regridding if mode = velocity. Current options are radio, optical.
+      Velocity used when regridding if mode = velocity. Current options are radio,and optical.
 
     **outchangrid**
 
       *str*, *optional*, *default = auto*
 
-      Output channel grid for Doppler correction. Default is 'auto', and the pipeline will calculate the appropriate channel grid. If not 'auto' it must be in the format 'nchan,chan0,chanw' where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter 'mode' above).
+      Output channel grid for Doppler correction. Default is 'auto', and the pipeline will calculate the appropriate channel grid. If not 'auto' then it must be in the format 'nchan,chan0,chanw' where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter 'mode' above).
 
   **uvlin**
 
@@ -204,13 +210,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
       *bool*, *optional*, *default = True*
 
-      Enable the UVLIN section.
+      Enable the 'UVLIN' segment.
 
     **fitspw**
 
       *str*, *optional*, *default = ' '*
 
-      Selection of line-free channels using CASA syntax (e.g. '0:0~100;150:300'). If set to null, a fit to all unflagges visibilities will be performed.
+      Selection of line-free channels using CASA syntax (e.g. '0:0~100;150:300'). If set to null, a fit to all unflagged visibilities will be performed.
 
     **fitorder**
 
@@ -222,7 +228,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = True*
 
-    Create obsinfo.txt and obsinfo.json of the .MS file(s) created by CASA mstransform.
+    Create obsinfo.txt and obsinfo.json per .MS file created by CASA mstransform.
 
 
 
@@ -238,13 +244,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute segment flag_mst_errors.
+    Enable the 'flag_mst_errors' segment.
 
   **strategy**
 
     *str*, *optional*, *default = postmst.rfis*
 
-    AOFlagger strategy file
+    AOFlagger strategy file.
 
 
 
@@ -260,7 +266,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute segment sunblocker.
+    Enable the 'sunblocker' segment.
 
   **use_mstransform**
 
@@ -290,19 +296,19 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells where to flag.
+    Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag.
 
   **uvmin**
 
     *float*, *optional*, *default = 0.*
 
-    Minimum uvdistance to be analysed (in wavelengths).
+    Minimum uvdistance to be analysed (in wavelengths, lambda).
 
   **uvmax**
 
     *float*, *optional*, *default = 2000*
 
-    Maximum uvdistance to be analysed (in wavelengths).
+    Maximum uvdistance to be analysed (in wavelengths, lambda).
 
 
 
@@ -312,19 +318,19 @@ Process visibilities for spectral line work and create line cubes and images.
 **make_cube**
 --------------------------------------------------
 
-  Make a line cube using either WSclean + SoFiA (optional for clean masks) or CASA Clean.
+  Make a line cube using either WSClean + SoFiA (optional for clean masks) or CASA Clean.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute segment make_cube.
+    Enable the 'make_cube' segment.
 
   **image_with**
 
     *{"wsclean", "casa"}*, *optional*, *default = wsclean*
 
-    Choose whether to image with WSclean + SoFiA ('wsclean') or with CASA Clean ('casa').
+    Choose whether to image with WSClean + SoFiA ('wsclean') or with CASA Clean ('casa').
 
   **use_mstransform**
 
@@ -348,7 +354,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *int*, *optional*, *default = 0*
 
-    Number of channels of the line cube, 0 means all channels.
+    Number of channels of the line cube, where 0 means all channels.
 
   **firstchan**
 
@@ -372,19 +378,19 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 2*
 
-    Pixel size. The default unit is arcsec, but other units can be specificied, e.g., 'scale 20asec'.
+    Pixel size. The default unit is arcsec, but other units can be specified, e.g., 'scale 20asec'.
 
   **padding**
 
     *float*, *optional*, *default = 1.2*
 
-    Images have initial size padding\*npix, and are later trimmed to npix.
+    Images have initial size padding\*npix, and are later trimmed to the image size set via the 'npix' parameter.
 
   **weight**
 
     *{"natural", "uniform", "briggs"}*, *optional*, *default = briggs*
 
-    Weightmode can be natural, uniform, briggs. When using Briggs weighting, the additional robust parameter has to be specified.
+    Options for the type of weighting to be used are natural, uniform, or briggs. When using Briggs weighting, the additional robust parameter has to be specified.
 
   **robust**
 
@@ -414,79 +420,79 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 1.0*
 
-    WSclean gain for major iterations, i.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.
+    Gain value for major iterations in WSClean. I.e., the maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.
 
   **wscl_sofia_niter**
 
     *int*, *optional*, *default = 2*
 
-    Maximum number of WSclean + SoFiA iterations. The initial cleaning is done with WSclean automasking or with a user clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSclean is only executed once and SoFiA is not used.
+    Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used.
 
   **wscl_sofia_converge**
 
     *float*, *optional*, *default = 1.1*
 
-    Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor < wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the noise change.
+    Stop the WSClean + SoFiA iterations if the cube RMS has dropped by a factor < wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the change in RMS.
 
   **wscl_keep_final_products_only**
 
     *bool*, *optional*, *default = False*
 
-    If set to true it deletes WSclean + Sofia intermediate cubes from the output directory, if set to false it keeps all the cubes of the WSclean + SoFiA iterations.
+    If set to true, WSClean + SoFiA intermediate-cubes are deleted from the output directory. If set to false, WSClean + SoFiA intermediate-cubes are retained in the output directory.
 
   **wscl_user_clean_mask**
 
     *str*, *optional*, *default = ' '*
 
-    WSclean user clean mask for first WSclean + SoFiA iteration (give filename, to be located in the output/masking folder).
+    User-provided WSClean clean-mask for the first WSClean + SoFiA iteration (i.e. give the filename of the clean-mask, which is to be located in the output/masking folder).
 
   **wscl_auto_mask**
 
     *float*, *optional*, *default = 10*
 
-    Used only during the first WSclean iteration. Clean blindly down to a threshold given by this parameter (in  units of the noise), then clean again the already cleaned pixels down to the parameter wscl_auto_threshold.
+    Cleaning threshold used only during the first iteration of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration. WSClean will clean blindly down to this threshold (wscl_auto_mask), before switching to the auto-threshold set via wscl_auto_threshold.
 
   **wscl_auto_threshold**
 
     *float*, *optional*, *default = 0.5*
 
-    WSclean cleaning threshold in units of the noise.
+    Cleaning threshold used for subsequent iterations of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration.
 
   **wscl_make_cube**
 
     *bool*, *optional*, *default = True*
 
-    If set to true the output of WSclean is a data cube, if set to false the output is one .FITS image per spectral channel.
+    If set to true, the output of WSClean is a data cube. If set to false, the output is one .FITS image per spectral channel.
 
   **wscl_no_update_mod**
 
     *bool*, *optional*, *default = True*
 
-    If set to true, WSclean will not store the line clean model in MODEL_DATA.
+    If set to true, WSClean will not store the line clean model in MODEL_DATA.
 
   **wscl_multi_scale**
 
     *bool*, *optional*, *default = False*
 
-    Switch on WSclean multiscale cleaning.
+    Switch on WSClean multiscale cleaning.
 
   **wscl_multi_scale_scales**
 
     *list* *of int*, *optional*, *default = 0, 10, 20, 30*
 
-    List of scales of WSclean multiscale in units of pixels. Only used is wscl_multi_scale is set to True.
+    List of scales for WSClean multiscale, in units of pixels. Only used is wscl_multi_scale is set to True.
 
   **wscl_multi_scale_bias**
 
     *float*, *optional*, *default = 0.6*
 
-    Parameter to set the bias towards larger scales during multi-scale cleaning. A lower bias will give preference to larger scales.
+    Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.
 
   **casa_threshold**
 
     *str*, *optional*, *default = 10mJy*
 
-    Flux level to stop CASA cleaning. It must include units, e.g. '1.0mJy'.
+    Flux-density level to stop CASA cleaning. It must include units, e.g. '1.0mJy'.
 
   **casa_port2fits**
 
@@ -508,7 +514,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute segment remove_stokes_axis.
+    Enable the 'remove_stokes_axis' segment.
 
 
 
@@ -518,19 +524,19 @@ Process visibilities for spectral line work and create line cubes and images.
 **pb_cube**
 --------------------------------------------------
 
-  Make a primary beam cube.
+  Make a primary-beam cube.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute segment pb_cube.
+    Enable the 'pb_cube' segment.
 
   **apply_pb**
 
     *bool*, *optional*, *default = False*
 
-    Whether to apply the primary beam correction to the image cube.
+    Whether or not to apply the primary-beam correction to the image cube.
 
 
 
@@ -546,13 +552,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute segment freq_to_vel.
+    Enable the 'freq_to_vel' segment.
 
   **reverse**
 
     *bool*, *optional*, *default = False*
 
-    Perform the inverse transformation and change the cube 3rd axis from radio velocity to frequency.
+    Perform the inverse transformation and change the cube's 3rd axis from radio velocity to frequency.
 
 
 
@@ -562,13 +568,13 @@ Process visibilities for spectral line work and create line cubes and images.
 **sofia**
 --------------------------------------------------
 
-  Run SoFiA source finder to produce a detection mask, moment images and catalogues.
+  Run SoFiA source-finder to produce a detection mask, moment images and catalogues.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute segment sofia.
+    Enable the 'sofia' segment.
 
   **flag**
 
@@ -592,13 +598,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 4.0*
 
-    SoFiA source finding threshold.
+    SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).
 
   **merge**
 
     *bool*, *optional*, *default = False*
 
-    Merge pixels detected by any of SoFiA source finding algorithms into objects. If turned on, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in Y direction, and mergeZ channels in Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.
+    Merge pixels detected by any of the SoFiA source-finding algorithms into objects. If enabled, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in the Y direction, and mergeZ channels in the Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.
 
   **mergeX**
 
@@ -628,7 +634,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *int*, *optional*, *default = 3*
 
-    Minimum size (in pixels) in  the Y direction (Dec axis).
+    Minimum size (in pixels) in the Y direction (Dec axis).
 
   **minSizeZ**
 
@@ -668,35 +674,47 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Execute segment sharpener.
+    Enable the 'sharpener' segment.
 
   **catalog**
 
     *{"NVSS", "PYBDSF"}*, *optional*, *default = PYBDSF*
 
-    Type of catalog to use (PYBDSF/NVSS).
+    Type of catalogue to use. Options are PYBDSF and NVSS.
 
   **channels_per_plot**
 
     *int*, *optional*, *default = 50*
 
-    Number of channels to plot per detail plot.
+    Number of channels to plot per detailed plot.
 
   **thresh**
 
     *float*, *optional*, *default = 20*
 
-    Threshold to select sources in online catalogs (mJy).
+    Threshold to select sources in online catalogue (in units of mJy).
 
   **width**
 
     *str*, *optional*, *default = 1.0d*
 
-    Field of view of output catalog (degrees).
+    Field-of-view of output catalogue (in units of degrees).
 
   **label**
 
     *str*, *optional*, *default = ' '*
 
     Prefix label of plot names and titles.
+
+
+
+.. _line_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

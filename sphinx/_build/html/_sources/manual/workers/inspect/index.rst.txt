@@ -24,7 +24,7 @@ Diagnostic plots for data
 
   *bool*
 
-  Executes dignostic plotting of the first-pass cross-calibrated data.
+  Execute the inspect worker (i.e. diagnostic plotting of the first-pass cross-calibrated data).
 
 
 
@@ -493,4 +493,16 @@ Diagnostic plots for data
     *str*, *optional*, *default = 10*
 
     Number of channels to average for plotting.
+
+
+
+.. _inspect_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

@@ -24,7 +24,7 @@ Carry out crosshand calibration of the data (X and D) on boresight, after parall
 
   *bool*
 
-  Execute this segment.
+  Execute the polcol worker.
 
 
 
@@ -249,4 +249,16 @@ Carry out crosshand calibration of the data (X and D) on boresight, after parall
     *bool*, *optional*, *default = True*
 
     Execute this segment.
+
+
+
+.. _polcal_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

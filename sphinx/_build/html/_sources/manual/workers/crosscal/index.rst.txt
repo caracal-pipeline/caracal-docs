@@ -58,19 +58,25 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 **rewind_flags**
 --------------------------------------------------
 
-  Rewind flags to version specified by "version" below, and delete all flag versions that had been saved after it.
+  Rewind flags to specified version.
 
   **enable**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
-    Execute the rewind_flags segement.
+    Enable the rewind_flags segement.
+
+  **mode**
+
+    *{"reset_worker", "rewind_to_version"}*, *optional*, *default = reset_worker*
+
+    If mode = 'reset_worker' rewind to the flag version before this worker if it exists, or continue if it does not exist; if mode = 'rewind_to_version' rewind to the flag version given by 'version' below.
 
   **version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to rewind to. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.
+    Flag version to rewind to. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.
 
 
 
@@ -128,7 +134,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     *bool*, *optional*, *default = False*
 
-    Use sky models available in CARACal. At the moment this includes PKS1934-638 and 0408-6545 MeerKAT sky models.
+    Use the MeerkAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.
 
   **no_verify**
 
@@ -475,4 +481,16 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
     *bool*, *optional*, *default = True*
 
     Execute printing flagging summary.
+
+
+
+.. _crosscal_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

@@ -121,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#freq-to-vel"><strong>freq_to_vel</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sofia"><strong>sofia</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharpener"><strong>sharpener</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../mosaic/index.html">mosaic</a></li>
@@ -208,14 +209,14 @@
 <span id="line-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute the image_line worker.</p>
+<p>Execute the line worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label">
 <span id="line-label"></span><h2><strong>label</strong><a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the get_data worker, followed by the target ID (one file per target), followed by this label. This is the format used by Caracal whenever it writes an .MS file to disk (e.g., in the split_target worker).</p>
+<p>Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the getdata worker, followed by the target ID (one file per target), followed by this label. This is the format used by CARACal whenever it writes an .MS file to disk (e.g., in the transform worker).</p>
 </div></blockquote>
 </div>
 <div class="section" id="line-name">
@@ -235,21 +236,26 @@
 <div class="section" id="rewind-flags">
 <span id="line-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to .MS file(s) you might be running “transfer_apply_gains” on.</p>
+<div><p>Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to the .MS file(s) you might be running “transfer_apply_gains” on.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>enable this segement</p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable the ‘rewind_flags’ segment.</p>
+</div></blockquote>
+<p><strong>mode</strong></p>
+<blockquote>
+<div><p><em>{“reset_worker”, “rewind_to_version”}</em>, <em>optional</em>, <em>default = reset_worker</em></p>
+<p>If set to ‘reset_worker’, rewind to the flag version before this worker if it exists, or continue if it does not exist; if set to ‘rewind_to_version’, rewind to the flag version given by ‘version’ and ‘mstransform_version’ below.</p>
 </div></blockquote>
 <p><strong>version</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above. Set to “null” to skip this rewinding step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 <p><strong>mstransform_version</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
+<p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -257,7 +263,7 @@
 <span id="line-overwrite-flag-versions"></span><h2><strong>overwrite_flag_versions</strong><a class="headerlink" href="#overwrite-flag-versions" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
+<p>Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
 </div>
 <div class="section" id="subtractmodelcol">
@@ -267,7 +273,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute the segment subtractmodelcol.</p>
+<p>Enable the ‘subtractmodelcol’ segment.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -278,7 +284,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute the segment addmodelcol.</p>
+<p>Enable the ‘addmodelcol’ segment.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -289,7 +295,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute the segment mstransform.</p>
+<p>Enable the ‘mstransform’ segment.</p>
 </div></blockquote>
 <p><strong>column</strong></p>
 <blockquote>
@@ -302,7 +308,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Enable the Doppler correction section.</p>
+<p>Enable the ‘doppler’ (i.e. Doppler correction) segment.</p>
 </div></blockquote>
 <p><strong>telescope</strong></p>
 <blockquote>
@@ -312,22 +318,22 @@
 <p><strong>mode</strong></p>
 <blockquote>
 <div><p><em>{“frequency”}</em>, <em>optional</em>, <em>default = frequency</em></p>
-<p>Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently only frequency mode is supported. Other modes will throw an error.</p>
+<p>Regridding mode (channel/velocity/frequency/channel_b). IMPORTANT! Currently, only frequency mode is supported. Other modes will throw an error.</p>
 </div></blockquote>
 <p><strong>outframe</strong></p>
 <blockquote>
 <div><p><em>{“”, “topo”, “geo”, “lsrk”, “lsrd”, “bary”, “galacto”, “lgroup”, “cmb”, “source”}</em>, <em>optional</em>, <em>default = bary</em></p>
-<p>Output reference frame. Current options are ‘’, topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, source.</p>
+<p>Output reference frame. Current options are ‘’, topo, geo, lsrk, lsrd, bary, galacto, lgroup, cmb, and source.</p>
 </div></blockquote>
 <p><strong>veltype</strong></p>
 <blockquote>
 <div><p><em>{“radio”, “optical”}</em>, <em>optional</em>, <em>default = radio</em></p>
-<p>Velocity used when regridding if mode = velocity. Current options are radio, optical.</p>
+<p>Velocity used when regridding if mode = velocity. Current options are radio,and optical.</p>
 </div></blockquote>
 <p><strong>outchangrid</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Output channel grid for Doppler correction. Default is ‘auto’, and the pipeline will calculate the appropriate channel grid. If not ‘auto’ it must be in the format ‘nchan,chan0,chanw’ where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter ‘mode’ above).</p>
+<p>Output channel grid for Doppler correction. Default is ‘auto’, and the pipeline will calculate the appropriate channel grid. If not ‘auto’ then it must be in the format ‘nchan,chan0,chanw’ where nchan is an integer, and chan0 and chanw must include units appropriate for the chosen mode (see parameter ‘mode’ above).</p>
 </div></blockquote>
 </div></blockquote>
 <p><strong>uvlin</strong></p>
@@ -336,12 +342,12 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Enable the UVLIN section.</p>
+<p>Enable the ‘UVLIN’ segment.</p>
 </div></blockquote>
 <p><strong>fitspw</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Selection of line-free channels using CASA syntax (e.g. ‘0:0~100;150:300’). If set to null, a fit to all unflagges visibilities will be performed.</p>
+<p>Selection of line-free channels using CASA syntax (e.g. ‘0:0~100;150:300’). If set to null, a fit to all unflagged visibilities will be performed.</p>
 </div></blockquote>
 <p><strong>fitorder</strong></p>
 <blockquote>
@@ -352,7 +358,7 @@
 <p><strong>obsinfo</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Create obsinfo.txt and obsinfo.json of the .MS file(s) created by CASA mstransform.</p>
+<p>Create obsinfo.txt and obsinfo.json per .MS file created by CASA mstransform.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -363,12 +369,12 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment flag_mst_errors.</p>
+<p>Enable the ‘flag_mst_errors’ segment.</p>
 </div></blockquote>
 <p><strong>strategy</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = postmst.rfis</em></p>
-<p>AOFlagger strategy file</p>
+<p>AOFlagger strategy file.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -379,7 +385,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment sunblocker.</p>
+<p>Enable the ‘sunblocker’ segment.</p>
 </div></blockquote>
 <p><strong>use_mstransform</strong></p>
 <blockquote>
@@ -404,33 +410,33 @@
 <p><strong>vampirisms</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells where to flag.</p>
+<p>Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag.</p>
 </div></blockquote>
 <p><strong>uvmin</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.</em></p>
-<p>Minimum uvdistance to be analysed (in wavelengths).</p>
+<p>Minimum uvdistance to be analysed (in wavelengths, lambda).</p>
 </div></blockquote>
 <p><strong>uvmax</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2000</em></p>
-<p>Maximum uvdistance to be analysed (in wavelengths).</p>
+<p>Maximum uvdistance to be analysed (in wavelengths, lambda).</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="make-cube">
 <span id="line-make-cube"></span><h2><strong>make_cube</strong><a class="headerlink" href="#make-cube" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Make a line cube using either WSclean + SoFiA (optional for clean masks) or CASA Clean.</p>
+<div><p>Make a line cube using either WSClean + SoFiA (optional for clean masks) or CASA Clean.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute segment make_cube.</p>
+<p>Enable the ‘make_cube’ segment.</p>
 </div></blockquote>
 <p><strong>image_with</strong></p>
 <blockquote>
 <div><p><em>{“wsclean”, “casa”}</em>, <em>optional</em>, <em>default = wsclean</em></p>
-<p>Choose whether to image with WSclean + SoFiA (‘wsclean’) or with CASA Clean (‘casa’).</p>
+<p>Choose whether to image with WSClean + SoFiA (‘wsclean’) or with CASA Clean (‘casa’).</p>
 </div></blockquote>
 <p><strong>use_mstransform</strong></p>
 <blockquote>
@@ -450,7 +456,7 @@
 <p><strong>nchans</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Number of channels of the line cube, 0 means all channels.</p>
+<p>Number of channels of the line cube, where 0 means all channels.</p>
 </div></blockquote>
 <p><strong>firstchan</strong></p>
 <blockquote>
@@ -470,17 +476,17 @@
 <p><strong>cell</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Pixel size. The default unit is arcsec, but other units can be specificied, e.g., ‘scale 20asec’.</p>
+<p>Pixel size. The default unit is arcsec, but other units can be specified, e.g., ‘scale 20asec’.</p>
 </div></blockquote>
 <p><strong>padding</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.2</em></p>
-<p>Images have initial size padding*npix, and are later trimmed to npix.</p>
+<p>Images have initial size padding*npix, and are later trimmed to the image size set via the ‘npix’ parameter.</p>
 </div></blockquote>
 <p><strong>weight</strong></p>
 <blockquote>
 <div><p><em>{“natural”, “uniform”, “briggs”}</em>, <em>optional</em>, <em>default = briggs</em></p>
-<p>Weightmode can be natural, uniform, briggs. When using Briggs weighting, the additional robust parameter has to be specified.</p>
+<p>Options for the type of weighting to be used are natural, uniform, or briggs. When using Briggs weighting, the additional robust parameter has to be specified.</p>
 </div></blockquote>
 <p><strong>robust</strong></p>
 <blockquote>
@@ -505,67 +511,67 @@
 <p><strong>wscl_mgain</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.0</em></p>
-<p>WSclean gain for major iterations, i.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.</p>
+<p>Gain value for major iterations in WSClean. I.e., the maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.</p>
 </div></blockquote>
 <p><strong>wscl_sofia_niter</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Maximum number of WSclean + SoFiA iterations. The initial cleaning is done with WSclean automasking or with a user clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSclean is only executed once and SoFiA is not used.</p>
+<p>Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used.</p>
 </div></blockquote>
 <p><strong>wscl_sofia_converge</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.1</em></p>
-<p>Stop the WSclean + SoFiA iterations if the cube RMS has dropped by a factor &lt; wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the noise change.</p>
+<p>Stop the WSClean + SoFiA iterations if the cube RMS has dropped by a factor &lt; wscl_sofia_converge when comparing the last two iterations (considering only channels that were cleaned). If set to 0 then the maximum number of iterations is performed regardless of the change in RMS.</p>
 </div></blockquote>
 <p><strong>wscl_keep_final_products_only</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>If set to true it deletes WSclean + Sofia intermediate cubes from the output directory, if set to false it keeps all the cubes of the WSclean + SoFiA iterations.</p>
+<p>If set to true, WSClean + SoFiA intermediate-cubes are deleted from the output directory. If set to false, WSClean + SoFiA intermediate-cubes are retained in the output directory.</p>
 </div></blockquote>
 <p><strong>wscl_user_clean_mask</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>WSclean user clean mask for first WSclean + SoFiA iteration (give filename, to be located in the output/masking folder).</p>
+<p>User-provided WSClean clean-mask for the first WSClean + SoFiA iteration (i.e. give the filename of the clean-mask, which is to be located in the output/masking folder).</p>
 </div></blockquote>
 <p><strong>wscl_auto_mask</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 10</em></p>
-<p>Used only during the first WSclean iteration. Clean blindly down to a threshold given by this parameter (in  units of the noise), then clean again the already cleaned pixels down to the parameter wscl_auto_threshold.</p>
+<p>Cleaning threshold used only during the first iteration of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration. WSClean will clean blindly down to this threshold (wscl_auto_mask), before switching to the auto-threshold set via wscl_auto_threshold.</p>
 </div></blockquote>
 <p><strong>wscl_auto_threshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
-<p>WSclean cleaning threshold in units of the noise.</p>
+<p>Cleaning threshold used for subsequent iterations of WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration.</p>
 </div></blockquote>
 <p><strong>wscl_make_cube</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>If set to true the output of WSclean is a data cube, if set to false the output is one .FITS image per spectral channel.</p>
+<p>If set to true, the output of WSClean is a data cube. If set to false, the output is one .FITS image per spectral channel.</p>
 </div></blockquote>
 <p><strong>wscl_no_update_mod</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>If set to true, WSclean will not store the line clean model in MODEL_DATA.</p>
+<p>If set to true, WSClean will not store the line clean model in MODEL_DATA.</p>
 </div></blockquote>
 <p><strong>wscl_multi_scale</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Switch on WSclean multiscale cleaning.</p>
+<p>Switch on WSClean multiscale cleaning.</p>
 </div></blockquote>
 <p><strong>wscl_multi_scale_scales</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0, 10, 20, 30</em></p>
-<p>List of scales of WSclean multiscale in units of pixels. Only used is wscl_multi_scale is set to True.</p>
+<p>List of scales for WSClean multiscale, in units of pixels. Only used is wscl_multi_scale is set to True.</p>
 </div></blockquote>
 <p><strong>wscl_multi_scale_bias</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.6</em></p>
-<p>Parameter to set the bias towards larger scales during multi-scale cleaning. A lower bias will give preference to larger scales.</p>
+<p>Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.</p>
 </div></blockquote>
 <p><strong>casa_threshold</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10mJy</em></p>
-<p>Flux level to stop CASA cleaning. It must include units, e.g. ‘1.0mJy’.</p>
+<p>Flux-density level to stop CASA cleaning. It must include units, e.g. ‘1.0mJy’.</p>
 </div></blockquote>
 <p><strong>casa_port2fits</strong></p>
 <blockquote>
@@ -581,23 +587,23 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment remove_stokes_axis.</p>
+<p>Enable the ‘remove_stokes_axis’ segment.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="pb-cube">
 <span id="line-pb-cube"></span><h2><strong>pb_cube</strong><a class="headerlink" href="#pb-cube" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Make a primary beam cube.</p>
+<div><p>Make a primary-beam cube.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment pb_cube.</p>
+<p>Enable the ‘pb_cube’ segment.</p>
 </div></blockquote>
 <p><strong>apply_pb</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Whether to apply the primary beam correction to the image cube.</p>
+<p>Whether or not to apply the primary-beam correction to the image cube.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -608,23 +614,23 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment freq_to_vel.</p>
+<p>Enable the ‘freq_to_vel’ segment.</p>
 </div></blockquote>
 <p><strong>reverse</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Perform the inverse transformation and change the cube 3rd axis from radio velocity to frequency.</p>
+<p>Perform the inverse transformation and change the cube’s 3rd axis from radio velocity to frequency.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="sofia">
 <span id="line-sofia"></span><h2><strong>sofia</strong><a class="headerlink" href="#sofia" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Run SoFiA source finder to produce a detection mask, moment images and catalogues.</p>
+<div><p>Run SoFiA source-finder to produce a detection mask, moment images and catalogues.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute segment sofia.</p>
+<p>Enable the ‘sofia’ segment.</p>
 </div></blockquote>
 <p><strong>flag</strong></p>
 <blockquote>
@@ -644,12 +650,12 @@
 <p><strong>threshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.0</em></p>
-<p>SoFiA source finding threshold.</p>
+<p>SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).</p>
 </div></blockquote>
 <p><strong>merge</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Merge pixels detected by any of SoFiA source finding algorithms into objects. If turned on, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in Y direction, and mergeZ channels in Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.</p>
+<p>Merge pixels detected by any of the SoFiA source-finding algorithms into objects. If enabled, pixels with a separation of less than mergeX pixels in the X direction, mergeY pixels in the Y direction, and mergeZ channels in the Z direction will be merged and identified as a single object in the mask. Objects whose extent is smaller than minSizeX, minSizeY or minSizeZ will be removed from the mask.</p>
 </div></blockquote>
 <p><strong>mergeX</strong></p>
 <blockquote>
@@ -674,7 +680,7 @@
 <p><strong>minSizeY</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Minimum size (in pixels) in  the Y direction (Dec axis).</p>
+<p>Minimum size (in pixels) in the Y direction (Dec axis).</p>
 </div></blockquote>
 <p><strong>minSizeZ</strong></p>
 <blockquote>
@@ -705,33 +711,40 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute segment sharpener.</p>
+<p>Enable the ‘sharpener’ segment.</p>
 </div></blockquote>
 <p><strong>catalog</strong></p>
 <blockquote>
 <div><p><em>{“NVSS”, “PYBDSF”}</em>, <em>optional</em>, <em>default = PYBDSF</em></p>
-<p>Type of catalog to use (PYBDSF/NVSS).</p>
+<p>Type of catalogue to use. Options are PYBDSF and NVSS.</p>
 </div></blockquote>
 <p><strong>channels_per_plot</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 50</em></p>
-<p>Number of channels to plot per detail plot.</p>
+<p>Number of channels to plot per detailed plot.</p>
 </div></blockquote>
 <p><strong>thresh</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 20</em></p>
-<p>Threshold to select sources in online catalogs (mJy).</p>
+<p>Threshold to select sources in online catalogue (in units of mJy).</p>
 </div></blockquote>
 <p><strong>width</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.0d</em></p>
-<p>Field of view of output catalog (degrees).</p>
+<p>Field-of-view of output catalogue (in units of degrees).</p>
 </div></blockquote>
 <p><strong>label</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Prefix label of plot names and titles.</p>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="report">
+<span id="line-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>(Re)generate a full HTML report at the end of this segment.</p>
 </div></blockquote>
 </div>
 </div>

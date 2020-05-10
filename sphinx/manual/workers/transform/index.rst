@@ -12,7 +12,7 @@ transform
 .. toctree::
    :maxdepth: 1
  
-Split, avg and/or calibrate data
+Split, average and/or calibrate the data.
 
 
 
@@ -24,7 +24,7 @@ Split, avg and/or calibrate data
 
   *bool*
 
-  Execute this worker
+  Execute the transform worker.
 
 
 
@@ -36,7 +36,7 @@ Split, avg and/or calibrate data
 
   *str*, *optional*, *default = ' '*
 
-  Label of the input dataset
+  Label of the input dataset.
 
 
 
@@ -48,7 +48,7 @@ Split, avg and/or calibrate data
 
   *str*, *optional*, *default = corr*
 
-  Label of the output dataset
+  Label of the output dataset.
 
 
 
@@ -64,13 +64,13 @@ Split, avg and/or calibrate data
 
     *bool*, *optional*, *default = False*
 
-    enable this segement
+    Enable the 'rewind_flags' segment.
 
   **version**
 
-    *str*, *optional*, *default = auto*
+    *str*, *optional*, *default = ' '*
 
-    Flag version to restore. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. Note that all flag versions saved after this version will be deleted.
 
 
 
@@ -80,43 +80,43 @@ Split, avg and/or calibrate data
 **split_field**
 --------------------------------------------------
 
-  Make new ms of targets or calibrators
+  Make new MS of targets or calibrators.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute this section
+    Enable the 'split_field' segment.
 
   **field**
 
     *str*, *optional*, *default = target*
 
-    Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string
+    Fields to be split off from the input MS. Options are (separately) 'target', 'calibrators', 'bpcal', 'gcal' and 'fcal'. Also valid is any combination of 'bpcal', 'gcal' and 'fcal' in a comma-separated string (e.g. 'bpcal, fcal').
 
   **time_average**
 
     *str*, *optional*, *default = ' '*
 
-    Time averaging
+    Time averaging to apply to the data, in units of seconds. If this parameter is instead set to '' or '0s' then no time averaging is applied.
 
   **freq_average**
 
     *int*, *optional*, *default = 1*
 
-    Frequency averaging
+    Frequency averaging to apply to the data, given as the number of channels per frequency bin. If this parameter is set to '', '0', or '1', then no frequency averaging is applied.
 
   **column**
 
     *str*, *optional*, *default = corrected*
 
-    Column to split, default is 'corrected'.
+    Column to be split, where the default is 'corrected'.
 
   **correlation**
 
     *str*, *optional*, *default = ' '*
 
-    Select correlations
+    Select the correlations, e.g. 'XX', 'YY'. Setting this to '' means that all correlations are selected.
 
   **usewtspectrum**
 
@@ -128,29 +128,29 @@ Split, avg and/or calibrate data
 
     *str*, *optional*, *default = ' '*
 
-    Select spectral windows and channels
+    Select spectral windows and channels, following the same syntax as for the 'mstransform' task in CASA. Setting this to '' means that all spectral windows and channels are selected.
 
   **otfcal**
 
-    Apply OTF calibration
+    Apply on-the-fly (OTF) calibration.
 
     **enable**
 
       *bool*, *optional*, *default = False*
 
-      Execute this section
+      Enable the 'otfcal' segment.
 
     **callib**
 
       *str*, *optional*, *default = ' '*
 
-      Name of callib file to be used, if user has their own
+      Name of the callib file to be used, if user has their own.
 
     **label_cal**
 
       *str*, *optional*, *default = 1gc1*
 
-      Label of calibration tables to be used
+      Label of the calibration tables to be used.
 
 
 
@@ -160,25 +160,25 @@ Split, avg and/or calibrate data
 **changecentre**
 --------------------------------------------------
 
-  changes the phase centre
+  Change the phase centre.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this section
+    Enable the 'changecentre' segment.
 
   **ra**
 
     *str*, *optional*, *default = 0h0m0.0s*
 
-    J2000 RA of new phase centre, format XXhXXmXX.XXs, default is empty string
+    J2000 RA of the new phase centre, in the format XXhXXmXX.XXs .
 
   **dec**
 
     *str*, *optional*, *default = 0d0m0.0s*
 
-    J2000 Dec of new phase centre, format XXdXXmXX.XXs, default is empty string
+    J2000 Dec of the new phase centre, in the format XXdXXmXX.XXs .
 
 
 
@@ -188,23 +188,35 @@ Split, avg and/or calibrate data
 **obsinfo**
 --------------------------------------------------
 
-  Get observation information
+  Get observation information.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute this section
+    Enable the 'obsinfo' segment.
 
   **listobs**
 
     *bool*, *optional*, *default = True*
 
-    Run CASA listobs
+    Run the CASA 'listobs' task to get observation information.
 
   **summary_json**
 
     *bool*, *optional*, *default = True*
 
-    Run MSUtils function
+    Run the MSUtils summary function to get observation information written as a JSON file.
+
+
+
+.. _transform_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

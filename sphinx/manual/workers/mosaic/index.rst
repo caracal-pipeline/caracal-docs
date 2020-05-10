@@ -12,7 +12,7 @@ mosaic
 .. toctree::
    :maxdepth: 1
  
-Mosaic the images and cubes made with the self_cal and image_line workers. If not available on disc, the primary beam is built by this worker assuming a Gaussian shape with FWHM = 1.02 lambda/D.
+Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker. If not available on disc, the primary beam is built by the mosaic worker, assuming a Gaussian shape with FWHM = 1.02 lambda/D.
 
 
 
@@ -24,7 +24,19 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *bool*
 
-  Execute mosaic segment.
+  Execute the mosaic worker.
+
+
+
+.. _mosaic_mosaic_type:
+
+--------------------------------------------------
+**mosaic_type**
+--------------------------------------------------
+
+  *{"continuum", "spectral"}*
+
+  Type of mosaic to be made, either continuum (2D) or spectral (3D).
 
 
 
@@ -48,31 +60,7 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *str*, *optional*, *default = corr*
 
-  For autoselection of images, this needs to match the label setting used for the self_cal worker (when mosaicking continuum images) or the image_line worker (when mosaicking cubes).
-
-
-
-.. _mosaic_line_name:
-
---------------------------------------------------
-**line_name**
---------------------------------------------------
-
-  *str*, *optional*, *default = HI*
-
-  Spectral mode only -- If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the image_line_worker.
-
-
-
-.. _mosaic_mosaic_type:
-
---------------------------------------------------
-**mosaic_type**
---------------------------------------------------
-
-  *{"continuum", "spectral"}*
-
-  Type of mosaic to be made, either continuum or spectral.
+  For autoselection of images, this needs to match the label/label_cal setting used for the selfcal/crosscal worker (when mosaicking continuum images) or the label setting used for the line worker (when mosaicking cubes).
 
 
 
@@ -84,7 +72,19 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *bool*, *optional*, *default = False*
 
-  Indicate that the images to be mosaicked were created using MFS.
+  Continuum mode only -- If the images to be mosaicked were created using MFS, in the selfcal or crosscal worker, then this needs to be indicated via this parameter.
+
+
+
+.. _mosaic_line_name:
+
+--------------------------------------------------
+**line_name**
+--------------------------------------------------
+
+  *str*, *optional*, *default = HI*
+
+  Spectral mode only -- If autoselection is used to find the final cubes, this needs to match the line_name parameter used for the line worker.
 
 
 
@@ -96,7 +96,7 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *str*, *optional*, *default = ' '*
 
-  The prefix to be used for output files. Default is the pipeline prefix(pipeline.prefix).
+  The prefix to be used for output files. Default is the pipeline prefix, as set for the general worker.
 
 
 
@@ -112,7 +112,7 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
     *bool*, *optional*, *default = True*
 
-    Execute this domontage section.
+    Enable the 'domontage' (i.e. re-gridding) segment.
 
 
 
@@ -136,7 +136,7 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *float*, *optional*, *default = 13.5*
 
-  If no continuum pb.fits are already in place, user needs to specify the dish diameter(in units of m) so that rudimentary primary beams can be created.
+  If no continuum pb.fits are already in place, user needs to specify the dish diameter (in units of m) so that rudimentary primary beams can be created.
 
 
 
@@ -148,5 +148,17 @@ Mosaic the images and cubes made with the self_cal and image_line workers. If no
 
   *float*, *optional*, *default = 1383685546.875*
 
-  If no continuum pb.fits are already in place, user needs to specify the reference frequency(in units of Hz) so that rudimentary primary beams can be created.
+  If no continuum pb.fits are already in place, user needs to specify the reference frequency (in units of Hz) so that rudimentary primary beams can be created.
+
+
+
+.. _mosaic_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

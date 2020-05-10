@@ -24,7 +24,7 @@ Prepare the data for calibration and imaging.
 
   *bool*
 
-  Executes the data preparation step.
+  Execute the prep worker (i.e. the  data-preparation step).
 
 
 
@@ -36,7 +36,7 @@ Prepare the data for calibration and imaging.
 
   *str*
 
-  If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string it is added to the input .MS file(s) name given in the getdata worker to define the name of the .MS file(s) to work on. These are <input>_<label>.ms if 'field' (see below) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (one .MS file for each target in the input .MS).
+  If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string then it is added to the input .MS file(s) name (specified for the getdata worker) to define the name of the .MS file(s) to work on. These are named <input>_<label>.ms if 'field' (see below) is set to 'calibrators', or <input>-<target>_<label>.ms if 'field' is set to 'target' (with one .MS file for each target in the input .MS).
 
 
 
@@ -48,7 +48,7 @@ Prepare the data for calibration and imaging.
 
   *{"target", "calibrators"}*, *optional*, *default = calibrators*
 
-  In combination with a non-empty 'label_in' (see above), 'field' defines which .MS file(s) to work on. This parameter is ignored if 'label_in' is empty.
+  In combination with a non-empty 'label_in' (see above), 'field' defines which .MS file(s) to work on. This parameter is ignored if 'label_in' is empty. Options are 'target' and 'calibrators'.
 
 
 
@@ -58,13 +58,13 @@ Prepare the data for calibration and imaging.
 **fixvis**
 --------------------------------------------------
 
-  Fixes the UVW coordinates through the CASA task fixvis.
+  Fix the UVW coordinates through the CASA task 'fixvis'.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable execution of fixvis.
+    Enable the 'fixvis' segment.
 
 
 
@@ -76,7 +76,7 @@ Prepare the data for calibration and imaging.
 
   *bool*, *optional*, *default = False*
 
-  Clears out calibrated data and resets previous predicted model
+  Clear out calibrated data and reset the previous predicted model.
 
 
 
@@ -86,25 +86,25 @@ Prepare the data for calibration and imaging.
 **manage_flags**
 --------------------------------------------------
 
-  Manage flags
+  Manage flags.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Enable this segment
+    Enable the 'manage_flags' segment.
 
   **mode**
 
     *{"legacy", "restore"}*, *optional*, *default = legacy*
 
-    Manage flag mode. With mode = 'legacy', if the 'caracal_legacy' flag version does not yet exist, save the current FLAG column as the 'caracal_legacy flag version; else restore the 'caracal_legacy' flag version and delete all flag versions created after it. With mode = 'restore', restore flags from the flag version specified by 'version' below, and delete all flag versions created after that version.
+    Mode for managing flags. If set to 'legacy', save the current FLAG column as a 'caracal_legacy' flag version if a flag version with that name does not exisy yet; else restore the 'caracal_legacy' flag version and delete all flag versions created after it. If set to 'restore', restore flags from the flag version specified by 'version' below, and delete all flag versions created after that version.
 
   **version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to restore. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Name of the flag version to restore. If set to 'auto', rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 
@@ -114,45 +114,57 @@ Prepare the data for calibration and imaging.
 **spectral_weights**
 --------------------------------------------------
 
-  How to initialize spectral weights
+  How to initialize spectral weights.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Enable this segment
+    Enable the 'spectral_weights' segment.
 
   **mode**
 
     *{"uniform", "estimate", "delete"}*, *optional*, *default = uniform*
 
-    uniform: Set all weights to unity. estimate: Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, Also see 'estimate' segment of this section. delete: Delete WEIGHT_SPECTRUM column if it exists.
+    Mode for spectral weights. Options are 'uniform' (set all weights to unity), 'estimate' (estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, and see 'estimate' segment of this section), and 'delete' (delete WEIGHT_SPECTRUM column if it exists).
 
   **estimate**
 
-    Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values
+    Estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values.
 
     **stats_data**
 
       *str*, *optional*, *default = use_package_meerkat_spec*
 
-      File with SEFD/Tsys/Noise data. If data is from MeerKAT telescope, you can specify 'use_package_meerkat_spec' to use package data.
+      File with SEFD/Tsys/Noise data. If data is from the MeerKAT telescope, you can specify 'use_package_meerkat_spec' to use package data.
 
     **weight_columns**
 
       *list* *of str*, *optional*, *default = WEIGHT, WEIGHT_SPECTRUM*
 
-      column names
+      Column names for spectral weights.
 
     **noise_columns**
 
       *list* *of str*, *optional*, *default = SIGMA, SIGMA_SPECTRUM*
 
-      column names for noise
+      Column names for noise values.
 
     **write_to_ms**
 
       *bool*, *optional*, *default = True*
 
-      write columns to file
+      Write columns to file.
+
+
+
+.. _prep_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

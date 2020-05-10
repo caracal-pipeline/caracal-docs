@@ -12,7 +12,7 @@ selfcal
 .. toctree::
    :maxdepth: 1
  
-Perform Self calibration on the data.
+Perform self-calibration on the data.
 
 
 
@@ -24,7 +24,7 @@ Perform Self calibration on the data.
 
   *bool*
 
-  Execute this segment
+  Execute the selfcal worker.
 
 
 
@@ -50,21 +50,27 @@ Perform Self calibration on the data.
 
   **enable**
 
-    *bool*, *optional*, *default = False*
+    *bool*, *optional*, *default = True*
 
-    enable this segement
+    Enable segment rewind_flags.
+
+  **mode**
+
+    *{"reset_worker", "rewind_to_version"}*, *optional*, *default = reset_worker*
+
+    If mode = 'reset_worker' rewind to the flag version before this worker if it exists, or continue if it does not exist; if mode = 'rewind_to_version' rewind to the flag version given by 'version' and 'transfer_apply_gains_version' below.
 
   **version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "label" above. Set to "null" to skip this rewinding step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
   **transfer_apply_gains_version**
 
     *str*, *optional*, *default = auto*
 
-    Flag version to restore. This is applied to the .MS file(s) identified by "transfer_to_label" in the "transfer_apply_gains" section below. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__N' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
+    Flag version to restore. This is applied to the .MS file(s) identified by "transfer_to_label" in the "transfer_apply_gains" section below. Set to "null" to skip this rewind step. If 'auto' it will rewind to the version prefix_workername_before, where 'prefix' is set in the 'general' worker, and 'workername' is the name of this worker including the suffix '__X' if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.
 
 
 
@@ -76,7 +82,7 @@ Perform Self calibration on the data.
 
   *bool*, *optional*, *default = False*
 
-  Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+  Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 
@@ -88,7 +94,7 @@ Perform Self calibration on the data.
 
   *{"meqtrees", "cubical"}*, *optional*, *default = cubical*
 
-  Tool to use for calibration
+  Tool to use for calibration. Options are meqtrees and cubical.
 
 
 
@@ -100,7 +106,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 0*
 
-  Provide spectral window id
+  Provide spectral window ID.
 
 
 
@@ -112,7 +118,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 5*
 
-  number of cpu's to use
+  Number of CPUs to use.
 
 
 
@@ -124,7 +130,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 0*
 
-  Exclude baselines shorter than this value (given in metres) from the imaging and selfcalibration loop.
+  Exclude baselines shorter than this value (given in metres) from the imaging and self-calibration loop.
 
 
 
@@ -136,7 +142,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 1800*
 
-  Number of pixels in output image
+  Number of pixels in output image.
 
 
 
@@ -148,7 +154,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 1.3*
 
-  Padding in WSclean
+  Padding in WSClean.
 
 
 
@@ -172,7 +178,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 0.90*
 
-  WSclean gain for major iterations, i.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.
+  Gain for major iterations in WSClean. I.e., maximum fraction of the image peak that is cleaned in each major iteration. A value of 1 means that all cleaning happens in the image plane and no major cycle is performed.
 
 
 
@@ -184,7 +190,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 2.*
 
-  Image pixel size (arcsec).
+  Image pixel size (in units of arcsec).
 
 
 
@@ -196,7 +202,7 @@ Perform Self calibration on the data.
 
   *{"briggs", "uniform", "natural"}*, *optional*, *default = briggs*
 
-  Image weighting type. If Briggs, set the img robust parameter
+  Type of image weighting, where the options are 'briggs', 'uniform', and 'natural'. If 'briggs', set the 'img_robust' parameter.
 
 
 
@@ -208,7 +214,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 0.*
 
-  Briggs robust value
+  Briggs robust value.
 
 
 
@@ -220,7 +226,7 @@ Perform Self calibration on the data.
 
   *str*, *optional*, *default = 0.*
 
-  Gaussian taper for imaging (arcsec)
+  Gaussian taper for imaging (in units of arcsec).
 
 
 
@@ -232,7 +238,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 0.*
 
-  Taper for imaging (lambda)
+  Taper for imaging (in units of lambda).
 
 
 
@@ -244,7 +250,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 10.*
 
-  Transition length of tukey taper (taper-tukey in wsclean, in % of maxuv)
+  Transition length of tukey taper (taper-tukey in WSClean, in % of maxuv).
 
 
 
@@ -256,7 +262,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 1000000*
 
-  Number of cleaning iterations
+  Number of cleaning iterations.
 
 
 
@@ -268,7 +274,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 0*
 
-  Number of major cycles
+  Number of major cycles.
 
 
 
@@ -280,7 +286,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 1.3*
 
-  Clean border
+  Clean border.
 
 
 
@@ -292,7 +298,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 3*
 
-  Number of channesls in output image
+  Number of channels in output image.
 
 
 
@@ -304,7 +310,7 @@ Perform Self calibration on the data.
 
   *bool*, *optional*, *default = True*
 
-  Join channels to create MFS image
+  Join channels to create MFS image.
 
 
 
@@ -326,9 +332,9 @@ Perform Self calibration on the data.
 **img_pol**
 --------------------------------------------------
 
-  *str*, *optional*, *default = I*
+  *{"I"}*, *optional*, *default = I*
 
-  Stokes image to create
+  Stokes image to create. For this first release of CARACal, the only option is 'I'.
 
 
 
@@ -340,7 +346,7 @@ Perform Self calibration on the data.
 
   *bool*, *optional*, *default = False*
 
-  switch on multiscale cleaning
+  Switch on multiscale cleaning.
 
 
 
@@ -352,7 +358,7 @@ Perform Self calibration on the data.
 
   *list* *of int*, *optional*, *default = 10, 20, 30*
 
-  scales of multiscale [0,10,20,etc, etc] in pixels
+  Scales of multiscale [0,10,20,etc.] in pixels.
 
 
 
@@ -362,7 +368,7 @@ Perform Self calibration on the data.
 **img_sofia_settings**
 --------------------------------------------------
 
-  SoFiA source finder settings used for the imaging iterations whose entry in 'image/clean_mask_method' below is 'sofia'. The resulting clean mask is located in <output>/masking.
+  SoFiA source-finder settings used for the imaging iterations whose entry in 'image/clean_mask_method' below is 'sofia'. The resulting clean-mask is located in <output>/masking.
 
   **kernels**
 
@@ -374,13 +380,13 @@ Perform Self calibration on the data.
 
     *bool*, *optional*, *default = True*
 
-    Merges only positive pixels of sources in mask
+    Merges only positive pixels of sources in mask.
 
   **flag**
 
     *bool*, *optional*, *default = False*
 
-    Use flag regions (yes/no)?
+    Set whether flag regions are to be used (True) or not (False).
 
   **flagregion**
 
@@ -392,25 +398,25 @@ Perform Self calibration on the data.
 
     *str*, *optional*, *default = ' '*
 
-    input mask over which add Sofia's
+    User-provided input-mask that will be supplemented by the SoFiA mask, created through SoFiA source-finding.
 
   **fornax_special**
 
     *bool*, *optional*, *default = False*
 
-    Activates masking of Fornax A using Sofia
+    Activate masking of Fornax A using SoFiA.
 
   **fornax_thresh**
 
     *list* *of float*, *optional*, *default = 4.0*
 
-    SoFiA source finding threshold. Default is 4.0.
+    SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).
 
   **fornax_use_sofia**
 
     *bool*, *optional*, *default = False*
 
-    use sofia for mask of Fornax A instead of Fomalont mask
+    Use SoFiA for the mask of Fornax A, instead of that by Fomalont.
 
 
 
@@ -422,7 +428,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 2*
 
-  Number of self-calibration iterations to perform
+  Number of self-calibration iterations to perform.
 
 
 
@@ -434,7 +440,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = 1*
 
-  Start self-cal iteration loop at this start value, 1-based.
+  Start selfcal iteration loop at this start value (1-indexed).
 
 
 
@@ -446,7 +452,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 0.5*
 
-  Lower gain amplitude clipping
+  Lower threshold for clipping on gain amplitude.
 
 
 
@@ -458,7 +464,7 @@ Perform Self calibration on the data.
 
   *float*, *optional*, *default = 2.*
 
-  Higher gain amplitude clipping
+  Upper threshold for clipping on gain amplitude.
 
 
 
@@ -470,7 +476,7 @@ Perform Self calibration on the data.
 
   *int*, *optional*, *default = -1*
 
-  Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means use full time axis but does not cross scan boundaries. -1 Uses largest solution interval
+  Chunk data up by this number of timeslots. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the time solution intervals that may be employed. 0 means 'use the full time-axis' but does not cross scan boundaries. -1 means 'use the largest solution interval'.
 
 
 
@@ -480,9 +486,9 @@ Perform Self calibration on the data.
 **cal_model_mode**
 --------------------------------------------------
 
-  *str*, *optional*, *default = vis_only*
+  *{"vis_only", "pybdsm_only", "pybdsm_vis"}*, *optional*, *default = vis_only*
 
-  pybdsm_vis, pybdsm_only,  vis_only are the possible options
+  Mode for using a calibration model, based on visibilities and/or PyBDSM source-finding. Options are vis_only, pybdsm_only, and pybdsm_vis. 'vis_only' means that only MODEL_DATA will be used to to calibrate. 'pybdsm_only' means that PyBDSM-generated, tigger-format local sky models will be used. 'pybdsm_vis' is the same as the 'pybdsm_only' mode except for the last iteration of selfcal, where the PyBDSM-based model is complemented by MODEL_DATA. This third mode is only to be used with output_data set to 'CORR_RES' (below) and is very tricky. Therefore, user discretion is advised.
 
 
 
@@ -494,7 +500,7 @@ Perform Self calibration on the data.
 
   *bool*, *optional*, *default = False*
 
-  Enable Bjones
+  Enable calculation of the B-Jones matrix, for bandpass calibration.
 
 
 
@@ -504,13 +510,13 @@ Perform Self calibration on the data.
 **cal_cubical**
 --------------------------------------------------
 
-  Parameters that only apply when using Cubical for the calibration
+  Parameters that only apply when using CubiCal for the calibration.
 
   **max_prior_error**
 
     *float*, *optional*, *default = 0.3*
 
-    Flag solution intervals where the prior variance estimate is above this value in.
+    Flag solution intervals where the prior variance estimate is above this value.
 
   **max_post_error**
 
@@ -522,71 +528,71 @@ Perform Self calibration on the data.
 
     *int*, *optional*, *default = -1*
 
-    Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means use full frequency axis but does not cross SPW boundaries. -1 Uses largest solution interval
+    Chunk data up by this number of channels. This limits the amount of data processed at once. Smaller chunks allow for a smaller RAM footprint and greater parallelism but sets an upper limit on the frequency solution intervals that may be employed. 0 means 'use the full frequency-axis' but does not cross SPW boundaries. -1 means 'use the largest solution interval'.
 
   **weight_column**
 
     *str*, *optional*, *default = WEIGHT*
 
-    Column with weights for use in Cubical.
+    Column with weights for use in CubiCal.
 
   **shared_memory**
 
     *str*, *optional*, *default = 100Gb*
 
-    Set the amount of shared memory for cubical. Default '100Gb'
+    Set the amount of shared memory for CubiCal.
 
   **madmax_flagging**
 
     *bool*, *optional*, *default = True*
 
-    Flags based on maximum of mad in Cubical
+    Flags based on maximum of mad in CubiCal.
 
   **madmax_flag_thresh**
 
     *list* *of int*, *optional*, *default = 0, 10*
 
-    Threshold for madmax flagging in Cubical the provided list works exactly as described in Cubical readthedocs for the parameter --madmax-threshold
+    Threshold for madmax flagging in CubiCal, where the provided list works exactly as described in CubiCal readthedocs for the parameter --madmax-threshold.
 
   **sol_term_iters**
 
     *list* *of int*, *optional*, *default = 50, 50, 50*
 
-    Number of iterations per Jones term for cubical. Always a 3 digit array with iterations for 'G,B,GA' even when B or GA are not used.
+    Number of iterations per Jones term for CubiCal. Always a 3 digit array with iterations for 'G,B,GA' even when B or GA are not used.
 
   **overwrite**
 
     *bool*, *optional*, *default = True*
 
-    Allow cubical to overwrite the existing gain_tables and other CubiCal output for self calibration that were produced in a previous run of the selfcal worker with the same prefix.
+    Allow CubiCal to overwrite the existing gain_tables and other CubiCal output for self-calibration that were produced in a previous run of the selfcal worker with the same prefix.
 
   **dist_max_chunks**
 
     *int*, *optional*, *default = 4*
 
-    Maximum number of time/freq data-chunks to load into memory simultaneously. If 0, then as many as possible will be loaded.
+    Maximum number of time/freq data-chunks to load into memory simultaneously. If set to 0, then as many data-chunks as possible will be loaded.
 
   **ragavi_plot**
 
-    Plotting dignostics plots for selfcal calibration.
+    Use ragavi to plot diagnostic plots for self-calibration.
 
     **enable**
 
       *bool*, *optional*, *default = False*
 
-      Enables plotting dignostics
+      Enable the plotting of diagnostics, using ragavi.
 
     **gaintype**
 
       *list* *of str*, *optional*, *default = G*
 
-      List of gain solution types
+      List of gain solution types. Options are 'F' (flux-calibration solutions), 'B' (bandpass-calibration solutions), 'K' (delay-calibration solutions), 'G' (gain-calibration solutions), and 'D' (D-Jones leakage-calibration solutions).
 
     **field**
 
       *list* *of int*, *optional*, *default = 0*
 
-      Fields to plot. Specify by field id, index.
+      Fields to plot. Specify by field ID.
 
 
 
@@ -596,13 +602,13 @@ Perform Self calibration on the data.
 **cal_meqtrees**
 --------------------------------------------------
 
-  Parameters that only apply when using MeqTrees for the calibration
+  Parameters that only apply when using MeqTrees for the calibration.
 
   **two_step**
 
     *bool*, *optional*, *default = False*
 
-    Trigger a two step calibration process in MeqTrees where the phase only calibration is applied before continuing with amplitude + phase cal. Aimfast is turned on to determine the solution sizes automatically.
+    Trigger a two-step calibration process in MeqTrees where the phase-only calibration is applied before continuing with amplitude + phase-calibration. Aimfast is turned on to determine the solution sizes automatically.
 
 
 
@@ -612,49 +618,49 @@ Perform Self calibration on the data.
 **aimfast**
 --------------------------------------------------
 
-  Quality assessment parameter
+  Quality assessment parameter.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'aimfast' segment.
 
   **tolerance**
 
     *float*, *optional*, *default = 0.02*
 
-    Relative change in weighted mean of several indicators from aimfast.
+    Relative change in weighted mean of metrics (specified via convergence_criteria below) from aimfast.
 
   **convergence_criteria**
 
     *list* *of str*, *optional*, *default = DR*
 
-    The residual statistic to check convergence against. Every criterium listed will be combined into a weighted mean. Options ["DR","SKEW","KURT","STDDev","MEAN"]. Note that when calibrate model_mode = 'vis_only' DR is not an option.
+    The residual statistic to check convergence against. Every metric/criterion listed will be combined into a weighted mean. Options are 'DR' (dynamic range), 'MEAN' (mean of the residual flux), 'STDDev' (standard deviation), 'SKEW' (skewness, 3rd-moment), and 'KURT' (kurtosis, 4th-moment). However, note that when cal_model_mode = 'vis_only', 'DR' is no longer an option.
 
   **area_factor**
 
     *int*, *optional*, *default = 6*
 
-    Peak flux source area multiplying factor i.e tot_area = psf-size\*af
+    A multiplicative factor that sets the total area over which the metrics are calculated, where total_area = psf_size\*area_factor. This area is centred on the position of peak flux-density in the image.
 
   **radius**
 
     *float*, *optional*, *default = 0.6*
 
-    Radius to cross-match sources in arcsec
+    Cross-matching radius (in units of arcsec), for comparing source properties in a catalogue before and after an iteration of self-calibration.
 
   **normality_model**
 
     *{"normaltest", "shapiro"}*, *optional*, *default = normaltest*
 
-    normality test model to use. Note that normaltest is the D'Agostino
+    The type of normality test, to use for testing how well the residual image is modelled by a normal distribution. Options are 'normaltest' (i.e. D'Agostino) and 'shapiro'.
 
   **plot**
 
     *bool*, *optional*, *default = True*
 
-    Generate html plots for comparing catalogs and residuals
+    Generate html plots for comparing catalogues and residuals.
 
 
 
@@ -664,49 +670,49 @@ Perform Self calibration on the data.
 **image**
 --------------------------------------------------
 
-  Imaging parameter
+  Imaging parameters.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute this segment
+    Enable the 'image' segment.
 
   **column**
 
     *list* *of str*, *optional*, *default = DATA, CORRECTED_DATA*
 
-    Column to image
+    Column(s) to image.
 
   **clean_threshold**
 
     *list* *of float*, *optional*, *default = 0.5, 0.5*
 
-    WSclean clean threshold in units of the (local) noise.
+    Cleaning threshold to be used by WSClean. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the noise level estimated by WSClean from the residual image before the start of every major deconvolution iteration.
 
   **clean_mask_method**
 
     *list* *of str*, *optional*, *default = wsclean, wsclean*
 
-    Method used to create the clean mask. The possible values are 1) "wsclean" to use WSclean's auto-masking (threshold set by clean_mask_threshold below); 2) "sofia" to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
+    Method used to create the clean mask. The possible values are 1) 'wsclean' to use WSClean's auto-masking (threshold set by clean_mask_threshold below); 2) 'sofia' to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
 
   **clean_mask_threshold**
 
     *list* *of float*, *optional*, *default = 10.0, 6.0*
 
-    Threshold used to create the clean mask when clean_mask_method = wsclean or sofia, in units of the (local) noise.
+    Threshold used to create the clean mask when clean_mask_method = 'wsclean' or 'sofia'. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.
 
   **clean_mask_local_rms**
 
     *list* *of bool*, *optional*, *default = False, False*
 
-    Use a local rms measurement when creating a clean mask with clean_mask_method = wsclean or sofia. If clean_mask_method = wsclean, this local_rms setting is used also for the clean_threshold above. Otherwise it is only used to define the clean mask, while clean_threshold is in units of the global noise.
+    Use a local-rms measurement when creating a clean mask with clean_mask_method = 'wsclean' or 'sofia'. If clean_mask_method = 'wsclean', this local-rms setting is also used for the clean_threshold above. Otherwise it is only used to define the clean mask, and clean_threshold is in terms of the global noise (rather than the local noise).
 
   **clean_mask_local_rms_window**
 
     *list* *of int*, *optional*, *default = 31, 31*
 
-    Width of the window used to measure the local rms when creating the clean mask. The window width is in pixels for clean_mask_method = sofia, in PSF for clean_mask_method = wsclean.
+    Width of the window used to measure the local rms when creating the clean mask. The window width is in pixels for clean_mask_method = 'sofia', and in PSFs for clean_mask_method = 'wsclean'.
 
 
 
@@ -716,49 +722,49 @@ Perform Self calibration on the data.
 **extract_sources**
 --------------------------------------------------
 
-  Source finding parameters
+  Source-finding parameters.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'extract_sources' segment.
 
   **sourcefinder**
 
-    *str*, *optional*, *default = pybdsm*
+    *{"pybdsm", "sofia"}*, *optional*, *default = pybdsm*
 
-    choose your favorite sourcefinder pybdsm, (pybdsf), sofia
+    Set the source finder to be used. Options are 'pybdsm' (i.e. pybdsf) and 'sofia'.
 
   **local_rms**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Use a local-rms estimate when applying the source-finding detection threshold.
 
   **spi**
 
     *bool*, *optional*, *default = False*
 
-    Extract source spectral index
+    Extract the spectral index for the fitted sources.
 
   **thresh_pix**
 
     *list* *of int*, *optional*, *default = 5*
 
-    Source finder pixel threshold
+    Pixel threshold to be used for the source finder. I.e. the minimum number of contiguous pixels for emission to be classed as a 'source'.
 
   **thresh_isl**
 
     *list* *of int*, *optional*, *default = 3*
 
-    Source finder island threshold
+    Threshold to be used by the source finder to set the island boundary, given in the number of sigma above the mean. This determines the extent of the island used for fitting.
 
   **detection_image**
 
     *bool*, *optional*, *default = False*
 
-    Constrain the pybdsm source finding to only find sources included in the clean model.
+    Constrain the PyBDSM source-finding to only find sources included in the clean model.
 
 
 
@@ -768,67 +774,67 @@ Perform Self calibration on the data.
 **calibrate**
 --------------------------------------------------
 
-  Calibration parameters
+  Calibration parameters.
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute this segment
+    Enable the 'calibrate' segment.
 
   **model**
 
     *list* *of str*, *optional*, *default = 1,2*
 
-    Model number to use [or combination e.g. '1+2' to use first and second models]
+    Model number to use, or a combination of models. E.g. '1+2' to use the first and second models for calibration.
 
   **output_data**
 
     *list* *of str*, *optional*, *default = CORR_DATA*
 
-    Data to output after calibration. Options are 'CORR_DATA', 'CORR_RES' or 'CORRECTED_DATA' where CORR_DATA and CORRECTED_DATA are synonyms.
+    Data to output after calibration. Options are 'CORR_DATA', 'CORR_RES' or 'CORRECTED_DATA', where CORR_DATA and CORRECTED_DATA are synonyms.
 
   **gain_matrix_type**
 
     *list* *of str*, *optional*, *default = GainDiagPhase, GainDiag*
 
-    Gain matrix type. GainDiagPhase = phase only calibration, GainDiagAmp = amplitude only, GainDiag = Amplitude + Phase, Gain2x2 = Amplitude + Phase taken non-diagonal terms into account, Fslope does delay selfcal, please set solution intervals at least twice as big as what you would for GainDiagPhase. Fslope does not work with MeqTrees.
+    Gain matrix type. 'GainDiagPhase' = phase-only calibration, 'GainDiagAmp' = amplitude only, 'GainDiag' = Amplitude + Phase, 'Gain2x2' = Amplitude + Phase taking non-diagonal terms into account, 'Fslope' = delay selfcal (for which solution intervals should be set to at least twice the values you would use for GainDiagPhase). Note that Fslope does not work with MeqTrees.
 
   **Gsols_timeslots**
 
     *list* *of int*, *optional*, *default = 1*
 
-    G-Jones time solution interval. The parameter cal_timeslots_chunk above should a multiple of Gsols_time. 0 means a single solution for the full time of the observations.
+    G-Jones time solution interval. The parameter cal_timeslots_chunk above should be a multiple of Gsols_time. 0 entails using a single solution for the full time of the observations.
 
   **Gsols_channel**
 
     *list* *of int*, *optional*, *default = 0*
 
-    G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 means a single solution for the full frequency range in a channel.
+    G-Jones frequency solution interval. The parameter cal_channel_chunk above should a multiple of Gsols_channel. 0 entails using a single solution for the full bandwidth.
 
   **Bsols_timeslots**
 
     *list* *of int*, *optional*, *default = 0*
 
-    Bsols for individual calibration steps.
+    B-Jones solutions for individual calibration steps in time.
 
   **Bsols_channel**
 
     *list* *of int*, *optional*, *default = 2*
 
-    Bsols for individual calibration steps.
+    B-Jones solutions for individual calibration steps in frequency.
 
   **GAsols_timeslots**
 
     *list* *of int*, *optional*, *default = -1*
 
-    Time intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots a second matrix is used and applied.
+    Time intervals for amplitude calibration in CubiCal. 0 indicates average all. -1 defaults to Gsols_timeslots. If different from Gsols_timeslots, a second matrix is used and applied.
 
   **GAsols_channel**
 
     *list* *of int*, *optional*, *default = -1*
 
-    Channel intervals for amplitude calibration in Cubical. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels a second matrix is used and applied.
+    Channel intervals for amplitude calibration in CubiCal. 0 indicates average all. -1 defaults to Gsols_channel. If different from Gsols_channels, a second matrix is used and applied.
 
 
 
@@ -838,25 +844,25 @@ Perform Self calibration on the data.
 **restore_model**
 --------------------------------------------------
 
-  Restore modelled to final calibrated residual image
+  Take the modelled source(s) and restore it(/them) to the final, calibrated residual image.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'restore_model' segment.
 
   **model**
 
     *str*, *optional*, *default = 1+2*
 
-    Model number to use [or combination e.g. '1+2' to use first and second models]
+    Model number to use, or a combination of models. E.g. '1+2' to use the first and second models.
 
   **clean_model**
 
     *str*, *optional*, *default = 3*
 
-    Clean model number to use [or combination e.g. '1+2' to use first and second models]
+    Clean model number to use, or combination of clean models. E.g. '1+2' to use the first and second clean models.
 
 
 
@@ -866,13 +872,13 @@ Perform Self calibration on the data.
 **flagging_summary**
 --------------------------------------------------
 
-  Output the flagging summary
+  Output the flagging summary.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'flagging_summary' segment.
 
 
 
@@ -882,19 +888,19 @@ Perform Self calibration on the data.
 **transfer_apply_gains**
 --------------------------------------------------
 
-  Interpolate gains over the high frequency resolution data
+  Interpolate gains over the high frequency-resolution data.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this segment
+    Enable the 'transfer_apply_gains' segment.
 
   **transfer_to_label**
 
     *str*, *optional*, *default = corr*
 
-    label of cross-calibrated .ms file to which to transfer and apply the selfcal gains
+    Label of cross-calibrated .MS file to which to transfer and apply the selfcal gains.
 
   **interpolate**
 
@@ -910,25 +916,25 @@ Perform Self calibration on the data.
 
       *int*, *optional*, *default = -1*
 
-      Solution interval in time (units of timeslots/intergration time) to transfer gains. -1 uses the solution interval from the calibration that is applied.
+      Solution interval in time (units of timeslots/integration time) for transferring gains. -1 means use the solution interval from the calibration that is applied.
 
     **channel_int**
 
       *int*, *optional*, *default = -1*
 
-      Solution interval in frequency (units of channels) to transfer gains. -1 uses the solution interval from the calibration that is applied.
+      Solution interval in frequency (units of channels) for transferring gains. -1 means use the solution interval from the calibration that is applied.
 
     **timeslots_chunk**
 
       *int*, *optional*, *default = -1*
 
-      Time chunk in units of timeslots for transferring gains with Cubical. -1 uses the solution interval from the calibration that is applied.
+      Time chunk in units of timeslots for transferring gains with CubiCal. -1 means use the solution interval from the calibration that is applied.
 
     **channel_chunk**
 
       *int*, *optional*, *default = -1*
 
-      Frequency chunk in units of channels for transferring gains with Cubical. '0' means the whole spw. -1 uses the solution interval from the calibration that is applied.
+      Frequency chunk in units of channels for transferring gains with CubiCal. '0' means the whole spw. -1 means use the solution interval from the calibration that is applied.
 
 
 
@@ -938,31 +944,31 @@ Perform Self calibration on the data.
 **transfer_model**
 --------------------------------------------------
 
-  Transfer model from last WSclean imaging run to the MODEL_DATA column of another .MS
+  Transfer the model from the last WSClean imaging run to the MODEL_DATA column of another .MS .
 
   **enable**
 
     *bool*, *optional*, *default = True*
 
-    Execute this segment (default False)
+    Enable the 'transfer_model' segment.
 
   **transfer_to_label**
 
     *str*, *optional*, *default = corr*
 
-    label of .ms file to which to transfer the model
+    Label of the .MS file to which to transfer the model.
 
   **model**
 
     *str*, *optional*, *default = auto*
 
-    Name of the sky model file (currently the only supported format is that of WSclean component lists). When 'auto', the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the 'output' directory.
+    Name of the sky model file. (Currently the only supported format is that of WSClean component lists.) When 'auto', the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the 'output' directory.
 
   **row_chunks**
 
     *int*, *optional*, *default = 0*
 
-    Number of rows of input .MS that are processed in a single chunk.
+    Number of rows of the input .MS that are processed in a single chunk.
 
   **model_chunks**
 
@@ -974,19 +980,19 @@ Perform Self calibration on the data.
 
     *str*, *optional*, *default = ' '*
 
-    Give JS9 region file. Only sources within those regions will be included.
+    Give the JS9 region file. Only sources within those regions will be included.
 
   **points_only**
 
     *bool*, *optional*, *default = False*
 
-    Select only point-only sources. Default is False.
+    Select only 'point' sources.
 
   **num_sources**
 
     *int*, *optional*, *default = 0*
 
-    Select only N brightest sources. Default is 0
+    Select only N brightest sources.
 
   **num_workers**
 
@@ -999,4 +1005,16 @@ Perform Self calibration on the data.
     *float*, *optional*, *default = 0.5*
 
     Fraction of system RAM that can be used. Used when setting automatically the chunk size.
+
+
+
+.. _selfcal_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

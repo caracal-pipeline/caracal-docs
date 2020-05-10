@@ -111,6 +111,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#copy-data"><strong>copy_data</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image-wsclean"><strong>image_wsclean</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#transfer-model-dd"><strong>transfer_model_dd</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../line/index.html">line</a></li>
@@ -194,12 +195,12 @@
 <span id="id1"></span><h1>ddcal<a class="headerlink" href="#ddcal" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Perform direction dependent calibration on the data</p>
+<p>Perform direction-dependent calibration on the data.</p>
 <div class="section" id="enable">
 <span id="ddcal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Carry out DD-calibration</p>
+<p>Execute the ddcal worker (i.e. carry out DD-calibration).</p>
 </div></blockquote>
 </div>
 <div class="section" id="label">
@@ -213,7 +214,7 @@
 <span id="ddcal-use-pb"></span><h2><strong>use_pb</strong><a class="headerlink" href="#use-pb" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Enable primary beam usage in making the dd-corrected ddfacet image (only MeerKAT for the moment). EXPERIMENTAL.</p>
+<p>Enable primary beam usage in making the DD-corrected DDFacet image. Note that this is EXPERIMENTAL and currently only available for MeerKAT data.</p>
 </div></blockquote>
 </div>
 <div class="section" id="image-dd">
@@ -223,7 +224,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute this section.</p>
+<p>Enable the ‘image_dd’ segment.</p>
 </div></blockquote>
 <p><strong>npix</strong></p>
 <blockquote>
@@ -233,32 +234,32 @@
 <p><strong>use_mask</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Enable clean mask for DDfacet initial imaging. Doubles the imaging time since it runs DDFacet twice, once to get a preliminary image to make a mask with (mask is made by the cleanmask tool) and once the final image with masking. Previous wsclean masks can’t be used because pixel numbers might be different.</p>
+<p>Enable clean mask for DDFacet initial imaging. Note that this doubles the imaging time since it runs DDFacet twice – once to get a preliminary image to make a mask with (mask is made by the cleanmask tool), and once to get the final image with masking. Previous WSClean masks cannot be used because pixel numbers might be different.</p>
 </div></blockquote>
 <p><strong>mask_sigma</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 10.0</em></p>
-<p>The number of standard deviations to use when clipping the initial image for masking.</p>
+<p>The number of standard deviations (i.e. sigma_rms) to use when clipping the initial image for masking.</p>
 </div></blockquote>
 <p><strong>mask_boxes</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 9</em></p>
-<p>Will divide initial image (for making the mask) into this number of boxes, then perform sigma clipping in each of these boxes.</p>
+<p>Divide the initial image (for making the mask) into this number of boxes, then perform sigma clipping in each of these boxes.</p>
 </div></blockquote>
 <p><strong>mask_iters</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 20</em></p>
-<p>The number of iterations to perform sigma clipping on the image for masking, or 0 to clip until convergence is achieved.</p>
+<p>The number of sigma-clipping iterations to perform on the image, for masking, or set to 0 to clip until convergence is achieved.</p>
 </div></blockquote>
 <p><strong>mask_overlap</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.3</em></p>
-<p>Overlap region for the boxes. As a fraction of number of boxes.</p>
+<p>Overlap region for the boxes, given as a fraction of the number of boxes.</p>
 </div></blockquote>
 <p><strong>mask_tolerance</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.75</em></p>
-<p>Tolerance for dilating the mask. Will stop dilating if percentage difference between dilations is smaller than this value.</p>
+<p>Tolerance for dilating the mask. Dilation will stop when the percentage difference between dilations is smaller than this value.</p>
 </div></blockquote>
 <p><strong>cell</strong></p>
 <blockquote>
@@ -268,17 +269,17 @@
 <p><strong>facets_nfacets</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 24</em></p>
-<p>Number of facets to use, same as Facets-NFacets parameter of DDFacet.</p>
+<p>Number of facets to use, and is the same as the Facets-NFacets parameter of DDFacet.</p>
 </div></blockquote>
 <p><strong>weight_column</strong></p>
 <blockquote>
 <div><p><em>{“WEIGHT_SPECTRUM”, “WEIGHT”, “IMAGING_WEIGHT”}</em>, <em>optional</em>, <em>default = WEIGHT</em></p>
-<p>Read data weights from specified column. Use WEIGHT_SPECTRUM or WEIGHT, more rarely IMAGING_WEIGHT.</p>
+<p>Read data weights from the specified column. Options are WEIGHT_SPECTRUM, WEIGHT, and (for rarer occasions) IMAGING_WEIGHT.</p>
 </div></blockquote>
 <p><strong>weight_mode</strong></p>
 <blockquote>
 <div><p><em>{“Natural”, “Uniform”, “Robust”, “Briggs”}</em>, <em>optional</em>, <em>default = Briggs</em></p>
-<p>UV weighting mode.</p>
+<p>UV weighting mode. Options are ‘Natural’, ‘Uniform’, ‘Robust’, and ‘Briggs’.</p>
 </div></blockquote>
 <p><strong>weight_robust</strong></p>
 <blockquote>
@@ -293,62 +294,62 @@
 <p><strong>freq_nband</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 10</em></p>
-<p>Number of image bands for gridding.</p>
+<p>Number of frequency bands for gridding.</p>
 </div></blockquote>
 <p><strong>freq_ndegridband</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 15</em></p>
-<p>Number of image bands for degridding. 0 means degrid each channel.</p>
+<p>Number of frequency bands for degridding. 0 means degrid each channel.</p>
 </div></blockquote>
 <p><strong>deconv_rmsfactor</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.0</em></p>
-<p>Set minor cycle stopping threshold to X*{residual RMS} (HMP, Hogbom), where X is this parameter value.</p>
+<p>Set the minor-cycle stopping-threshold to X*{residual RMS}, where X is this parameter value.</p>
 </div></blockquote>
 <p><strong>deconv_peakfactor</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.25</em></p>
-<p>Sets minor cycle stopping threshold to X*{peak residual} (HMP, Hogbom), where X is this parameter value.</p>
+<p>Set the minor-cycle stopping-threshold to X*{peak residual}, where X is this parameter value.</p>
 </div></blockquote>
 <p><strong>deconv_mode</strong></p>
 <blockquote>
 <div><p><em>{“HMP”, “Hogbom”, “SSD”, “GAClean”}</em>, <em>optional</em>, <em>default = Hogbom</em></p>
-<p>Deconvolution algorithm. Direct your queries to DDFacet Developers for more details on this.</p>
+<p>The deconvolution algorithm to use. Options are ‘HMP’ (Hybrid Matching Pursuit, aka multiscale/multifrequency), ‘Hogbom’ (Hogbom’s CLEAN algorithm), ‘SSD’ (SubSpace Deconvolution algorithm), and ‘GAClean’ (Genetic Algorithm Clean). Please direct queries to DDFacet Developers for further details.</p>
 </div></blockquote>
 <p><strong>deconv_gain</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
-<p>GAIN Loop gain (HMP, Hogbom).</p>
+<p>Gain setting for the deconvolution loops.</p>
 </div></blockquote>
 <p><strong>deconv_fluxthreshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.0e-6</em></p>
-<p>Jy Absolute flux threshold at which deconvolution is stopped (HMP, Hogbom).</p>
+<p>Absolute flux-density threshold at which deconvolution is stopped, in units of Jy. Relevant for HMP and Hogbom modes.</p>
 </div></blockquote>
 <p><strong>deconv_allownegative</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Allow negative components for cleaning (valid for HMP, Hogbom modes).</p>
+<p>Allow negative components for cleaning (valid for HMP and Hogbom modes).</p>
 </div></blockquote>
 <p><strong>hogbom_polyfitorder</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 6</em></p>
-<p>Polynomial order for frequency fitting.</p>
+<p>Order of the polynomial to be used for frequency fitting.</p>
 </div></blockquote>
 <p><strong>parallel_ncpu</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Number of processes / threads to use in parallel mode. 0 - all available. 1 - disable parallelism.</p>
+<p>Number of processes / threads to use in parallel mode. 0 = use all of those available. 1 = disable parallelism.</p>
 </div></blockquote>
 <p><strong>predict_colname</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = MODEL_DATA</em></p>
-<p>MS column to write predict to. Can be left empty to disable.</p>
+<p>MS column to write the predicted visibilities corresponding to the model. Setting ‘’ will disable this parameter.</p>
 </div></blockquote>
 <p><strong>log_memory</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>log memory use</p>
+<p>Log the memory usage by DDFacet.</p>
 </div></blockquote>
 <p><strong>cache_reset</strong></p>
 <blockquote>
@@ -373,63 +374,63 @@
 <p><strong>output_mode</strong></p>
 <blockquote>
 <div><p><em>{“Dirty”, “Clean”, “Predict”, “PSF”}</em>, <em>optional</em>, <em>default = Clean</em></p>
-<p>Output mode. Defaults to cleaning, since that’s what we want to do in this worker.</p>
+<p>Output mode of DDFacet. Options are ‘Dirty’, ‘Clean’, ‘Predict’, and ‘PSF’. This setting defaults to ‘Clean’, since that is what we want to do in this worker.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="calibrate-dd">
 <span id="ddcal-calibrate-dd"></span><h2><strong>calibrate_dd</strong><a class="headerlink" href="#calibrate-dd" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Direction dependent calibration parameters.</p>
+<div><p>Direction-dependent calibration parameters.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute this section.</p>
+<p>Enable the ‘calibrate_dd’ segment.</p>
 </div></blockquote>
 <p><strong>sigma</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 4.5</em></p>
-<p>Threshold to use in detecting outlier regions in images by using CatDagger, which is enabled by auto mode for de_sources_mode. 4.5 is a good value (also default), but may need a lower value for some images.</p>
+<p>Sigma threshold to use in detecting outlier regions in images, via CATDagger (which is enabled by setting ‘de_sources_mode’, below, to ‘auto’). The default value of 4.5 works well, but a lower value may be needed for some images.</p>
 </div></blockquote>
 <p><strong>min_dist_from_phcentre</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1300</em></p>
-<p>Number of pixels (radius) around the centre of the image in which sources will not be tagged. Default kept at 1300 (roughly 30’).</p>
+<p>The radius (in number of pixels), from the centre of the image, out to which sources will not be tagged for DD-calibration. (This is because sources close to the phase centre may not have been cleaned deeply enough.) The default is kept at 1300 (which roughly corresponds to 30’).</p>
 </div></blockquote>
 <p><strong>dist_ncpu</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>Number of cpus</p>
+<p>The number of cpus for distributed computing.</p>
 </div></blockquote>
 <p><strong>de_sources_mode</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = manual</em></p>
-<p>Mode in which dE sources are tagged. ‘auto’ uses catdagger, while in ‘manual’ mode, one needs to give a list of sources. Use ‘auto’ with caution and at your own risk.</p>
+<p>Mode in which sources are tagged for DD calibration. Options are ‘auto’ (which uses CATDagger), and ‘manual’ (for which one needs to provide a list of sources). Use ‘auto’ with caution and at your own risk.</p>
 </div></blockquote>
 <p><strong>de_target_manual</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>List of targets fieldnames for carrying out de calibration, the rest of the fields will not undergo direction-dependent calibration</p>
+<p>List of target fieldnames for carrying out DD calibration. The remaining fields will not undergo DD calibration.</p>
 </div></blockquote>
 <p><strong>de_sources_manual</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>List of sources per target to tag for DD calibration, in the same order as the de_target_manual list. Separate different sources per target by using “;”.</p>
+<p>List of sources per target to tag for DD calibration, in the same order as the ‘de_target_manual’ list. Use ‘;’ to separate different sources per target.</p>
 </div></blockquote>
 <p><strong>sol_min_bl</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 100</em></p>
-<p>Min baseline length to solve for.</p>
+<p>The minimum baseline length to solve for.</p>
 </div></blockquote>
 <p><strong>madmax_enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = true</em></p>
-<p>Enable madmax flagging in Cubical.</p>
+<p>Enable madmax flagging in CubiCal.</p>
 </div></blockquote>
 <p><strong>madmax_threshold</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 0, 10</em></p>
-<p>Threshold for MAD flagging per baseline (specified in sigmas). Residuals exceeding mad-thr*MAD/1.428 will be flagged. MAD is computed per baseline. This can be specified as a list e.g. N1,N2,N3,… The first value is used to flag residuals before a solution starts (use 0 to disable), the next value is used when the residuals are first recomputed during the solution several iteratins later (see -chi-int), etc. A final pass may be done at the end of the solution. The last value in the list is reused if necessary. Using a list with gradually decreasing values may be sensible.</p>
+<p>Threshold for MAD flagging per baseline (specified in number of standard deviations). Residuals exceeding mad-thr*MAD/1.428 will be flagged. MAD is computed per baseline. This can be specified as a list e.g. N1,N2,N3,… The first value is used to flag residuals before a solution starts (use 0 to disable), the next value is used when the residuals are first recomputed during the solution several iterations later (see -chi-int), etc. A final pass may be done at the end of the solution. The last value in the list is reused if necessary. Using a list with gradually-decreasing values may be sensible.</p>
 </div></blockquote>
 <p><strong>madmax_global_threshold</strong></p>
 <blockquote>
@@ -438,43 +439,43 @@
 </div></blockquote>
 <p><strong>madmax_estimate</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>MAD estimation mode. Use ‘corr’ for a separate estimate per each baseline and correlation. Otherwise, a single estimate per baseline is computed using ‘all’ correlations, or only the ‘diag’ or ‘offdiag’ correlations.</p>
+<div><p><em>{“corr”, “all”, “diag”, “offdiag”}</em>, <em>optional</em>, <em>default = corr</em></p>
+<p>MAD estimation mode. Use ‘corr’ for a separate estimate per baseline and correlation. Otherwise, a single estimate per baseline is computed using ‘all’ correlations, or only the ‘diag’ or ‘offdiag’ correlations.</p>
 </div></blockquote>
 <p><strong>dd_data_column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = CORRECTED_DATA</em></p>
-<p>Column to calibrate. Assumption being that you have already run the selfcal worker.</p>
+<p>Column to calibrate, with the assumption that you have already run the selfcal worker.</p>
 </div></blockquote>
 <p><strong>dd_out_data_column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = SUBDD_DATA</em></p>
-<p>Output data column.</p>
+<p>Output data column. Note that the ddcal worker is currently hardcoded for this being set to ‘SUBDD_DATA’.</p>
 </div></blockquote>
 <p><strong>dd_weight_column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = WEIGHT</em></p>
-<p>Column to read weights from. Weights are applied by default. Specify an empty string to disable.</p>
+<p>Column to read weights from, and apply them by default. Specify an empty string to disable this parameter.</p>
 </div></blockquote>
 <p><strong>dd_sol_stall_quorum</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.95</em></p>
-<p>Minimum percentage of solutions which must have stalled before terminating the solver.</p>
+<p>Minimum percentage of solutions that must have stalled before terminating the solver.</p>
 </div></blockquote>
 <p><strong>dd_g_type</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = complex-2x2</em></p>
-<p>Gain matrix type for g. Keep complex-2x2, because dd-cal fails otherwise.</p>
+<p>Gain matrix type for the G-Jones matrix. Keep this set to ‘complex-2x2’, because DD-calibration fails otherwise.</p>
 </div></blockquote>
 <p><strong>dd_g_clip_high</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.5</em></p>
-<p>Amplitude clipping - flag solutions with any amplitudes above this value for g Jones.</p>
+<p>Amplitude clipping – flag solutions with any amplitudes above this value for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_g_clip_low</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
-<p>Amplitude clipping - flag solutions with any amplitudes below this value for g Jones.</p>
+<p>Amplitude clipping – flag solutions with any amplitudes below this value for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_g_update_type</strong></p>
 <blockquote>
@@ -484,12 +485,12 @@
 <p><strong>dd_g_max_prior_error</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.35</em></p>
-<p>Flag solution intervals where the prior error estimate is above this value for G-jones.</p>
+<p>Flag solution intervals where the prior error estimate is above this value for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_g_max_post_error</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.35</em></p>
-<p>Flag solution intervals where the posterior variance estimate is above this value for G-jones.</p>
+<p>Flag solution intervals where the posterior variance estimate is above this value for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_dd_max_prior_error</strong></p>
 <blockquote>
@@ -504,27 +505,27 @@
 <p><strong>dd_g_timeslots_int</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 10</em></p>
-<p>Time solution interval in timeslot units for G-Jones.</p>
+<p>Time solution interval in timeslot units for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_g_channel_int</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Frequency solution interval in channel units for G-Jones.</p>
+<p>Frequency solution interval in channel units for G-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_dd_timeslots_int</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 100</em></p>
-<p>Time solution interval in timeslot units for DE-Jones.</p>
+<p>Time solution interval in timeslot units for DE-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dd_dd_channel_int</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 100</em></p>
-<p>Frequency solution interval in channel units for DE-Jones.</p>
+<p>Frequency solution interval in channel units for DE-Jones matrix.</p>
 </div></blockquote>
 <p><strong>dist_nworker</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 25</em></p>
-<p>Number of processes</p>
+<p>Number of processes.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -542,71 +543,71 @@
 <div class="section" id="image-wsclean">
 <span id="ddcal-image-wsclean"></span><h2><strong>image_wsclean</strong><a class="headerlink" href="#image-wsclean" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Wsclean imaging paramaters for DD worker.</p>
+<div><p>WSClean imaging paramaters for ddcal worker.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Enable wsclean imaging of the DD-calibrated data.</p>
+<p>Enable WSClean imaging of the DD-calibrated data.</p>
 </div></blockquote>
 <p><strong>img_ws_npix</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1800</em></p>
-<p>Number of pixels in output image</p>
+<p>Number of pixels in output image.</p>
 </div></blockquote>
 <p><strong>img_ws_padding</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.3</em></p>
-<p>Padding in WSclean</p>
+<p>Padding in WSClean.</p>
 </div></blockquote>
 <p><strong>img_ws_mgain</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.90</em></p>
-<p>Image CLEANing gain</p>
+<p>Gain for the major cycle during image CLEANing.</p>
 </div></blockquote>
 <p><strong>img_ws_cell</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2.</em></p>
-<p>Image pixel size (arcsec)</p>
+<p>Image pixel size (in arcsec).</p>
 </div></blockquote>
 <p><strong>img_ws_weight</strong></p>
 <blockquote>
 <div><p><em>{“briggs”, “uniform”, “natural”}</em>, <em>optional</em>, <em>default = briggs</em></p>
-<p>Image weighting type. If Briggs, set the img robust parameter</p>
+<p>Image weighting type. Options are ‘briggs’, ‘uniform’, and ‘natural’. If ‘briggs’, set the img_ws_robust parameter below.</p>
 </div></blockquote>
 <p><strong>img_ws_robust</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.</em></p>
-<p>Briggs robust value</p>
+<p>Briggs robust value.</p>
 </div></blockquote>
 <p><strong>img_ws_uvtaper</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Taper for imaging (arcsec)</p>
+<p>Taper for imaging (in arcsec).</p>
 </div></blockquote>
 <p><strong>img_ws_niter</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1000000</em></p>
-<p>Number of cleaning iterations</p>
+<p>Number of cleaning iterations.</p>
 </div></blockquote>
 <p><strong>img_ws_nmiter</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Number of major cycles</p>
+<p>Number of major cycles.</p>
 </div></blockquote>
 <p><strong>img_ws_cleanborder</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.3</em></p>
-<p>Clean border</p>
+<p>Clean border.</p>
 </div></blockquote>
 <p><strong>img_ws_nchans</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
-<p>Number of channesls in output image</p>
+<p>Number of channels in output image.</p>
 </div></blockquote>
 <p><strong>img_ws_joinchannels</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Join channels to create MFS image</p>
+<p>Join channels to create MFS image.</p>
 </div></blockquote>
 <p><strong>img_ws_fit_spectral_pol</strong></p>
 <blockquote>
@@ -615,59 +616,59 @@
 </div></blockquote>
 <p><strong>img_ws_pol</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = I</em></p>
-<p>Stokes image to create</p>
+<div><p><em>{“I”}</em>, <em>optional</em>, <em>default = I</em></p>
+<p>Stokes image to create. For this first release of CARACal, the only option is ‘I’.</p>
 </div></blockquote>
 <p><strong>img_ws_auto_mask</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 7</em></p>
-<p>Auto masking threshold</p>
+<p>Auto-masking threshold, given as the number of sigma_rms.</p>
 </div></blockquote>
 <p><strong>img_ws_auto_threshold</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
-<p>Auto clean threshold</p>
+<p>Auto-clean threshold, given as the number of sigma_rms.</p>
 </div></blockquote>
 <p><strong>img_ws_column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = CORRECTED_DATA</em></p>
-<p>Column to image</p>
+<p>Column to image.</p>
 </div></blockquote>
 <p><strong>img_ws_fits_mask</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = catalog_mask.fits</em></p>
-<p>filename of fits mask (in output/masking folder)</p>
+<p>Filename of fits mask (in output/masking folder).</p>
 </div></blockquote>
 <p><strong>img_ws_multi_scale</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>switch on multiscale cleaning</p>
+<p>Switch on multiscale cleaning.</p>
 </div></blockquote>
 <p><strong>img_ws_multi_scale_scales</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 10, 20, 30</em></p>
-<p>scales of multiscale [0,10,20,etc, etc] in pixels</p>
+<p>Scales for multiscale cleaning, in pixels.</p>
 </div></blockquote>
 <p><strong>img_ws_local_rms</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>switch on local rms measurement for cleaning</p>
+<p>Switch on local-rms measurement for cleaning.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="transfer-model-dd">
 <span id="ddcal-transfer-model-dd"></span><h2><strong>transfer_model_dd</strong><a class="headerlink" href="#transfer-model-dd" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Repredict wsclean model to the highest channel resolution</p>
+<div><p>Repredict WSClean model to the highest channel resolution.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this segment (default False)</p>
+<p>Enable the ‘transfer_model_dd’ segment.</p>
 </div></blockquote>
 <p><strong>dd_model</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Name of the sky model file (currently the only supported format is that of WSclean component lists). When ‘auto’, the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the ‘output’ directory.</p>
+<p>Name of the sky-model file. (Currently the only supported format is that of WSClean component lists.) When set to ‘auto’, the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the ‘output’ directory.</p>
 </div></blockquote>
 <p><strong>dd_spectra</strong></p>
 <blockquote>
@@ -682,12 +683,12 @@
 <p><strong>dd_model_chunks</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Number of sky model components that are processed in a single chunk.</p>
+<p>Number of sky-model components that are processed in a single chunk.</p>
 </div></blockquote>
 <p><strong>dd_exp-sign-convention</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = casa</em></p>
-<p>Sign convention to use for the complex exponential. ‘casa’ specifies the e^(2.pi.I) convention while ‘thompson’ specifies the e^(-2.pi.I) convention in the white book and Fourier analysis literature. Defaults to ‘casa’.</p>
+<p>Sign convention to use for the complex exponential. The default, ‘casa’, specifies the e^(2.pi.I) convention, while ‘thompson’ specifies the e^(-2.pi.I) convention in The White Book and Fourier analysis literature.</p>
 </div></blockquote>
 <p><strong>dd_within</strong></p>
 <blockquote>
@@ -697,12 +698,12 @@
 <p><strong>dd_points_only</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Select only point-only sources. Default is False.</p>
+<p>Select only ‘point’ sources.</p>
 </div></blockquote>
 <p><strong>dd_num_sources</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
-<p>Select only N brightest sources. Default is 0.</p>
+<p>Select only N brightest sources.</p>
 </div></blockquote>
 <p><strong>dd_num_workers</strong></p>
 <blockquote>
@@ -714,6 +715,13 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
 <p>Fraction of system RAM that can be used. Used when setting automatically the chunk size.</p>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="report">
+<span id="ddcal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>(Re)generate a full HTML report at the end of this segment.</p>
 </div></blockquote>
 </div>
 </div>

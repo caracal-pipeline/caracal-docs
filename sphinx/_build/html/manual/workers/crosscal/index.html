@@ -110,6 +110,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#secondary-cal"><strong>secondary_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#apply-cal"><strong>apply_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flagging-summary"><strong>flagging_summary</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
@@ -223,16 +224,21 @@
 <div class="section" id="rewind-flags">
 <span id="crosscal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Rewind flags to version specified by “version” below, and delete all flag versions that had been saved after it.</p>
+<div><p>Rewind flags to specified version.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute the rewind_flags segement.</p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable the rewind_flags segement.</p>
+</div></blockquote>
+<p><strong>mode</strong></p>
+<blockquote>
+<div><p><em>{“reset_worker”, “rewind_to_version”}</em>, <em>optional</em>, <em>default = reset_worker</em></p>
+<p>If mode = ‘reset_worker’ rewind to the flag version before this worker if it exists, or continue if it does not exist; if mode = ‘rewind_to_version’ rewind to the flag version given by ‘version’ below.</p>
 </div></blockquote>
 <p><strong>version</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Flag version to rewind to. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.</p>
+<p>Flag version to rewind to. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -269,7 +275,7 @@
 <p><strong>caracal_model</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Use sky models available in CARACal. At the moment this includes PKS1934-638 and 0408-6545 MeerKAT sky models.</p>
+<p>Use the MeerkAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.</p>
 </div></blockquote>
 <p><strong>no_verify</strong></p>
 <blockquote>
@@ -552,6 +558,13 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Execute printing flagging summary.</p>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="report">
+<span id="crosscal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>(Re)generate a full HTML report at the end of this segment.</p>
 </div></blockquote>
 </div>
 </div>

@@ -12,7 +12,7 @@ mask
 .. toctree::
    :maxdepth: 1
  
-Create .FITS mask from catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.
+Create .FITS mask from a catalog and (optionally) merge with an existing .FITS mask provided by the user. WARNING - At the moment this worker can only be executed on a single target at a time. Iterating over N targets is not done automatically.
 
 
 
@@ -24,7 +24,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *bool*
 
-  Execute this segment
+  Execute the mask worker.
 
 
 
@@ -36,7 +36,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *str*, *optional*, *default = corr*
 
-  Label of the .MS file where to find information about the target.
+  Label of the .MS file that contains information about the target.
 
 
 
@@ -48,7 +48,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *str*, *optional*, *default = catalog_mask*
 
-  Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the observation_config worker. To use this output .FITS mask as a clean mask in the self_cal worker users should set relevant entry of clean_mask_method to label_out.
+  Prefix used for the name of the .FITS mask created by this worker. The full name consists of this prefix followed by the target name extracted by the obsconf worker. To use this output .FITS mask as a clean mask in the selfcal worker, users should set the relevant entry of clean_mask_method to label_out.
 
 
 
@@ -60,7 +60,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *list* *of str*, *optional*, *default = HH:MM:SS , DD:MM:SS*
 
-  Coordinates of the centre of the field of view read from reference_dir by default
+  Coordinates of the centre of the field-of-view (read from reference_dir by default).
 
 
 
@@ -72,7 +72,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *int*, *optional*, *default = 1800*
 
-  Number of pixels in the mask (must be the same as img_npix in selfcal worker)
+  Number of pixels in the mask. This must be the same as img_npix in the selfcal worker.
 
 
 
@@ -84,7 +84,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *float*, *optional*, *default = 2.*
 
-  Size of pixel in the mask (arcsec, must be the same as img_cell in selfcal worker)
+  Size of pixels in the mask, in units of arcsec. This must be the same as img_cell in the selfcal worker.
 
 
 
@@ -96,7 +96,7 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
   *str*, *optional*, *default = Fornaxa_vla.FITS*
 
-  Name of the input mask for particularly extended sources in the field
+  Name of the input mask for particularly-extended sources in the field.
 
 
 
@@ -106,31 +106,31 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 **query_catalog**
 --------------------------------------------------
 
-  Query catalog to select field/sources from which extract the mask
+  Query catalog to select field/sources for constructing the mask.
 
   **enable**
 
     *bool*, *optional*, *default = true*
 
-    Execute this worker
+    Enable the 'query_catalog' segment.
 
   **catalog**
 
     *{"NVSS", "SUMSS"}*, *optional*, *default = SUMSS*
 
-    Name of catalog to query [NVSS/SUMSS]
+    Name of catalog to query. Options are 'NVSS' and 'SUMSS'.
 
   **width_image**
 
     *str*, *optional*, *default = 1.2d*
 
-    Width of the region of sky we want to mask (keep larger than dirty image)
+    Angular size of the region of sky that we want to mask (e.g. '1.2d', where 'd' indicates degrees). This should be kept larger than the dirty image.
 
   **thresh_nvss**
 
     *float*, *optional*, *default = 10e-3*
 
-    Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder
+    Flux-density threshold for selecting sources in the radio map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.
 
 
 
@@ -140,19 +140,19 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 **pb_correction**
 --------------------------------------------------
 
-  Correct input image for primary beam before exctracting mask
+  Apply a primary-beam correction to the input image before extracting the mask.
 
   **enable**
 
     *bool*, *optional*, *default = true*
 
-    Execute this worker
+    Enable the 'pb_correction' segment.
 
   **frequency**
 
     *float*, *optional*, *default = 1.420405752*
 
-    Primary beam size changes with frequency, provide central frequency of considered dataset
+    Since the primary-beam size changes with frequency, provide the central frequency of the considered dataset.
 
 
 
@@ -162,19 +162,19 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 **make_mask**
 --------------------------------------------------
 
-  Build mask from existing image using SoFiA and/or threshold cutoff
+  Build mask from an existing image using SoFiA and/or a threshold cutoff.
 
   **enable**
 
     *bool*, *optional*, *default = true*
 
-    Execute this worker
+    Enable the 'make_mask' segment.
 
   **mask_with**
 
     *{"thresh", "sofia"}*, *optional*, *default = sofia*
 
-    Tool to use for masking
+    The tool to use for masking. Options are 'thresh' and 'sofia'.
 
   **input_image**
 
@@ -186,13 +186,13 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 
     *int*, *optional*, *default = 5*
 
-    Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder
+    Flux-density threshold for selecting sources in the SUMSS map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.
 
   **scale_noise_window**
 
     *int*, *optional*, *default = 101*
 
-    window size where SoFiA measures the local rms, units of pixels
+    Size of the window over which SoFiA measures the local rms, in units of pixels.
 
 
 
@@ -202,29 +202,41 @@ Create .FITS mask from catalog and (optionally) merge with an existing .FITS mas
 **merge_with_extended**
 --------------------------------------------------
 
-  Merge with mask of extended source
+  Merge newly-determined mask components with the existing mask for the extended source.
 
   **enable**
 
     *bool*, *optional*, *default = False*
 
-    Execute this worker
+    Execute segment 'merge_with_extended'.
 
   **extended_source_input**
 
     *str*, *optional*, *default = extended_mask.fits*
 
-    name of image of extended source to merge with current image
+    Name of the mask-image of the extended source to merge with the current mask-image.
 
   **mask_with**
 
     *{"thresh", "sofia"}*, *optional*, *default = thresh*
 
-    Tool to use for masking
+    The tool to use for masking. Options are 'thresh' and 'sofia'.
 
   **thresh_lev**
 
     *float*, *optional*, *default = 8e-2*
 
-    Cutoff to select sources in the SUMSS map, corrected for the primary beam (Jy) or cutoff in sigmas for sofia source finder
+    Flux-density threshold for selecting sources in the SUMSS map, corrected for the primary beam. Value given is in units of Jy, or is the minimum signal-to-noise ratio (i.e. number of sigma_rms), used for SoFiA source-finding.
+
+
+
+.. _mask_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

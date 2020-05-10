@@ -12,7 +12,7 @@ obsconf
 .. toctree::
    :maxdepth: 1
  
-Setup some basic observation information
+Set up some basic information about the observation(s).
 
 
 
@@ -22,47 +22,47 @@ Setup some basic observation information
 **obsinfo**
 --------------------------------------------------
 
-  Get observation information
+  Get observation information.
 
   **enable**
 
     *bool*
 
-    Execute this section
+    Execute the obsconf worker.
 
   **listobs**
 
     *bool*, *optional*, *default = True*
 
-    Run CASA listobs task to get observation information
+    Run the CASA 'listobs' task to get observation information.
 
   **summary_json**
 
     *bool*, *optional*, *default = True*
 
-    Run MSUtils summary function to get observation information as JSON file which can be used to automatically configure pipeline
+    Run the MSUtils summary function to get observation information written as a JSON file, which can then be used to automatically configure pipeline.
 
   **vampirisms**
 
     *bool*, *optional*, *default = False*
 
-    Returns sun free time range
+    Return the time range over which observations were taken at night.
 
   **plot_elevation_tracks**
 
-    Make Elevation vs Hour angle plots for observed fields
+    Make Elevation vs Hour-angle plots for observed fields.
 
     **enable**
 
       *bool*, *optional*, *default = True*
 
-      Enable this segment
+      Enable segment 'plot_elevation_tracks'.
 
     **plotter**
 
       *{"plotms", "owlcat"}*, *optional*, *default = owlcat*
 
-      Application to use for making plots
+      The application to be used for making plots. Options are 'plotms' and 'owlcat'.
 
 
 
@@ -74,7 +74,7 @@ Setup some basic observation information
 
   *list* *of str*, *optional*, *default = all*
 
-  Field name of target field. Or 'all' for all the target fields.
+  The field name(s) of the target field(s), separated by commas if there are multiple target fields. Or set this parameter to 'all' to select all of the target fields.
 
 
 
@@ -86,7 +86,7 @@ Setup some basic observation information
 
   *list* *of str*, *optional*, *default = all*
 
-  Field name of gain (amplitude/phase) calibrator field. Or set as 'all' for all the gcal fields, 'longest' to setlect the gcal field observed for the longest time, 'nearest' to select the gcal field closest to the target. Note that if multiple targets and gcals are present, then 'all' (for both) means each target will be paired with the closest gcal.
+  The field name(s) of the gain (amplitude/phase) calibrator field(s). Or set 'all' to select all of the gcal fields, 'longest' to select the gcal field observed for the longest time, or 'nearest' to select the gcal field closest to the target. Note that if multiple targets and gcals are present, then 'all' (for both the 'target' and 'gcal' parameters) means that each target will be paired with the closest gcal.
 
 
 
@@ -98,7 +98,7 @@ Setup some basic observation information
 
   *list* *of str*, *optional*, *default = longest*
 
-  Field name of bandpass calibrator field. Or set as 'all' for all the bpcal fields, 'longest' to setlect the bpcal field observed for the longest time, 'nearest' to select the bpcal field closest to the target.
+  The field name(s) of the bandpass calibrator field(s). Or set 'all' to select all of the bpcal fields, 'longest' to select the bpcal field observed for the longest time, or 'nearest' to select the bpcal field closest to the target.
 
 
 
@@ -110,7 +110,7 @@ Setup some basic observation information
 
   *list* *of str*, *optional*, *default = longest*
 
-  Field name of fluxscale calibrator field. Or set as 'all' for all the fcal fields, 'longest' to setlect the fcal field observed for the longest time, 'nearest' to select the fcal field closest   to the target.
+  The field name(s) of the fluxscale calibrator field(s). Or set 'all' to select all of the fcal fields, 'longest' to select the fcal field observed for the longest time, or 'nearest' to select the fcal field closest to the target.
 
 
 
@@ -122,7 +122,7 @@ Setup some basic observation information
 
   *list* *of str*, *optional*, *default = longest*
 
-  Crosshand phase angle calibrator. This calibrator must be linearly polarized and have a non-zero parallactic angle coverage at the time of observation to solve for the X-Y offsets in digitizers and the absolute polarization angle of the system. Successful calibration derotates U from V.
+  The field name(s) of the crosshand phase-angle calibrator field(s). Or set 'all' to select all of the xcal fields, 'longest' to select the xcal field observed for the longest time, or 'nearest' to select the xcal field closest to the target. This calibrator must be linearly polarized and have a non-zero parallactic angle coverage at the time of observation in order to solve for the X-Y offsets in digitizers and the absolute polarization angle of the system. Successful calibration derotates U from V.
 
 
 
@@ -134,5 +134,17 @@ Setup some basic observation information
 
   *str*
 
-  Reference antenna, which can be identified by an antenna name or number.
+  The reference antenna, which can be identified by an antenna name or number.
+
+
+
+.. _obsconf_report:
+
+--------------------------------------------------
+**report**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  (Re)generate a full HTML report at the end of this segment.
 

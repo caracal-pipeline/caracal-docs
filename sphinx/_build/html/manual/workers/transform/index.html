@@ -102,6 +102,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#split-field"><strong>split_field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#changecentre"><strong>changecentre</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#obsinfo"><strong>obsinfo</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
@@ -193,26 +194,26 @@
 <span id="id1"></span><h1>transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Split, avg and/or calibrate data</p>
+<p>Split, average and/or calibrate the data.</p>
 <div class="section" id="enable">
 <span id="transform-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute this worker</p>
+<p>Execute the transform worker.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-in">
 <span id="transform-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Label of the input dataset</p>
+<p>Label of the input dataset.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-out">
 <span id="transform-label-out"></span><h2><strong>label_out</strong><a class="headerlink" href="#label-out" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
-<p>Label of the output dataset</p>
+<p>Label of the output dataset.</p>
 </div></blockquote>
 </div>
 <div class="section" id="rewind-flags">
@@ -222,48 +223,48 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>enable this segement</p>
+<p>Enable the ‘rewind_flags’ segment.</p>
 </div></blockquote>
 <p><strong>version</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
-<p>Flag version to restore. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__N’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Flag version to restore. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="split-field">
 <span id="transform-split-field"></span><h2><strong>split_field</strong><a class="headerlink" href="#split-field" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Make new ms of targets or calibrators</p>
+<div><p>Make new MS of targets or calibrators.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute this section</p>
+<p>Enable the ‘split_field’ segment.</p>
 </div></blockquote>
 <p><strong>field</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = target</em></p>
-<p>Fields selected to be splitted - can be target, calibrators or bpcal, gcal, fcal in a comma separated string</p>
+<p>Fields to be split off from the input MS. Options are (separately) ‘target’, ‘calibrators’, ‘bpcal’, ‘gcal’ and ‘fcal’. Also valid is any combination of ‘bpcal’, ‘gcal’ and ‘fcal’ in a comma-separated string (e.g. ‘bpcal, fcal’).</p>
 </div></blockquote>
 <p><strong>time_average</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Time averaging</p>
+<p>Time averaging to apply to the data, in units of seconds. If this parameter is instead set to ‘’ or ‘0s’ then no time averaging is applied.</p>
 </div></blockquote>
 <p><strong>freq_average</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
-<p>Frequency averaging</p>
+<p>Frequency averaging to apply to the data, given as the number of channels per frequency bin. If this parameter is set to ‘’, ‘0’, or ‘1’, then no frequency averaging is applied.</p>
 </div></blockquote>
 <p><strong>column</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
-<p>Column to split, default is ‘corrected’.</p>
+<p>Column to be split, where the default is ‘corrected’.</p>
 </div></blockquote>
 <p><strong>correlation</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Select correlations</p>
+<p>Select the correlations, e.g. ‘XX’, ‘YY’. Setting this to ‘’ means that all correlations are selected.</p>
 </div></blockquote>
 <p><strong>usewtspectrum</strong></p>
 <blockquote>
@@ -273,25 +274,25 @@
 <p><strong>spw</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Select spectral windows and channels</p>
+<p>Select spectral windows and channels, following the same syntax as for the ‘mstransform’ task in CASA. Setting this to ‘’ means that all spectral windows and channels are selected.</p>
 </div></blockquote>
 <p><strong>otfcal</strong></p>
 <blockquote>
-<div><p>Apply OTF calibration</p>
+<div><p>Apply on-the-fly (OTF) calibration.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this section</p>
+<p>Enable the ‘otfcal’ segment.</p>
 </div></blockquote>
 <p><strong>callib</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Name of callib file to be used, if user has their own</p>
+<p>Name of the callib file to be used, if user has their own.</p>
 </div></blockquote>
 <p><strong>label_cal</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1gc1</em></p>
-<p>Label of calibration tables to be used</p>
+<p>Label of the calibration tables to be used.</p>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -299,43 +300,50 @@
 <div class="section" id="changecentre">
 <span id="transform-changecentre"></span><h2><strong>changecentre</strong><a class="headerlink" href="#changecentre" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>changes the phase centre</p>
+<div><p>Change the phase centre.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Execute this section</p>
+<p>Enable the ‘changecentre’ segment.</p>
 </div></blockquote>
 <p><strong>ra</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 0h0m0.0s</em></p>
-<p>J2000 RA of new phase centre, format XXhXXmXX.XXs, default is empty string</p>
+<p>J2000 RA of the new phase centre, in the format XXhXXmXX.XXs .</p>
 </div></blockquote>
 <p><strong>dec</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 0d0m0.0s</em></p>
-<p>J2000 Dec of new phase centre, format XXdXXmXX.XXs, default is empty string</p>
+<p>J2000 Dec of the new phase centre, in the format XXdXXmXX.XXs .</p>
 </div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="obsinfo">
 <span id="transform-obsinfo"></span><h2><strong>obsinfo</strong><a class="headerlink" href="#obsinfo" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Get observation information</p>
+<div><p>Get observation information.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Execute this section</p>
+<p>Enable the ‘obsinfo’ segment.</p>
 </div></blockquote>
 <p><strong>listobs</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Run CASA listobs</p>
+<p>Run the CASA ‘listobs’ task to get observation information.</p>
 </div></blockquote>
 <p><strong>summary_json</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Run MSUtils function</p>
+<p>Run the MSUtils summary function to get observation information written as a JSON file.</p>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="report">
+<span id="transform-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>(Re)generate a full HTML report at the end of this segment.</p>
 </div></blockquote>
 </div>
 </div>
