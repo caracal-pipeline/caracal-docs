@@ -84,7 +84,7 @@ html_logo = "caracal_logo.png"
 #
 html_theme_options = {
    'logo_only': True,
-   'style_nav_header_background': 'white',
+#   'style_nav_header_background': 'white',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
