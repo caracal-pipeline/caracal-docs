@@ -12,7 +12,7 @@ ddcal
 .. toctree::
    :maxdepth: 1
  
-Perform direction-dependent calibration on the data.
+Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MODE).
 
 
 

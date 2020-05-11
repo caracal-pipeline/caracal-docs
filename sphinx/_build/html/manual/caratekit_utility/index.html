@@ -183,8 +183,8 @@ once it is installed. Here, we restrict the description to two standard use-case
 <p>Choose:</p>
 <blockquote>
 <div><ul class="simple">
-<li>A workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></li>
-<li>A target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> in. By default, this is <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Some of those locations require a sudo password. If you don’t have one, choose a directory to which you have write access.</li>
+<li><p>A workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code></p></li>
+<li><p>A target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> in. By default, this is <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Some of those locations require a sudo password. If you don’t have one, choose a directory to which you have write access.</p></li>
 </ul>
 </div></blockquote>
 <p>Then type:</p>
@@ -220,8 +220,8 @@ $ caracal/caratekit.sh -i
 <p>The syntax is the same for upgrading or installing CARACal. The user chooses:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The location <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> of a parent directory to a <code class="docutils literal notranslate"><span class="pre">caratekit</span></code> test directory.</li>
-<li>A name <code class="docutils literal notranslate"><span class="pre">${caracal_testdir}</span></code> of the caracal test directory Installation/upgrade with <a class="reference external" href="https://www.docker.com/">Docker</a> as containerisation technology:</li>
+<li><p>The location <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> of a parent directory to a <code class="docutils literal notranslate"><span class="pre">caratekit</span></code> test directory.</p></li>
+<li><p>A name <code class="docutils literal notranslate"><span class="pre">${caracal_testdir}</span></code> of the caracal test directory Installation/upgrade with <a class="reference external" href="https://www.docker.com/">Docker</a> as containerisation technology:</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ caratekit.sh -ws ${workspace} -cr -di -ct ${caracal_testdir} -rp install -f
@@ -250,12 +250,11 @@ $ caracal/caratekit.sh -i
 <h2>Data reduction using caratekit.sh<a class="headerlink" href="#data-reduction-using-caratekit-sh" title="Permalink to this headline">¶</a></h2>
 <p>Multiple variants are possible, here we present three.</p>
 <p>The user uses the same - Workspace directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> as has been used to install <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> - The same target directory <code class="docutils literal notranslate"><span class="pre">${carate_target}</span></code> that <code class="docutils literal notranslate"><span class="pre">caratekit.sh</span></code> has been installed in.</p>
-<dl class="docutils">
-<dt>The user chooses:</dt>
-<dd><ul class="first last simple">
-<li>The name <code class="docutils literal notranslate"><span class="pre">${project}</span></code> of the data reduction project</li>
-<li>The location <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> of a CARACal configuration file. Templates can be found in the directory <code class="docutils literal notranslate"><span class="pre">${workspace}/${caracal_testdir}/caracal/caracal/sample_configurations</span></code>. A choice to start with is the file <code class="docutils literal notranslate"><span class="pre">minimalConfig.yml</span></code>.</li>
-<li>The name <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> of a directory containing the measurement sets (which have to have the suffix <code class="docutils literal notranslate"><span class="pre">.ms</span></code>) that are supposed to be processed in the data reduction.</li>
+<dl class="simple">
+<dt>The user chooses:</dt><dd><ul class="simple">
+<li><p>The name <code class="docutils literal notranslate"><span class="pre">${project}</span></code> of the data reduction project</p></li>
+<li><p>The location <code class="docutils literal notranslate"><span class="pre">${configfile}.yml</span></code> of a CARACal configuration file. Templates can be found in the directory <code class="docutils literal notranslate"><span class="pre">${workspace}/${caracal_testdir}/caracal/caracal/sample_configurations</span></code>. A choice to start with is the file <code class="docutils literal notranslate"><span class="pre">minimalConfig.yml</span></code>.</p></li>
+<li><p>The name <code class="docutils literal notranslate"><span class="pre">${rawdata}</span></code> of a directory containing the measurement sets (which have to have the suffix <code class="docutils literal notranslate"><span class="pre">.ms</span></code>) that are supposed to be processed in the data reduction.</p></li>
 </ul>
 </dd>
 </dl>

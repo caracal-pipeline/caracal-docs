@@ -36,7 +36,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *{"target", "calibrators"}*, *optional*, *default = calibrators*
 
-  Fields that should be flagged. It can either be 'target' or 'calibrators'  (i.e., all calibrators) as defined in the observation_config worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step flag_mask. If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calfields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as exaplined in 'label_in' below.
+  Fields that should be flagged. It can be set to either 'target' or 'calibrators' (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step 'flag_mask' (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calibrator_fields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as explained in 'label_in' below.
 
 
 
@@ -100,7 +100,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *bool*, *optional*, *default = False*
 
-  Allow Caracal to ovewrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
+  Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.
 
 
 

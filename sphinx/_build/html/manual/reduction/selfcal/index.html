@@ -227,11 +227,11 @@ is the maximum number of iterations.</p>
 <p>While imaging it is usually convenient to identify where to clean. Within CARACal this can be
 done in several different ways through the parameter <a class="reference internal" href="../../workers/selfcal/index.html#selfcal-image"><span class="std std-ref">selfcal: image: clean_mask_method</span></a>:</p>
 <ul class="simple">
-<li>with WSclean automated masking method, which cleans blindly down to a masking threshold,
+<li><p>with WSclean automated masking method, which cleans blindly down to a masking threshold,
 defines the clean mask as the ensamble  of all cleaned pixels, and then re-cleans them
-down to a deeper clean cutoff;</li>
-<li>with SoFiA, which makes a clean mask for the Nth imaging run from the (N-1)th image;</li>
-<li>with a clean mask made by the <a class="reference internal" href="../../workers/mask/index.html#mask"><span class="std std-ref">mask</span></a> worker or supplied by the user.</li>
+down to a deeper clean cutoff;</p></li>
+<li><p>with SoFiA, which makes a clean mask for the Nth imaging run from the (N-1)th image;</p></li>
+<li><p>with a clean mask made by the <a class="reference internal" href="../../workers/mask/index.html#mask"><span class="std std-ref">mask</span></a> worker or supplied by the user.</p></li>
 </ul>
 <p>Several parameters allow users to control the calibration step in the <a class="reference internal" href="../../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a> worker.
 Users can set the time and frequency solution intervals. Gain phase and amplitude can both be solved
