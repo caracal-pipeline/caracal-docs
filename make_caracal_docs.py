@@ -3,10 +3,10 @@
 ########################
 
 # Where to find the Caracal schema directory
-caracalDir='../caracal'
+caracalDir = '../caracal'
 
 # Where to write the doc files
-docsDir='sphinx/'
+docsDir = 'sphinx/'
 
 # List of workers sorted in the order we want them to be given in the docs
 # Workers in this list but not in the schema directory will be dropped
