@@ -22,7 +22,6 @@ Workers parameters
    mask/index.rst
    mosaic/index.rst
    obsconf/index.rst
-   polcal/index.rst
    prep/index.rst
    selfcal/index.rst
    transform/index.rst

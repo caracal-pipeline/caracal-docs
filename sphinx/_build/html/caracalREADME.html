@@ -90,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation-with-the-caratekit-sh-script">Installation with the caratekit.sh script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run">Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-and-new-issues">Known and new issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual/index.html">Manual</a></li>
@@ -167,12 +168,11 @@
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.python.org">Python</a> 3.5 or higher.</p></li>
-<li><p>Container technology of your choice. It can be one of the following:</p>
-<ul>
-<li><p><a class="reference external" href="https://www.docker.com">Docker</a>;</p></li>
-<li><p><a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> &gt; 2.6.0-dist;</p></li>
-<li><p><a class="reference external" href="https://podman.io">Podman</a> <strong>(currently not fully supported)</strong>.</p></li>
+<li><a class="reference external" href="https://www.python.org">Python</a> 3.5 or higher.</li>
+<li>Container technology of your choice. It can be one of the following:<ul>
+<li><a class="reference external" href="https://www.docker.com">Docker</a>;</li>
+<li><a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> &gt; 2.6.0-dist;</li>
+<li><a class="reference external" href="https://podman.io">Podman</a> <strong>(currently not fully supported)</strong>.</li>
 </ul>
 </li>
 </ul>
@@ -199,11 +199,12 @@ pip install -U caracal
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">clean</span> <span class="o">-</span><span class="n">ac</span>
 </pre></div>
 </div>
-<p>Then, if using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stimela</span> <span class="n">pull</span>
-</pre></div>
-</div>
-<p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>, choose a pull folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>, where the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored and define an environment variable by adding this in the rc file of your shell (e.g. .bashrc) :</p>
+<!-- Then, if using [Docker](https://www.docker.com):
+
+```
+stimela pull
+```
+--><p>If using <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a>, choose a pull folder <code class="docutils literal notranslate"><span class="pre">${singularity_pull_folder}</span></code>, where the <a class="reference external" href="https://github.com/sylabs/singularity">Singularity</a> images are stored and define an environment variable by adding this in the rc file of your shell (e.g. .bashrc) :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export SINGULARITY_PULLFOLDER=${WORKSPACE_ROOT}/singularity_images
 </pre></div>
 </div>
@@ -243,6 +244,11 @@ pip install -U caracal
 </pre></div>
 </div>
 <p>For more detailed installation instructions, trouble-shooting tips and a full user manual please see https://caracal.readthedocs.io.</p>
+</div>
+<div class="section" id="known-and-new-issues">
+<h2>Known and new issues<a class="headerlink" href="#known-and-new-issues" title="Permalink to this headline">¶</a></h2>
+<p>We encourage users who experience problems installing or running CARACal to check for known issues or open a new issue at
+https://github.com/caracal-pipeline/caracal/issues. When opening a new issue, please include your installation type (e.g., Docker, Singularity), software version (both CARACal and Stimela), CARACal configuration file, and CARACal log files.</p>
 </div>
 </div>
 

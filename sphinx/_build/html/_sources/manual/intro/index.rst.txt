@@ -113,11 +113,6 @@ delay, bandpass, gains and flux scale calibration, self-calibration of the secon
 The calibration is applied to the calibrators' visibilities for later inspection.
 Numerous settings are available for users to decide how to calibrate. Gain plots are produced.
 
-:ref:`polcal`
-^^^^^^^^^^^^^
-
-NOT AVAILABLE. This worker is still experimental and we do not recommend that  users run it.
-
 :ref:`inspect`
 ^^^^^^^^^^^^^^
 

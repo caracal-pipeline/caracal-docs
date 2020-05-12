@@ -38,11 +38,12 @@ In case you are *not* carrying out a fresh installation, remove earlier Stimela 
 stimela clean -ac
 ```
 
-Then, if using [Docker](https://www.docker.com):
+<!-- Then, if using [Docker](https://www.docker.com):
 
 ```
 stimela pull
 ```
+-->
 
 If using [Singularity](https://github.com/sylabs/singularity), choose a pull folder `${singularity_pull_folder}`, where the [Singularity](https://github.com/sylabs/singularity) images are stored and define an environment variable by adding this in the rc file of your shell (e.g. .bashrc) :
 
@@ -96,3 +97,9 @@ caracal - c ${your-configuration-file}
 ```
 
 For more detailed installation instructions, trouble-shooting tips and a full user manual please see https://caracal.readthedocs.io.
+
+
+## Known and new issues
+
+We encourage users who experience problems installing or running CARACal to check for known issues or open a new issue at
+https://github.com/caracal-pipeline/caracal/issues. When opening a new issue, please include your installation type (e.g., Docker, Singularity), software version (both CARACal and Stimela), CARACal configuration file, and CARACal log files.

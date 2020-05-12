@@ -198,8 +198,8 @@ elsewhere in the <a class="reference internal" href="../index.html#reduction"><s
 <p>Every run of a CARACal worker that can result in new flags saves two flag version to disc:
 one before and one after the worker run. These flag versions are called:</p>
 <ul class="simple">
-<li><p><em>&lt;prefix&gt;_&lt;worker_name&gt;_before</em></p></li>
-<li><p><em>&lt;prefix&gt;_&lt;worker_name&gt;_after</em></p></li>
+<li><em>&lt;prefix&gt;_&lt;worker_name&gt;_before</em></li>
+<li><em>&lt;prefix&gt;_&lt;worker_name&gt;_after</em></li>
 </ul>
 <p>where &lt;prefix&gt; is set by <a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>, and the worker name is taken from the
 <a class="reference internal" href="../../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a>.</p>
@@ -232,34 +232,34 @@ parameter.</p>
 otherwise stated below, flagging is done with the CASA task FLAGDATA. Follow the links
 below for a detailed documentation of the individual flagging modes.</p>
 <ul class="simple">
-<li><p>Unflag all data.</p></li>
-<li><p>Flag on autocorrelations to catch antennas with obvious problems using the custom
+<li>Unflag all data.</li>
+<li>Flag on autocorrelations to catch antennas with obvious problems using the custom
 program POLITSIYAKAT (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-autopowerspec"><span class="std std-ref">flag: flag_autopowerspec</span></a>).
 Individual scans are compared to the median of all scans per field and channel; and
 individual antennas are compared to the median of all antennas per scan, field and channel.
 Both methods have their own flagging threshold, which users can tune. Users can also set
-which column and which fields to flag.</p></li>
-<li><p>Flag all autocorrelations (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-autocorr"><span class="std std-ref">flag: flag_autocorr</span></a>).</p></li>
-<li><p>Flag specific portions of the beginning and/or end of each scan
+which column and which fields to flag.</li>
+<li>Flag all autocorrelations (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-autocorr"><span class="std std-ref">flag: flag_autocorr</span></a>).</li>
+<li>Flag specific portions of the beginning and/or end of each scan
 (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-quack"><span class="std std-ref">flag: flag_quack</span></a>).
 As in the CASA task FLAGDATA, users can set the time interval that should be flagged
-and the quackmode.</p></li>
-<li><p>Flag shadowed antennas (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-shadow"><span class="std std-ref">flag: flag_shadow</span></a>).
+and the quackmode.</li>
+<li>Flag shadowed antennas (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-shadow"><span class="std std-ref">flag: flag_shadow</span></a>).
 Users can tune the amount of shadowing allowed before flagging an antenna.
 For observations obtained with a MeerKAT subarray it is possible to include offline
-antennas in the shadowing calculation.</p></li>
-<li><p>Flag selected channel ranges (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-spw"><span class="std std-ref">flag: flag_spw</span></a>).</p></li>
-<li><p>Flag selected time ranges (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-time"><span class="std std-ref">flag: flag_time</span></a>).</p></li>
-<li><p>Flag selected antennas (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-antennas"><span class="std std-ref">flag: flag_antennas</span></a>).
+antennas in the shadowing calculation.</li>
+<li>Flag selected channel ranges (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-spw"><span class="std std-ref">flag: flag_spw</span></a>).</li>
+<li>Flag selected time ranges (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-time"><span class="std std-ref">flag: flag_time</span></a>).</li>
+<li>Flag selected antennas (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-antennas"><span class="std std-ref">flag: flag_antennas</span></a>).
 Within this task, users can limit the flagging of selected antennas to a
-selected timerange.</p></li>
-<li><p>Flag selected scans (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-scan"><span class="std std-ref">flag: flag_scan</span></a>).</p></li>
-<li><p>Flag according to a static mask of bad frequency ranges using the custom program
+selected timerange.</li>
+<li>Flag selected scans (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-scan"><span class="std std-ref">flag: flag_scan</span></a>).</li>
+<li>Flag according to a static mask of bad frequency ranges using the custom program
 RFIMASKER (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-mask"><span class="std std-ref">flag: flag_mask</span></a>). The mask file should
 be located in the <em>input</em> directory set by <a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>.
 Users can decide to limit the flagging to a selected UV range. This could be useful
-to flag short baselines only.</p></li>
-<li><p>Flag RFI choosing between the available algorithms and strategies (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-rfi"><span class="std std-ref">flag: flag_rfi</span></a>).
+to flag short baselines only.</li>
+<li>Flag RFI choosing between the available algorithms and strategies (<a class="reference internal" href="../../workers/flag/index.html#flag-flag-rfi"><span class="std std-ref">flag: flag_rfi</span></a>).
 Possible choices include AOFlagger, Tricolour, CASA tfcrop. The requested
 AOFlagger or tricolour strategy file should be located in the <em>input</em> directory set by
 <a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>.
@@ -267,7 +267,7 @@ CARACal comes with a number of strategy files, which are located in
 <a class="reference external" href="https://github.com/caracal-pipeline/caracal/tree/master/caracal/data/meerkat_files">https://github.com/caracal-pipeline/caracal/tree/master/caracal/data/meerkat_files</a>
 and are copied to the <em>input</em> directory by the
 <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> worker. However, users can copy their own strategy file to the same
-<em>input</em> directory and use it within CARACal.</p></li>
+<em>input</em> directory and use it within CARACal.</li>
 </ul>
 <p>Finally, a summary of the flags can be obtained with <a class="reference internal" href="../../workers/flag/index.html#flag-summary"><span class="std std-ref">flag: summary</span></a>.
 The summary is available at the relevant log file (see <a class="reference internal" href="../../products/index.html#products"><span class="std std-ref">Data products</span></a>).</p>

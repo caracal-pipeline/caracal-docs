@@ -188,12 +188,12 @@ worker operates within the framework that .MS files  include
 a primary (bandpass and flux) calibrator and, optionally, a secondary (gains) calibrator.</p>
 <p>Just as a classic, simple example, it is possible to solve for:</p>
 <ol class="arabic simple">
-<li><p>time-independent antenna delays and normalised bandpass based on the observation of the
-primary calibrator;</p></li>
-<li><p>time-dependent antenna flux scale based on the observation of the primary calibrator;</p></li>
-<li><p>time-dependent antenna gains based on the observation of the secondary calibrator;</p></li>
-<li><p>time-dependent antenna flux scale at fine time resolution obtained by scaling the gains
-from step 3 above to the gains from step 2 above.</p></li>
+<li>time-independent antenna delays and normalised bandpass based on the observation of the
+primary calibrator;</li>
+<li>time-dependent antenna flux scale based on the observation of the primary calibrator;</li>
+<li>time-dependent antenna gains based on the observation of the secondary calibrator;</li>
+<li>time-dependent antenna flux scale at fine time resolution obtained by scaling the gains
+from step 3 above to the gains from step 2 above.</li>
 </ol>
 <p>However, CARACal allows users to take less traditional cross-calibtation steps, too,
 such as self-calibration on the secondary calibrator, or delay
@@ -206,26 +206,26 @@ to the flexibility provided by the parameters <a class="reference internal" href
 and <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-secondary"><span class="std std-ref">crosscal: secondary: order</span></a>. These allow users to build
 their favourite sequence of calibration/imaging/flagging steps choosing among:</p>
 <ul class="simple">
-<li><p>K = delay calibration with CASA GAINCAL</p></li>
-<li><p>B = bandpass calibration with CASA BANDPASS</p></li>
-<li><p>G = gain amplitude and/or phase calibration with CASA GAINCAL</p></li>
-<li><p>F = gain amplitude and/or phase calibration with CASA GAINCAL, followed by bootstrapping
-of the flux scale from the primary calibrator with CASA FLUXSCALE (secondary calibrator only)</p></li>
-<li><p>I = imaging with WSCLEAN (secondary calibrator only)</p></li>
-<li><p>A = flagging with CASA FLAGDATA using the tfcrop algorithm</p></li>
+<li>K = delay calibration with CASA GAINCAL</li>
+<li>B = bandpass calibration with CASA BANDPASS</li>
+<li>G = gain amplitude and/or phase calibration with CASA GAINCAL</li>
+<li>F = gain amplitude and/or phase calibration with CASA GAINCAL, followed by bootstrapping
+of the flux scale from the primary calibrator with CASA FLUXSCALE (secondary calibrator only)</li>
+<li>I = imaging with WSCLEAN (secondary calibrator only)</li>
+<li>A = flagging with CASA FLAGDATA using the tfcrop algorithm</li>
 </ul>
 <p>Each of these steps may have its own settings with respect to gain type (e.g., each G could
 be amplitude-only, phase-only, or both amplitude and phase), solution interval, normalisation,
 data combination at boundaries (e.g., scan, SPW), imaging and flagging settings.</p>
 <p>For example, <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: order</span></a>: KGBAKGB results in:</p>
 <ul class="simple">
-<li><p>delay calibration (K);</p></li>
-<li><p>gain calibration (G) applying the intial K on the fly;</p></li>
-<li><p>bandpass calibration (B) applying the initial K and G on the fly;</p></li>
-<li><p>flagging of the visibilities with the initial K, G and B applied;</p></li>
-<li><p>final K calibration applying the initial G and B on the fly;</p></li>
-<li><p>final G calibration applying the final K and initial B on the fly;</p></li>
-<li><p>final B calibration applying the final K and G on the fly.</p></li>
+<li>delay calibration (K);</li>
+<li>gain calibration (G) applying the intial K on the fly;</li>
+<li>bandpass calibration (B) applying the initial K and G on the fly;</li>
+<li>flagging of the visibilities with the initial K, G and B applied;</li>
+<li>final K calibration applying the initial G and B on the fly;</li>
+<li>final G calibration applying the final K and initial B on the fly;</li>
+<li>final B calibration applying the final K and G on the fly.</li>
 </ul>
 <p>In this example, it would be possible to set different solution intervals for the
 initial and final G through the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: primary: solint</span></a>
@@ -237,9 +237,9 @@ the calibration parameters <a class="reference internal" href="../../workers/cro
 <p>An example for the secondary is <a class="reference internal" href="../../workers/crosscal/index.html#crosscal-primary"><span class="std std-ref">crosscal: secondary: order</span></a>: FIG,
 which results in:</p>
 <ul class="simple">
-<li><p>gain calibration and bootstrapping of the flux scale;</p></li>
-<li><p>imaging;</p></li>
-<li><p>gain calibration.</p></li>
+<li>gain calibration and bootstrapping of the flux scale;</li>
+<li>imaging;</li>
+<li>gain calibration.</li>
 </ul>
 <p>Note that in this example no bootstrapping of the flux scale is necessary
 after the second gain calibration G because the gains are now self-calibrated on
@@ -253,12 +253,12 @@ It can also apply it to the target, although this can also be done by the <a cla
 on the fly while splitting the  target from the input .MS file.
 When applyin the calibration, the <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> worker adopts the following interpolation rules:</p>
 <ul class="simple">
-<li><p>Delay calibration: applied to primary, secondary, target with nearest, linear, linear interpolation, respectively.</p></li>
-<li><p>Bandpass calibration: applied to primary, secondary, target with nearest, linear, linear interpolation, respectively.</p></li>
-<li><p>Gain calibration before bootstrapping the flux scale: applied to primary, secondary, target
-with linear, linear, linear interpolation, respectively.</p></li>
-<li><p>Gain calibration after bootstrapping the flux scale: applied to primary, secondary, target
-with linear, nearest, linear interpolation, repsectively.</p></li>
+<li>Delay calibration: applied to primary, secondary, target with nearest, linear, linear interpolation, respectively.</li>
+<li>Bandpass calibration: applied to primary, secondary, target with nearest, linear, linear interpolation, respectively.</li>
+<li>Gain calibration before bootstrapping the flux scale: applied to primary, secondary, target
+with linear, linear, linear interpolation, respectively.</li>
+<li>Gain calibration after bootstrapping the flux scale: applied to primary, secondary, target
+with linear, nearest, linear interpolation, repsectively.</li>
 </ul>
 <p>The <a class="reference internal" href="../../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a> worker produces .HTML plots of the various calibration terms for later, interactive
 inspection. Furthermore, the <a class="reference internal" href="../../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a> worker produces .PNG plots of the caibrators’

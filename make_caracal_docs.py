@@ -23,7 +23,6 @@ sortedWorkers = [
   'mask',
   'mosaic',
   'obsconf',
-  'polcal',
   'prep',
   'selfcal',
   'transform',
