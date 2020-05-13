@@ -50,7 +50,7 @@ If using [Singularity](https://github.com/sylabs/singularity), choose a pull fol
 ```
 export SINGULARITY_PULLFOLDER=${WORKSPACE_ROOT}/singularity_images
 ```
-and run:
+where  ${WORKSPACE_ROOT} is the directory where you wish to store the singularity images (please make sure you have write permissions for this directory) and run:
 
 ``` 
 stimela pull -s
