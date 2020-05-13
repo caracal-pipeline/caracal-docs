@@ -13,7 +13,7 @@ When using CARACal please be aware of and adhere to the [CARACal publication pol
 
 ## Manual installation
 
-We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing.
+We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing. Any name as ``${name}`` occurring in the description below can be chosen arbitrarily. If it symbolises directories or files, those directories or files should exist and the user should have write acccess.
 
 Choose the name of the virtual environment `${caracal-venv}`. Then:
 
@@ -50,7 +50,7 @@ If using [Singularity](https://github.com/sylabs/singularity), choose a pull fol
 ```
 export SINGULARITY_PULLFOLDER=${WORKSPACE_ROOT}/singularity_images
 ```
-where  ${WORKSPACE_ROOT} is the directory where you wish to store the singularity images (please make sure you have write permissions for this directory) and run:
+and run:
 
 ``` 
 stimela pull -s
@@ -64,7 +64,7 @@ stimela pull -p
 
 ## Installation with the caratekit.sh script
 
-Download the installation script [caratekit.sh](https://github.com/caracal-pipeline/caracal/blob/master/caratekit.sh) . Choose the parent directory `${workspace}` and the name of the CARACal directory `${caracal_dir}`.
+Download the installation script [caratekit.sh](https://github.com/caracal-pipeline/caracal/blob/master/caratekit.sh) . Choose the parent directory `${workspace}` and the name of the CARACal directory `${caracal_dir}`. Any name as ``${name}`` occurring in the description below can be chosen arbitrarily. If it symbolises directories or files, those directories or files should exist and the user should have write acccess.
 
 If using [Docker](https://www.docker.com):
 

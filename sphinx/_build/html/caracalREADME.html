@@ -184,7 +184,7 @@
 </div>
 <div class="section" id="manual-installation">
 <h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h2>
-<p>We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing.</p>
+<p>We strongly recommend and describe an installation using a Python3 virtual environment. Only try outside a virtual environment if you know what you are doing. Any name as <code class="docutils literal notranslate"><span class="pre">${name}</span></code> occurring in the description below can be chosen arbitrarily. If it symbolises directories or files, those directories or files should exist and the user should have write acccess.</p>
 <p>Choose the name of the virtual environment <code class="docutils literal notranslate"><span class="pre">${caracal-venv}</span></code>. Then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>python3 -m venv ${caracal-venv}
 # OR, if the command above does not work
@@ -224,7 +224,7 @@ stimela pull
 </div>
 <div class="section" id="installation-with-the-caratekit-sh-script">
 <h2>Installation with the caratekit.sh script<a class="headerlink" href="#installation-with-the-caratekit-sh-script" title="Permalink to this headline">¶</a></h2>
-<p>Download the installation script <a class="reference external" href="https://github.com/caracal-pipeline/caracal/blob/master/caratekit.sh">caratekit.sh</a> . Choose the parent directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> and the name of the CARACal directory <code class="docutils literal notranslate"><span class="pre">${caracal_dir}</span></code>.</p>
+<p>Download the installation script <a class="reference external" href="https://github.com/caracal-pipeline/caracal/blob/master/caratekit.sh">caratekit.sh</a> . Choose the parent directory <code class="docutils literal notranslate"><span class="pre">${workspace}</span></code> and the name of the CARACal directory <code class="docutils literal notranslate"><span class="pre">${caracal_dir}</span></code>. Any name as <code class="docutils literal notranslate"><span class="pre">${name}</span></code> occurring in the description below can be chosen arbitrarily. If it symbolises directories or files, those directories or files should exist and the user should have write acccess.</p>
 <p>If using <a class="reference external" href="https://www.docker.com">Docker</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>caratekit.sh -ws ${workspace} -cr -di -ct ${caracal_dir} -rp install -f -kh
 </pre></div>
