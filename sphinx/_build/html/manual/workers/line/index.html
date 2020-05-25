@@ -121,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#sofia"><strong>sofia</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharpener"><strong>sharpener</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../mask/index.html">mask</a></li>
@@ -379,6 +380,11 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = postmst.rfis</em></p>
 <p>AOFlagger strategy file.</p>
+</div></blockquote>
+<p><strong>readmode</strong></p>
+<blockquote>
+<div><p><em>{“indirect”, “memory”, “auto”}</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>AOflagger read mode. If set to ‘indirect’, AOflagger temporarily writes a reordered .MS file to disc, which results in fast flagging but requires free disc space. If set to ‘memory’, AOflagger reads the .MS file into memory, which is even faster than ‘indirect’ but is impossible for large files. If set to ‘auto’, AOflagger will decide between the ‘memory’ mode and the ‘direct’ mode – the slowest mode – in which AOFlagger reads baselines by scanning the entire file for the data relevant for the currently required baseline.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -748,7 +754,14 @@
 <span id="line-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>(Re)generate a full HTML report at the end of this segment.</p>
+<p>(Re)generate a full HTML report at the end of this worker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cabs">
+<span id="line-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
 </div>
 </div>

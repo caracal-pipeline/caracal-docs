@@ -120,6 +120,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#inspect"><strong>inspect</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#summary"><strong>summary</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../general/index.html">general</a></li>
@@ -479,13 +480,13 @@
 </div></blockquote>
 <p><strong>mask</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<div><p><em>str</em></p>
 <p>The mask to apply. This can be provided by the user, but CARACal provides an existing static mask (‘labelled_rfimask.pickle.npy’) that is specific to MeerKAT data.</p>
 </div></blockquote>
 <p><strong>uvrange</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Select range in UV-distance (CASA-style range, e.g. ‘lower~upper’) for flagging. This is in default units of metres but, e.g., ‘0~1000km’ and ‘0-500klambda’ can also be specified. Leaving this parameter blank will select the entire range in UV-distance.</p>
+<p>Select range in UV-distance (CASA-style range, e.g. ‘lower~upper’) for flagging. This is in units of metres. Leaving this parameter blank will select the entire range in UV-distance.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -519,6 +520,11 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V for an .MS with XX and YY only will result in an error and CARACal exiting. The rules are 1. XY,YX must be present in order to flag on Stokes V,U (or on XY,YX), and 2. XX,YY must be present in order to flag on Stokes I,Q (or on XX,YY). Disable this parameter only if you know what you are doing.</p>
+</div></blockquote>
+<p><strong>readmode</strong></p>
+<blockquote>
+<div><p><em>{“indirect”, “memory”, “auto”}</em>, <em>optional</em>, <em>default = auto</em></p>
+<p>AOflagger read mode. If set to ‘indirect’, AOflagger temporarily writes a reordered .MS file to disc, which results in fast flagging but requires free disc space. If set to ‘memory’, AOflagger reads the .MS file into memory, which is even faster than ‘indirect’ but is impossible for large files. If set to ‘auto’, AOflagger will decide between the ‘memory’ mode and the ‘direct’ mode – the slowest mode – in which AOFlagger reads baselines by scanning the entire file for the data relevant for the currently required baseline.</p>
 </div></blockquote>
 </div></blockquote>
 <p><strong>tricolour</strong></p>
@@ -640,7 +646,14 @@
 <span id="flag-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>(Re)generate a full HTML report at the end of this segment.</p>
+<p>(Re)generate a full HTML report at the end of this worker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cabs">
+<span id="flag-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
 </div>
 </div>

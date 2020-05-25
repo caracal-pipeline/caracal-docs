@@ -292,11 +292,17 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
-  **B_solnorm**
+  **b_solnorm**
 
     *bool*, *optional*, *default = False*
 
     Normalise average solution amplitude to 1.0
+
+  **b_fillgaps**
+
+    *int*, *optional*, *default = 70*
+
+    Fill flagged solution channels by interpolation.
 
   **plotgains**
 
@@ -462,7 +468,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 **summary**
 --------------------------------------------------
 
-  Prints out the buther's bill, i.e. data flagging summary at the end of cross calibration process.
+  Prints out the butcher's bill, i.e. data flagging summary at the end of cross calibration process.
 
   **enable**
 
@@ -480,5 +486,17 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
   *bool*, *optional*, *default = False*
 
-  (Re)generate a full HTML report at the end of this segment.
+  (Re)generate a full HTML report at the end of this worker.
+
+
+
+.. _crosscal_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

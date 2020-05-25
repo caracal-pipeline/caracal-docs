@@ -252,6 +252,12 @@ Process visibilities for spectral line work and create line cubes and images.
 
     AOFlagger strategy file.
 
+  **readmode**
+
+    *{"indirect", "memory", "auto"}*, *optional*, *default = auto*
+
+    AOflagger read mode. If set to 'indirect', AOflagger temporarily writes a reordered .MS file to disc, which results in fast flagging but requires free disc space. If set to 'memory', AOflagger reads the .MS file into memory, which is even faster than 'indirect' but is impossible for large files. If set to 'auto', AOflagger will decide between the 'memory' mode and the 'direct' mode -- the slowest mode -- in which AOFlagger reads baselines by scanning the entire file for the data relevant for the currently required baseline.
+
 
 
 .. _line_sunblocker:
@@ -716,5 +722,17 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *bool*, *optional*, *default = False*
 
-  (Re)generate a full HTML report at the end of this segment.
+  (Re)generate a full HTML report at the end of this worker.
+
+
+
+.. _line_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

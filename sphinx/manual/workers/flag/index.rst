@@ -388,7 +388,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   **mask**
 
-    *str*, *optional*, *default = ' '*
+    *str*
 
     The mask to apply. This can be provided by the user, but CARACal provides an existing static mask ('labelled_rfimask.pickle.npy') that is specific to MeerKAT data.
 
@@ -396,7 +396,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *str*, *optional*, *default = ' '*
 
-    Select range in UV-distance (CASA-style range, e.g. 'lower~upper') for flagging. This is in default units of metres but, e.g., '0~1000km' and '0-500klambda' can also be specified. Leaving this parameter blank will select the entire range in UV-distance.
+    Select range in UV-distance (CASA-style range, e.g. 'lower~upper') for flagging. This is in units of metres. Leaving this parameter blank will select the entire range in UV-distance.
 
 
 
@@ -439,6 +439,12 @@ Flagging of the data. The selected flagging steps are executed in the same order
       *bool*, *optional*, *default = True*
 
       Ensure that the selected AOFlagger strategy is compatible with the type of correlations present in the input .MS file(s). E.g., attempts to flag on Stokes V for an .MS with XX and YY only will result in an error and CARACal exiting. The rules are 1. XY,YX must be present in order to flag on Stokes V,U (or on XY,YX), and 2. XX,YY must be present in order to flag on Stokes I,Q (or on XX,YY). Disable this parameter only if you know what you are doing.
+
+    **readmode**
+
+      *{"indirect", "memory", "auto"}*, *optional*, *default = auto*
+
+      AOflagger read mode. If set to 'indirect', AOflagger temporarily writes a reordered .MS file to disc, which results in fast flagging but requires free disc space. If set to 'memory', AOflagger reads the .MS file into memory, which is even faster than 'indirect' but is impossible for large files. If set to 'auto', AOflagger will decide between the 'memory' mode and the 'direct' mode -- the slowest mode -- in which AOFlagger reads baselines by scanning the entire file for the data relevant for the currently required baseline.
 
   **tricolour**
 
@@ -588,5 +594,17 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *bool*, *optional*, *default = False*
 
-  (Re)generate a full HTML report at the end of this segment.
+  (Re)generate a full HTML report at the end of this worker.
+
+
+
+.. _flag_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

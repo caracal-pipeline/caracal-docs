@@ -40,10 +40,22 @@ Diagnostic plots for data
 
 
 
-.. _inspect_label_cal:
+.. _inspect_field:
 
 --------------------------------------------------
-**label_cal**
+**field**
+--------------------------------------------------
+
+  *str*, *optional*, *default = calibrators*
+
+  Fields that should be inspected. It can be set to 'target', 'calibrators' (i.e., all calibrators) or any comma-separated combination of 'fcal','bpcal','gcal', as defined in the obsconf worker. N$
+
+
+
+.. _inspect_label_plot:
+
+--------------------------------------------------
+**label_plot**
 --------------------------------------------------
 
   *str*, *optional*, *default = ' '*
@@ -122,9 +134,9 @@ Diagnostic plots for data
 **correlation**
 --------------------------------------------------
 
-  *str*, *optional*, *default = XX, YY*
+  *str*, *optional*, *default = diag*
 
-  Label specifying the correlations.
+  Label(s) specifying the correlations. Use the special values 'diag' and 'all' to select only diagonal (paralell hand) or all correlations.
 
 
 
@@ -164,18 +176,6 @@ Diagnostic plots for data
 
 
 
-.. _inspect_fields:
-
---------------------------------------------------
-**fields**
---------------------------------------------------
-
-  *list* *of str*, *optional*, *default = bpcal, gcal*
-
-  Fields to plot. Specify by field id, index or keys like, gcal, bpcal.
-
-
-
 .. _inspect_real_imag:
 
 --------------------------------------------------
@@ -186,15 +186,9 @@ Diagnostic plots for data
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executed the real v/s imaginary data plotting.
-
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like, gcal, bpcal.
 
   **col**
 
@@ -230,12 +224,6 @@ Diagnostic plots for data
 
     Executes the plotting of amplitude v/s phase for data.
 
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
-
   **col**
 
     *str*, *optional*, *default = corrected*
@@ -266,15 +254,9 @@ Diagnostic plots for data
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes plotting data amplitude as a function of uvwave.
-
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
   **col**
 
@@ -310,12 +292,6 @@ Diagnostic plots for data
 
     Executes plotting data amplitude v/s antennas.
 
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
-
   **col**
 
     *str*, *optional*, *default = corrected*
@@ -346,15 +322,9 @@ Diagnostic plots for data
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes plotting data phase v/s uvwave.
-
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
   **col**
 
@@ -390,12 +360,6 @@ Diagnostic plots for data
 
     Executes plotting data amplitude v/s scan number.
 
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
-
   **col**
 
     *str*, *optional*, *default = corrected*
@@ -426,15 +390,9 @@ Diagnostic plots for data
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes the plotting of amplitude v/s phase for data.
-
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
   **col**
 
@@ -466,15 +424,9 @@ Diagnostic plots for data
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Executes the plotting of amplitude v/s phase for data.
-
-  **fields**
-
-    *list* *of str*, *optional*, *default = ' '*
-
-    Fields to plot. Specify by field id, index or keys like: gcal, bpcal.
 
   **col**
 
@@ -504,5 +456,17 @@ Diagnostic plots for data
 
   *bool*, *optional*, *default = False*
 
-  (Re)generate a full HTML report at the end of this segment.
+  (Re)generate a full HTML report at the end of this worker.
+
+
+
+.. _inspect_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

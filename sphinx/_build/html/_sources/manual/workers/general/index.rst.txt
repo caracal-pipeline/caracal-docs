@@ -24,7 +24,7 @@ General pipeline information, including data IDs, and prefixes for output files.
 
   *str*, *optional*, *default = ' '*
 
-  Execute the 'general' worker.
+  An optional project title.
 
 
 
@@ -130,7 +130,19 @@ General pipeline information, including data IDs, and prefixes for output files.
 **final_report**
 --------------------------------------------------
 
-  *bool*, *optional*, *default = True*
+  *bool*, *optional*, *default = False*
 
   Render report_notebooks to HTML at the end of each pipeline run
+
+
+
+.. _general_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

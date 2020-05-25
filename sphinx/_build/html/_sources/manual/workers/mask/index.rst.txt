@@ -238,5 +238,17 @@ Create .FITS mask from a catalog and (optionally) merge with an existing .FITS m
 
   *bool*, *optional*, *default = False*
 
-  (Re)generate a full HTML report at the end of this segment.
+  (Re)generate a full HTML report at the end of this worker.
+
+
+
+.. _mask_cabs:
+
+--------------------------------------------------
+**cabs**
+--------------------------------------------------
+
+  *list* *of map*, *optional*, *default = ' '*
+
+  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
 

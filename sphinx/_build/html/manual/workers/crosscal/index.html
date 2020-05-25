@@ -109,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#apply-cal"><strong>apply_cal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#summary"><strong>summary</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../ddcal/index.html">ddcal</a></li>
@@ -409,10 +410,15 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘’, ‘’, None, ‘’</em></p>
 <p>For each step in ‘order’ above, set along what axis the data should be combined before solving. Options are ‘’ (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), ‘obs’, ‘scan’, ‘spw’, ‘field’. To combine along multiple axes use comma-separated axis names in a single string, e.g., ‘obs,scan’. This setting is only relevant for the steps of type K, G and B included in ‘order’ above. For A steps this setting is ignored and an empty string may be used.</p>
 </div></blockquote>
-<p><strong>B_solnorm</strong></p>
+<p><strong>b_solnorm</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Normalise average solution amplitude to 1.0</p>
+</div></blockquote>
+<p><strong>b_fillgaps</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 70</em></p>
+<p>Fill flagged solution channels by interpolation.</p>
 </div></blockquote>
 <p><strong>plotgains</strong></p>
 <blockquote>
@@ -548,7 +554,7 @@
 <div class="section" id="summary">
 <span id="crosscal-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Prints out the buther’s bill, i.e. data flagging summary at the end of cross calibration process.</p>
+<div><p>Prints out the butcher’s bill, i.e. data flagging summary at the end of cross calibration process.</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
@@ -560,7 +566,14 @@
 <span id="crosscal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>(Re)generate a full HTML report at the end of this segment.</p>
+<p>(Re)generate a full HTML report at the end of this worker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cabs">
+<span id="crosscal-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
 </div>
 </div>

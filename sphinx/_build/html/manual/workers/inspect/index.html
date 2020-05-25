@@ -104,7 +104,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">inspect</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label-cal"><strong>label_cal</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-plot"><strong>label_plot</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dirname"><strong>dirname</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#shadems"><strong>shadems</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#standard-plotter"><strong>standard_plotter</strong></a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#num-cores"><strong>num_cores</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mem-limit"><strong>mem_limit</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvrange"><strong>uvrange</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fields"><strong>fields</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#real-imag"><strong>real_imag</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#amp-phase"><strong>amp_phase</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#amp-uvwave"><strong>amp_uvwave</strong></a></li>
@@ -122,6 +122,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#amp-chan"><strong>amp_chan</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phase-chan"><strong>phase_chan</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../line/index.html">line</a></li>
@@ -225,8 +226,15 @@
 <p>Label of the input dataset</p>
 </div></blockquote>
 </div>
-<div class="section" id="label-cal">
-<span id="inspect-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="field">
+<span id="inspect-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = calibrators</em></p>
+<p>Fields that should be inspected. It can be set to ‘target’, ‘calibrators’ (i.e., all calibrators) or any comma-separated combination of ‘fcal’,’bpcal’,’gcal’, as defined in the obsconf worker. N$</p>
+</div></blockquote>
+</div>
+<div class="section" id="label-plot">
+<span id="inspect-label-plot"></span><h2><strong>label_plot</strong><a class="headerlink" href="#label-plot" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Label for output products (plots etc.) for this step.</p>
@@ -280,8 +288,8 @@
 <div class="section" id="correlation">
 <span id="inspect-correlation"></span><h2><strong>correlation</strong><a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = XX, YY</em></p>
-<p>Label specifying the correlations.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = diag</em></p>
+<p>Label(s) specifying the correlations. Use the special values ‘diag’ and ‘all’ to select only diagonal (paralell hand) or all correlations.</p>
 </div></blockquote>
 </div>
 <div class="section" id="num-cores">
@@ -305,26 +313,14 @@
 <p>Set the U-V range for data selection, e.g. ‘&gt;50’.</p>
 </div></blockquote>
 </div>
-<div class="section" id="fields">
-<span id="inspect-fields"></span><h2><strong>fields</strong><a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = bpcal, gcal</em></p>
-<p>Fields to plot. Specify by field id, index or keys like, gcal, bpcal.</p>
-</div></blockquote>
-</div>
 <div class="section" id="real-imag">
 <span id="inspect-real-imag"></span><h2><strong>real_imag</strong><a class="headerlink" href="#real-imag" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Plot real vs imaginary parts of data.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executed the real v/s imaginary data plotting.</p>
-</div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like, gcal, bpcal.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
@@ -352,11 +348,6 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes the plotting of amplitude v/s phase for data.</p>
 </div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
-</div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
@@ -380,13 +371,8 @@
 <div><p>Plot data amplitude v/s  uvwave.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data amplitude as a function of uvwave.</p>
-</div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
@@ -414,11 +400,6 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data amplitude v/s antennas.</p>
 </div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
-</div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
@@ -442,13 +423,8 @@
 <div><p>Plot data phase v/s uvwave.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data phase v/s uvwave.</p>
-</div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
@@ -476,11 +452,6 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes plotting data amplitude v/s scan number.</p>
 </div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
-</div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corrected</em></p>
@@ -504,13 +475,8 @@
 <div><p>Plot Amplitude vs Channel data.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes the plotting of amplitude v/s phase for data.</p>
-</div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
@@ -535,13 +501,8 @@
 <div><p>Plot Phase vs Chan.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Executes the plotting of amplitude v/s phase for data.</p>
-</div></blockquote>
-<p><strong>fields</strong></p>
-<blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Fields to plot. Specify by field id, index or keys like: gcal, bpcal.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
 <blockquote>
@@ -564,7 +525,14 @@
 <span id="inspect-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>(Re)generate a full HTML report at the end of this segment.</p>
+<p>(Re)generate a full HTML report at the end of this worker.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cabs">
+<span id="inspect-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
 </div>
 </div>
