@@ -390,7 +390,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *str*
 
-    The mask to apply. This can be provided by the user, but CARACal provides an existing static mask ('labelled_rfimask.pickle.npy') that is specific to MeerKAT data.
+    The mask to apply. This can be provided by the user, but CARACal also provides an existing static mask for MeerKAT, specify 'meerkat.rfimask.npy' to use it.
 
   **uvrange**
 

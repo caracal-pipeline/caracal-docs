@@ -578,7 +578,7 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
   **img_ws_multi_scale_scales**
 
-    *list* *of int*, *optional*, *default = 10, 20, 30*
+    *list* *of int*, *optional*, *default = 0, 5, 10, 20*
 
     Scales for multiscale cleaning, in pixels.
 

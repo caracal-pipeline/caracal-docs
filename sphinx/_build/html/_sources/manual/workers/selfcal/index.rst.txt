@@ -116,9 +116,9 @@ Perform self-calibration on the data.
 **ncpu**
 --------------------------------------------------
 
-  *int*, *optional*, *default = 5*
+  *int*, *optional*, *default = 0*
 
-  Number of CPUs to use.
+  Number of CPUs to use for distributed processing. If set to 0 all available CPUs are used. This parameter is passed on to the following software in the selfcal worker, WSClean for imaging, Cubical and MeqTrees for calibration, PyBDSF for source finding.
 
 
 
@@ -356,9 +356,21 @@ Perform self-calibration on the data.
 **img_multiscale_scales**
 --------------------------------------------------
 
-  *list* *of int*, *optional*, *default = 10, 20, 30*
+  *str*, *optional*, *default = ' '*
 
-  Scales of multiscale [0,10,20,etc.] in pixels.
+  Comma-separated integer scales for multiscale cleaning in pixels. If set to an empty string WSClean selects the scales automatically. These include the 0 scale, a scale calculated based on the beam size, and all scales obtained increasing the scale by a factor of 2 until the image size is reached.
+
+
+
+.. _selfcal_img_nrdeconvsubimg:
+
+--------------------------------------------------
+**img_nrdeconvsubimg**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 0*
+
+  Speed-up deconvolution by splitting the image into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the selfcal worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
 
 
 
@@ -1002,7 +1014,7 @@ Perform self-calibration on the data.
 
   **mem_frac**
 
-    *float*, *optional*, *default = 0.5*
+    *float*, *optional*, *default = 0.05*
 
     Fraction of system RAM that can be used. Used when setting automatically the chunk size.
 

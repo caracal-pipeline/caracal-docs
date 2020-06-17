@@ -135,6 +135,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-stokes"><strong>img_stokes</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-multiscale"><strong>img_multiscale</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-multiscale-scales"><strong>img_multiscale_scales</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-nrdeconvsubimg"><strong>img_nrdeconvsubimg</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-sofia-settings"><strong>img_sofia_settings</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-iter"><strong>start_iter</strong></a></li>
@@ -302,8 +303,8 @@
 <div class="section" id="ncpu">
 <span id="selfcal-ncpu"></span><h2><strong>ncpu</strong><a class="headerlink" href="#ncpu" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>int</em>, <em>optional</em>, <em>default = 5</em></p>
-<p>Number of CPUs to use.</p>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Number of CPUs to use for distributed processing. If set to 0 all available CPUs are used. This parameter is passed on to the following software in the selfcal worker, WSClean for imaging, Cubical and MeqTrees for calibration, PyBDSF for source finding.</p>
 </div></blockquote>
 </div>
 <div class="section" id="minuvw-m">
@@ -442,8 +443,15 @@
 <div class="section" id="img-multiscale-scales">
 <span id="selfcal-img-multiscale-scales"></span><h2><strong>img_multiscale_scales</strong><a class="headerlink" href="#img-multiscale-scales" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>list</em> <em>of int</em>, <em>optional</em>, <em>default = 10, 20, 30</em></p>
-<p>Scales of multiscale [0,10,20,etc.] in pixels.</p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Comma-separated integer scales for multiscale cleaning in pixels. If set to an empty string WSClean selects the scales automatically. These include the 0 scale, a scale calculated based on the beam size, and all scales obtained increasing the scale by a factor of 2 until the image size is reached.</p>
+</div></blockquote>
+</div>
+<div class="section" id="img-nrdeconvsubimg">
+<span id="selfcal-img-nrdeconvsubimg"></span><h2><strong>img_nrdeconvsubimg</strong><a class="headerlink" href="#img-nrdeconvsubimg" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Speed-up deconvolution by splitting the image into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the selfcal worker (see “ncpu” parameter above). If set to a number &gt; 1 , the number of subimages is greater than or equal to the one requested by the user.</p>
 </div></blockquote>
 </div>
 <div class="section" id="img-sofia-settings">
@@ -934,7 +942,7 @@
 </div></blockquote>
 <p><strong>mem_frac</strong></p>
 <blockquote>
-<div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.05</em></p>
 <p>Fraction of system RAM that can be used. Used when setting automatically the chunk size.</p>
 </div></blockquote>
 </div></blockquote>

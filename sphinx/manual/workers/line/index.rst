@@ -484,9 +484,9 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **wscl_multiscale_scales**
 
-    *list* *of int*, *optional*, *default = 0, 10, 20, 30*
+    *str*, *optional*, *default = ' '*
 
-    List of scales for WSClean multiscale, in units of pixels. Only used is wscl_multi_scale is set to True.
+    Comma-separated integer scales for multiscale cleaning in pixels. If set to an empty string WSClean selects the scales automatically. These include the 0 scale, a scale calculated based on the beam size, and all scales obtained increasing the scale by a factor of 2 until the image size is reached.
 
   **wscl_multiscale_bias**
 
