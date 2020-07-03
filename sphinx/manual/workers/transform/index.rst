@@ -28,6 +28,18 @@ Split, average and/or calibrate the data.
 
 
 
+.. _transform_field:
+
+--------------------------------------------------
+**field**
+--------------------------------------------------
+
+  *str*, *optional*, *default = target*
+
+  Fields to be split off from the input MS (see split_field below) or whose phase centre should be changed (see changecentre below). Options are (separately) 'target', 'calibrators', 'bpcal', 'gcal' and 'fcal'. Also valid is any combination of 'bpcal', 'gcal' and 'fcal' in a comma-separated string (e.g. 'bpcal, fcal').
+
+
+
 .. _transform_label_in:
 
 --------------------------------------------------
@@ -87,12 +99,6 @@ Split, average and/or calibrate the data.
     *bool*, *optional*, *default = True*
 
     Enable the 'split_field' segment.
-
-  **field**
-
-    *str*, *optional*, *default = target*
-
-    Fields to be split off from the input MS. Options are (separately) 'target', 'calibrators', 'bpcal', 'gcal' and 'fcal'. Also valid is any combination of 'bpcal', 'gcal' and 'fcal' in a comma-separated string (e.g. 'bpcal, fcal').
 
   **time_avg**
 

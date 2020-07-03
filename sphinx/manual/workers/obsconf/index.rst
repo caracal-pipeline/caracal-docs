@@ -28,19 +28,19 @@ Set up some basic information about the observation(s).
 
     *bool*
 
-    Execute the obsconf worker.
+    Enable segment 'obsinfo'.
 
   **listobs**
 
     *bool*, *optional*, *default = True*
 
-    Run the CASA 'listobs' task to get observation information.
+    Run the CASA 'listobs' task to write the observation information to an TXT file. This is not executed if the TXT file already exists.
 
   **summary_json**
 
     *bool*, *optional*, *default = True*
 
-    Run the MSUtils summary function to get observation information written as a JSON file, which can then be used to automatically configure pipeline.
+    Run the MSUtils summary function to get observation information written as a JSON file, which can then be used to automatically configure pipeline. This is not executed if the JSON file already exists.
 
   **vampirisms**
 
@@ -56,7 +56,7 @@ Set up some basic information about the observation(s).
 
       *bool*, *optional*, *default = True*
 
-      Enable segment 'plot_elevation_tracks'.
+      Enable segment 'plot_elevation_tracks'. This is not executed if the elevation plots already exist.
 
     **plotter**
 

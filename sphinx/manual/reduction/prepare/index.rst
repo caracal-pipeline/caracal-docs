@@ -21,31 +21,23 @@ names. This is done through the :ref:`general` and :ref:`getdata` workers.
 
 In the :ref:`general` worker users give:
 
-* if necessary, the *rawdatadir* directory where to find the files that should be converted to .MS
-  format (:ref:`general: rawdatadir <general_rawdatadir>`);
-* the *msdir* directory where to find/write .MS files (:ref:`general: msdir <general_msdir>`);
+* the *msdir* directory where to find/write .MS files (:ref:`general: msdir <general_msdir>`) with the
+  only exception of read-only input .MS files, which can be located at *rawdatadir* (see below);
+* if necessary, the *rawdatadir* directory where to find the read-only input .MS files, which
+  facilitates the processing of large files on shared machines without having to move them
+  (:ref:`general: rawdatadir <general_rawdatadir>`);
 * the *output* directory where to write all output data products (:ref:`general: output <general_output>`);
 * the *input* directory where to find various input files, such as AOflagger strategies etc.
   (:ref:`general: input <general_input>`);
 * the prefix for the output data products (:ref:`general: prefix <general_prefix>`).
 
-If they do not exist yet, the above directories can be created by setting
+If they do not exist yet, the directories *msdir*, *input* and *output* can be created by setting
 :ref:`general: prep_workspace <general_prep_workspace>` to *true*. This also copies
 files from the caracal/data/meerkat_files directory to the *input* directory set above.
 
 In the :ref:`getdata` worker users give the name of the .MS files to be processed
 (:ref:`getdata: dataid <getdata_dataid>`). Furthermore, the following optional steps are available:
-
-* convert from HDF5/MVF format to .MS (:ref:`getdata: mvftoms <getdata_mvftoms>`);
-  this step includes the following additional conversion options:
-
-  + create a .MS.TAR file,
-  + convert only visibilities in a selected channel range,
-  + discard cross-polarisation products;
-
-* untar an existing .MS.TAR file (:ref:`getdata: untar <getdata_untar>`);
-* EXPERIMENTAL -- virtually concatenate all .MS input files (:ref:`getdata: combine <getdata_combine>`);
-  optionally users can delete an existing concatenate file and tar/untar the concatenated file.
+Optionally, the input files can be untar-ed (:ref:`getdata: untar <getdata_untar>`).
 
 --------
 Metadata

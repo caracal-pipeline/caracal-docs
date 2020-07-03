@@ -28,37 +28,15 @@ Download and/or convert/unarchive data so that it is in the measurement set (MS)
 
 
 
-.. _getdata_mvftoms:
+.. _getdata_extension:
 
 --------------------------------------------------
-**mvftoms**
+**extension**
 --------------------------------------------------
 
-  For MeerKAT HDFS files only -- Convert HDF5/MVF files in data_path (specified for the general worker) to MS files. The latter are written to msdir (also as specified for the general worker), and an MS.TAR file is created.
+  *str*, *optional*, *default = ms*
 
-  **enable**
-
-    *bool*, *optional*, *default = False*
-
-    Enable the 'mvftoms' segment.
-
-  **tar**
-
-    *bool*, *optional*, *default = False*
-
-    Create a tarball of the converted MS.
-
-  **chanrange**
-
-    *str*, *optional*, *default = all*
-
-    Only extract channels in this range (0-based, inclusive; comma-separated string). It is also possible to specify 'all'.
-
-  **fullpol**
-
-    *bool*, *optional*, *default = False*
-
-    Extract all four correlations instead of only the XX and YY correlations.
+  Extension of raw (input) visibility data
 
 
 
@@ -81,60 +59,6 @@ Download and/or convert/unarchive data so that it is in the measurement set (MS)
     *str*, *optional*, *default = -xvf*
 
     The tar options to pass to the 'tar' command.
-
-
-
-.. _getdata_combine:
-
---------------------------------------------------
-**combine**
---------------------------------------------------
-
-  Virtually concatenate MSs and proceed with the combined MS.
-
-  **enable**
-
-    *bool*, *optional*, *default = False*
-
-    Enable the 'combine' segment.
-
-  **reset**
-
-    *bool*, *optional*, *default = False*
-
-    Delete concatenated MS if it exists. Otherwise, proceed with the existing MS.
-
-  **tar**
-
-    Create a tarball of the concatenated MS.
-
-    **enable**
-
-      *bool*, *optional*, *default = False*
-
-      Enable the 'tar' segment.
-
-    **tar_options**
-
-      *str*, *optional*, *default = -cvf*
-
-      The tar options to pass to the 'tar' command.
-
-  **untar**
-
-    Unarchive MS from an archive file.
-
-    **enable**
-
-      *bool*, *optional*, *default = False*
-
-      Enable the 'untar' segment.
-
-    **tar_options**
-
-      *str*, *optional*, *default = -xvf*
-
-      The tar options to pass to the 'tar' command.
 
 
 

@@ -101,8 +101,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../flag/index.html">flag</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">general</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#title"><strong>title</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rawdatadir"><strong>rawdatadir</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#msdir"><strong>msdir</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rawdatadir"><strong>rawdatadir</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#input"><strong>input</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output"><strong>output</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#prefix"><strong>prefix</strong></a></li>
@@ -209,18 +209,18 @@
 <p>An optional project title.</p>
 </div></blockquote>
 </div>
-<div class="section" id="rawdatadir">
-<span id="general-rawdatadir"></span><h2><strong>rawdatadir</strong><a class="headerlink" href="#rawdatadir" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Location where CARACal (over-)writes HDF5 files and JSON info files downloaded by the getdata worker.</p>
-</div></blockquote>
-</div>
 <div class="section" id="msdir">
 <span id="general-msdir"></span><h2><strong>msdir</strong><a class="headerlink" href="#msdir" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = msdir</em></p>
-<p>Location where CARACal will write and expect to find measurement set (.MS) files.</p>
+<p>Location where CARACal will write and expect to find .MS files. The only exception is that of read-only input .MS files, which can be located in rawdatadir (see below).</p>
+</div></blockquote>
+</div>
+<div class="section" id="rawdatadir">
+<span id="general-rawdatadir"></span><h2><strong>rawdatadir</strong><a class="headerlink" href="#rawdatadir" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>If set to an empty string this parameter is ignored. If not set to an empty string, this is the directory where CARACal expects to find the input .MS files. This directory and the input .MS files within it can be reado-only, which makes it possible to work on large data without moving them within a shared machine. Any .MS file further created by CARACal is still written to msdir (see above).</p>
 </div></blockquote>
 </div>
 <div class="section" id="input">

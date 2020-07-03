@@ -100,13 +100,19 @@ Diagnostic plots for data
 
     *list* *of str*, *optional*, *default = ' '*
 
-    Sequence of shadems plot specifications, made per field
+    Sequence of shadems plot specifications, made per each field
 
   **plots_by_corr**
 
     *list* *of str*, *optional*, *default = ' '*
 
-    Sequence of shadems plot specifications, made per correlation
+    Sequence of shadems plot specifications, made per each correlation
+
+  **plots**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Sequence of freeform shadems plot specifications
 
   **ignore_errors**
 

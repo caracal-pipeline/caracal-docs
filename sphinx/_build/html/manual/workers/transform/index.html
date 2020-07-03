@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">transform</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-out"><strong>label_out</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
@@ -207,6 +208,13 @@
 <p>Execute the transform worker.</p>
 </div></blockquote>
 </div>
+<div class="section" id="field">
+<span id="transform-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = target</em></p>
+<p>Fields to be split off from the input MS (see split_field below) or whose phase centre should be changed (see changecentre below). Options are (separately) ‘target’, ‘calibrators’, ‘bpcal’, ‘gcal’ and ‘fcal’. Also valid is any combination of ‘bpcal’, ‘gcal’ and ‘fcal’ in a comma-separated string (e.g. ‘bpcal, fcal’).</p>
+</div></blockquote>
+</div>
 <div class="section" id="label-in">
 <span id="transform-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -245,11 +253,6 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Enable the ‘split_field’ segment.</p>
-</div></blockquote>
-<p><strong>field</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = target</em></p>
-<p>Fields to be split off from the input MS. Options are (separately) ‘target’, ‘calibrators’, ‘bpcal’, ‘gcal’ and ‘fcal’. Also valid is any combination of ‘bpcal’, ‘gcal’ and ‘fcal’ in a comma-separated string (e.g. ‘bpcal, fcal’).</p>
 </div></blockquote>
 <p><strong>time_avg</strong></p>
 <blockquote>

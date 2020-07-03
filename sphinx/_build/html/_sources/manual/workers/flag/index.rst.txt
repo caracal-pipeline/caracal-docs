@@ -400,6 +400,28 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
 
 
+.. _flag_flag_manual:
+
+--------------------------------------------------
+**flag_manual**
+--------------------------------------------------
+
+  Manually flag subsets of data, using a syntax based on the CASA flagdata task
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the 'flag_manual' segment.
+
+  **rules**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    Sequence of flagging rules, of the form "ms_pattern key:value key:value"
+
+
+
 .. _flag_flag_rfi:
 
 --------------------------------------------------

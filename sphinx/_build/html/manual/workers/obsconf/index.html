@@ -207,17 +207,17 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em></p>
-<p>Execute the obsconf worker.</p>
+<p>Enable segment ‘obsinfo’.</p>
 </div></blockquote>
 <p><strong>listobs</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Run the CASA ‘listobs’ task to get observation information.</p>
+<p>Run the CASA ‘listobs’ task to write the observation information to an TXT file. This is not executed if the TXT file already exists.</p>
 </div></blockquote>
 <p><strong>summary_json</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Run the MSUtils summary function to get observation information written as a JSON file, which can then be used to automatically configure pipeline.</p>
+<p>Run the MSUtils summary function to get observation information written as a JSON file, which can then be used to automatically configure pipeline. This is not executed if the JSON file already exists.</p>
 </div></blockquote>
 <p><strong>vampirisms</strong></p>
 <blockquote>
@@ -230,7 +230,7 @@
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Enable segment ‘plot_elevation_tracks’.</p>
+<p>Enable segment ‘plot_elevation_tracks’. This is not executed if the elevation plots already exist.</p>
 </div></blockquote>
 <p><strong>plotter</strong></p>
 <blockquote>

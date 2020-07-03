@@ -28,18 +28,6 @@ General pipeline information, including data IDs, and prefixes for output files.
 
 
 
-.. _general_rawdatadir:
-
---------------------------------------------------
-**rawdatadir**
---------------------------------------------------
-
-  *str*, *optional*, *default = ' '*
-
-  Location where CARACal (over-)writes HDF5 files and JSON info files downloaded by the getdata worker.
-
-
-
 .. _general_msdir:
 
 --------------------------------------------------
@@ -48,7 +36,19 @@ General pipeline information, including data IDs, and prefixes for output files.
 
   *str*, *optional*, *default = msdir*
 
-  Location where CARACal will write and expect to find measurement set (.MS) files.
+  Location where CARACal will write and expect to find .MS files. The only exception is that of read-only input .MS files, which can be located in rawdatadir (see below).
+
+
+
+.. _general_rawdatadir:
+
+--------------------------------------------------
+**rawdatadir**
+--------------------------------------------------
+
+  *str*, *optional*, *default = ' '*
+
+  If set to an empty string this parameter is ignored. If not set to an empty string, this is the directory where CARACal expects to find the input .MS files. This directory and the input .MS files within it can be reado-only, which makes it possible to work on large data without moving them within a shared machine. Any .MS file further created by CARACal is still written to msdir (see above).
 
 
 
