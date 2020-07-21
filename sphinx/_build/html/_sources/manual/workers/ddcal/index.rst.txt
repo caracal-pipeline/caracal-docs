@@ -52,6 +52,18 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
 
 
+.. _ddcal_shared_mem:
+
+--------------------------------------------------
+**shared_mem**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 400*
+
+  Shared memory for tasks in units of GBs. Does not work with singularity.
+
+
+
 .. _ddcal_image_dd:
 
 --------------------------------------------------
@@ -426,7 +438,7 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
   **dist_nworker**
 
-    *int*, *optional*, *default = 25*
+    *int*, *optional*, *default = 0*
 
     Number of processes.
 

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,28 +11,30 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Flagging and flag versions" href="../flag/index.html" />
@@ -81,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -120,6 +122,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -158,7 +161,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Manual</a> &raquo;</li>
         
@@ -194,15 +197,15 @@
 names. This is done through the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> and <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a> workers.</p>
 <p>In the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> worker users give:</p>
 <ul class="simple">
-<li>the <em>msdir</em> directory where to find/write .MS files (<a class="reference internal" href="../../workers/general/index.html#general-msdir"><span class="std std-ref">general: msdir</span></a>) with the
-only exception of read-only input .MS files, which can be located at <em>rawdatadir</em> (see below);</li>
-<li>if necessary, the <em>rawdatadir</em> directory where to find the read-only input .MS files, which
+<li><p>the <em>msdir</em> directory where to find/write .MS files (<a class="reference internal" href="../../workers/general/index.html#general-msdir"><span class="std std-ref">general: msdir</span></a>) with the
+only exception of read-only input .MS files, which can be located at <em>rawdatadir</em> (see below);</p></li>
+<li><p>if necessary, the <em>rawdatadir</em> directory where to find the read-only input .MS files, which
 facilitates the processing of large files on shared machines without having to move them
-(<a class="reference internal" href="../../workers/general/index.html#general-rawdatadir"><span class="std std-ref">general: rawdatadir</span></a>);</li>
-<li>the <em>output</em> directory where to write all output data products (<a class="reference internal" href="../../workers/general/index.html#general-output"><span class="std std-ref">general: output</span></a>);</li>
-<li>the <em>input</em> directory where to find various input files, such as AOflagger strategies etc.
-(<a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>);</li>
-<li>the prefix for the output data products (<a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>).</li>
+(<a class="reference internal" href="../../workers/general/index.html#general-rawdatadir"><span class="std std-ref">general: rawdatadir</span></a>);</p></li>
+<li><p>the <em>output</em> directory where to write all output data products (<a class="reference internal" href="../../workers/general/index.html#general-output"><span class="std std-ref">general: output</span></a>);</p></li>
+<li><p>the <em>input</em> directory where to find various input files, such as AOflagger strategies etc.
+(<a class="reference internal" href="../../workers/general/index.html#general-input"><span class="std std-ref">general: input</span></a>);</p></li>
+<li><p>the prefix for the output data products (<a class="reference internal" href="../../workers/general/index.html#general-prefix"><span class="std std-ref">general: prefix</span></a>).</p></li>
 </ul>
 <p>If they do not exist yet, the directories <em>msdir</em>, <em>input</em> and <em>output</em> can be created by setting
 <a class="reference internal" href="../../workers/general/index.html#general-prep-workspace"><span class="std std-ref">general: prep_workspace</span></a> to <em>true</em>. This also copies
@@ -218,10 +221,10 @@ info about the content of the input .MS files through the <a class="reference in
 Target and calibrators name can be set by editing the relevant parameters of
 this worker:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-target"><span class="std std-ref">obsconf: target</span></a></li>
-<li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-bpcal"><span class="std std-ref">obsconf: bpcal</span></a></li>
-<li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-fcal"><span class="std std-ref">obsconf: fcal</span></a></li>
-<li><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-gcal"><span class="std std-ref">obsconf: gcal</span></a></li>
+<li><p><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-target"><span class="std std-ref">obsconf: target</span></a></p></li>
+<li><p><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-bpcal"><span class="std std-ref">obsconf: bpcal</span></a></p></li>
+<li><p><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-fcal"><span class="std std-ref">obsconf: fcal</span></a></p></li>
+<li><p><a class="reference internal" href="../../workers/obsconf/index.html#obsconf-gcal"><span class="std std-ref">obsconf: gcal</span></a></p></li>
 </ul>
 <p>In fact, CARACal can automatically extract most of these info from the .MS files
 themselves. To do so users should enable the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf-obsinfo"><span class="std std-ref">obsconf: obsinfo</span></a>
@@ -261,11 +264,19 @@ taken with the Sun below the horizon.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, CARACal team
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -276,7 +287,6 @@ taken with the Sun below the horizon.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

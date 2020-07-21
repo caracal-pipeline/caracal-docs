@@ -188,6 +188,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
+  **spw**
+
+    *str*, *optional*, *default = ' '*
+
+    Only use this subset(s) of the band to compute 'KGF' gains
+
   **b_fillgaps**
 
     *int*, *optional*, *default = 70*
@@ -303,6 +309,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
     *int*, *optional*, *default = 70*
 
     Fill flagged solution channels by interpolation.
+
+  **spw**
+
+    *str*, *optional*, *default = ' '*
+
+    Only use this subset(s) of the band to compute 'KGF' gains
 
   **plotgains**
 

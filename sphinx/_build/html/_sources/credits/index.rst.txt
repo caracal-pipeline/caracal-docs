@@ -10,6 +10,7 @@ Acknowledgements
 .. toctree::
    :maxdepth: 1
  
+   team/index.rst
    credits/index.rst
    crediting/index.rst
    caracal_logos/index.rst

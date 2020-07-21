@@ -74,6 +74,18 @@ Download and/or convert/unarchive data so that it is in the measurement set (MS)
 
 
 
+.. _getdata_ignore_missing:
+
+--------------------------------------------------
+**ignore_missing**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = False*
+
+  Ignore missing matches/files in the dataid list and proceed with the files that were found. If none can be found, an exception will be raised refardless.
+
+
+
 .. _getdata_cabs:
 
 --------------------------------------------------

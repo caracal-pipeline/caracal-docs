@@ -726,6 +726,18 @@ Perform self-calibration on the data.
 
     Width of the window used to measure the local rms when creating the clean mask. The window width is in pixels for clean_mask_method = 'sofia', and in PSFs for clean_mask_method = 'wsclean'.
 
+  **ncpu_img**
+
+    *int*, *optional*, *default = 0*
+
+    Number of threads used by wsclean; has a default value of '0'. If specified in the configuration file, will overrule the value set by ncpu, which is the global default for both cubical and wsclean
+
+  **absmem**
+
+    *float*, *optional*, *default = 100.0*
+
+    Specifies a fixed amount of memory in gigabytes.
+
 
 
 .. _selfcal_extract_sources:
