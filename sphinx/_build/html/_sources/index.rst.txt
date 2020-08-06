@@ -7,8 +7,9 @@
 CARACal
 =======
  
-CARACal is a pipeline for radio interferometry data reduction. 
-It works on data from any radio interferometer as long as they are in "measurement set" format.
+CARACal stands for Containerized Automated Radio Astronomy Calibration and
+is a pipeline for radio interferometry data reduction. It works on data from
+any radio interferometer as long as they are in "measurement set" format.
 
 *A few sections of this documentation are still preliminary. Please bear with us.*
  

@@ -109,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-name"><strong>line_name</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#restfreq"><strong>restfreq</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncpu"><strong>ncpu</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#overwrite-flagvers"><strong>overwrite_flagvers</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subtractmodelcol"><strong>subtractmodelcol</strong></a></li>
@@ -239,6 +240,13 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.420405752GHz</em></p>
 <p>Spectral line rest frequency.</p>
+</div></blockquote>
+</div>
+<div class="section" id="ncpu">
+<span id="line-ncpu"></span><h2><strong>ncpu</strong><a class="headerlink" href="#ncpu" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Number of CPUs to use for distributed processing. If set to 0 all available CPUs are used. This parameter is currently only passed on to WSClean for line imaging.</p>
 </div></blockquote>
 </div>
 <div class="section" id="rewind-flags">
@@ -581,6 +589,11 @@
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.6</em></p>
 <p>Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.</p>
 </div></blockquote>
+<p><strong>wscl_nrdeconvsubimg</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Speed-up deconvolution by splitting each channel into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the line worker (see “ncpu” parameter above). If set to a number &gt; 1 , the number of subimages is greater than or equal to the one requested by the user.</p>
+</div></blockquote>
 <p><strong>casa_thr</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 10mJy</em></p>
@@ -617,6 +630,16 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Whether or not to apply the primary-beam correction to the image cube.</p>
+</div></blockquote>
+<p><strong>pb_type</strong></p>
+<blockquote>
+<div><p><em>{“gauss”, “mauch”}</em>, <em>optional</em>, <em>default = gauss</em></p>
+<p>Choose between a Gaussian (gauss) primary beam model or the MeerKAT Mauch et al. (2020) model (mauch).</p>
+</div></blockquote>
+<p><strong>dish_size</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 13.5</em></p>
+<p>Dish diameter in meters. Only used in the Gaussian primary beam model</p>
 </div></blockquote>
 </div></blockquote>
 </div>

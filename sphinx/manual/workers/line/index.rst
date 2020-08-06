@@ -64,6 +64,18 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
+.. _line_ncpu:
+
+--------------------------------------------------
+**ncpu**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 0*
+
+  Number of CPUs to use for distributed processing. If set to 0 all available CPUs are used. This parameter is currently only passed on to WSClean for line imaging.
+
+
+
 .. _line_rewind_flags:
 
 --------------------------------------------------
@@ -494,6 +506,12 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Parameter to set the bias during multiscale cleaning, where a lower bias will give preference to larger angular scales.
 
+  **wscl_nrdeconvsubimg**
+
+    *int*, *optional*, *default = 0*
+
+    Speed-up deconvolution by splitting each channel into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the line worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
+
   **casa_thr**
 
     *str*, *optional*, *default = 10mJy*
@@ -543,6 +561,18 @@ Process visibilities for spectral line work and create line cubes and images.
     *bool*, *optional*, *default = False*
 
     Whether or not to apply the primary-beam correction to the image cube.
+
+  **pb_type**
+
+    *{"gauss", "mauch"}*, *optional*, *default = gauss*
+
+    Choose between a Gaussian (gauss) primary beam model or the MeerKAT Mauch et al. (2020) model (mauch).
+
+  **dish_size**
+
+    *float*, *optional*, *default = 13.5*
+
+    Dish diameter in meters. Only used in the Gaussian primary beam model
 
 
 
