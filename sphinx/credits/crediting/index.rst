@@ -22,7 +22,7 @@ In journal papers:
 ++++++++++++++++++
 
 * using the following phrase:|br|
-  *"(Part of) the data published here have been reduced using the CARACal pipeline, partially supported by ERC Starting grant number 679629 "FORNAX", MAECI Grant Number ZA18GR02, DST-NRF Grant Number 113121 as part of the ISARP Joint Research Scheme, and BMBF project 05A17PC2 for D-MeerKAT. Information about CARACal can be obtained online under the URL: https://caracal.readthedocs.io"*
+  *"(Part of) the data published here have been reduced using the CARACal pipeline, partially supported by ERC Starting grant number 679627 "FORNAX", MAECI Grant Number ZA18GR02, DST-NRF Grant Number 113121 as part of the ISARP Joint Research Scheme, and BMBF project 05A17PC2 for D-MeerKAT. Information about CARACal can be obtained online under the URL: https://caracal.readthedocs.io"*
   
 * and citing the following publication(s), bibtex see below:|br|
   *Józsa, G. I. G., White, S. V., Thorat, K. , Smirnov, O. M., Serra, P., Ramatsoku, M., Ramaila, A. J. T., Perkins, S. J.,  Molnár, D. Cs., Makhathini, S., Maccagni, F. M., Kleiner, D., Kamphuis, P., Hugo, B. V., de Blok, W. J. G., Andati, L. A. L. 2020, ASPC, 527, 635*
