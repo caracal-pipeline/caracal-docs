@@ -136,6 +136,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Set the field to execute the set_model segment on. Specify either the field number, field name or field specification as per obsconf worker (e.g., "fcal").
 
+  **tile_size**
+
+    *int*, *optional*, *default = 128*
+
+    Size of tile (time bins) to process. Can be used to reduce memory footprint.
+
   **threads**
 
     *int*, *optional*, *default = 8*

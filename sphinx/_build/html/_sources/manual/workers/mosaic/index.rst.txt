@@ -128,6 +128,18 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
 
 
 
+.. _mosaic_pb_type:
+
+--------------------------------------------------
+**pb_type**
+--------------------------------------------------
+
+  *{"gaussian", "mauchian"}*, *optional*, *default = gaussian*
+
+  If no continuum pb.fits are already in place, user needs to choose whether a rudimentary primary beam is created ('gaussian') or one that follows the model of Mauch et al. (2020), relevant for MeerKAT data ('mauchian').
+
+
+
 .. _mosaic_dish_diameter:
 
 --------------------------------------------------
@@ -136,7 +148,7 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
 
   *float*, *optional*, *default = 13.5*
 
-  If no continuum pb.fits are already in place, user needs to specify the dish diameter (in units of m) so that rudimentary primary beams can be created.
+  If 'pb_type' has been set to 'gaussian', user needs to specify the dish diameter (in units of m).
 
 
 
@@ -148,7 +160,7 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
 
   *float*, *optional*, *default = 1383685546.875*
 
-  If no continuum pb.fits are already in place, user needs to specify the reference frequency (in units of Hz) so that rudimentary primary beams can be created.
+  If no continuum pb.fits are already in place, user needs to specify the reference frequency (in units of Hz) so that primary beams can be created.
 
 
 

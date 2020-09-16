@@ -604,7 +604,7 @@ Process visibilities for spectral line work and create line cubes and images.
 **sofia**
 --------------------------------------------------
 
-  Run SoFiA source-finder to produce a detection mask, moment images and catalogues.
+  Run SoFiA source-finder on the final HI cubes to produce a detection mask, moment images and catalogues. Note that these settings are not used to make clean masks.
 
   **enable**
 
