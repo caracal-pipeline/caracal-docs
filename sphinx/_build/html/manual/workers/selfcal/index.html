@@ -125,6 +125,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-cell"><strong>img_cell</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-weight"><strong>img_weight</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-robust"><strong>img_robust</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-mfs-weighting"><strong>img_mfs_weighting</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-taper"><strong>img_taper</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-maxuv-l"><strong>img_maxuv_l</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-transuv-l"><strong>img_transuv_l</strong></a></li>
@@ -138,6 +139,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-multiscale"><strong>img_multiscale</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-multiscale-scales"><strong>img_multiscale_scales</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-nrdeconvsubimg"><strong>img_nrdeconvsubimg</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-nwlayers-factor"><strong>img_nwlayers_factor</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-sofia-settings"><strong>img_sofia_settings</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-iter"><strong>start_iter</strong></a></li>
@@ -366,6 +368,13 @@
 <p>Briggs robust value.</p>
 </div></blockquote>
 </div>
+<div class="section" id="img-mfs-weighting">
+<span id="selfcal-img-mfs-weighting"></span><h2><strong>img_mfs_weighting</strong><a class="headerlink" href="#img-mfs-weighting" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = false</em></p>
+<p>Enables MF weighting. Default is enabled.</p>
+</div></blockquote>
+</div>
 <div class="section" id="img-taper">
 <span id="selfcal-img-taper"></span><h2><strong>img_taper</strong><a class="headerlink" href="#img-taper" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -426,7 +435,7 @@
 <span id="selfcal-img-specfit-nrcoeff"></span><h2><strong>img_specfit_nrcoeff</strong><a class="headerlink" href="#img-specfit-nrcoeff" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1.</p>
+<p>Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1. Use 0 to disable spectral fitting. Note that spectral fitting is required if you want to do subsequent continumm subtraction using crystalball.</p>
 </div></blockquote>
 </div>
 <div class="section" id="img-stokes">
@@ -455,6 +464,13 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Speed-up deconvolution by splitting the image into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the selfcal worker (see “ncpu” parameter above). If set to a number &gt; 1 , the number of subimages is greater than or equal to the one requested by the user.</p>
+</div></blockquote>
+</div>
+<div class="section" id="img-nwlayers-factor">
+<span id="selfcal-img-nwlayers-factor"></span><h2><strong>img_nwlayers_factor</strong><a class="headerlink" href="#img-nwlayers-factor" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 3</em></p>
+<p>Use automatic calculation of the number of w-layers, but multiple that number by the given factor. This can e.g. be useful for increasing w-accuracy. In practice, if there are more cores available than the number of w-layers asked for then the number of w-layers used will equal the number of cores available.</p>
 </div></blockquote>
 </div>
 <div class="section" id="img-sofia-settings">

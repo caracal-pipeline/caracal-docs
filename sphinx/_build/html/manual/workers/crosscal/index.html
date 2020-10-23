@@ -333,10 +333,15 @@
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘’, ‘’, scan</em></p>
 <p>For each step in ‘order’ above, set along what axis the data should be combined before solving. Options are ‘’ (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), ‘obs’, ‘scan’, ‘spw’, ‘field’. To combine along multiple axes use comma-separated axis names in a single string, e.g., ‘obs,scan’. This setting is only relevant for the steps of type K, G and B included in ‘order’ above. For A steps this setting is ignored and an empty string may be used.</p>
 </div></blockquote>
-<p><strong>spw</strong></p>
+<p><strong>spw_k</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Only use this subset(s) of the band to compute ‘KGF’ gains</p>
+<p>Only use this subset(s) of the band to compute ‘K’ gains. Default uses full band</p>
+</div></blockquote>
+<p><strong>spw_g</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Only use this subset(s) of the band to compute ‘GF’ gains. Default uses full band</p>
 </div></blockquote>
 <p><strong>b_fillgaps</strong></p>
 <blockquote>
@@ -415,7 +420,7 @@
 </div></blockquote>
 <p><strong>solint</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = 120s, inf, None 120s</em></p>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = 120s, inf, None, 120s</em></p>
 <p>For each step in ‘order’ above, set the solution interval. Set to ‘inf’ to obtain a single solution (see also ‘combine’ below). Include time units, e.g., ‘120s’ or ‘2min’.</p>
 </div></blockquote>
 <p><strong>combine</strong></p>
@@ -433,10 +438,15 @@
 <div><p><em>int</em>, <em>optional</em>, <em>default = 70</em></p>
 <p>Fill flagged solution channels by interpolation.</p>
 </div></blockquote>
-<p><strong>spw</strong></p>
+<p><strong>spw_k</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Only use this subset(s) of the band to compute ‘KGF’ gains</p>
+<p>Only use this subset(s) of the band to compute ‘K’ gains. Default uses full band</p>
+</div></blockquote>
+<p><strong>spw_g</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Only use this subset(s) of the band to compute ‘GF’ gains. Default uses full band</p>
 </div></blockquote>
 <p><strong>plotgains</strong></p>
 <blockquote>

@@ -218,6 +218,18 @@ Perform self-calibration on the data.
 
 
 
+.. _selfcal_img_mfs_weighting:
+
+--------------------------------------------------
+**img_mfs_weighting**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = false*
+
+  Enables MF weighting. Default is enabled.
+
+
+
 .. _selfcal_img_taper:
 
 --------------------------------------------------
@@ -322,7 +334,7 @@ Perform self-calibration on the data.
 
   *int*, *optional*, *default = 2*
 
-  Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1.
+  Number of spectral polynomial terms to fit to each clean component. This is equal to the order of the polynomial plus 1. Use 0 to disable spectral fitting. Note that spectral fitting is required if you want to do subsequent continumm subtraction using crystalball.
 
 
 
@@ -371,6 +383,18 @@ Perform self-calibration on the data.
   *int*, *optional*, *default = 0*
 
   Speed-up deconvolution by splitting the image into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the selfcal worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
+
+
+
+.. _selfcal_img_nwlayers_factor:
+
+--------------------------------------------------
+**img_nwlayers_factor**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 3*
+
+  Use automatic calculation of the number of w-layers, but multiple that number by the given factor. This can e.g. be useful for increasing w-accuracy. In practice, if there are more cores available than the number of w-layers asked for then the number of w-layers used will equal the number of cores available.
 
 
 

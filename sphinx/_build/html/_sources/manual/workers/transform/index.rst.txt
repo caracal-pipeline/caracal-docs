@@ -48,7 +48,7 @@ Split, average and/or calibrate the data.
 
   *str*, *optional*, *default = ' '*
 
-  Label of the input dataset.
+  Label of the input dataset. If split_field/changecentre below are enabled, label_in must be a single value. Else, if concat below is enabled, label_in must include at least two comma-separated values.
 
 
 
@@ -70,7 +70,7 @@ Split, average and/or calibrate the data.
 **rewind_flags**
 --------------------------------------------------
 
-  Rewind flags to specified version.
+  Rewind flags to specified version. Only works with a single-valued label_in (i.e., it does not loop over multiple comma-separated values in label_in).
 
   **enable**
 
@@ -123,6 +123,12 @@ Split, average and/or calibrate the data.
     *str*, *optional*, *default = ' '*
 
     Select the correlations, e.g. 'XX', 'YY'. Setting this to '' means that all correlations are selected.
+
+  **scan**
+
+    *str*, *optional*, *default = ' '*
+
+    Select the scan(s), e.g. '0,2,5'. Setting this to '' means that all scans are selected.
 
   **create_specweights**
 
@@ -185,6 +191,22 @@ Split, average and/or calibrate the data.
     *str*, *optional*, *default = 0d0m0.0s*
 
     J2000 Dec of the new phase centre, in the format XXdXXmXX.XXs .
+
+
+
+.. _transform_concat:
+
+--------------------------------------------------
+**concat**
+--------------------------------------------------
+
+  For each input .MS and target, concatenate together all .MS files with the different labels included in label_in (comma-separated values). The MS files are concatenated along the frequency axis. This only works if the frequency ranges covered by the MS files are contiguous and if the number of channels is the same for all MS files.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the 'concat' segment.
 
 
 

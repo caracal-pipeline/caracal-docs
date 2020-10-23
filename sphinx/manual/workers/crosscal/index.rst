@@ -194,11 +194,17 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
-  **spw**
+  **spw_k**
 
     *str*, *optional*, *default = ' '*
 
-    Only use this subset(s) of the band to compute 'KGF' gains
+    Only use this subset(s) of the band to compute 'K' gains. Default uses full band
+
+  **spw_g**
+
+    *str*, *optional*, *default = ' '*
+
+    Only use this subset(s) of the band to compute 'GF' gains. Default uses full band
 
   **b_fillgaps**
 
@@ -294,7 +300,7 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
   **solint**
 
-    *list* *of str*, *optional*, *default = 120s, inf, None 120s*
+    *list* *of str*, *optional*, *default = 120s, inf, None, 120s*
 
     For each step in 'order' above, set the solution interval. Set to 'inf' to obtain a single solution (see also 'combine' below). Include time units, e.g., '120s' or '2min'.
 
@@ -316,11 +322,17 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Fill flagged solution channels by interpolation.
 
-  **spw**
+  **spw_k**
 
     *str*, *optional*, *default = ' '*
 
-    Only use this subset(s) of the band to compute 'KGF' gains
+    Only use this subset(s) of the band to compute 'K' gains. Default uses full band
+
+  **spw_g**
+
+    *str*, *optional*, *default = ' '*
+
+    Only use this subset(s) of the band to compute 'GF' gains. Default uses full band
 
   **plotgains**
 

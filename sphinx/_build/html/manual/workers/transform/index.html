@@ -118,6 +118,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#rewind-flags"><strong>rewind_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#split-field"><strong>split_field</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#changecentre"><strong>changecentre</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concat"><strong>concat</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#obsinfo"><strong>obsinfo</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
@@ -222,7 +223,7 @@
 <span id="transform-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Label of the input dataset.</p>
+<p>Label of the input dataset. If split_field/changecentre below are enabled, label_in must be a single value. Else, if concat below is enabled, label_in must include at least two comma-separated values.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-out">
@@ -235,7 +236,7 @@
 <div class="section" id="rewind-flags">
 <span id="transform-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Rewind flags to specified version.</p>
+<div><p>Rewind flags to specified version. Only works with a single-valued label_in (i.e., it does not loop over multiple comma-separated values in label_in).</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
@@ -276,6 +277,11 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Select the correlations, e.g. ‘XX’, ‘YY’. Setting this to ‘’ means that all correlations are selected.</p>
+</div></blockquote>
+<p><strong>scan</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Select the scan(s), e.g. ‘0,2,5’. Setting this to ‘’ means that all scans are selected.</p>
 </div></blockquote>
 <p><strong>create_specweights</strong></p>
 <blockquote>
@@ -326,6 +332,17 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 0d0m0.0s</em></p>
 <p>J2000 Dec of the new phase centre, in the format XXdXXmXX.XXs .</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="concat">
+<span id="transform-concat"></span><h2><strong>concat</strong><a class="headerlink" href="#concat" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>For each input .MS and target, concatenate together all .MS files with the different labels included in label_in (comma-separated values). The MS files are concatenated along the frequency axis. This only works if the frequency ranges covered by the MS files are contiguous and if the number of channels is the same for all MS files.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Enable the ‘concat’ segment.</p>
 </div></blockquote>
 </div></blockquote>
 </div>

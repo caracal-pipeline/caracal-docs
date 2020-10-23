@@ -224,17 +224,47 @@ Process visibilities for spectral line work and create line cubes and images.
 
       Enable the 'UVLIN' segment.
 
-    **fitspw**
-
-      *str*, *optional*, *default = ' '*
-
-      Selection of line-free channels using CASA syntax (e.g. '0:0~100;150:300'). If set to null, a fit to all unflagged visibilities will be performed.
-
     **fitorder**
 
       *int*, *optional*, *default = 1*
 
       Polynomial order of the continuum fit.
+
+    **fitspw**
+
+      *str*, *optional*, *default = ' '*
+
+      Selection of line-free channels using CASA syntax (e.g. '0:0~100;150~300'). If set to null, a fit to all unflagged visibilities will be performed.
+
+    **exclude_known_sources**
+
+      *bool*, *optional*, *default = False*
+
+      Exclude from the UVLIN fit the channels corresponding to known line sources listed in a catalogue. The catalogue file has the name given by the parameter 'known_sources_cat' below and is located in the 'input' directory specified in the 'general' worker. The  resulting channel selection is combined with the one provided by the 'fitspw' parameter above. Some published catalogues are included in the CARACal repository and are ready for use. See 'know_sources_cat' below.
+
+    **known_sources_cat**
+
+      *str*, *optional*, *default = ' '*
+
+      Catalogue of known line sources. The catalogue is in ASCII format, one row per source, with columns (1) source ID, (2) RA (hh:mm:ss.s), (3) Dec (dd:mm:ss.s), (4) Vmin (km/s, optical convention), (5) Vmax (km/s, optical convention), (6) line flux (Jy km/s). The HIPASS catalogue from Meyer et al. (2004), MNRAS, 350, 1195 is included in CARACal with the required format (file name hicat_caracal.txt).
+
+    **known_sources_radius**
+
+      *float*, *optional*, *default = 1.0*
+
+      Only line sources within this radius (in deg) from the pointing centre are excluded from the UVLIN fit.
+
+    **known_sources_flux**
+
+      *float*, *optional*, *default = 0.0*
+
+      Only line sources brighter than this flux (in Jy km/s) are excluded from the UVLIN fit (no primary beam correction included).
+
+    **known_sources_dv**
+
+      *float*, *optional*, *default = 30.*
+
+      Remove (add) this velocity buffer from (to) the Vmin (Vmax) values in the catalogue to avoid errors caused by anoccounted-for Doppler shifts. This parameter is given in km/s.
 
   **obsinfo**
 

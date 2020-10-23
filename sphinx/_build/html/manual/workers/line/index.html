@@ -360,15 +360,40 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Enable the ‘UVLIN’ segment.</p>
 </div></blockquote>
-<p><strong>fitspw</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Selection of line-free channels using CASA syntax (e.g. ‘0:0~100;150:300’). If set to null, a fit to all unflagged visibilities will be performed.</p>
-</div></blockquote>
 <p><strong>fitorder</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>Polynomial order of the continuum fit.</p>
+</div></blockquote>
+<p><strong>fitspw</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Selection of line-free channels using CASA syntax (e.g. ‘0:0~100;150~300’). If set to null, a fit to all unflagged visibilities will be performed.</p>
+</div></blockquote>
+<p><strong>exclude_known_sources</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Exclude from the UVLIN fit the channels corresponding to known line sources listed in a catalogue. The catalogue file has the name given by the parameter ‘known_sources_cat’ below and is located in the ‘input’ directory specified in the ‘general’ worker. The  resulting channel selection is combined with the one provided by the ‘fitspw’ parameter above. Some published catalogues are included in the CARACal repository and are ready for use. See ‘know_sources_cat’ below.</p>
+</div></blockquote>
+<p><strong>known_sources_cat</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Catalogue of known line sources. The catalogue is in ASCII format, one row per source, with columns (1) source ID, (2) RA (hh:mm:ss.s), (3) Dec (dd:mm:ss.s), (4) Vmin (km/s, optical convention), (5) Vmax (km/s, optical convention), (6) line flux (Jy km/s). The HIPASS catalogue from Meyer et al. (2004), MNRAS, 350, 1195 is included in CARACal with the required format (file name hicat_caracal.txt).</p>
+</div></blockquote>
+<p><strong>known_sources_radius</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 1.0</em></p>
+<p>Only line sources within this radius (in deg) from the pointing centre are excluded from the UVLIN fit.</p>
+</div></blockquote>
+<p><strong>known_sources_flux</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.0</em></p>
+<p>Only line sources brighter than this flux (in Jy km/s) are excluded from the UVLIN fit (no primary beam correction included).</p>
+</div></blockquote>
+<p><strong>known_sources_dv</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 30.</em></p>
+<p>Remove (add) this velocity buffer from (to) the Vmin (Vmax) values in the catalogue to avoid errors caused by anoccounted-for Doppler shifts. This parameter is given in km/s.</p>
 </div></blockquote>
 </div></blockquote>
 <p><strong>obsinfo</strong></p>
