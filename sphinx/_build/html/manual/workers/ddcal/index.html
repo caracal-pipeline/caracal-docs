@@ -382,6 +382,11 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = CORRECTED_DATA</em></p>
 <p>Data column to use for initial imaging. Defaults to ‘CORRECTED_DATA’, the assumption being that self-calibration has already been done on the measurement set.</p>
 </div></blockquote>
+<p><strong>data_colname_postcal</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = SUBDD_DATA</em></p>
+<p>Data column to use for imaging after dd-calibration. Defaults to ‘SUBDD_DATA’, so as to not overwrite the corrected data. If data size increase is a concern, switch to ‘CORRECTED_DATA’</p>
+</div></blockquote>
 <p><strong>data_chunkhours</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.05</em></p>
@@ -686,11 +691,6 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>Name of the sky-model file. (Currently the only supported format is that of WSClean component lists.) When set to ‘auto’, the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the ‘output’ directory.</p>
 </div></blockquote>
-<p><strong>dd_spectra</strong></p>
-<blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
-<p>Model sources as non-flat spectra. The spectral coefficients and reference frequency must be present in the sky model.</p>
-</div></blockquote>
 <p><strong>dd_row_chunks</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
@@ -700,11 +700,6 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Number of sky-model components that are processed in a single chunk.</p>
-</div></blockquote>
-<p><strong>dd_exp-sign-convention</strong></p>
-<blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = casa</em></p>
-<p>Sign convention to use for the complex exponential. The default, ‘casa’, specifies the e^(2.pi.I) convention, while ‘thompson’ specifies the e^(-2.pi.I) convention in The White Book and Fourier analysis literature.</p>
 </div></blockquote>
 <p><strong>dd_within</strong></p>
 <blockquote>

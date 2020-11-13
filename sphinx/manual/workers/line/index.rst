@@ -604,6 +604,12 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Dish diameter in meters. Only used in the Gaussian primary beam model
 
+  **cutoff**
+
+    *float*, *optional*, *default = 0.1*
+
+    Primary beam pixels below this value are set to NaN.
+
 
 
 .. _line_freq_to_vel:

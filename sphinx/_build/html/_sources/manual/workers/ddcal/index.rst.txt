@@ -246,6 +246,12 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
     Data column to use for initial imaging. Defaults to 'CORRECTED_DATA', the assumption being that self-calibration has already been done on the measurement set.
 
+  **data_colname_postcal**
+
+    *str*, *optional*, *default = SUBDD_DATA*
+
+    Data column to use for imaging after dd-calibration. Defaults to 'SUBDD_DATA', so as to not overwrite the corrected data. If data size increase is a concern, switch to 'CORRECTED_DATA'
+
   **data_chunkhours**
 
     *float*, *optional*, *default = 0.05*
@@ -622,12 +628,6 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
     Name of the sky-model file. (Currently the only supported format is that of WSClean component lists.) When set to 'auto', the pipeline builds the file name from the input parameters of the selfcal loop. The file is assumed to be in the 'output' directory.
 
-  **dd_spectra**
-
-    *bool*, *optional*, *default = True*
-
-    Model sources as non-flat spectra. The spectral coefficients and reference frequency must be present in the sky model.
-
   **dd_row_chunks**
 
     *int*, *optional*, *default = 0*
@@ -639,12 +639,6 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
     *int*, *optional*, *default = 0*
 
     Number of sky-model components that are processed in a single chunk.
-
-  **dd_exp-sign-convention**
-
-    *str*, *optional*, *default = casa*
-
-    Sign convention to use for the complex exponential. The default, 'casa', specifies the e^(2.pi.I) convention, while 'thompson' specifies the e^(-2.pi.I) convention in The White Book and Fourier analysis literature.
 
   **dd_within**
 

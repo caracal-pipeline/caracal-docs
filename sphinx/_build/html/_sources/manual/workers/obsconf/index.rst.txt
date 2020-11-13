@@ -132,9 +132,33 @@ Set up some basic information about the observation(s).
 **refant**
 --------------------------------------------------
 
-  *str*
+  *str*, *optional*, *default = auto*
 
-  The reference antenna, which can be identified by an antenna name or number.
+  The reference antenna, which can be identified by an antenna name or number. Default is 'auto'. i.e. refant is selected automatically based on the parameters 'maxdist' and 'minbase' below.
+
+
+
+.. _obsconf_maxdist:
+
+--------------------------------------------------
+**maxdist**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 1000*
+
+  If 'refant' is set to 'auto' above, this sets the maximum distance the reference antenna should be from the array centre. Units are in 'm'.
+
+
+
+.. _obsconf_minbase:
+
+--------------------------------------------------
+**minbase**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 150*
+
+  If 'refant' is set to 'auto' above, this sets the minimum baseline length required for a reference antenna. Units are in 'm'.
 
 
 
