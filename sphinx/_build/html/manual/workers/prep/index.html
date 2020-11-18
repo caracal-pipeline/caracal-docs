@@ -112,7 +112,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#enable"><strong>enable</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#label-in"><strong>label_in</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#field"><strong>field</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tol"><strong>tol</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tol-diff"><strong>tol_diff</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fixuvw"><strong>fixuvw</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixcalcoords"><strong>fixcalcoords</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#clearcal"><strong>clearcal</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manage-flags"><strong>manage_flags</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specweights"><strong>specweights</strong></a></li>
@@ -224,6 +227,20 @@
 <p>In combination with a non-empty ‘label_in’ (see above), ‘field’ defines which .MS file(s) to work on. This parameter is ignored if ‘label_in’ is empty. Options are ‘target’ and ‘calibrators’.</p>
 </div></blockquote>
 </div>
+<div class="section" id="tol">
+<span id="prep-tol"></span><h2><strong>tol</strong><a class="headerlink" href="#tol" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 360.0</em></p>
+<p>Tolerance (in arcseconds) for matching calibrator to database names.</p>
+</div></blockquote>
+</div>
+<div class="section" id="tol-diff">
+<span id="prep-tol-diff"></span><h2><strong>tol_diff</strong><a class="headerlink" href="#tol-diff" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 1.0</em></p>
+<p>Tolerance (in arcseconds) for checking if coordinates differ from those in the database so much that rephasing is required. Please keep the value less than ‘tol’ .</p>
+</div></blockquote>
+</div>
 <div class="section" id="fixuvw">
 <span id="prep-fixuvw"></span><h2><strong>fixuvw</strong><a class="headerlink" href="#fixuvw" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -232,6 +249,17 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘fixvis’ segment.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="fixcalcoords">
+<span id="prep-fixcalcoords"></span><h2><strong>fixcalcoords</strong><a class="headerlink" href="#fixcalcoords" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Fix the coordinates of the bandpass calibrators.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Enable fixing calibrator coodinate fixing segment.</p>
 </div></blockquote>
 </div></blockquote>
 </div>

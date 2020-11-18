@@ -52,6 +52,30 @@ Prepare the data for calibration and imaging.
 
 
 
+.. _prep_tol:
+
+--------------------------------------------------
+**tol**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 360.0*
+
+  Tolerance (in arcseconds) for matching calibrator to database names.
+
+
+
+.. _prep_tol_diff:
+
+--------------------------------------------------
+**tol_diff**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 1.0*
+
+  Tolerance (in arcseconds) for checking if coordinates differ from those in the database so much that rephasing is required. Please keep the value less than 'tol' .
+
+
+
 .. _prep_fixuvw:
 
 --------------------------------------------------
@@ -65,6 +89,22 @@ Prepare the data for calibration and imaging.
     *bool*, *optional*, *default = False*
 
     Enable the 'fixvis' segment.
+
+
+
+.. _prep_fixcalcoords:
+
+--------------------------------------------------
+**fixcalcoords**
+--------------------------------------------------
+
+  Fix the coordinates of the bandpass calibrators.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable fixing calibrator coodinate fixing segment.
 
 
 

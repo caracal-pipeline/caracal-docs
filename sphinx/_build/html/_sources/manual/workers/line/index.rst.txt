@@ -360,6 +360,34 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
+.. _line_predict_noise:
+
+--------------------------------------------------
+**predict_noise**
+--------------------------------------------------
+
+  Print to log-caracal.txt the expected natural noise level of the line cube (Stokes I, single channel) based on Tsys/eff and dish diameter below.
+
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Enable the 'predict_noise' segment.
+
+  **tsyseff**
+
+    *float*, *optional*, *default = 20.5*
+
+    Value of Tsys/eff in K.
+
+  **diam**
+
+    *float*, *optional*, *default = 13.5*
+
+    Dish diameter in m.
+
+
+
 .. _line_make_cube:
 
 --------------------------------------------------

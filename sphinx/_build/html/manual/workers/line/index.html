@@ -117,6 +117,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#mstransform"><strong>mstransform</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-mst-errors"><strong>flag_mst_errors</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sunblocker"><strong>sunblocker</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#predict-noise"><strong>predict_noise</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-cube"><strong>make_cube</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#remove-stokes-axis"><strong>remove_stokes_axis</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pb-cube"><strong>pb_cube</strong></a></li>
@@ -467,6 +468,27 @@
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2000</em></p>
 <p>Maximum uvdistance to be analysed (in wavelengths, lambda).</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="predict-noise">
+<span id="line-predict-noise"></span><h2><strong>predict_noise</strong><a class="headerlink" href="#predict-noise" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Print to log-caracal.txt the expected natural noise level of the line cube (Stokes I, single channel) based on Tsys/eff and dish diameter below.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Enable the ‘predict_noise’ segment.</p>
+</div></blockquote>
+<p><strong>tsyseff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 20.5</em></p>
+<p>Value of Tsys/eff in K.</p>
+</div></blockquote>
+<p><strong>diam</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 13.5</em></p>
+<p>Dish diameter in m.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
