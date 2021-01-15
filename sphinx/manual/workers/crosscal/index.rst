@@ -170,12 +170,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Order in which to solve for gains for this field. E.g, if order is set to 'KGB', then we solve for delays, then gains and finally bandpass. The full options are 1) K - delay calibration, 2) G - gain calibration (decide whether to solve for amplitude, phase or  both with 'calmode' below), 3) B - bandpass calibration, 4) A - automatic flagging with CASA tfcrop (existing gains will be applied first).
 
-  **b_solnorm**
-
-    *bool*, *optional*, *default = False*
-
-    Normalise average solution amplitude to 1.0
-
   **calmode**
 
     *list* *of str*, *optional*, *default = a, ap, ap*
@@ -194,6 +188,24 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     For each step in 'order' above, set along what axis the data should be combined before solving. Options are '' (i.e., no data combination; solutions break at obs, scan, field, and spw boundarie), 'obs', 'scan', 'spw', 'field'. To combine along multiple axes use comma-separated axis names in a single string, e.g., 'obs,scan'. This setting is only relevant for the steps of type K, G and B included in 'order' above. For A steps this setting is ignored and an empty string may be used.
 
+  **b_solnorm**
+
+    *bool*, *optional*, *default = False*
+
+    Normalise average solution amplitude to 1.0
+
+  **b_fillgaps**
+
+    *int*, *optional*, *default = 70*
+
+    Fill flagged channels in the bandpass solutions by interpolation.
+
+  **b_smoothwindow**
+
+    *int*, *optional*, *default = 1*
+
+    Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.
+
   **spw_k**
 
     *str*, *optional*, *default = ' '*
@@ -205,12 +217,6 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
     *str*, *optional*, *default = ' '*
 
     Only use this subset(s) of the band to compute 'GF' gains. Default uses full band
-
-  **b_fillgaps**
-
-    *int*, *optional*, *default = 70*
-
-    Fill flagged solution channels by interpolation.
 
   **plotgains**
 
@@ -320,7 +326,13 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     *int*, *optional*, *default = 70*
 
-    Fill flagged solution channels by interpolation.
+    Fill flagged channels in the bandpass solutions by interpolation.
+
+  **b_smoothwindow**
+
+    *int*, *optional*, *default = 1*
+
+    Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.
 
   **spw_k**
 

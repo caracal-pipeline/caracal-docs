@@ -46,9 +46,9 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
 **target_images**
 --------------------------------------------------
 
-  *seq*, *optional*, *default = directory/first_image.fits, directory/second_image.fits*
+  *list* *of str*, *optional*, *default = ' '*
 
-  List of images to be mosaicked, with suffix of image.fits being expected.
+  List of .FITS images/cubes to be mosaicked. Their file names must end with "image.fits" and must include the path relative to the current working directory. These images/cubes MUST be located within (sub-directories of) the current working directory.
 
 
 
@@ -161,6 +161,18 @@ Mosaic the 2D-images (or cubes) made with the selfcal/crosscal (or line) worker.
   *float*, *optional*, *default = 1383685546.875*
 
   If no continuum pb.fits are already in place, user needs to specify the reference frequency (in units of Hz) so that primary beams can be created.
+
+
+
+.. _mosaic_round_cdelt3:
+
+--------------------------------------------------
+**round_cdelt3**
+--------------------------------------------------
+
+  *int*, *optional*, *default = 0*
+
+  If mosaic_type is "spectral", round CDELT3 in the header of the input cubes to the number of decimal digits given by this parameter (0 means do not round). This is useful when the CDELT3 values of the input cubes are not identical (which would make the mosaicking algorithm crash) but the differences are small and can be ignored. Note that the CDELT3 values of the input cubes are overwritten with the common, rounded value (if the rounding is sufficient to find a common value).
 
 
 

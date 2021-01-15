@@ -370,7 +370,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'predict_noise' segment.
 

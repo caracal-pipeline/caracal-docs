@@ -119,6 +119,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#pb-type"><strong>pb_type</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dish-diameter"><strong>dish_diameter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ref-frequency"><strong>ref_frequency</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#round-cdelt3"><strong>round_cdelt3</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report"><strong>report</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
@@ -225,8 +226,8 @@
 <div class="section" id="target-images">
 <span id="mosaic-target-images"></span><h2><strong>target_images</strong><a class="headerlink" href="#target-images" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><em>seq</em>, <em>optional</em>, <em>default = directory/first_image.fits, directory/second_image.fits</em></p>
-<p>List of images to be mosaicked, with suffix of image.fits being expected.</p>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>List of .FITS images/cubes to be mosaicked. Their file names must end with “image.fits” and must include the path relative to the current working directory. These images/cubes MUST be located within (sub-directories of) the current working directory.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-in">
@@ -294,6 +295,13 @@
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1383685546.875</em></p>
 <p>If no continuum pb.fits are already in place, user needs to specify the reference frequency (in units of Hz) so that primary beams can be created.</p>
+</div></blockquote>
+</div>
+<div class="section" id="round-cdelt3">
+<span id="mosaic-round-cdelt3"></span><h2><strong>round_cdelt3</strong><a class="headerlink" href="#round-cdelt3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>If mosaic_type is “spectral”, round CDELT3 in the header of the input cubes to the number of decimal digits given by this parameter (0 means do not round). This is useful when the CDELT3 values of the input cubes are not identical (which would make the mosaicking algorithm crash) but the differences are small and can be ignored. Note that the CDELT3 values of the input cubes are overwritten with the common, rounded value (if the rounding is sufficient to find a common value).</p>
 </div></blockquote>
 </div>
 <div class="section" id="report">
