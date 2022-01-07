@@ -126,6 +126,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
@@ -272,10 +273,35 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Execute the set_model segment.</p>
 </div></blockquote>
+<p><strong>meerkat_band</strong></p>
+<blockquote>
+<div><p><em>{“L”, “UHF”}</em>, <em>optional</em>, <em>default = L</em></p>
+<p>Select the MeerKAT observation band (only ‘L ‘or ‘UHF’ accepted for now). Set to ‘L’ by default. If both “meerkat_skymodel” and “meerkat_band” are enabled, then custom models of calibrator fields are used. For UHF band only models for PKS 1934-638 and PKS 408-65 are currently available. It is adviced to use them to avoid effects of calibrator field substructure.</p>
+</div></blockquote>
 <p><strong>meerkat_skymodel</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Use the MeerkAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.</p>
+<p>Use the MeerKAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.</p>
+</div></blockquote>
+<p><strong>meerkat_crystalball_skymodel</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Use the MeerKAT sky model of the calibrator field made for Crystalball.</p>
+</div></blockquote>
+<p><strong>meerkat_crystalball_memory_fraction</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 0.5</em></p>
+<p>Fraction of system RAM that can be used when using Crystalball to predict calibrator visibilities in the model column. Used when setting automatically the chunk size.</p>
+</div></blockquote>
+<p><strong>meerkat_crystalball_num_sources</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Select only N brightest sources when using Crystalball to predict calibrator visibilities in the model column.</p>
+</div></blockquote>
+<p><strong>meerkat_crystalball_row_chunks</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Number of rows of input .MS that are processed in a single chunk when using Crystalball to predict calibrator visibilities in the model column. If zero, it will be set automatically.</p>
 </div></blockquote>
 <p><strong>no_verify</strong></p>
 <blockquote>
@@ -342,6 +368,11 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.</p>
+</div></blockquote>
+<p><strong>scanselection</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>String specifying (in CASA format) which scans to select during solving on primary</p>
 </div></blockquote>
 <p><strong>spw_k</strong></p>
 <blockquote>
@@ -448,6 +479,11 @@
 <div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
 <p>Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.</p>
 </div></blockquote>
+<p><strong>scanselection</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>String specifying (in CASA format) which scans to select during solving on secondary</p>
+</div></blockquote>
 <p><strong>spw_k</strong></p>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
@@ -529,6 +565,11 @@
 <blockquote>
 <div><p><em>{“briggs”, “uniform”, “natural”}</em>, <em>optional</em>, <em>default = briggs -1.0</em></p>
 <p>Image weighting type. If Briggs, set the img robust parameter</p>
+</div></blockquote>
+<p><strong>external_fits_masks</strong></p>
+<blockquote>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>List of file names (without .FITS extension) located in input/. The naming must have the field ID in the file name. e.g. specify as “mask-image-4” for a file called “mask-image-4.fits” in input/ where “4” is the field ID. NB - the masks need to be on the same WCS grid as the images being made. Otherwise a WSCleans auto-masking will be used (threshold set by auto_mask below)</p>
 </div></blockquote>
 <p><strong>auto_mask</strong></p>
 <blockquote>

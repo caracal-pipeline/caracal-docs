@@ -118,11 +118,41 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Execute the set_model segment.
 
+  **meerkat_band**
+
+    *{"L", "UHF"}*, *optional*, *default = L*
+
+    Select the MeerKAT observation band (only 'L 'or 'UHF' accepted for now). Set to 'L' by default. If both "meerkat_skymodel" and "meerkat_band" are enabled, then custom models of calibrator fields are used. For UHF band only models for PKS 1934-638 and PKS 408-65 are currently available. It is adviced to use them to avoid effects of calibrator field substructure.
+
   **meerkat_skymodel**
 
     *bool*, *optional*, *default = False*
 
-    Use the MeerkAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.
+    Use the MeerKAT local sky model (lsm) of the calibrator field instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.
+
+  **meerkat_crystalball_skymodel**
+
+    *bool*, *optional*, *default = False*
+
+    Use the MeerKAT sky model of the calibrator field made for Crystalball.
+
+  **meerkat_crystalball_memory_fraction**
+
+    *float*, *optional*, *default = 0.5*
+
+    Fraction of system RAM that can be used when using Crystalball to predict calibrator visibilities in the model column. Used when setting automatically the chunk size.
+
+  **meerkat_crystalball_num_sources**
+
+    *int*, *optional*, *default = 0*
+
+    Select only N brightest sources when using Crystalball to predict calibrator visibilities in the model column.
+
+  **meerkat_crystalball_row_chunks**
+
+    *int*, *optional*, *default = 0*
+
+    Number of rows of input .MS that are processed in a single chunk when using Crystalball to predict calibrator visibilities in the model column. If zero, it will be set automatically.
 
   **no_verify**
 
@@ -205,6 +235,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
     *int*, *optional*, *default = 1*
 
     Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.
+
+  **scanselection**
+
+    *str*, *optional*, *default = ' '*
+
+    String specifying (in CASA format) which scans to select during solving on primary
 
   **spw_k**
 
@@ -334,6 +370,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Size of the mean running window for smoothing of the bandpass (in channels). A size of 1 means no smoothing.
 
+  **scanselection**
+
+    *str*, *optional*, *default = ' '*
+
+    String specifying (in CASA format) which scans to select during solving on secondary
+
   **spw_k**
 
     *str*, *optional*, *default = ' '*
@@ -431,6 +473,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
       *{"briggs", "uniform", "natural"}*, *optional*, *default = briggs -1.0*
 
       Image weighting type. If Briggs, set the img robust parameter
+
+    **external_fits_masks**
+
+      *list* *of str*, *optional*, *default = ' '*
+
+      List of file names (without .FITS extension) located in input/. The naming must have the field ID in the file name. e.g. specify as "mask-image-4" for a file called "mask-image-4.fits" in input/ where "4" is the field ID. NB - the masks need to be on the same WCS grid as the images being made. Otherwise a WSCleans auto-masking will be used (threshold set by auto_mask below)
 
     **auto_mask**
 

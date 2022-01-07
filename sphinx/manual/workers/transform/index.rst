@@ -142,6 +142,12 @@ Split, average and/or calibrate the data.
 
     Select spectral windows and channels, following the same syntax as for the 'mstransform' task in CASA. Setting this to '' means that all spectral windows and channels are selected.
 
+  **nthreads**
+
+    *int*, *optional*, *default = 1*
+
+    Number of OMP threads to use (currently maximum limited by number of polarizations)
+
   **otfcal**
 
     Apply on-the-fly (OTF) calibration.
@@ -160,9 +166,55 @@ Split, average and/or calibrate the data.
 
     **label_cal**
 
-      *str*, *optional*, *default = 1gc1*
+      *str*, *optional*, *default = ' '*
 
       Label of the calibration tables to be used.
+
+    **pol_callib**
+
+      *str*, *optional*, *default = ' '*
+
+      Name of the polarization callib file to be used. A corresponding .json file must exist.
+
+    **label_pcal**
+
+      *str*, *optional*, *default = ' '*
+
+      Label of the polarization calibration tables to be used.
+
+    **output_pcal_ms**
+
+      *{"final", "intermediate", "both"}*, *optional*, *default = final*
+
+      Controls which MSs are produced with polcal in effect. 'final' will have polcal-corrected data in DATA. 'intermediate' will have KGB-corrected data in DATA and polcal-corrected data in CORRECTED_DATA. 'both' will produce both (second one, the 'intermediate', will be labelled 'tmp_'+label_out).
+
+    **derotate_pa**
+
+      *bool*, *optional*, *default = True*
+
+      Apply parallactic angle derotation, to put QU into the sky polarization frame.
+
+    **interpolation**
+
+      Overrides interpolations settings for OTF calibration
+
+      **delay_cal**
+
+        *{"default", "nearest", "linear", "nearestPD", "linearPD"}*, *optional*, *default = nearest*
+
+        Interpolation type (in time) for K-Jones (delay) solutions. 'nearest' is recommended for CASA, as 'linear' can produce unexpected results.
+
+      **gain_cal**
+
+        *{"default", "nearest", "linear", "nearestPD", "linearPD"}*, *optional*, *default = linear*
+
+        Interpolation type (in time) for G-Jones (gain) solutions.
+
+      **bp_cal**
+
+        *{"default", "nearest", "linear", "nearestPD", "linearPD"}*, *optional*, *default = linear*
+
+        Interpolation type (in time) for B-Jones (bandpass) solutions.
 
 
 

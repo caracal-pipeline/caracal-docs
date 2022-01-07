@@ -98,19 +98,19 @@ Diagnostic plots for data
 
   **plots_by_field**
 
-    *list* *of str*, *optional*, *default = ' '*
+    *list* *of any*, *optional*, *default = ' '*
 
     Sequence of shadems plot specifications, made per each field
 
   **plots_by_corr**
 
-    *list* *of str*, *optional*, *default = ' '*
+    *list* *of any*, *optional*, *default = ' '*
 
     Sequence of shadems plot specifications, made per each correlation
 
   **plots**
 
-    *list* *of str*, *optional*, *default = ' '*
+    *list* *of any*, *optional*, *default = ' '*
 
     Sequence of freeform shadems plot specifications
 
@@ -128,7 +128,7 @@ Diagnostic plots for data
 **standard_plotter**
 --------------------------------------------------
 
-  *{"plotms", "shadems", "ragavi_vis", "none"}*, *optional*, *default = ragavi_vis*
+  *{"plotms", "shadems", "ragavi_vis", "none", "None"}*, *optional*, *default = ragavi_vis*
 
   Application to use for making "standard" plots. Use "none" to disable.
 

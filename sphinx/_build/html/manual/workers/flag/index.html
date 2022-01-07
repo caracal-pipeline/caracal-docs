@@ -111,6 +111,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#flag-autopowerspec"><strong>flag_autopowerspec</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-autocorr"><strong>flag_autocorr</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-quack"><strong>flag_quack</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flag-urange"><strong>flag_Urange</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-elevation"><strong>flag_elevation</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-shadow"><strong>flag_shadow</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flag-spw"><strong>flag_spw</strong></a></li>
@@ -136,6 +137,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
@@ -228,7 +230,7 @@
 <span id="flag-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><em>{“target”, “calibrators”}</em>, <em>optional</em>, <em>default = calibrators</em></p>
-<p>Fields that should be flagged. It can be set to either ‘target’ or ‘calibrators’ (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging step ‘flag_mask’ (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calfields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as explained in ‘label_in’ below.</p>
+<p>Fields that should be flagged. It can be set to either ‘target’ or ‘calibrators’ (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging steps ‘flag_mask’ and ‘flag_Urange’ (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calfields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as explained in ‘label_in’ below.</p>
 </div></blockquote>
 </div>
 <div class="section" id="label-in">
@@ -344,6 +346,22 @@
 <blockquote>
 <div><p><em>{“beg”, “endb”, “tail”, “end”}</em>, <em>optional</em>, <em>default = beg</em></p>
 <p>Quack flagging mode. Options are ‘beg’ (which flags the beginning of the scan), ‘endb’ (which flags the end of the scan), ‘tail’ (which flags everything but the first specified seconds of the scan), and ‘end’ (which flags all but the last specified seconds of the scan).</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="flag-urange">
+<span id="flag-flag-urange"></span><h2><strong>flag_Urange</strong><a class="headerlink" href="#flag-urange" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Flag visibilities within a given range of U values and all V values in all fields of the selected MS file(s).</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Enable the ‘flag_URange’ segment.</p>
+</div></blockquote>
+<p><strong>cutoff</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 1.</em></p>
+<p>Visibilities with abs(U) within cutoff (in units of lambda) are flagged.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -476,7 +494,7 @@
 <div class="section" id="flag-mask">
 <span id="flag-flag-mask"></span><h2><strong>flag_mask</strong><a class="headerlink" href="#flag-mask" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Apply a static mask to flag known RFI.</p>
+<div><p>Apply a static mask to flag known RFI in all fields of the selected MS file(s).</p>
 <p><strong>enable</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>

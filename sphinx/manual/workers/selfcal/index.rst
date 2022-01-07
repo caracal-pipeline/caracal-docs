@@ -346,7 +346,7 @@ Perform self-calibration on the data.
 
   *{"I"}*, *optional*, *default = I*
 
-  Stokes image to create. For this first release of CARACal, the only option is 'I'.
+  Stokes image to create.
 
 
 

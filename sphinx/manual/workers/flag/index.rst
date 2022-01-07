@@ -36,7 +36,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
   *{"target", "calibrators"}*, *optional*, *default = calibrators*
 
-  Fields that should be flagged. It can be set to either 'target' or 'calibrators' (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging step 'flag_mask' (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calfields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as explained in 'label_in' below.
+  Fields that should be flagged. It can be set to either 'target' or 'calibrators' (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored -- i.e., all fields in the selected .MS file(s) are flagged -- in the flagging steps 'flag_mask' and 'flag_Urange' (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using 'calfields' below. The value of 'field' is also used to compose the name of the .MS file(s) that should be flagged, as explained in 'label_in' below.
 
 
 
@@ -201,6 +201,28 @@ Flagging of the data. The selected flagging steps are executed in the same order
     *{"beg", "endb", "tail", "end"}*, *optional*, *default = beg*
 
     Quack flagging mode. Options are 'beg' (which flags the beginning of the scan), 'endb' (which flags the end of the scan), 'tail' (which flags everything but the first specified seconds of the scan), and 'end' (which flags all but the last specified seconds of the scan).
+
+
+
+.. _flag_flag_Urange:
+
+--------------------------------------------------
+**flag_Urange**
+--------------------------------------------------
+
+  Flag visibilities within a given range of U values and all V values in all fields of the selected MS file(s).
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the 'flag_URange' segment.
+
+  **cutoff**
+
+    *float*, *optional*, *default = 1.*
+
+    Visibilities with abs(U) within cutoff (in units of lambda) are flagged.
 
 
 
@@ -378,7 +400,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 **flag_mask**
 --------------------------------------------------
 
-  Apply a static mask to flag known RFI.
+  Apply a static mask to flag known RFI in all fields of the selected MS file(s).
 
   **enable**
 

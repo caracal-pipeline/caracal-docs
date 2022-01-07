@@ -134,6 +134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
@@ -457,7 +458,12 @@
 <p><strong>vampirisms</strong></p>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
-<p>Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag.</p>
+<p>Use only daytime data when calculating which UV cells to flag (and flag only daytime data).</p>
+</div></blockquote>
+<p><strong>flagonlyday</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag if vampirisms is set to false.</p>
 </div></blockquote>
 <p><strong>uvmin</strong></p>
 <blockquote>
@@ -544,7 +550,7 @@
 <p><strong>cell</strong></p>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Pixel size. The default unit is arcsec, but other units can be specified, e.g., ‘scale 20asec’.</p>
+<p>Pixel size (arcsec).</p>
 </div></blockquote>
 <p><strong>padding</strong></p>
 <blockquote>
@@ -575,6 +581,11 @@
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 0.1</em></p>
 <p>Fraction of the peak that is cleaned in each minor iteration.</p>
+</div></blockquote>
+<p><strong>wscl_onlypsf</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>If set to true, WSClean will only make the dirty PSF cube, adding the best-fitting Gaussian parameter of each channel to the header. No other cube is made, and the parameter niter is ignored.</p>
 </div></blockquote>
 <p><strong>wscl_mgain</strong></p>
 <blockquote>
@@ -640,6 +651,11 @@
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Speed-up deconvolution by splitting each channel into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the line worker (see “ncpu” parameter above). If set to a number &gt; 1 , the number of subimages is greater than or equal to the one requested by the user.</p>
+</div></blockquote>
+<p><strong>wscl_beam</strong></p>
+<blockquote>
+<div><p><em>seq</em>, <em>optional</em>, <em>default = 0, 0, 0</em></p>
+<p>Set Bmaj,Bmin,PA of the beam to be used for restoring the clean components. The units are arcsec for Bmaj and Bmin, degrees for PA. Bmaj and Bmin are FWHM. The default values of [0, 0, 0] mean that WSClean chooses the restoring beam based on a 2d Gaussian fit to the dirty beam.</p>
 </div></blockquote>
 <p><strong>casa_thr</strong></p>
 <blockquote>

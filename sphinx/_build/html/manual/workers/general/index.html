@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#init-notebooks"><strong>init_notebooks</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#report-notebooks"><strong>report_notebooks</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#final-report"><strong>final_report</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend"><strong>backend</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
@@ -124,6 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
@@ -273,6 +275,13 @@
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Render report_notebooks to HTML at the end of each pipeline run</p>
+</div></blockquote>
+</div>
+<div class="section" id="backend">
+<span id="general-backend"></span><h2><strong>backend</strong><a class="headerlink" href="#backend" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><em>{“docker”, “udocker”, “singularity”, “podman”}</em>, <em>optional</em>, <em>default = docker</em></p>
+<p>Which container backend to use (docker, udocker, singularity, podman)</p>
 </div></blockquote>
 </div>
 <div class="section" id="cabs">

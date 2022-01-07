@@ -344,7 +344,13 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *bool*, *optional*, *default = False*
 
-    Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag.
+    Use only daytime data when calculating which UV cells to flag (and flag only daytime data).
+
+  **flagonlyday**
+
+    *bool*, *optional*, *default = False*
+
+    Apply the flags to data taken during day time only. Note that all data are used when calculating which UV cells to flag if vampirisms is set to false.
 
   **uvmin**
 
@@ -454,7 +460,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *float*, *optional*, *default = 2*
 
-    Pixel size. The default unit is arcsec, but other units can be specified, e.g., 'scale 20asec'.
+    Pixel size (arcsec).
 
   **padding**
 
@@ -491,6 +497,12 @@ Process visibilities for spectral line work and create line cubes and images.
     *float*, *optional*, *default = 0.1*
 
     Fraction of the peak that is cleaned in each minor iteration.
+
+  **wscl_onlypsf**
+
+    *bool*, *optional*, *default = False*
+
+    If set to true, WSClean will only make the dirty PSF cube, adding the best-fitting Gaussian parameter of each channel to the header. No other cube is made, and the parameter niter is ignored.
 
   **wscl_mgain**
 
@@ -569,6 +581,12 @@ Process visibilities for spectral line work and create line cubes and images.
     *int*, *optional*, *default = 0*
 
     Speed-up deconvolution by splitting each channel into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the line worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
+
+  **wscl_beam**
+
+    *seq*, *optional*, *default = 0, 0, 0*
+
+    Set Bmaj,Bmin,PA of the beam to be used for restoring the clean components. The units are arcsec for Bmaj and Bmin, degrees for PA. Bmaj and Bmin are FWHM. The default values of [0, 0, 0] mean that WSClean chooses the restoring beam based on a 2d Gaussian fit to the dirty beam.
 
   **casa_thr**
 

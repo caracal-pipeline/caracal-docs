@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Software used by CARACal" href="../../packages/index.html" />
+    <link rel="next" title="polcal" href="../polcal/index.html" />
     <link rel="prev" title="selfcal" href="../selfcal/index.html" /> 
 </head>
 
@@ -124,6 +124,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#cabs"><strong>cabs</strong></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../packages/index.html">Software used by CARACal</a></li>
@@ -293,6 +294,11 @@
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Select spectral windows and channels, following the same syntax as for the ‘mstransform’ task in CASA. Setting this to ‘’ means that all spectral windows and channels are selected.</p>
 </div></blockquote>
+<p><strong>nthreads</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 1</em></p>
+<p>Number of OMP threads to use (currently maximum limited by number of polarizations)</p>
+</div></blockquote>
 <p><strong>otfcal</strong></p>
 <blockquote>
 <div><p>Apply on-the-fly (OTF) calibration.</p>
@@ -308,8 +314,47 @@
 </div></blockquote>
 <p><strong>label_cal</strong></p>
 <blockquote>
-<div><p><em>str</em>, <em>optional</em>, <em>default = 1gc1</em></p>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Label of the calibration tables to be used.</p>
+</div></blockquote>
+<p><strong>pol_callib</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Name of the polarization callib file to be used. A corresponding .json file must exist.</p>
+</div></blockquote>
+<p><strong>label_pcal</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Label of the polarization calibration tables to be used.</p>
+</div></blockquote>
+<p><strong>output_pcal_ms</strong></p>
+<blockquote>
+<div><p><em>{“final”, “intermediate”, “both”}</em>, <em>optional</em>, <em>default = final</em></p>
+<p>Controls which MSs are produced with polcal in effect. ‘final’ will have polcal-corrected data in DATA. ‘intermediate’ will have KGB-corrected data in DATA and polcal-corrected data in CORRECTED_DATA. ‘both’ will produce both (second one, the ‘intermediate’, will be labelled ‘<a href="#id2"><span class="problematic" id="id3">tmp_</span></a>’+label_out).</p>
+</div></blockquote>
+<p><strong>derotate_pa</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<p>Apply parallactic angle derotation, to put QU into the sky polarization frame.</p>
+</div></blockquote>
+<p><strong>interpolation</strong></p>
+<blockquote>
+<div><p>Overrides interpolations settings for OTF calibration</p>
+<p><strong>delay_cal</strong></p>
+<blockquote>
+<div><p><em>{“default”, “nearest”, “linear”, “nearestPD”, “linearPD”}</em>, <em>optional</em>, <em>default = nearest</em></p>
+<p>Interpolation type (in time) for K-Jones (delay) solutions. ‘nearest’ is recommended for CASA, as ‘linear’ can produce unexpected results.</p>
+</div></blockquote>
+<p><strong>gain_cal</strong></p>
+<blockquote>
+<div><p><em>{“default”, “nearest”, “linear”, “nearestPD”, “linearPD”}</em>, <em>optional</em>, <em>default = linear</em></p>
+<p>Interpolation type (in time) for G-Jones (gain) solutions.</p>
+</div></blockquote>
+<p><strong>bp_cal</strong></p>
+<blockquote>
+<div><p><em>{“default”, “nearest”, “linear”, “nearestPD”, “linearPD”}</em>, <em>optional</em>, <em>default = linear</em></p>
+<p>Interpolation type (in time) for B-Jones (bandpass) solutions.</p>
+</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -391,7 +436,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../packages/index.html" class="btn btn-neutral float-right" title="Software used by CARACal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../polcal/index.html" class="btn btn-neutral float-right" title="polcal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../selfcal/index.html" class="btn btn-neutral float-left" title="selfcal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

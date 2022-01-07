@@ -136,6 +136,18 @@ General pipeline information, including data IDs, and prefixes for output files.
 
 
 
+.. _general_backend:
+
+--------------------------------------------------
+**backend**
+--------------------------------------------------
+
+  *{"docker", "udocker", "singularity", "podman"}*, *optional*, *default = docker*
+
+  Which container backend to use (docker, udocker, singularity, podman)
+
+
+
 .. _general_cabs:
 
 --------------------------------------------------
