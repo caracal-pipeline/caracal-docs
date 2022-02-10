@@ -578,7 +578,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **wscl_nrdeconvsubimg**
 
-    *int*, *optional*, *default = 0*
+    *int*, *optional*, *default = 1*
 
     Speed-up deconvolution by splitting each channel into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the line worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
 

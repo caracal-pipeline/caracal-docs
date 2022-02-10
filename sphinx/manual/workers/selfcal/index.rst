@@ -380,7 +380,7 @@ Perform self-calibration on the data.
 **img_nrdeconvsubimg**
 --------------------------------------------------
 
-  *int*, *optional*, *default = 0*
+  *int*, *optional*, *default = 1*
 
   Speed-up deconvolution by splitting the image into a number of subimages, which are deconvolved in parallel. This parameter sets the number of subimages as follows. If set to 1 no parallel deconvolution is performed. If set to 0 the number of subimages is the same as the number of CPUs used by the selfcal worker (see "ncpu" parameter above). If set to a number > 1 , the number of subimages is greater than or equal to the one requested by the user.
 
