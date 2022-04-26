@@ -441,7 +441,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
     *list* *of str*, *optional*, *default = ' '*
 
     Sequence of flagging rules, of the form "ms_pattern key:value key:value"
-
+    *Example* rules: ['flagManual antenna:XX scan:X', 'flagManual antenna:xxx timerange:YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS'] 
 
 
 .. _flag_flag_rfi:
