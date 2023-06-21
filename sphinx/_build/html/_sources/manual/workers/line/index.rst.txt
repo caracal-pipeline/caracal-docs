@@ -1046,5 +1046,5 @@ Process visibilities for spectral line work and create line cubes and images.
 
   *list* *of map*, *optional*, *default = ' '*
 
-  Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.
+  Specifies non-default image versions and/or tags for Stimela cabs.  Running with scissors: use with extreme caution. Inline format is: Format is [{name: cabname, tag: stimela_cab_version}].
 

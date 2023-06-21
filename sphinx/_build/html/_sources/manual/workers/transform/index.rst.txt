@@ -266,6 +266,12 @@ Split, average and/or calibrate the data.
 
     Enable the 'concat' segment.
 
+  **col**
+
+    *str*, *optional*, *default = data*
+
+    Column(s) to be contatenated, where the default is 'data'; use 'all' for all columns.
+
 
 
 .. _transform_obsinfo:

@@ -114,9 +114,19 @@ Prepare the data for calibration and imaging.
 **clearcal**
 --------------------------------------------------
 
-  *bool*, *optional*, *default = False*
-
   Clear out calibrated data and reset the previous predicted model.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the 'clearcal' segment
+
+  **addmodel**
+
+    *bool*, *optional*, *default = True*
+
+    Enable 'addmodel' which will add the scratch columns if they don't exist. Switch this on when using crystalball models for primary.
 
 
 

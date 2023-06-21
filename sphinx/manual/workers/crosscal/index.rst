@@ -154,6 +154,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Number of rows of input .MS that are processed in a single chunk when using Crystalball to predict calibrator visibilities in the model column. If zero, it will be set automatically.
 
+  **meerkat_crystalball_model_chunks**
+
+    *int*, *optional*, *default = 0*
+
+    Number of model components that are processed in a single chunk when using Crystalball to predict calibrator visibilities in the model column. If zero, it will be set automatically.
+
   **no_verify**
 
     *bool*, *optional*, *default = False*

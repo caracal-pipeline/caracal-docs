@@ -34,15 +34,15 @@ sortedWorkers = [
 ### DEFINE FUNCTIONS ###
 ########################
 
-# Get and adapt Caracal README.md
+# Get and adapt Caracal README.rst
 def getCaracalReadme(pipeDr,dcsDr):
-  print('  INFO: Getting and adapting {0:s}/README.md ...'.format(pipeDr))
-  f=open(pipeDr+'/README.md')
+  print('  INFO: Getting and adapting {0:s}/README.rst ...'.format(pipeDr))
+  f=open(pipeDr+'/README.rst')
   readme=f.readlines()
   f.close()
-  f=open(dcsDr+'caracalREADME.md','w')
-  nn=readme.index('# Installation & Run\n')
-  while nn<len(readme) and '## Running the pipeline' not in readme[nn]:
+  f=open(dcsDr+'caracalREADME.rst','w')
+  nn=readme.index('Installation & Run\n')
+  while nn<len(readme) and 'Running' not in readme[nn]:
     f.write(readme[nn])
     nn+=1
   f.close()
