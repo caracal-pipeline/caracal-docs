@@ -456,6 +456,34 @@ Perform self-calibration on the data.
 
 
 
+.. _selfcal_img_breizorro_settings:
+
+--------------------------------------------------
+**img_breizorro_settings**
+--------------------------------------------------
+
+  Breizorro settings used for the imaging iterations whose entry in 'image/cleanmask_method' below is 'breizorro'. The resulting clean mask is located in <output>/masking.
+
+  **boxsize**
+
+    *int*, *optional*, *default = 50*
+
+    Box size over which to compute stats (default = 50)
+
+  **dilate**
+
+    *int*, *optional*, *default = 0*
+
+    Apply dilation with a radius of R pixels
+
+  **fill_holes**
+
+    *bool*, *optional*, *default = false*
+
+    Fill holes (i.e. entirely closed regions) in mask
+
+
+
 .. _selfcal_cal_niter:
 
 --------------------------------------------------
@@ -670,9 +698,9 @@ Perform self-calibration on the data.
 
   **convergence_criteria**
 
-    *list* *of str*, *optional*, *default = DR*
+    *list* *of str*, *optional*, *default = ' '*
 
-    The residual statistic to check convergence against. Every metric/criterion listed will be combined into a weighted mean. Options are 'DR' (dynamic range), 'MEAN' (mean of the residual flux), 'STDDev' (standard deviation), 'SKEW' (skewness, 3rd-moment), and 'KURT' (kurtosis, 4th-moment). However, note that when cal_model_mode = 'vis_only', 'DR' is no longer an option.
+    The residual statistic to check convergence against. Every metric/criterion listed will be combined into a weighted mean. Options are 'DR' (dynamic range), 'MEAN' (mean of the residual flux), 'STDDev' (standard deviation), 'SKEW' (skewness, 3rd-moment), and 'KURT' (kurtosis, 4th-moment). However, note that when cal_model_mode = 'vis_only', 'DR' is no longer an option. Default is '', which means no convergence is checked.
 
   **area_factor**
 
@@ -694,9 +722,25 @@ Perform self-calibration on the data.
 
   **plot**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Generate html plots for comparing catalogues and residuals.
+
+  **online_catalog**
+
+    Perform an online catalog comparison
+
+    **enable**
+
+      *bool*, *optional*, *default = False*
+
+      Enable online comparison
+
+    **catalog_type**
+
+      *{"nvss", "sumss"}*, *optional*, *default = nvss*
+
+      Online catalog type to compare local models
 
 
 
@@ -710,7 +754,7 @@ Perform self-calibration on the data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'image' segment.
 
@@ -730,13 +774,13 @@ Perform self-calibration on the data.
 
     *list* *of str*, *optional*, *default = wsclean, wsclean*
 
-    Method used to create the clean mask. The possible values are 1) 'wsclean' to use WSClean's auto-masking (threshold set by clean_mask_threshold below); 2) 'sofia' to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
+    Method used to create the clean mask. The possible values are 1) 'wsclean' to use WSClean's auto-masking (threshold set by clean_mask_threshold below); 2) 'sofia' to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) 'breizorro'  to create a clean mask using Breizorro (threshold set by clean_mask_threshold below, and additional settings in breizorro_settings; 4) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.
 
   **cleanmask_thr**
 
     *list* *of float*, *optional*, *default = 10.0, 6.0*
 
-    Threshold used to create the clean mask when clean_mask_method = 'wsclean' or 'sofia'. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.
+    Threshold used to create the clean mask when clean_mask_method = 'wsclean', 'sofia' or 'breizorro'. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.
 
   **cleanmask_localrms**
 
@@ -814,6 +858,22 @@ Perform self-calibration on the data.
 
     Constrain the PyBDSM source-finding to only find sources included in the clean model.
 
+  **breizorro_image**
+
+    Use breizorro image.
+
+    **enable**
+
+      *bool*, *optional*, *default = False*
+
+      Use a breizorro product image to perform source finding in order to do source comparison.
+
+    **sum_to_peak**
+
+      *float*, *optional*, *default = 500*
+
+      Sum to peak ratio of flux islands to mask in original image. Default = 500, will mask everything with a ratio above 500.
+
 
 
 .. _selfcal_calibrate:
@@ -826,7 +886,7 @@ Perform self-calibration on the data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'calibrate' segment.
 
@@ -996,7 +1056,7 @@ Perform self-calibration on the data.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'transfer_model' segment.
 

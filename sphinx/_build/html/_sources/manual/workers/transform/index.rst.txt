@@ -142,6 +142,12 @@ Split, average and/or calibrate the data.
 
     Select spectral windows and channels, following the same syntax as for the 'mstransform' task in CASA. Setting this to '' means that all spectral windows and channels are selected.
 
+  **antennas**
+
+    *str*, *optional*, *default = ' '*
+
+    Select antennas, following the same syntax as for the 'mstransform' task in CASA. Setting this to '' means that all antennas are selected.
+
   **nthreads**
 
     *int*, *optional*, *default = 1*

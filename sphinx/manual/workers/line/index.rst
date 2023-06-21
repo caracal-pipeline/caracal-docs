@@ -136,6 +136,12 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Enable the 'subtractmodelcol' segment.
 
+  **force**
+
+    *bool*, *optional*, *default = False*
+
+    Force the model subtraction regardless of the number of previous subtractions.
+
 
 
 .. _line_addmodelcol:
@@ -152,6 +158,12 @@ Process visibilities for spectral line work and create line cubes and images.
 
     Enable the 'addmodelcol' segment.
 
+  **force**
+
+    *bool*, *optional*, *default = False*
+
+    Force the model addition regardless of the number of previous additions.
+
 
 
 .. _line_mstransform:
@@ -164,7 +176,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'mstransform' segment.
 
@@ -302,6 +314,100 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
+.. _line_flag_u_zeros:
+
+--------------------------------------------------
+**flag_u_zeros**
+--------------------------------------------------
+
+  flag RFI at u=0
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the flag_u_zeros segment
+
+  **use_mstransform**
+
+    *bool*, *optional*, *default = True*
+
+    Run flagging algorithm on the .MS file(s) produced by the mstransform section of this worker instead of the input .MS file(s).
+
+  **transfer_flags**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    List of datasets to which to transfer the u=0 flags. The list should only include the labels which identify those datasets, following the usual CARACal label convention and the 'use_mstransform' setting of this flag_u_zeros segment. The flags are calculated using the dataset identified by 'label_in' above. Flags can only be transferred to MS files with the same number of channels as the 'label_in' dataset. In case of different number of channels CARACal will crash.
+
+  **method**
+
+    *{"madThreshold", "q99"}*, *optional*, *default = madThreshold*
+
+    Define flagging method. Either q99 or madThreshold (median+threshold\*mad)
+
+  **make_plots**
+
+    *bool*, *optional*, *default = True*
+
+    Make Plots or not
+
+  **cleanup**
+
+    *bool*, *optional*, *default = True*
+
+    Remove intermediate ms files, images and FFTs
+
+  **robust**
+
+    *float*, *optional*, *default = 1.5*
+
+    robust weighting for the images
+
+  **taper**
+
+    *float*, *optional*, *default = 60*
+
+    size of gaussian tapering in arcseconds
+
+  **imsize**
+
+    *int*, *optional*, *default = 400*
+
+    size of the images in pixel,
+
+  **cell**
+
+    *float*, *optional*, *default = 20.*
+
+    size of pixel in arcseconds. In the FFT the pixel size in lambda is given by:duv = 1./(imsize\*cell\*pi/(3600.\*180.)), uv cell is in lambda
+
+  **chans**
+
+    *list* *of int*, *optional*, *default = 0,100*
+
+    lowest and highest channel of the spw to consider for imaging
+
+  **thresholds**
+
+    *list* *of float*, *optional*, *default = 300*
+
+    threshold for cutoff of amplitudes in the FFT, default=300
+
+  **dilateU**
+
+    *int*, *optional*, *default = 0*
+
+    extend flag selection to N nearby cells along the U axis in both directions
+
+  **dilateV**
+
+    *int*, *optional*, *default = 0*
+
+    extend flag selection to N nearby cells along the V axis in both directions
+
+
+
 .. _line_sunblocker:
 
 --------------------------------------------------
@@ -404,7 +510,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = false*
 
     Enable the 'make_cube' segment.
 
@@ -680,6 +786,94 @@ Process visibilities for spectral line work and create line cubes and images.
 
 
 
+.. _line_imcontsub:
+
+--------------------------------------------------
+**imcontsub**
+--------------------------------------------------
+
+  Use the final output image cube (lastiter true) or all (lastiter false) when using wsclean or a specified set of cubes. Fit a function or filter along the third axis, subtract it from the original, and return the result. Possible is a polynomial fit (fitmode = poly) or a Savitzky-Golay filter. In case of the Savitzky-Golay filter the window length is given by the parameter with the name length. The polynomial order of either polynomial or the filter is specified with the parameter polyorder. A Savitzky-Golay filter with polynomial order 0 is a median filter. Optionally a mask data cube with the same dimensions of the input data cube can be provided.  Voxels for which the mask data cube is not equal to zero are ignored. For the polynomial fit the voxels are simply ignored. In case of the Savitzky Golay filter, an iterative process is started.  All masked voxels are set to zero and a median filter is run along the frequency axis. After that the Savitzky-Golay filter is run sgiters times. If the parameter sgiters is set to 0, only one Savitzky-Golay filter is applied (no initial median filtering, does not work for ). With the parameter fitted the user can optionally supply the name of the output fitted data cube.
+
+  **enable**
+
+    *bool*, *optional*, *default = False*
+
+    Enable the 'imcontsub' segment.
+
+  **incubus**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    List of input cubes; will select either image or dirty cubes if empty or not specified
+
+  **lastiter**
+
+    *bool*, *optional*, *default = True*
+
+    If incubus is empty, select only the last iteration for continuum subtraction (true) or all (false)
+
+  **fitmode**
+
+    *{"poly", "savgol"}*, *optional*, *default = poly*
+
+    Type of fit ('poly' or 'savgol')
+
+  **length**
+
+    *int*, *optional*, *default = 25*
+
+    Length of the sliding window in channels (only used for fitmode = savgol must be odd, default is 25)
+
+  **polyorder**
+
+    *int*, *optional*, *default = 0*
+
+    Order of the polynomial or of the Savitzky-Golay filter (default is 0)
+
+  **mask**
+
+    *str*, *optional*, *default = ' '*
+
+    Mask cubes to use. '' means do not use mask cubes or those specified with parameter masculin. 'clean' means use clean masks if available. 'sofia' means use sofia masks if available.
+
+  **masculin**
+
+    *list* *of str*, *optional*, *default = ' '*
+
+    List of input mask cubes. Only used if mask = ''. Must be empty or the same number of cubes as the input cubes.
+
+  **sgiters**
+
+    *int*, *optional*, *default = 0*
+
+    Number of Savitzky-Golay filter iterations (default is 0)
+
+  **kertyp**
+
+    *{"gauss", "tophat"}*, *optional*, *default = tophat*
+
+    Kernel type to convolve the polynomial fit with ('gauss', 'tophat')
+
+  **kersiz**
+
+    *int*, *optional*, *default = 0*
+
+    Kernel size to convolve the polynomial fit with (pixel, 0 means no convolution)
+
+  **outfit**
+
+    *bool*, *optional*, *default = False*
+
+    Produce fitted data cubes (True means yes, default is False)
+
+  **outfitcon**
+
+    *bool*, *optional*, *default = False*
+
+    Produce fitted and convolved data cubes (True means yes, default is False)
+
+
+
 .. _line_sofia:
 
 --------------------------------------------------
@@ -690,9 +884,15 @@ Process visibilities for spectral line work and create line cubes and images.
 
   **enable**
 
-    *bool*, *optional*, *default = True*
+    *bool*, *optional*, *default = False*
 
     Enable the 'sofia' segment.
+
+  **imcontsub**
+
+    *bool*, *optional*, *default = False*
+
+    Use results of imcontsub instead of image cubes if available
 
   **flag**
 

@@ -1,76 +1,36 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>selfcal &mdash; CARACal latest documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>selfcal &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="transform" href="../transform/index.html" />
     <link rel="prev" title="prep" href="../prep/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-          
-
-          
-            <a href="../../../index.html">
-          
-
-          
-            
-            <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
-          
+            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 latest
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -78,18 +38,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../caracalREADME.html">Installation &amp; Run</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
@@ -141,6 +90,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#img-nrdeconvsubimg"><strong>img_nrdeconvsubimg</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-nwlayers-factor"><strong>img_nwlayers_factor</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#img-sofia-settings"><strong>img_sofia_settings</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#img-breizorro-settings"><strong>img_breizorro_settings</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-niter"><strong>cal_niter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-iter"><strong>start_iter</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cal-gain-cliplow"><strong>cal_gain_cliplow</strong></a></li>
@@ -173,73 +123,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../credits/index.html">Acknowledgements</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">CARACal</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../index.html">Manual</a> &raquo;</li>
-        
           <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-        
       <li>selfcal</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../../_sources/manual/workers/selfcal/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="selfcal">
 <span id="id1"></span><h1>selfcal<a class="headerlink" href="#selfcal" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
@@ -520,6 +429,27 @@
 </div></blockquote>
 </div></blockquote>
 </div>
+<div class="section" id="img-breizorro-settings">
+<span id="selfcal-img-breizorro-settings"></span><h2><strong>img_breizorro_settings</strong><a class="headerlink" href="#img-breizorro-settings" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Breizorro settings used for the imaging iterations whose entry in ‘image/cleanmask_method’ below is ‘breizorro’. The resulting clean mask is located in &lt;output&gt;/masking.</p>
+<p><strong>boxsize</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 50</em></p>
+<p>Box size over which to compute stats (default = 50)</p>
+</div></blockquote>
+<p><strong>dilate</strong></p>
+<blockquote>
+<div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
+<p>Apply dilation with a radius of R pixels</p>
+</div></blockquote>
+<p><strong>fill_holes</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = false</em></p>
+<p>Fill holes (i.e. entirely closed regions) in mask</p>
+</div></blockquote>
+</div></blockquote>
+</div>
 <div class="section" id="cal-niter">
 <span id="selfcal-cal-niter"></span><h2><strong>cal_niter</strong><a class="headerlink" href="#cal-niter" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -671,8 +601,8 @@
 </div></blockquote>
 <p><strong>convergence_criteria</strong></p>
 <blockquote>
-<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = DR</em></p>
-<p>The residual statistic to check convergence against. Every metric/criterion listed will be combined into a weighted mean. Options are ‘DR’ (dynamic range), ‘MEAN’ (mean of the residual flux), ‘STDDev’ (standard deviation), ‘SKEW’ (skewness, 3rd-moment), and ‘KURT’ (kurtosis, 4th-moment). However, note that when cal_model_mode = ‘vis_only’, ‘DR’ is no longer an option.</p>
+<div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>The residual statistic to check convergence against. Every metric/criterion listed will be combined into a weighted mean. Options are ‘DR’ (dynamic range), ‘MEAN’ (mean of the residual flux), ‘STDDev’ (standard deviation), ‘SKEW’ (skewness, 3rd-moment), and ‘KURT’ (kurtosis, 4th-moment). However, note that when cal_model_mode = ‘vis_only’, ‘DR’ is no longer an option. Default is ‘’, which means no convergence is checked.</p>
 </div></blockquote>
 <p><strong>area_factor</strong></p>
 <blockquote>
@@ -691,8 +621,22 @@
 </div></blockquote>
 <p><strong>plot</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Generate html plots for comparing catalogues and residuals.</p>
+</div></blockquote>
+<p><strong>online_catalog</strong></p>
+<blockquote>
+<div><p>Perform an online catalog comparison</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Enable online comparison</p>
+</div></blockquote>
+<p><strong>catalog_type</strong></p>
+<blockquote>
+<div><p><em>{“nvss”, “sumss”}</em>, <em>optional</em>, <em>default = nvss</em></p>
+<p>Online catalog type to compare local models</p>
+</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -702,7 +646,7 @@
 <div><p>Imaging parameters.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘image’ segment.</p>
 </div></blockquote>
 <p><strong>col</strong></p>
@@ -718,12 +662,12 @@
 <p><strong>cleanmask_method</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = wsclean, wsclean</em></p>
-<p>Method used to create the clean mask. The possible values are 1) ‘wsclean’ to use WSClean’s auto-masking (threshold set by clean_mask_threshold below); 2) ‘sofia’ to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.</p>
+<p>Method used to create the clean mask. The possible values are 1) ‘wsclean’ to use WSClean’s auto-masking (threshold set by clean_mask_threshold below); 2) ‘sofia’ to create a clean mask using SoFiA (threshold set by clean_mask_threshold below, and additional settings in sofia_settings, do not use if output_data = CORR_RES ); 3) ‘breizorro’  to create a clean mask using Breizorro (threshold set by clean_mask_threshold below, and additional settings in breizorro_settings; 4) a prefix string to use an existing .FITS mask located in output/masking and called prefix_target.fits, where the name of the target is set automatically by the pipeline. The latter .FITS mask could be the one created by the masking worker, in which case the prefix set here should correspond to label_out in the masking worker. Note that this third  maskingm ethod can be used on multiple targets in a single pipeline run as long as they all have a corresponding prefix_target.fits mask in output/masking.</p>
 </div></blockquote>
 <p><strong>cleanmask_thr</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of float</em>, <em>optional</em>, <em>default = 10.0, 6.0</em></p>
-<p>Threshold used to create the clean mask when clean_mask_method = ‘wsclean’ or ‘sofia’. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.</p>
+<p>Threshold used to create the clean mask when clean_mask_method = ‘wsclean’, ‘sofia’ or ‘breizorro’. This is given as the number of sigma_rms to be cleaned down to, where sigma_rms is the (local) noise level.</p>
 </div></blockquote>
 <p><strong>cleanmask_localrms</strong></p>
 <blockquote>
@@ -786,6 +730,20 @@
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Constrain the PyBDSM source-finding to only find sources included in the clean model.</p>
 </div></blockquote>
+<p><strong>breizorro_image</strong></p>
+<blockquote>
+<div><p>Use breizorro image.</p>
+<p><strong>enable</strong></p>
+<blockquote>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
+<p>Use a breizorro product image to perform source finding in order to do source comparison.</p>
+</div></blockquote>
+<p><strong>sum_to_peak</strong></p>
+<blockquote>
+<div><p><em>float</em>, <em>optional</em>, <em>default = 500</em></p>
+<p>Sum to peak ratio of flux islands to mask in original image. Default = 500, will mask everything with a ratio above 500.</p>
+</div></blockquote>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="calibrate">
@@ -794,7 +752,7 @@
 <div><p>Calibration parameters.</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘calibrate’ segment.</p>
 </div></blockquote>
 <p><strong>model</strong></p>
@@ -927,7 +885,7 @@
 <div><p>Transfer the model from the last WSClean imaging run to the MODEL_DATA column of another .MS .</p>
 <p><strong>enable</strong></p>
 <blockquote>
-<div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
+<div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable the ‘transfer_model’ segment.</p>
 </div></blockquote>
 <p><strong>transfer_to_label</strong></p>
@@ -995,58 +953,33 @@
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../transform/index.html" class="btn btn-neutral float-right" title="transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../prep/index.html" class="btn btn-neutral float-left" title="prep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../prep/index.html" class="btn btn-neutral float-left" title="prep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../transform/index.html" class="btn btn-neutral float-right" title="transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2019, CARACal team
-
-    </p>
+    <p>&#169; Copyright 2019, CARACal team.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

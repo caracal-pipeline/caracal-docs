@@ -204,28 +204,6 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
 
 
-.. _flag_flag_Urange:
-
---------------------------------------------------
-**flag_Urange**
---------------------------------------------------
-
-  Flag visibilities within a given range of U values and all V values in all fields of the selected MS file(s).
-
-  **enable**
-
-    *bool*, *optional*, *default = False*
-
-    Enable the 'flag_URange' segment.
-
-  **cutoff**
-
-    *float*, *optional*, *default = 1.*
-
-    Visibilities with abs(U) within cutoff (in units of lambda) are flagged.
-
-
-
 .. _flag_flag_elevation:
 
 --------------------------------------------------
