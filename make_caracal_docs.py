@@ -40,7 +40,7 @@ def getCaracalReadme(pipeDr,dcsDr):
   f=open(pipeDr+'/README.rst')
   readme=f.readlines()
   f.close()
-  f=open(dcsDr+'caracal/README.rst','w')
+  f=open(dcsDr+'caracalREADME.rst','w')
   nn=readme.index('Installation & Run\n')
   while nn<len(readme) and 'Running' not in readme[nn]:
     f.write(readme[nn])
