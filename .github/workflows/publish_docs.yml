@@ -10,7 +10,7 @@ name: Upload to Read the docs
 
 on:
   release:
-    types: [push, published]
+    types: [push, pull_request, published]
 
 jobs:
   deploy:
