@@ -5,9 +5,7 @@
 
 name: Upload to Read the docs
 
-on:
-  release:
-    types: [push, pull_request, published]
+on: [push, pull_request]
 
 jobs:
   deploy:
