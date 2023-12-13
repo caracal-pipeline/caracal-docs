@@ -54,6 +54,4 @@ jobs:
           automated pr
         assignees: athanaseus
         reviewers: paoloserra
-        team-reviewers: |
-          athanaseus
         draft: false
