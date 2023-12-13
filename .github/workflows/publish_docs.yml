@@ -55,5 +55,5 @@ jobs:
         assignees: athanaseus
         reviewers: paoloserra
         team-reviewers: |
-          developers
+          athanaseus
         draft: false
