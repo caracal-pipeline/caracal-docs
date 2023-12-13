@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>polcal &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>polcal &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -108,10 +118,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-      <li>polcal</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Workers parameters</a></li>
+      <li class="breadcrumb-item active">polcal</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/workers/polcal/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,34 +131,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="polcal">
-<span id="id1"></span><h1>polcal<a class="headerlink" href="#polcal" title="Permalink to this headline">¶</a></h1>
+  <section id="polcal">
+<span id="id1"></span><h1>polcal<a class="headerlink" href="#polcal" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Carry out polarization calibration of the data (leakage and polarization angle).</p>
-<div class="section" id="enable">
-<span id="polcal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<section id="enable">
+<span id="polcal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Execute the polcal worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-in">
-<span id="polcal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-in">
+<span id="polcal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Label of the .MS file(s) to work on.</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-cal">
-<span id="polcal-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-cal">
+<span id="polcal-label-cal"></span><h2><strong>label_cal</strong><a class="headerlink" href="#label-cal" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1pcal</em></p>
 <p>Label for output files (calibration tables, images).</p>
 </div></blockquote>
-</div>
-<div class="section" id="otfcal">
-<span id="polcal-otfcal"></span><h2><strong>otfcal</strong><a class="headerlink" href="#otfcal" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="otfcal">
+<span id="polcal-otfcal"></span><h2><strong>otfcal</strong><a class="headerlink" href="#otfcal" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Apply on-the-fly (OTF) calibration.</p>
 <p><strong>enable</strong></p>
@@ -186,23 +196,23 @@
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="extendflags">
-<span id="polcal-extendflags"></span><h2><strong>extendflags</strong><a class="headerlink" href="#extendflags" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="extendflags">
+<span id="polcal-extendflags"></span><h2><strong>extendflags</strong><a class="headerlink" href="#extendflags" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>use casa_flagdata with mode=extend to flag data which have been already flagged more than 70%. This can improve calibration.</p>
 </div></blockquote>
-</div>
-<div class="section" id="feed-angle-rotation">
-<span id="polcal-feed-angle-rotation"></span><h2><strong>feed_angle_rotation</strong><a class="headerlink" href="#feed-angle-rotation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="feed-angle-rotation">
+<span id="polcal-feed-angle-rotation"></span><h2><strong>feed_angle_rotation</strong><a class="headerlink" href="#feed-angle-rotation" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Set the rotation angle for feeds. For MeerKAT data it is suggested to rotate the feeds by -90 degrees to agree with the convention assumed in the CASA software which is used to do the polarization calibration. Leave it empty if you don’t want to rotate the feeds.</p>
 </div></blockquote>
-</div>
-<div class="section" id="rewind-flags">
-<span id="polcal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="rewind-flags">
+<span id="polcal-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Rewind flags to specified version.</p>
 <p><strong>enable</strong></p>
@@ -221,44 +231,44 @@
 <p>Flag version to rewind to. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="overwrite-flagvers">
-<span id="polcal-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overwrite-flagvers">
+<span id="polcal-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Allow Caracal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
-</div>
-<div class="section" id="uvrange">
-<span id="polcal-uvrange"></span><h2><strong>uvrange</strong><a class="headerlink" href="#uvrange" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="uvrange">
+<span id="polcal-uvrange"></span><h2><strong>uvrange</strong><a class="headerlink" href="#uvrange" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = &gt;50</em></p>
 <p>Select what UV range should be used throughout this worker following the CASA notation (e.g., “&gt;100”). The default units are metres but other units can be used (e.g., “&gt;0.5klambda”).</p>
 </div></blockquote>
-</div>
-<div class="section" id="reuse-existing-tables">
-<span id="polcal-reuse-existing-tables"></span><h2><strong>reuse_existing_tables</strong><a class="headerlink" href="#reuse-existing-tables" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="reuse-existing-tables">
+<span id="polcal-reuse-existing-tables"></span><h2><strong>reuse_existing_tables</strong><a class="headerlink" href="#reuse-existing-tables" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Use existing pcal tables</p>
 </div></blockquote>
-</div>
-<div class="section" id="pol-calib">
-<span id="polcal-pol-calib"></span><h2><strong>pol_calib</strong><a class="headerlink" href="#pol-calib" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pol-calib">
+<span id="polcal-pol-calib"></span><h2><strong>pol_calib</strong><a class="headerlink" href="#pol-calib" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>{“xcal”, “none”}</em>, <em>optional</em>, <em>default = xcal</em></p>
 <p>calibrator for the polarized angle.</p>
 </div></blockquote>
-</div>
-<div class="section" id="leakage-calib">
-<span id="polcal-leakage-calib"></span><h2><strong>leakage_calib</strong><a class="headerlink" href="#leakage-calib" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="leakage-calib">
+<span id="polcal-leakage-calib"></span><h2><strong>leakage_calib</strong><a class="headerlink" href="#leakage-calib" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>{“fcal”, “bpcal”, “xcal”, “gcal”}</em>, <em>optional</em>, <em>default = fcal</em></p>
 <p>leakage calibrator. It could be either a known unpolarized calibrator or a polarized calibrator observed at several parallactic angles.</p>
 </div></blockquote>
-</div>
-<div class="section" id="set-model-leakage">
-<span id="polcal-set-model-leakage"></span><h2><strong>set_model_leakage</strong><a class="headerlink" href="#set-model-leakage" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="set-model-leakage">
+<span id="polcal-set-model-leakage"></span><h2><strong>set_model_leakage</strong><a class="headerlink" href="#set-model-leakage" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Fill in the MODEL column of the .MS file(s) for the leakage calibrator in preparation for polcalibration. Not necessary if you are using the same .MS file(s) of crosscal, it is if you splitted cross calibrated data to execute this worker and if leakage_calib != pol_calib.</p>
 <p><strong>enable</strong></p>
@@ -287,58 +297,58 @@
 <p>Number of threads used by MeqTrees if meerkat_skymodel above is enabled.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="set-model-pol">
-<span id="polcal-set-model-pol"></span><h2><strong>set_model_pol</strong><a class="headerlink" href="#set-model-pol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="set-model-pol">
+<span id="polcal-set-model-pol"></span><h2><strong>set_model_pol</strong><a class="headerlink" href="#set-model-pol" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Fill in the MODEL column of the .MS file(s) for the polarized calibrator in preparation for polcalibration. This can be done only for 3C138 and 3C286 using the CASA setjy for point-source models. If False it will derive the model by fitting the PA coverage. This can be done only if more than 3 scans have been acquired. Not recomended for small PAs coverage.</p>
 </div></blockquote>
-</div>
-<div class="section" id="freqsel">
-<span id="polcal-freqsel"></span><h2><strong>freqsel</strong><a class="headerlink" href="#freqsel" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="freqsel">
+<span id="polcal-freqsel"></span><h2><strong>freqsel</strong><a class="headerlink" href="#freqsel" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Subband selection to be used whenever solving for the DC component of either X or D. This could be picked to avoid RFI. Not used if not set or if set_model_pol is False.</p>
 </div></blockquote>
-</div>
-<div class="section" id="gain-solint">
-<span id="polcal-gain-solint"></span><h2><strong>gain_solint</strong><a class="headerlink" href="#gain-solint" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gain-solint">
+<span id="polcal-gain-solint"></span><h2><strong>gain_solint</strong><a class="headerlink" href="#gain-solint" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = inf</em></p>
 <p>Time solution interval to be used for gaincal. Set to ‘int’ if set_model_pol is False.</p>
 </div></blockquote>
-</div>
-<div class="section" id="time-solint">
-<span id="polcal-time-solint"></span><h2><strong>time_solint</strong><a class="headerlink" href="#time-solint" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="time-solint">
+<span id="polcal-time-solint"></span><h2><strong>time_solint</strong><a class="headerlink" href="#time-solint" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = inf</em></p>
 <p>Time solution interval to be used whenever solving for the DC component of either X or D</p>
 </div></blockquote>
-</div>
-<div class="section" id="plotgains">
-<span id="polcal-plotgains"></span><h2><strong>plotgains</strong><a class="headerlink" href="#plotgains" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotgains">
+<span id="polcal-plotgains"></span><h2><strong>plotgains</strong><a class="headerlink" href="#plotgains" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Plot solutions with ragavi-gains. The .html plots are located in &lt;output&gt;/diagnostic_plots/polcal/.</p>
 </div></blockquote>
-</div>
-<div class="section" id="apply-pcal">
-<span id="polcal-apply-pcal"></span><h2><strong>apply_pcal</strong><a class="headerlink" href="#apply-pcal" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="apply-pcal">
+<span id="polcal-apply-pcal"></span><h2><strong>apply_pcal</strong><a class="headerlink" href="#apply-pcal" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = True</em></p>
 <p>Apply the polcal solutions (together with the otfcal solution if that segment is set to True) to the .MS file(s).</p>
 </div></blockquote>
-</div>
-<div class="section" id="applyto">
-<span id="polcal-applyto"></span><h2><strong>applyto</strong><a class="headerlink" href="#applyto" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="applyto">
+<span id="polcal-applyto"></span><h2><strong>applyto</strong><a class="headerlink" href="#applyto" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = xcal, bpcal, gcal, target</em></p>
 <p>Fields to apply calibration to.</p>
 </div></blockquote>
-</div>
-<div class="section" id="summary">
-<span id="polcal-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<span id="polcal-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Prints out the butcher’s bill, i.e. data flagging summary at the end of pol calibration process.</p>
 <p><strong>enable</strong></p>
@@ -347,22 +357,22 @@
 <p>Execute printing flagging summary.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="report">
-<span id="polcal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report">
+<span id="polcal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>(Re)generate a full HTML report at the end of this worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cabs">
-<span id="polcal-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cabs">
+<span id="polcal-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

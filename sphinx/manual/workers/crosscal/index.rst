@@ -142,6 +142,12 @@ Carry out Cross calibration of the data (delay, bandpass and gain calibration).
 
     Fraction of system RAM that can be used when using Crystalball to predict calibrator visibilities in the model column. Used when setting automatically the chunk size.
 
+  **meerkat_crystalball_ncpu**
+
+    *int*, *optional*, *default = 0*
+
+    Explicitly set the number of worker threads. Default is 0, meaning it uses all threads.
+
   **meerkat_crystalball_num_sources**
 
     *int*, *optional*, *default = 0*

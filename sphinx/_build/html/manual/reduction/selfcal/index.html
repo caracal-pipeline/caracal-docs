@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Continuum imaging and self-calibration &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>Continuum imaging and self-calibration &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -81,10 +91,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Data reduction</a> &raquo;</li>
-      <li>Continuum imaging and self-calibration</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Data reduction</a></li>
+      <li class="breadcrumb-item active">Continuum imaging and self-calibration</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/reduction/selfcal/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,13 +104,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="continuum-imaging-and-self-calibration">
-<h1>Continuum imaging and self-calibration<a class="headerlink" href="#continuum-imaging-and-self-calibration" title="Permalink to this headline">¶</a></h1>
+  <section id="continuum-imaging-and-self-calibration">
+<h1>Continuum imaging and self-calibration<a class="headerlink" href="#continuum-imaging-and-self-calibration" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a>, <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a>, <a class="reference internal" href="../../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a>, <a class="reference internal" href="../../workers/mask/index.html#mask"><span class="std std-ref">mask</span></a><strong>]</strong></p>
-<div class="section" id="split-average-and-flag-target-visibilities">
-<h2>Split, average and flag target visibilities<a class="headerlink" href="#split-average-and-flag-target-visibilities" title="Permalink to this headline">¶</a></h2>
+<section id="split-average-and-flag-target-visibilities">
+<h2>Split, average and flag target visibilities<a class="headerlink" href="#split-average-and-flag-target-visibilities" title="Link to this heading"></a></h2>
 <p>Following cross-calibration, CARACal creates a new .MS file which contains the
 cross-calibrated target visibilities only. This is done by the <a class="reference internal" href="../../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a>
 worker. In case the cross-calibration tables have not been applied to the target
@@ -118,9 +128,9 @@ best <a class="reference internal" href="../workflow/index.html#workflow"><span 
 be done with the <a class="reference internal" href="../../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a> worker (which was probably already run on the
 calibrators’ visibilities before cross-calibration) setting <a class="reference internal" href="../../workers/flag/index.html#flag-field"><span class="std std-ref">flag: field</span></a>
 to target.</p>
-</div>
-<div class="section" id="image-the-continuum-and-self-calibrate">
-<h2>Image the continuum and self-calibrate<a class="headerlink" href="#image-the-continuum-and-self-calibrate" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="image-the-continuum-and-self-calibrate">
+<h2>Image the continuum and self-calibrate<a class="headerlink" href="#image-the-continuum-and-self-calibrate" title="Link to this heading"></a></h2>
 <p>Having cross-calibrated, split, optionally averaged and flagged the target, it is now possible
 to iteratively image the radio continuum emission and self-calibrate the visibilities.
 The resulting gain tables and continuum model can also be transferred to another
@@ -154,9 +164,9 @@ Users can set the time and frequency solution intervals. Gain phase and amplitud
 for, each with its own time and frequency solution interval (more standard phase-only
 self-calibration is also possible). We refer to the <a class="reference internal" href="../../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a> page for a full description
 of all available modes and parameters.</p>
-</div>
-<div class="section" id="gain-and-model-transfer">
-<h2>Gain and model transfer<a class="headerlink" href="#gain-and-model-transfer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gain-and-model-transfer">
+<h2>Gain and model transfer<a class="headerlink" href="#gain-and-model-transfer" title="Link to this heading"></a></h2>
 <p>If the self-cal loop was executed on a frequency-averaged .MS file, it might
 be necessary to transfer the resulting gains and continuum model back to the
 original, full-frequency-resolution .MS file. This is done with
@@ -165,8 +175,8 @@ and <a class="reference internal" href="../../workers/selfcal/index.html#selfcal
 respectively. The latter allows users to limit the model transfer to the N brightest
 sources, to sources in a region, or to point sources only. Be aware that the
 model transfer step can be very time consuming for large .MS files.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

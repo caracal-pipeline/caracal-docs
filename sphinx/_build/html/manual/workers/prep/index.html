@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>prep &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>prep &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -97,10 +107,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-      <li>prep</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Workers parameters</a></li>
+      <li class="breadcrumb-item active">prep</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/workers/prep/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -110,48 +120,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="prep">
-<span id="id1"></span><h1>prep<a class="headerlink" href="#prep" title="Permalink to this headline">¶</a></h1>
+  <section id="prep">
+<span id="id1"></span><h1>prep<a class="headerlink" href="#prep" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Prepare the data for calibration and imaging.</p>
-<div class="section" id="enable">
-<span id="prep-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<section id="enable">
+<span id="prep-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
 <p>Execute the prep worker (i.e. the  data-preparation step).</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-in">
-<span id="prep-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-in">
+<span id="prep-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em></p>
 <p>If this label is an empty string this worker operates on the input .MS file(s) given in the getdata worker. If the label is not an empty string then it is added to the input .MS file(s) name (specified for the getdata worker) to define the name of the .MS file(s) to work on. These are named &lt;input&gt;_&lt;label&gt;.ms if ‘field’ (see below) is set to ‘calibrators’, or &lt;input&gt;-&lt;target&gt;_&lt;label&gt;.ms if ‘field’ is set to ‘target’ (with one .MS file for each target in the input .MS).</p>
 </div></blockquote>
-</div>
-<div class="section" id="field">
-<span id="prep-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="field">
+<span id="prep-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>{“target”, “calibrators”}</em>, <em>optional</em>, <em>default = calibrators</em></p>
 <p>In combination with a non-empty ‘label_in’ (see above), ‘field’ defines which .MS file(s) to work on. This parameter is ignored if ‘label_in’ is empty. Options are ‘target’ and ‘calibrators’.</p>
 </div></blockquote>
-</div>
-<div class="section" id="tol">
-<span id="prep-tol"></span><h2><strong>tol</strong><a class="headerlink" href="#tol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tol">
+<span id="prep-tol"></span><h2><strong>tol</strong><a class="headerlink" href="#tol" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 360.0</em></p>
 <p>Tolerance (in arcseconds) for matching calibrator to database names.</p>
 </div></blockquote>
-</div>
-<div class="section" id="tol-diff">
-<span id="prep-tol-diff"></span><h2><strong>tol_diff</strong><a class="headerlink" href="#tol-diff" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tol-diff">
+<span id="prep-tol-diff"></span><h2><strong>tol_diff</strong><a class="headerlink" href="#tol-diff" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>float</em>, <em>optional</em>, <em>default = 1.0</em></p>
 <p>Tolerance (in arcseconds) for checking if coordinates differ from those in the database so much that rephasing is required. Please keep the value less than ‘tol’ .</p>
 </div></blockquote>
-</div>
-<div class="section" id="fixuvw">
-<span id="prep-fixuvw"></span><h2><strong>fixuvw</strong><a class="headerlink" href="#fixuvw" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fixuvw">
+<span id="prep-fixuvw"></span><h2><strong>fixuvw</strong><a class="headerlink" href="#fixuvw" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Fix the UVW coordinates through the CASA task ‘fixvis’.</p>
 <p><strong>enable</strong></p>
@@ -160,9 +170,9 @@
 <p>Enable the ‘fixvis’ segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="fixcalcoords">
-<span id="prep-fixcalcoords"></span><h2><strong>fixcalcoords</strong><a class="headerlink" href="#fixcalcoords" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fixcalcoords">
+<span id="prep-fixcalcoords"></span><h2><strong>fixcalcoords</strong><a class="headerlink" href="#fixcalcoords" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Fix the coordinates of the bandpass calibrators.</p>
 <p><strong>enable</strong></p>
@@ -171,9 +181,9 @@
 <p>Enable fixing calibrator coodinate fixing segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="clearcal">
-<span id="prep-clearcal"></span><h2><strong>clearcal</strong><a class="headerlink" href="#clearcal" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="clearcal">
+<span id="prep-clearcal"></span><h2><strong>clearcal</strong><a class="headerlink" href="#clearcal" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Clear out calibrated data and reset the previous predicted model.</p>
 <p><strong>enable</strong></p>
@@ -187,9 +197,9 @@
 <p>Enable ‘addmodel’ which will add the scratch columns if they don’t exist. Switch this on when using crystalball models for primary.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="manage-flags">
-<span id="prep-manage-flags"></span><h2><strong>manage_flags</strong><a class="headerlink" href="#manage-flags" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="manage-flags">
+<span id="prep-manage-flags"></span><h2><strong>manage_flags</strong><a class="headerlink" href="#manage-flags" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Manage flags.</p>
 <p><strong>enable</strong></p>
@@ -208,9 +218,9 @@
 <p>Name of the flag version to restore. If set to ‘auto’, rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="specweights">
-<span id="prep-specweights"></span><h2><strong>specweights</strong><a class="headerlink" href="#specweights" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="specweights">
+<span id="prep-specweights"></span><h2><strong>specweights</strong><a class="headerlink" href="#specweights" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>How to initialize spectral weights.</p>
 <p><strong>enable</strong></p>
@@ -248,22 +258,22 @@
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="report">
-<span id="prep-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report">
+<span id="prep-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>(Re)generate a full HTML report at the end of this worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cabs">
-<span id="prep-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cabs">
+<span id="prep-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
