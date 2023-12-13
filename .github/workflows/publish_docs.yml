@@ -26,15 +26,14 @@ jobs:
         pip install ruamel.yaml==0.17.21
     - name: Clone caracal repo
       run: git clone https://github.com/caracal-pipeline/caracal.git ../caracal/
-    - name: Publish docs
+
+    - uses: actions/checkout@v4
+    - name: Make changes to pull request
       run: |
         python make_caracal_docs.py
         cd sphinx && make html
+        git status
         git add _build/html
-        
-    - uses: actions/checkout@v4
-    - name: Make changes to pull request
-      run: git status
 
     - name: Create Pull Request
       id: cpr
