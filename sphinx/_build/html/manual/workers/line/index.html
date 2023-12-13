@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>line &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>line &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -108,10 +118,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-      <li>line</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Workers parameters</a></li>
+      <li class="breadcrumb-item active">line</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/workers/line/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,48 +131,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="line">
-<span id="id1"></span><h1>line<a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h1>
+  <section id="line">
+<span id="id1"></span><h1>line<a class="headerlink" href="#line" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Process visibilities for spectral line work and create line cubes and images.</p>
-<div class="section" id="enable">
-<span id="line-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<section id="enable">
+<span id="line-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
 <p>Execute the line worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-in">
-<span id="line-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-in">
+<span id="line-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
 <p>Label defining the name of the .MS files to be processed. The .MS file names are composed using the .MS names set by dataid in the getdata worker, followed by the target ID (one file per target), followed by this label. This is the format used by CARACal whenever it writes an .MS file to disk (e.g., in the transform worker).</p>
 </div></blockquote>
-</div>
-<div class="section" id="line-name">
-<span id="line-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="line-name">
+<span id="line-line-name"></span><h2><strong>line_name</strong><a class="headerlink" href="#line-name" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = HI</em></p>
 <p>Suffix to be used for the name of the output files (data cubes etc).</p>
 </div></blockquote>
-</div>
-<div class="section" id="restfreq">
-<span id="line-restfreq"></span><h2><strong>restfreq</strong><a class="headerlink" href="#restfreq" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="restfreq">
+<span id="line-restfreq"></span><h2><strong>restfreq</strong><a class="headerlink" href="#restfreq" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = 1.420405752GHz</em></p>
 <p>Spectral line rest frequency.</p>
 </div></blockquote>
-</div>
-<div class="section" id="ncpu">
-<span id="line-ncpu"></span><h2><strong>ncpu</strong><a class="headerlink" href="#ncpu" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ncpu">
+<span id="line-ncpu"></span><h2><strong>ncpu</strong><a class="headerlink" href="#ncpu" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 0</em></p>
 <p>Number of CPUs to use for distributed processing. If set to 0 all available CPUs are used. This parameter is currently only passed on to WSClean for line imaging.</p>
 </div></blockquote>
-</div>
-<div class="section" id="rewind-flags">
-<span id="line-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="rewind-flags">
+<span id="line-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Rewind flags of the input .MS file(s) to specified version. Note that this is not applied to the .MS file(s) you might be running “transfer_apply_gains” on.</p>
 <p><strong>enable</strong></p>
@@ -186,16 +196,16 @@
 <p>Flag version to restore. This is applied to the .MS file(s) identified by “label” above plus the “_mst” suffix. Set to “null” to skip this rewind step. If ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="overwrite-flagvers">
-<span id="line-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overwrite-flagvers">
+<span id="line-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
-</div>
-<div class="section" id="subtractmodelcol">
-<span id="line-subtractmodelcol"></span><h2><strong>subtractmodelcol</strong><a class="headerlink" href="#subtractmodelcol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="subtractmodelcol">
+<span id="line-subtractmodelcol"></span><h2><strong>subtractmodelcol</strong><a class="headerlink" href="#subtractmodelcol" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Replace the CORRECTED_DATA column of the .MS file(s) with the difference CORRECTED_DATA - MODEL_DATA. This is useful for continuum subtraction as it subtracts the continuum clean model written to MODEL_DATA. WARNING! The CORRECTED_DATA column is overwritten. To undo this operation enable the addmodelcol segment in this worker.</p>
 <p><strong>enable</strong></p>
@@ -209,9 +219,9 @@
 <p>Force the model subtraction regardless of the number of previous subtractions.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="addmodelcol">
-<span id="line-addmodelcol"></span><h2><strong>addmodelcol</strong><a class="headerlink" href="#addmodelcol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="addmodelcol">
+<span id="line-addmodelcol"></span><h2><strong>addmodelcol</strong><a class="headerlink" href="#addmodelcol" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Replace the CORRECTED_DATA column of the .MS file(s) with the sum CORRECTED_DATA + MODEL_DATA. This is useful to undo the operation performed by subtractmodelcol in this worker. WARNING! The CORRECTED_DATA column is overwritten.</p>
 <p><strong>enable</strong></p>
@@ -225,9 +235,9 @@
 <p>Force the model addition regardless of the number of previous additions.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="mstransform">
-<span id="line-mstransform"></span><h2><strong>mstransform</strong><a class="headerlink" href="#mstransform" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mstransform">
+<span id="line-mstransform"></span><h2><strong>mstransform</strong><a class="headerlink" href="#mstransform" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Perform Doppler-tracking corrections and/or UVLIN continuum subtraction with CASA mstransform. For each input .MS file, this produces an output .MS file whose name is the same as that of the input .MS file plus the suffix “_mst”.</p>
 <p><strong>enable</strong></p>
@@ -324,9 +334,9 @@
 <p>Create obsinfo.txt and obsinfo.json per .MS file created by CASA mstransform.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-mst-errors">
-<span id="line-flag-mst-errors"></span><h2><strong>flag_mst_errors</strong><a class="headerlink" href="#flag-mst-errors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-mst-errors">
+<span id="line-flag-mst-errors"></span><h2><strong>flag_mst_errors</strong><a class="headerlink" href="#flag-mst-errors" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Run AOFlagger to flag any faulty visibilities produced by CASA mstransform.</p>
 <p><strong>enable</strong></p>
@@ -345,9 +355,9 @@
 <p>AOflagger read mode. If set to ‘indirect’, AOflagger temporarily writes a reordered .MS file to disc, which results in fast flagging but requires free disc space. If set to ‘memory’, AOflagger reads the .MS file into memory, which is even faster than ‘indirect’ but is impossible for large files. If set to ‘auto’, AOflagger will decide between the ‘memory’ mode and the ‘direct’ mode – the slowest mode – in which AOFlagger reads baselines by scanning the entire file for the data relevant for the currently required baseline.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-u-zeros">
-<span id="line-flag-u-zeros"></span><h2><strong>flag_u_zeros</strong><a class="headerlink" href="#flag-u-zeros" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-u-zeros">
+<span id="line-flag-u-zeros"></span><h2><strong>flag_u_zeros</strong><a class="headerlink" href="#flag-u-zeros" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>flag RFI at u=0</p>
 <p><strong>enable</strong></p>
@@ -421,9 +431,9 @@
 <p>extend flag selection to N nearby cells along the V axis in both directions</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="sunblocker">
-<span id="line-sunblocker"></span><h2><strong>sunblocker</strong><a class="headerlink" href="#sunblocker" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sunblocker">
+<span id="line-sunblocker"></span><h2><strong>sunblocker</strong><a class="headerlink" href="#sunblocker" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use sunblocker to grid the visibilities and flag UV cells affected by solar RFI. See description of sunblocker on github repository gigjozsa/sunblocker in method phazer of module sunblocker.py.</p>
 <p><strong>enable</strong></p>
@@ -472,9 +482,9 @@
 <p>Maximum uvdistance to be analysed (in wavelengths, lambda).</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="predict-noise">
-<span id="line-predict-noise"></span><h2><strong>predict_noise</strong><a class="headerlink" href="#predict-noise" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="predict-noise">
+<span id="line-predict-noise"></span><h2><strong>predict_noise</strong><a class="headerlink" href="#predict-noise" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Print to log-caracal.txt the expected natural noise level of the line cube (Stokes I, single channel) based on Tsys/eff and dish diameter below.</p>
 <p><strong>enable</strong></p>
@@ -493,9 +503,9 @@
 <p>Dish diameter in m.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="make-cube">
-<span id="line-make-cube"></span><h2><strong>make_cube</strong><a class="headerlink" href="#make-cube" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="make-cube">
+<span id="line-make-cube"></span><h2><strong>make_cube</strong><a class="headerlink" href="#make-cube" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Make a line cube using either WSClean + SoFiA (optional for clean masks) or CASA Clean.</p>
 <p><strong>enable</strong></p>
@@ -591,7 +601,7 @@
 <p><strong>wscl_sofia_niter</strong></p>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 2</em></p>
-<p>Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used.</p>
+<p>Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used. The value of this parameter must be &gt;= 1. Values &lt; 1 will be ignored, and a value of 1 will be used instead.</p>
 </div></blockquote>
 <p><strong>wscl_sofia_converge</strong></p>
 <blockquote>
@@ -664,9 +674,9 @@
 <p>Port CASA output to fits files.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="remove-stokes-axis">
-<span id="line-remove-stokes-axis"></span><h2><strong>remove_stokes_axis</strong><a class="headerlink" href="#remove-stokes-axis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="remove-stokes-axis">
+<span id="line-remove-stokes-axis"></span><h2><strong>remove_stokes_axis</strong><a class="headerlink" href="#remove-stokes-axis" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Remove the Stokes axis from the line cube.</p>
 <p><strong>enable</strong></p>
@@ -675,9 +685,9 @@
 <p>Enable the ‘remove_stokes_axis’ segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="pb-cube">
-<span id="line-pb-cube"></span><h2><strong>pb_cube</strong><a class="headerlink" href="#pb-cube" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pb-cube">
+<span id="line-pb-cube"></span><h2><strong>pb_cube</strong><a class="headerlink" href="#pb-cube" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Make a primary-beam cube.</p>
 <p><strong>enable</strong></p>
@@ -706,9 +716,9 @@
 <p>Primary beam pixels below this value are set to NaN.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="freq-to-vel">
-<span id="line-freq-to-vel"></span><h2><strong>freq_to_vel</strong><a class="headerlink" href="#freq-to-vel" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="freq-to-vel">
+<span id="line-freq-to-vel"></span><h2><strong>freq_to_vel</strong><a class="headerlink" href="#freq-to-vel" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Convert the spectral axis’ header keys of the line cube from frequency to velocity in the radio definition, v=c(1-obsfreq/restfreq). No change of spectra reference frame is performed.</p>
 <p><strong>enable</strong></p>
@@ -722,9 +732,9 @@
 <p>Perform the inverse transformation and change the cube’s 3rd axis from radio velocity to frequency.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="imcontsub">
-<span id="line-imcontsub"></span><h2><strong>imcontsub</strong><a class="headerlink" href="#imcontsub" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="imcontsub">
+<span id="line-imcontsub"></span><h2><strong>imcontsub</strong><a class="headerlink" href="#imcontsub" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use the final output image cube (lastiter true) or all (lastiter false) when using wsclean or a specified set of cubes. Fit a function or filter along the third axis, subtract it from the original, and return the result. Possible is a polynomial fit (fitmode = poly) or a Savitzky-Golay filter. In case of the Savitzky-Golay filter the window length is given by the parameter with the name length. The polynomial order of either polynomial or the filter is specified with the parameter polyorder. A Savitzky-Golay filter with polynomial order 0 is a median filter. Optionally a mask data cube with the same dimensions of the input data cube can be provided.  Voxels for which the mask data cube is not equal to zero are ignored. For the polynomial fit the voxels are simply ignored. In case of the Savitzky Golay filter, an iterative process is started.  All masked voxels are set to zero and a median filter is run along the frequency axis. After that the Savitzky-Golay filter is run sgiters times. If the parameter sgiters is set to 0, only one Savitzky-Golay filter is applied (no initial median filtering, does not work for ). With the parameter fitted the user can optionally supply the name of the output fitted data cube.</p>
 <p><strong>enable</strong></p>
@@ -793,9 +803,9 @@
 <p>Produce fitted and convolved data cubes (True means yes, default is False)</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="sofia">
-<span id="line-sofia"></span><h2><strong>sofia</strong><a class="headerlink" href="#sofia" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sofia">
+<span id="line-sofia"></span><h2><strong>sofia</strong><a class="headerlink" href="#sofia" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Run SoFiA source-finder on the final HI cubes to produce a detection mask, moment images and catalogues. Note that these settings are not used to make clean masks.</p>
 <p><strong>enable</strong></p>
@@ -879,9 +889,9 @@
 <p>Create a moment-1 image of the field.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="sharpener">
-<span id="line-sharpener"></span><h2><strong>sharpener</strong><a class="headerlink" href="#sharpener" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sharpener">
+<span id="line-sharpener"></span><h2><strong>sharpener</strong><a class="headerlink" href="#sharpener" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Run sharpener to extract and plot the spectra of all continuum sources brighter than a given threshold.</p>
 <p><strong>enable</strong></p>
@@ -915,22 +925,22 @@
 <p>Prefix label of plot names and titles.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="report">
-<span id="line-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report">
+<span id="line-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>(Re)generate a full HTML report at the end of this worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cabs">
-<span id="line-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cabs">
+<span id="line-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Specifies non-default image versions and/or tags for Stimela cabs.  Running with scissors: use with extreme caution. Inline format is: Format is [{name: cabname, tag: stimela_cab_version}].</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spectral line imaging &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>Spectral line imaging &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -83,10 +93,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Data reduction</a> &raquo;</li>
-      <li>Spectral line imaging</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Data reduction</a></li>
+      <li class="breadcrumb-item active">Spectral line imaging</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/reduction/line/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,8 +106,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="spectral-line-imaging">
-<h1>Spectral line imaging<a class="headerlink" href="#spectral-line-imaging" title="Permalink to this headline">¶</a></h1>
+  <section id="spectral-line-imaging">
+<h1>Spectral line imaging<a class="headerlink" href="#spectral-line-imaging" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/line/index.html#line"><span class="std std-ref">line</span></a><strong>]</strong></p>
@@ -109,8 +119,8 @@ and on <a class="reference internal" href="../../workers/line/index.html#line-la
 <p>The input .MS files may contain several targets. In this case, CARACal makes one HI cube per target, using all
 available visibilities for that target from all input .MS files. This worker does not mosaic line cubes made for different targets.
 That is done by the <a class="reference internal" href="../../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a> worker.</p>
-<div class="section" id="continuum-subtraction">
-<h2>Continuum subtraction<a class="headerlink" href="#continuum-subtraction" title="Permalink to this headline">¶</a></h2>
+<section id="continuum-subtraction">
+<h2>Continuum subtraction<a class="headerlink" href="#continuum-subtraction" title="Link to this heading"></a></h2>
 <p>Continuum subtraction is usually necessary before imaging the spectral line of interest.
 CARACal can do this using two standard methods, which can be run sequentially within a single CARACal run: <em>i)</em>
 subtraction of the continuum model visibilities from the field visibilities (<a class="reference internal" href="../../workers/line/index.html#line-subtractmodelcol"><span class="std std-ref">line: subtractmodelcol</span></a>);
@@ -131,18 +141,18 @@ suffix appended to the file name. Subsequent steps of this worker can be instruc
 <p>We have found that CASA MSTRANSFORM produces bad, partly-unflagged visibility spectra when the only unflagged channels of
 those spectra are not included in the <em>uvlin</em> fit. These bad spectra look like RFI in the cube. In order to flag them, users can
 run the <a class="reference internal" href="../../workers/line/index.html#line-flag-mst-errors"><span class="std std-ref">line: flag_mst_errors</span></a> step.</p>
-</div>
-<div class="section" id="doppler-correction">
-<h2>Doppler correction<a class="headerlink" href="#doppler-correction" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="doppler-correction">
+<h2>Doppler correction<a class="headerlink" href="#doppler-correction" title="Link to this heading"></a></h2>
 <p>Doppler correction is performed with the CASA task MSTRANSFORM (parameter <a class="reference internal" href="../../workers/line/index.html#line-mstransform"><span class="std std-ref">line: mstransform: doppler</span></a>)
 in the same run of this task used to perform continuum subtraction (see above). Users can select the telescope (choosing from a list
 of available names, see parameter <a class="reference internal" href="../../workers/line/index.html#line-mstransform"><span class="std std-ref">line: mstransform: telescope</span></a>), as well the regridding mode (channel, frequency
 or velocity), velocity type and output frame. Users can also set the frequency (or velocity, …) grid they want to Doppler correct to, but
 they can also let CARACal find the optimal one given the input files. In the latter case, visibilities will be regridded to the widest
 Doppler-corrected spectral interval common to all input .MS files, at the worse Doppler-corrected spectral resolution of them all.</p>
-</div>
-<div class="section" id="solar-rfi-flagging">
-<h2>Solar RFI flagging<a class="headerlink" href="#solar-rfi-flagging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solar-rfi-flagging">
+<h2>Solar RFI flagging<a class="headerlink" href="#solar-rfi-flagging" title="Link to this heading"></a></h2>
 <p>CARACal flags solar RFI using SunBlocker (<a class="reference internal" href="../../workers/line/index.html#line-sunblocker"><span class="std std-ref">line: sunblocker</span></a>).
 The main idea of SunBlocker is that, because solar RFI is broadband, averaging visibilities in
 frequency should enhance its detectability. However, the phase of solar RFI changes rapidly with frequency, leading to vectorial averages
@@ -151,9 +161,9 @@ visibility plane (i.e., on gridded visibilities). Once that is done, UV cells wi
 This method has been shown to work well on continuum-subtracted data. Users have control over some of the SunBlocker settings,
 such as flagging threshold and gridding. It is also possible to run this task on day-time data only based on the output of
 <a class="reference internal" href="../../workers/obsconf/index.html#obsconf-obsinfo"><span class="std std-ref">obsconf: obsinfo: vampirisms</span></a>.</p>
-</div>
-<div class="section" id="imaging">
-<h2>Imaging<a class="headerlink" href="#imaging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="imaging">
+<h2>Imaging<a class="headerlink" href="#imaging" title="Link to this heading"></a></h2>
 <p>Spectral line imaging is done with WSclean or CASA. The former has been used a lot more and is therefore more tested within CARACal.</p>
 <p>WSclean produces a set of individual .FITS images per channel (i.e.,
 dirty image, psf, clean model, restored image), and when that is done CARACal stacks them all together in .FITS image cubes.
@@ -167,13 +177,13 @@ At the moment the primary beam cube is calculated assuming a Gaussian primary be
 Primary beam cubes can be used subsequently in the <a class="reference internal" href="../../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a> worker.</p>
 <p>As a final step, CARACal can run SoFiA in order to make a line detection mask and the corresponding moment images. Users have control
 over several (but not all) SoFiA settings.</p>
-</div>
-<div class="section" id="diagnostics">
-<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="diagnostics">
+<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Link to this heading"></a></h2>
 <p>As a useful diagnostic, CARACal can run SHARPENER, which extracts 1D spectra at the position of bright continuum sources in the field.
 This is helpful to assess the quality of the continuum subtraction. It can also create one last flagging summary.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

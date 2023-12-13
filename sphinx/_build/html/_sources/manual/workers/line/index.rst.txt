@@ -620,7 +620,7 @@ Process visibilities for spectral line work and create line cubes and images.
 
     *int*, *optional*, *default = 2*
 
-    Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used.
+    Maximum number of WSClean + SoFiA iterations. The initial cleaning is done with WSClean automasking or with a user-provided clean mask. Subsequent iterations use a SoFiA clean mask. A value of 1 means that WSClean is only executed once and SoFiA is not used. The value of this parameter must be >= 1. Values < 1 will be ignored, and a value of 1 will be used instead.
 
   **wscl_sofia_converge**
 

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <title>Introduction &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../index.html"><img src="../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -85,9 +95,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Manual</a> &raquo;</li>
-      <li>Introduction</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Manual</a></li>
+      <li class="breadcrumb-item active">Introduction</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/manual/intro/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,12 +107,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="introduction">
-<span id="intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+  <section id="introduction">
+<span id="intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="what-is-caracal">
-<h2>What is CARACal?<a class="headerlink" href="#what-is-caracal" title="Permalink to this headline">¶</a></h2>
+<section id="what-is-caracal">
+<h2>What is CARACal?<a class="headerlink" href="#what-is-caracal" title="Link to this heading"></a></h2>
 <p>CARACal is a pipeline to reduce radio interferometry continuum and spectral line data in
 total intensity. It works on data from any radio interferometer as long as they are in
 “measurement set” format.</p>
@@ -134,88 +144,88 @@ description is available in the <a class="reference internal" href="../reduction
 the flow of a typical data reduction process. The full list of parameters available for
 the individual workers through the configuration file can be found at the <a class="reference internal" href="../workers/index.html#workers"><span class="std std-ref">Workers parameters</span></a>
 section of this manual or following the links below.</p>
-</div>
-<div class="section" id="list-and-brief-description-of-caracal-workers">
-<span id="workerlist"></span><h2>List and Brief description of CARACal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="list-and-brief-description-of-caracal-workers">
+<span id="workerlist"></span><h2>List and Brief description of CARACal workers<a class="headerlink" href="#list-and-brief-description-of-caracal-workers" title="Link to this heading"></a></h2>
 <p>The following workers are available in CARACal. Typically, they are executed in the
 same order in which they are given below. Only the first three workers (general, getdata
 and  obsconf) should always be executed. All other workers are optional.</p>
-<div class="section" id="general">
-<h3><a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<section id="general">
+<h3><a class="reference internal" href="../workers/general/index.html#general"><span class="std std-ref">general</span></a><a class="headerlink" href="#general" title="Link to this heading"></a></h3>
 <p>This worker sets the name of various input/output directories
 and the prefix used for the output data products (e.g., diagnostic plots, images, etc.).</p>
-</div>
-<div class="section" id="getdata">
-<h3><a class="reference internal" href="../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a><a class="headerlink" href="#getdata" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="getdata">
+<h3><a class="reference internal" href="../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a><a class="headerlink" href="#getdata" title="Link to this heading"></a></h3>
 <p>This worker sets the name of the files to be processed and whether any conversion to
 .MS format is necessary.</p>
-</div>
-<div class="section" id="obsconf">
-<h3><a class="reference internal" href="../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a><a class="headerlink" href="#obsconf" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="obsconf">
+<h3><a class="reference internal" href="../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a><a class="headerlink" href="#obsconf" title="Link to this heading"></a></h3>
 <p>This worker collects basic information on the content of the .MS files to be
 processed (e.g., target and calibrators’ name, channelisation, etc.). The worker can also
 extract this information automatically from the .MS metadata.</p>
-</div>
-<div class="section" id="transform">
-<h3><a class="reference internal" href="../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a><a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="transform">
+<h3><a class="reference internal" href="../workers/transform/index.html#transform"><span class="std std-ref">transform</span></a><a class="headerlink" href="#transform" title="Link to this heading"></a></h3>
 <p>This worker splits the calibrators (in preparation for
 cross-calibration) or the targets (in preparation for imaging) to new .MS files.
 Time and frequency averaging is available, as well as phase rotation to
 a new phase centre. Crosscalibration can be applied on the fly while splitting.</p>
-</div>
-<div class="section" id="prep">
-<h3><a class="reference internal" href="../workers/prep/index.html#prep"><span class="std std-ref">prep</span></a><a class="headerlink" href="#prep" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="prep">
+<h3><a class="reference internal" href="../workers/prep/index.html#prep"><span class="std std-ref">prep</span></a><a class="headerlink" href="#prep" title="Link to this heading"></a></h3>
 <p>This worker prepares the data for calibration and imaging. For example, it can
 recalculate UVW coordinates, add spectral weights based on Tsys measurements, and
 flag a “legacy” flag version.</p>
-</div>
-<div class="section" id="flag">
-<h3><a class="reference internal" href="../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a><a class="headerlink" href="#flag" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="flag">
+<h3><a class="reference internal" href="../workers/flag/index.html#flag"><span class="std std-ref">flag</span></a><a class="headerlink" href="#flag" title="Link to this heading"></a></h3>
 <p>This worker flags the data and returns statistics on the flags. As all other
 workers, it can be run multiple times within a single CARACal run as explained at
 <a class="reference internal" href="../configfile/index.html#configfile"><span class="std std-ref">Configuration file</span></a> (though this feature is not necessarily useful for all workers).
 It can flag data based on, e.g., channel-, antenna- and time selection, or using automated
 algorithms that run on autocorrelations (to catch antennas with clear problems) or
 crosscorrelations. It can also unflag all data.</p>
-</div>
-<div class="section" id="crosscal">
-<h3><a class="reference internal" href="../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a><a class="headerlink" href="#crosscal" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="crosscal">
+<h3><a class="reference internal" href="../workers/crosscal/index.html#crosscal"><span class="std std-ref">crosscal</span></a><a class="headerlink" href="#crosscal" title="Link to this heading"></a></h3>
 <p>This worker cross-calibrates the data. Users can design their own calibration strategy including
 delay, bandpass, gains and flux scale calibration, self-calibration of the secondary, and flagging.
 The calibration is applied to the calibrators’ visibilities for later inspection.
 Numerous settings are available for users to decide how to calibrate. Gain plots are produced.</p>
-</div>
-<div class="section" id="inspect">
-<h3><a class="reference internal" href="../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a><a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="inspect">
+<h3><a class="reference internal" href="../workers/inspect/index.html#inspect"><span class="std std-ref">inspect</span></a><a class="headerlink" href="#inspect" title="Link to this heading"></a></h3>
 <p>This worker plot the visibilities for diagnostic purpose. Several different kinds of plots can be made.</p>
-</div>
-<div class="section" id="mask">
-<h3><a class="reference internal" href="../workers/mask/index.html#mask"><span class="std std-ref">mask</span></a><a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mask">
+<h3><a class="reference internal" href="../workers/mask/index.html#mask"><span class="std std-ref">mask</span></a><a class="headerlink" href="#mask" title="Link to this heading"></a></h3>
 <p>This worker creates an a-priori clean mask based on NVSS or SUMSS,
 to be used during the continuum imaging/self-calibration loop. It can also merge the
 resulting mask with a mask based on an existing image.</p>
-</div>
-<div class="section" id="selfcal">
-<h3><a class="reference internal" href="../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a><a class="headerlink" href="#selfcal" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="selfcal">
+<h3><a class="reference internal" href="../workers/selfcal/index.html#selfcal"><span class="std std-ref">selfcal</span></a><a class="headerlink" href="#selfcal" title="Link to this heading"></a></h3>
 <p>This worker performs continuum imaging and standard (i.e., direction-independent)
 self-calibration. Automated convergence of the calibration procedure is optionally
 available. This worker can also interpolate and transfer sky model and calibration tables
 to another .MS (e.g., from a coarse- to a fine-channel .MS file).</p>
-</div>
-<div class="section" id="line">
-<h3><a class="reference internal" href="../workers/line/index.html#line"><span class="std std-ref">line</span></a><a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="line">
+<h3><a class="reference internal" href="../workers/line/index.html#line"><span class="std std-ref">line</span></a><a class="headerlink" href="#line" title="Link to this heading"></a></h3>
 <p>This worker creates spectral-line cubes and images. It can subtract the continuum via both
 model and UVLIN-like subtraction, Doppler correct, flag solar RFI, perform
 automated iterative cleaning with 3D clean masks, and, finally, run a spectral-line source
 finder.</p>
-</div>
-<div class="section" id="mosaic">
-<h3><a class="reference internal" href="../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a><a class="headerlink" href="#mosaic" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mosaic">
+<h3><a class="reference internal" href="../workers/mosaic/index.html#mosaic"><span class="std std-ref">mosaic</span></a><a class="headerlink" href="#mosaic" title="Link to this heading"></a></h3>
 <p>This worker mosaics continuum images or line cubes using a Gaussian primary beam with FWHM
 = 1.02 lambda / antenna_diameter out to a cutoff level.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

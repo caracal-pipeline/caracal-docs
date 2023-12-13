@@ -314,6 +314,18 @@ Perform self-calibration on the data.
 
 
 
+.. _selfcal_img_channelrange:
+
+--------------------------------------------------
+**img_channelrange**
+--------------------------------------------------
+
+  *list* *of int*, *optional*, *default = -1*
+
+  Only image the given channel range. Indices specify channel indices, end index is exclusive. .e.g. 0, 1023. Default '-1' means all channels.
+
+
+
 .. _selfcal_img_joinchans:
 
 --------------------------------------------------
@@ -636,6 +648,24 @@ Perform self-calibration on the data.
 
     Maximum number of time/freq data-chunks to load into memory simultaneously. If set to 0, then as many data-chunks as possible will be loaded.
 
+  **out_derotate**
+
+    *bool*, *optional*, *default = False*
+
+    Explicitly enables or disables derotation of output visibilities. Default (None) is to use the –model-pa-rotate and –model-feed-rotate settings.
+
+  **model_pa_rotate**
+
+    *bool*, *optional*, *default = False*
+
+    Apply parallactic angle rotation to model visibilities. Enable this for alt-azmounts, unless your model visibilities are already rotated.
+
+  **model_feed_rotate**
+
+    *str*, *optional*, *default = ' '*
+
+    Apply a feed angle rotation to the model visibilities. Use 'auto' to read angles from FEED subtable, or give an explicit value in degrees.
+
   **ragavi_plot**
 
     Use ragavi to plot diagnostic plots for self-calibration.
@@ -900,7 +930,7 @@ Perform self-calibration on the data.
 
     *list* *of str*, *optional*, *default = CORR_DATA*
 
-    Data to output after calibration. Options are 'CORR_DATA', 'CORR_RES' or 'CORRECTED_DATA', where CORR_DATA and CORRECTED_DATA are synonyms.
+    Data to output after calibration. Options are 'PA_DATA', 'CORR_RES', 'CORR_DATA' or 'CORRECTED_DATA', where CORR_DATA and CORRECTED_DATA are synonyms. Note that for 'PA_DATA' only parallactic angle corrections will be applied to the data to produce 'CORRECTED_DATA' column.
 
   **gain_matrix_type**
 

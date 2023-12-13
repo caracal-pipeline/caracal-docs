@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>flag &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <title>flag &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +31,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 latest
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -108,10 +118,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-      <li>flag</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Workers parameters</a></li>
+      <li class="breadcrumb-item active">flag</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/workers/flag/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,41 +131,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="flag">
-<span id="id1"></span><h1>flag<a class="headerlink" href="#flag" title="Permalink to this headline">¶</a></h1>
+  <section id="flag">
+<span id="id1"></span><h1>flag<a class="headerlink" href="#flag" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Flagging of the data. The selected flagging steps are executed in the same order in which they are given below.</p>
-<div class="section" id="enable">
-<span id="flag-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<section id="enable">
+<span id="flag-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
 <p>Execute the flag worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="field">
-<span id="flag-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="field">
+<span id="flag-field"></span><h2><strong>field</strong><a class="headerlink" href="#field" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>{“target”, “calibrators”}</em>, <em>optional</em>, <em>default = calibrators</em></p>
 <p>Fields that should be flagged. It can be set to either ‘target’ or ‘calibrators’ (i.e., all calibrators) as defined in the obsconf worker. Note that this selection is ignored – i.e., all fields in the selected .MS file(s) are flagged – in the flagging steps ‘flag_mask’ and ‘flag_Urange’ (see below). If a user wants to only flag a subset of the calibrators the selection can be further refined using ‘calfields’ below. The value of ‘field’ is also used to compose the name of the .MS file(s) that should be flagged, as explained in ‘label_in’ below.</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-in">
-<span id="flag-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-in">
+<span id="flag-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>This label is added to the input .MS file(s) name, given in the getdata worker, to define the name of the .MS file(s) that should be flagged. These are &lt;input&gt;_&lt;label&gt;.ms if ‘field’ (see above) is set to ‘calibrators’, or &lt;input&gt;-&lt;target&gt;_&lt;label&gt;.ms if ‘field’ is set to ‘target’ (with one .MS file for each target in the input .MS). If empty, the original .MS is flagged with the field selection explained in ‘field’ above.</p>
 </div></blockquote>
-</div>
-<div class="section" id="calfields">
-<span id="flag-calfields"></span><h2><strong>calfields</strong><a class="headerlink" href="#calfields" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="calfields">
+<span id="flag-calfields"></span><h2><strong>calfields</strong><a class="headerlink" href="#calfields" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = auto</em></p>
 <p>If ‘field’ above is set to ‘calibrators’, users can specify here what subset of calibrators to process. This should be a comma-separated list of ‘xcal’ ,’bpcal’, ‘gcal’ and/or ‘fcal’, which were all set by the obsconf worker. Alternatively, ‘auto’ selects all calibrators.</p>
 </div></blockquote>
-</div>
-<div class="section" id="rewind-flags">
-<span id="flag-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="rewind-flags">
+<span id="flag-rewind-flags"></span><h2><strong>rewind_flags</strong><a class="headerlink" href="#rewind-flags" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Rewind flags to specified version.</p>
 <p><strong>enable</strong></p>
@@ -174,16 +184,16 @@
 <p>Flag version to rewind to. If set to ‘auto’ it will rewind to the version prefix_workername_before, where ‘prefix’ is set in the ‘general’ worker, and ‘workername’ is the name of this worker including the suffix ‘__X’ if it is a repeated instance of this worker in the configuration file. Note that all flag versions that had been saved after this version will be deleted.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="overwrite-flagvers">
-<span id="flag-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overwrite-flagvers">
+<span id="flag-overwrite-flagvers"></span><h2><strong>overwrite_flagvers</strong><a class="headerlink" href="#overwrite-flagvers" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Allow CARACal to overwrite existing flag versions. Not recommended. Only enable this if you know what you are doing.</p>
 </div></blockquote>
-</div>
-<div class="section" id="unflag">
-<span id="flag-unflag"></span><h2><strong>unflag</strong><a class="headerlink" href="#unflag" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="unflag">
+<span id="flag-unflag"></span><h2><strong>unflag</strong><a class="headerlink" href="#unflag" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Unflag all visibilities for the selected field(s).</p>
 <p><strong>enable</strong></p>
@@ -192,9 +202,9 @@
 <p>Enable the ‘unflag’ segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-autopowerspec">
-<span id="flag-flag-autopowerspec"></span><h2><strong>flag_autopowerspec</strong><a class="headerlink" href="#flag-autopowerspec" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-autopowerspec">
+<span id="flag-flag-autopowerspec"></span><h2><strong>flag_autopowerspec</strong><a class="headerlink" href="#flag-autopowerspec" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Flags antennas based on drifts in the scan average of the auto-correlation spectra per field. This doesn’t strictly require any calibration. It is also not field-structure dependent, since it is just based on the DC of the field. Compares scan to median power of scans per field per channel. Also compares antenna to median of the array per scan per field per channel. This should catch any antenna with severe temperature problems.</p>
 <p><strong>enable</strong></p>
@@ -223,9 +233,9 @@
 <p>Number of threads to use.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-autocorr">
-<span id="flag-flag-autocorr"></span><h2><strong>flag_autocorr</strong><a class="headerlink" href="#flag-autocorr" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-autocorr">
+<span id="flag-flag-autocorr"></span><h2><strong>flag_autocorr</strong><a class="headerlink" href="#flag-autocorr" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Flag auto-correlations, through the FLAGDATA task in CASA.</p>
 <p><strong>enable</strong></p>
@@ -234,9 +244,9 @@
 <p>Enable the ‘flag_autocorr’ segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-quack">
-<span id="flag-flag-quack"></span><h2><strong>flag_quack</strong><a class="headerlink" href="#flag-quack" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-quack">
+<span id="flag-flag-quack"></span><h2><strong>flag_quack</strong><a class="headerlink" href="#flag-quack" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Do quack flagging, i.e. flag the beginning and/or end chunks of each scan. Again, this is done through FLAGDATA.</p>
 <p><strong>enable</strong></p>
@@ -255,9 +265,9 @@
 <p>Quack flagging mode. Options are ‘beg’ (which flags the beginning of the scan), ‘endb’ (which flags the end of the scan), ‘tail’ (which flags everything but the first specified seconds of the scan), and ‘end’ (which flags all but the last specified seconds of the scan).</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-elevation">
-<span id="flag-flag-elevation"></span><h2><strong>flag_elevation</strong><a class="headerlink" href="#flag-elevation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-elevation">
+<span id="flag-flag-elevation"></span><h2><strong>flag_elevation</strong><a class="headerlink" href="#flag-elevation" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA to flag antennas with pointing elevation outside the selected range.</p>
 <p><strong>enable</strong></p>
@@ -276,9 +286,9 @@
 <p>Upper elevation limit. Antennas pointing at an elevation above this value are flagged.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-shadow">
-<span id="flag-flag-shadow"></span><h2><strong>flag_shadow</strong><a class="headerlink" href="#flag-shadow" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-shadow">
+<span id="flag-flag-shadow"></span><h2><strong>flag_shadow</strong><a class="headerlink" href="#flag-shadow" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA to flag shadowed antennas.</p>
 <p><strong>enable</strong></p>
@@ -297,9 +307,9 @@
 <p>Consider all MeerKAT-64 antennas in the shadowing calculation, even if only a subarray is used.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-spw">
-<span id="flag-flag-spw"></span><h2><strong>flag_spw</strong><a class="headerlink" href="#flag-spw" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-spw">
+<span id="flag-flag-spw"></span><h2><strong>flag_spw</strong><a class="headerlink" href="#flag-spw" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA to flag spectral windows/channels.</p>
 <p><strong>enable</strong></p>
@@ -318,9 +328,9 @@
 <p>Check whether the channel selection returns any data. If it does not, FLAGDATA is not executed (preventing the pipeline from crashing). This check only works with the following spw formats (multiple, comma-separated selections allowed), “*:firstchan~lastchan”; “firstspw~lastspw:firstchan~lastchan”; “spw:firstchan~lastchan”; “firstchan~lastchan”. Channels are assumed to be in frequency (Hz, kHz, MHz, GHz allowed; if no units are given it assumes Hz).</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-time">
-<span id="flag-flag-time"></span><h2><strong>flag_time</strong><a class="headerlink" href="#flag-time" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-time">
+<span id="flag-flag-time"></span><h2><strong>flag_time</strong><a class="headerlink" href="#flag-time" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA to flag a specified timerange in the data.</p>
 <p><strong>enable</strong></p>
@@ -339,9 +349,9 @@
 <p>Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-scan">
-<span id="flag-flag-scan"></span><h2><strong>flag_scan</strong><a class="headerlink" href="#flag-scan" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-scan">
+<span id="flag-flag-scan"></span><h2><strong>flag_scan</strong><a class="headerlink" href="#flag-scan" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA to flag bad scans.</p>
 <p><strong>enable</strong></p>
@@ -355,9 +365,9 @@
 <p>Use CASA FLAGDATA syntax for selecting scans to flag.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-antennas">
-<span id="flag-flag-antennas"></span><h2><strong>flag_antennas</strong><a class="headerlink" href="#flag-antennas" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-antennas">
+<span id="flag-flag-antennas"></span><h2><strong>flag_antennas</strong><a class="headerlink" href="#flag-antennas" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Flag bad antennas. Or just the ones you have sworn a vendetta against.</p>
 <p><strong>enable</strong></p>
@@ -381,9 +391,9 @@
 <p>Check whether the timerange is in the MS being considered. This stops the pipeline from crashing when multiple datasets are being processed.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-mask">
-<span id="flag-flag-mask"></span><h2><strong>flag_mask</strong><a class="headerlink" href="#flag-mask" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-mask">
+<span id="flag-flag-mask"></span><h2><strong>flag_mask</strong><a class="headerlink" href="#flag-mask" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Apply a static mask to flag known RFI in all fields of the selected MS file(s).</p>
 <p><strong>enable</strong></p>
@@ -402,9 +412,9 @@
 <p>Select range in UV-distance (CASA-style range, e.g. ‘lower~upper’) for flagging. This is in units of metres. Leaving this parameter blank will select the entire range in UV-distance.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-manual">
-<span id="flag-flag-manual"></span><h2><strong>flag_manual</strong><a class="headerlink" href="#flag-manual" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-manual">
+<span id="flag-flag-manual"></span><h2><strong>flag_manual</strong><a class="headerlink" href="#flag-manual" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Manually flag subsets of data, using a syntax based on the CASA flagdata task</p>
 <p><strong>enable</strong></p>
@@ -418,9 +428,9 @@
 <p>Sequence of flagging rules, of the form “ms_pattern key:value key:value”</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="flag-rfi">
-<span id="flag-flag-rfi"></span><h2><strong>flag_rfi</strong><a class="headerlink" href="#flag-rfi" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="flag-rfi">
+<span id="flag-flag-rfi"></span><h2><strong>flag_rfi</strong><a class="headerlink" href="#flag-rfi" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Flag RFI using AOFlagger, Tricolour, or CASA FLAGDATA with tfcrop.</p>
 <p><strong>enable</strong></p>
@@ -513,9 +523,9 @@
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="inspect">
-<span id="flag-inspect"></span><h2><strong>inspect</strong><a class="headerlink" href="#inspect" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="inspect">
+<span id="flag-inspect"></span><h2><strong>inspect</strong><a class="headerlink" href="#inspect" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use the diagnostic products of RFInder to inspect the presence of RFI.</p>
 <p><strong>enable</strong></p>
@@ -559,9 +569,9 @@
 <p>Time steps (in units of minutes).</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="summary">
-<span id="flag-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<span id="flag-summary"></span><h2><strong>summary</strong><a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Use CASA FLAGDATA in ‘summary’ mode to write flagging summary at the end of the pre-calibration flagging.</p>
 <p><strong>enable</strong></p>
@@ -570,22 +580,22 @@
 <p>Enable the ‘summary’ segment.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="report">
-<span id="flag-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report">
+<span id="flag-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>(Re)generate a full HTML report at the end of this worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cabs">
-<span id="flag-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cabs">
+<span id="flag-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
