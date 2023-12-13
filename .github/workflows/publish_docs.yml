@@ -33,7 +33,7 @@ jobs:
         
     - uses: actions/checkout@v4
     - name: Make changes to pull request
-      run: date +%s > report.txt
+      run: git add html
 
     - name: Create Pull Request
       id: cpr
@@ -44,7 +44,7 @@ jobs:
         committer: GitHub <noreply@github.com>
         author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
         signoff: false
-        branch: example-patches
+        branch: readthedocs
         delete-branch: true
         title: 'Read the docs updates'
         body: |
