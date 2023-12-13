@@ -30,10 +30,11 @@ jobs:
       run: |
         python make_caracal_docs.py
         cd sphinx && make html
+        git add html
         
     - uses: actions/checkout@v4
     - name: Make changes to pull request
-      run: git add html
+      run: git status
 
     - name: Create Pull Request
       id: cpr
