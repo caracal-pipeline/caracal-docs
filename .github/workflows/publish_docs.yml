@@ -36,7 +36,7 @@ jobs:
     - name: Checkout main branch
       uses: actions/checkout@v4
       with:
-        ref: main  # ✅ Specify the base branch explicitly if needed
+        ref: master
         fetch-depth: 0  # Optional: fetch full history if needed for git operations
 
     - name: Clone caracal repo
