@@ -5,7 +5,15 @@
 
 name: Upload to Read the docs
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - master
+    tags:
+    - "*"
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *' # Every day at 6:00 AM UTC
 
 jobs:
   deploy:
@@ -44,8 +52,10 @@ jobs:
         committer: GitHub <noreply@github.com>
         author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
         signoff: false
-        branch: readthedocs
+        branch: readthedocs-1
         delete-branch: true
+        assignees: athanaseus
+        reviewers: paoloserra
         title: 'Read the docs updates'
         body: |
           Update report
