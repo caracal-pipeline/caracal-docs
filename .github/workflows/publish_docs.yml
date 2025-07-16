@@ -32,10 +32,16 @@ jobs:
         pip install sphinx sphinx-rtd-theme
         pip install recommonmark
         pip install ruamel.yaml==0.17.21
+
+    - name: Checkout main branch
+      uses: actions/checkout@v4
+      with:
+        ref: main  # ✅ Specify the base branch explicitly if needed
+        fetch-depth: 0  # Optional: fetch full history if needed for git operations
+
     - name: Clone caracal repo
       run: git clone https://github.com/caracal-pipeline/caracal.git ../caracal/
-
-    - uses: actions/checkout@v4
+    
     - name: Make changes to pull request
       run: |
         python make_caracal_docs.py
