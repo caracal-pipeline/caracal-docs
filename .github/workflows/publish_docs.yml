@@ -54,8 +54,6 @@ jobs:
         signoff: false
         branch: readthedocs-1
         delete-branch: true
-        assignees: athanaseus
-        reviewers: paoloserra
         title: 'Read the docs updates'
         body: |
           Update report
