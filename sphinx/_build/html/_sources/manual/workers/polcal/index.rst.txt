@@ -120,9 +120,9 @@ Carry out polarization calibration of the data (leakage and polarization angle).
 **feed_angle_rotation**
 --------------------------------------------------
 
-  *float*, *optional*, *default = ' '*
+  *str*, *optional*, *default = ' '*
 
-  Set the rotation angle for feeds. For MeerKAT data it is suggested to rotate the feeds by -90 degrees to agree with the convention assumed in the CASA software which is used to do the polarization calibration. Leave it empty if you don't want to rotate the feeds.
+  Set the rotation angle for feeds. For MeerKAT data it is suggested to rotate the feeds by -90 degrees to agree with the convention assumed in the CASA software which is used to do the polarization calibration. Leave it empty if you want to use the original value written in the MS (receptor_angle field). Otherwise set the number in degrees (i.e. '-90' stands for -90 degrees).
 
 
 
@@ -234,11 +234,11 @@ Carry out polarization calibration of the data (leakage and polarization angle).
 
     Use the MeerkAT local sky model (lsm) of the calibrator instead of a point source model. At the moment a MeerKAT lsm is only available for the calibrator PKS 1934-638. For the calibrator 0408-6545 a model is available but is not well tested yet and we do not recommend using it.
 
-  **no_verify**
+  **unity**
 
     *bool*, *optional*, *default = False*
 
-    Enables setting standard manually [???].
+    Enables setting the calibrator to unity.
 
   **tile_size**
 
@@ -260,9 +260,31 @@ Carry out polarization calibration of the data (leakage and polarization angle).
 **set_model_pol**
 --------------------------------------------------
 
-  *bool*, *optional*, *default = True*
+  Fill in the MODEL column of the .MS file(s) for the polarized calibrator in preparation for polcalibration. If False it will derive the model by fitting the PA coverage. This can be done only if more than 3 scans have been acquired. Not recomended for small PAs coverage.
 
-  Fill in the MODEL column of the .MS file(s) for the polarized calibrator in preparation for polcalibration. This can be done only for 3C138 and 3C286 using the CASA setjy for point-source models. If False it will derive the model by fitting the PA coverage. This can be done only if more than 3 scans have been acquired. Not recomended for small PAs coverage.
+  **enable**
+
+    *bool*, *optional*, *default = True*
+
+    Execute the set_model_pol segment.
+
+  **nrao_model**
+
+    *bool*, *optional*, *default = True*
+
+    P&B2017 + updated pol properties from NRAO web site (https://science.nrao.edu/facilities/vla/docs/manuals/obsguide/modes/pol, Table 7.2.7). Only available for 3C138 and 3C286 using the CASA setjy for point-source models.
+
+  **taylor_legodi_model**
+
+    *bool*, *optional*, *default = False*
+
+    It loads the model by Taylor & Legodi 2024.
+
+  **user_model**
+
+    *str*, *optional*, *default = 8.33843,1.47GHz,0.078,-0.16755,0.0,-0.4981*
+
+    You can upload a model written as flux_density in Jy, reffreq, polindex, polang in rad, RM, spix. You can include more than one term for the spectral index according to the CASA setjy description.
 
 
 

@@ -25,4 +25,5 @@ Workers parameters
    prep/index.rst
    selfcal/index.rst
    transform/index.rst
+   polimg/index.rst
    polcal/index.rst

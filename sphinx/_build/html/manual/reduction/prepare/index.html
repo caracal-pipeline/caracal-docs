@@ -1,19 +1,22 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Set up &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  <title>Set up &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +29,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                latest
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -81,10 +86,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Data reduction</a> &raquo;</li>
-      <li>Set up</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Data reduction</a></li>
+      <li class="breadcrumb-item active">Set up</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/reduction/prepare/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,13 +99,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="set-up">
-<h1>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h1>
+  <section id="set-up">
+<h1>Set up<a class="headerlink" href="#set-up" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>[relevant workers:</strong> <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a>, <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a>, <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a><strong>]</strong></p>
-<div class="section" id="directories-and-input-file-names">
-<h2>Directories and input file names<a class="headerlink" href="#directories-and-input-file-names" title="Permalink to this headline">¶</a></h2>
+<section id="directories-and-input-file-names">
+<h2>Directories and input file names<a class="headerlink" href="#directories-and-input-file-names" title="Link to this heading"></a></h2>
 <p>A run of CARACal must always start by setting up a number of directory and file
 names. This is done through the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> and <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a> workers.</p>
 <p>In the <a class="reference internal" href="../../workers/general/index.html#general"><span class="std std-ref">general</span></a> worker users give:</p>
@@ -121,9 +126,9 @@ files from the caracal/data/meerkat_files directory to the <em>input</em> direct
 <p>In the <a class="reference internal" href="../../workers/getdata/index.html#getdata"><span class="std std-ref">getdata</span></a> worker users give the name of the .MS files to be processed
 (<a class="reference internal" href="../../workers/getdata/index.html#getdata-dataid"><span class="std std-ref">getdata: dataid</span></a>). Furthermore, the following optional steps are available:
 Optionally, the input files can be untar-ed (<a class="reference internal" href="../../workers/getdata/index.html#getdata-untar"><span class="std std-ref">getdata: untar</span></a>).</p>
-</div>
-<div class="section" id="metadata">
-<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
 <p>Finally, before starting the actual data processing users need to provide some
 info about the content of the input .MS files through the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a> worker.
 Target and calibrators name can be set by editing the relevant parameters of
@@ -143,14 +148,14 @@ Users can, however, set any of the above manually.</p>
 Users should carefully select a good reference antenna for calibration
 with the <a class="reference internal" href="../../workers/obsconf/index.html#obsconf-refant"><span class="std std-ref">obsconf: refant</span></a>
 parameter.</p>
-</div>
-<div class="section" id="additional-info">
-<h2>Additional info<a class="headerlink" href="#additional-info" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="additional-info">
+<h2>Additional info<a class="headerlink" href="#additional-info" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../../workers/obsconf/index.html#obsconf"><span class="std std-ref">obsconf</span></a> worker can also produce a plot showing the elevation track of all
 targets and calibrators, and return the time range during which the data were
 taken with the Sun below the horizon.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

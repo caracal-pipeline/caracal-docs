@@ -1,19 +1,22 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ddcal &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  <title>ddcal &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +29,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                latest
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../prep/index.html">prep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../selfcal/index.html">selfcal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../transform/index.html">transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../polimg/index.html">polimg</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../polcal/index.html">polcal</a></li>
 </ul>
 </li>
@@ -96,10 +102,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Workers parameters</a> &raquo;</li>
-      <li>ddcal</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Workers parameters</a></li>
+      <li class="breadcrumb-item active">ddcal</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/workers/ddcal/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -109,41 +115,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="ddcal">
-<span id="id1"></span><h1>ddcal<a class="headerlink" href="#ddcal" title="Permalink to this headline">¶</a></h1>
+  <section id="ddcal">
+<span id="id1"></span><h1>ddcal<a class="headerlink" href="#ddcal" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MODE).</p>
-<div class="section" id="enable">
-<span id="ddcal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Permalink to this headline">¶</a></h2>
+<section id="enable">
+<span id="ddcal-enable"></span><h2><strong>enable</strong><a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em></p>
 <p>Execute the ddcal worker (i.e. carry out DD-calibration).</p>
 </div></blockquote>
-</div>
-<div class="section" id="label-in">
-<span id="ddcal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="label-in">
+<span id="ddcal-label-in"></span><h2><strong>label_in</strong><a class="headerlink" href="#label-in" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = corr</em></p>
 <p>Label of the .MS files to process. By default uses the ‘corr’ label_in for self-calibrated dataset.</p>
 </div></blockquote>
-</div>
-<div class="section" id="use-pb">
-<span id="ddcal-use-pb"></span><h2><strong>use_pb</strong><a class="headerlink" href="#use-pb" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="use-pb">
+<span id="ddcal-use-pb"></span><h2><strong>use_pb</strong><a class="headerlink" href="#use-pb" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>Enable primary beam usage in making the DD-corrected DDFacet image. Note that this is EXPERIMENTAL and currently only available for MeerKAT data.</p>
 </div></blockquote>
-</div>
-<div class="section" id="shared-mem">
-<span id="ddcal-shared-mem"></span><h2><strong>shared_mem</strong><a class="headerlink" href="#shared-mem" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="shared-mem">
+<span id="ddcal-shared-mem"></span><h2><strong>shared_mem</strong><a class="headerlink" href="#shared-mem" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>int</em>, <em>optional</em>, <em>default = 400</em></p>
 <p>Shared memory for tasks in units of GBs. Does not work with singularity.</p>
 </div></blockquote>
-</div>
-<div class="section" id="image-dd">
-<span id="ddcal-image-dd"></span><h2><strong>image_dd</strong><a class="headerlink" href="#image-dd" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="image-dd">
+<span id="ddcal-image-dd"></span><h2><strong>image_dd</strong><a class="headerlink" href="#image-dd" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Imaging parameters for DD calibration with DDFacet.</p>
 <p><strong>enable</strong></p>
@@ -307,9 +313,9 @@
 <p>Output mode of DDFacet. Options are ‘Dirty’, ‘Clean’, ‘Predict’, and ‘PSF’. This setting defaults to ‘Clean’, since that is what we want to do in this worker.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="calibrate-dd">
-<span id="ddcal-calibrate-dd"></span><h2><strong>calibrate_dd</strong><a class="headerlink" href="#calibrate-dd" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="calibrate-dd">
+<span id="ddcal-calibrate-dd"></span><h2><strong>calibrate_dd</strong><a class="headerlink" href="#calibrate-dd" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Direction-dependent calibration parameters.</p>
 <p><strong>enable</strong></p>
@@ -458,9 +464,9 @@
 <p>Number of processes.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="copy-data">
-<span id="ddcal-copy-data"></span><h2><strong>copy_data</strong><a class="headerlink" href="#copy-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="copy-data">
+<span id="ddcal-copy-data"></span><h2><strong>copy_data</strong><a class="headerlink" href="#copy-data" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Copy DD-calibrated data to CORRECTED_DATA column. THIS IS DANGEROUS - only if you want to go ahead with line imaging.</p>
 <p><strong>enable</strong></p>
@@ -469,9 +475,9 @@
 <p>Enable copying of DD-calibrated data to CORRECTED_DATA column.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="image-wsclean">
-<span id="ddcal-image-wsclean"></span><h2><strong>image_wsclean</strong><a class="headerlink" href="#image-wsclean" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="image-wsclean">
+<span id="ddcal-image-wsclean"></span><h2><strong>image_wsclean</strong><a class="headerlink" href="#image-wsclean" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>WSClean imaging paramaters for ddcal worker.</p>
 <p><strong>enable</strong></p>
@@ -585,9 +591,9 @@
 <p>Switch on local-rms measurement for cleaning.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="transfer-model-dd">
-<span id="ddcal-transfer-model-dd"></span><h2><strong>transfer_model_dd</strong><a class="headerlink" href="#transfer-model-dd" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="transfer-model-dd">
+<span id="ddcal-transfer-model-dd"></span><h2><strong>transfer_model_dd</strong><a class="headerlink" href="#transfer-model-dd" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p>Repredict WSClean model to the highest channel resolution.</p>
 <p><strong>enable</strong></p>
@@ -636,22 +642,22 @@
 <p>Fraction of system RAM that can be used. Used when setting automatically the chunk size.</p>
 </div></blockquote>
 </div></blockquote>
-</div>
-<div class="section" id="report">
-<span id="ddcal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report">
+<span id="ddcal-report"></span><h2><strong>report</strong><a class="headerlink" href="#report" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>bool</em>, <em>optional</em>, <em>default = False</em></p>
 <p>(Re)generate a full HTML report at the end of this worker.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cabs">
-<span id="ddcal-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cabs">
+<span id="ddcal-cabs"></span><h2><strong>cabs</strong><a class="headerlink" href="#cabs" title="Link to this heading"></a></h2>
 <blockquote>
 <div><p><em>list</em> <em>of map</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
 <p>Specifies non-default image versions and/or tags for Stimela cabs. Running with scissors: use with extreme caution.</p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
