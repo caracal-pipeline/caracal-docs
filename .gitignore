@@ -1,0 +1,31 @@
+# Ignore all Sphinx build artifacts
+sphinx/_build/
+sphinx/output/
+
+# Ignore doctrees and pickled environment files
+**/doctrees/
+**/*.pickle
+
+# Ignore HTML dependencies and static cache
+**/_static/
+**/*.doctree
+
+# Virtual environments (if any)
+venv/
+.env/
+.venv/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor configs and logs
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
