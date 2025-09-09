@@ -12,10 +12,9 @@ on:
     tags:
     - "*"
   pull_request:
-  #schedule:
-  #  - cron: '* 14 * * *' # Every day at 6:00 AM UTC
   schedule:
-    - cron: '30 12 * * *'  # Every day at 14:15 UTC
+    - cron: '* 6 * * *' # Every day at 6:00 AM UTC
+
 
 
 jobs:
