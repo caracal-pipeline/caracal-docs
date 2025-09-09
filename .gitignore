@@ -1,9 +1,6 @@
-# Ignore all build output...
-_build/
-
-# ...but include the HTML directory inside it
-!_build/html/
-!_build/html/**
+# Ignore all Sphinx build artifacts
+sphinx/_build/
+sphinx/output/
 
 # Ignore doctrees and pickled environment files
 **/doctrees/
