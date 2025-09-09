@@ -1,6 +1,9 @@
-# Ignore all Sphinx build artifacts
-sphinx/_build/
-sphinx/output/
+# Ignore everything in _build
+sphinx/_build/*
+
+# But allow the html folder and its contents
+!sphinx/_build/html/
+!sphinx/_build/html/**
 
 # Ignore doctrees and pickled environment files
 **/doctrees/
