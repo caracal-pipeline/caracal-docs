@@ -1,19 +1,22 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CARACal workflow &mdash; CARACal latest documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+  <title>CARACal workflow &mdash; CARACal latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f0ea86f3" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -26,14 +29,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../../../index.html"><img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/caracal_logo.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                latest
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -80,10 +85,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Manual</a> &raquo;</li>
-          <li><a href="../index.html">Data reduction</a> &raquo;</li>
-      <li>CARACal workflow</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Manual</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Data reduction</a></li>
+      <li class="breadcrumb-item active">CARACal workflow</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manual/reduction/workflow/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -93,8 +98,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="caracal-workflow">
-<span id="workflow"></span><h1>CARACal workflow<a class="headerlink" href="#caracal-workflow" title="Permalink to this headline">¶</a></h1>
+  <section id="caracal-workflow">
+<span id="workflow"></span><h1>CARACal workflow<a class="headerlink" href="#caracal-workflow" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>A CARACal run involves running a sequence of CARACal workers following the order in which they
@@ -102,8 +107,8 @@ are listed in the user configuration file. For reference see <a class="reference
 <p>Users can design their own CARACal workflow with some level of flexibility. The exact workflow
 (i.e., the exact sequence of CARACal workers) will depend on science goals but also on I/O
 constraints. Below we provide two examples.</p>
-<div class="section" id="recommended-workflow">
-<span id="recommended"></span><h2>Recommended workflow<a class="headerlink" href="#recommended-workflow" title="Permalink to this headline">¶</a></h2>
+<section id="recommended-workflow">
+<span id="recommended"></span><h2>Recommended workflow<a class="headerlink" href="#recommended-workflow" title="Link to this heading"></a></h2>
 <p>The currently recommended CARACal workflow minimises the data volume increase
 during the course of a full CARACal run, and allows to treat the input .MS file(s)
 as read-only.</p>
@@ -190,9 +195,9 @@ as read-only.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="simple-workflow">
-<h2>Simple workflow<a class="headerlink" href="#simple-workflow" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="simple-workflow">
+<h2>Simple workflow<a class="headerlink" href="#simple-workflow" title="Link to this heading"></a></h2>
 <p>Simpler workflows than the recommended one are possible. For example, the workflow
 below employs less worker runs. However, it modifies the input .MS file(s), results into
 a larger data volume increase, and runs the self-calibration loop on larger .MS files.</p>
@@ -253,8 +258,8 @@ a larger data volume increase, and runs the self-calibration loop on larger .MS 
 </li>
 </ul>
 <p>Typically, this is 50% larger than for the <a class="reference internal" href="#recommended"><span class="std std-ref">Recommended workflow</span></a> above.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -174,7 +174,7 @@ Prepare the data for calibration and imaging.
 
   **mode**
 
-    *{"uniform", "estimate", "delete"}*, *optional*, *default = uniform*
+    *{"uniform", "calculate", "delete"}*, *optional*, *default = uniform*
 
     Mode for spectral weights. Options are 'uniform' (set all weights to unity), 'estimate' (estimate spectral weights from frequency-dependent SEFD/Tsys/Noise values, and see 'estimate' segment of this section), and 'delete' (delete WEIGHT_SPECTRUM column if it exists).
 
