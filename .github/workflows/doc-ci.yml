@@ -15,7 +15,7 @@ on:
   #schedule:
   #  - cron: '* 14 * * *' # Every day at 6:00 AM UTC
   schedule:
-    - cron: '20 14 * * *'  # Every day at 14:15 UTC
+    - cron: '30 12 * * *'  # Every day at 14:15 UTC
 
 
 jobs:
