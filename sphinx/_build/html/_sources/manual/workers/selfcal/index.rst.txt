@@ -314,6 +314,18 @@ Perform self-calibration on the data.
 
 
 
+.. _selfcal_img_channelrange:
+
+--------------------------------------------------
+**img_channelrange**
+--------------------------------------------------
+
+  *list* *of int*, *optional*, *default = -1*
+
+  Only image the given channel range. Indices specify channel indices, end index is exclusive. .e.g. 0, 1023. Default '-1' means all channels.
+
+
+
 .. _selfcal_img_joinchans:
 
 --------------------------------------------------
@@ -371,6 +383,30 @@ Perform self-calibration on the data.
   *str*, *optional*, *default = ' '*
 
   Comma-separated integer scales for multiscale cleaning in pixels. If set to an empty string WSClean selects the scales automatically. These include the 0 scale, a scale calculated based on the beam size, and all scales obtained increasing the scale by a factor of 2 until the image size is reached.
+
+
+
+.. _selfcal_img_multiscale_bias:
+
+--------------------------------------------------
+**img_multiscale_bias**
+--------------------------------------------------
+
+  *float*, *optional*, *default = 0.6*
+
+  Comma-separated set of biases for multiscale cleaning. This balances between how sensitive the algorithm is towards large scales compared to smaller scales. Lower values will clean larger scales earlier and deeper. Its default is 0.6, which means something like “if a peak is 0.6 times larger at a 2x larger scale, select the larger scale”
+
+
+
+.. _selfcal_img_nonegative:
+
+--------------------------------------------------
+**img_nonegative**
+--------------------------------------------------
+
+  *bool*, *optional*, *default = ' '*
+
+  Do not allow negative components during cleaning
 
 
 
@@ -434,25 +470,7 @@ Perform self-calibration on the data.
 
     *str*, *optional*, *default = ' '*
 
-    User-provided input-mask that will be supplemented by the SoFiA mask, created through SoFiA source-finding.
-
-  **fornax_special**
-
-    *bool*, *optional*, *default = False*
-
-    Activate masking of Fornax A using SoFiA.
-
-  **fornax_thr**
-
-    *list* *of float*, *optional*, *default = 4.0*
-
-    SoFiA source-finding threshold, in terms of the number of sigma_rms to go down to (i.e. the minimum signal-to-noise ratio).
-
-  **fornax_sofia**
-
-    *bool*, *optional*, *default = False*
-
-    Use SoFiA for the mask of Fornax A, instead of that by Fomalont.
+    User-provided input-mask that will be (regridded if needed and) added onto the SoFiA mask.
 
 
 
@@ -636,27 +654,57 @@ Perform self-calibration on the data.
 
     Maximum number of time/freq data-chunks to load into memory simultaneously. If set to 0, then as many data-chunks as possible will be loaded.
 
-  **ragavi_plot**
+  **out_derotate**
 
-    Use ragavi to plot diagnostic plots for self-calibration.
+    *bool*, *optional*, *default = False*
+
+    Explicitly enables or disables derotation of output visibilities. Default (None) is to use the –model-pa-rotate and –model-feed-rotate settings.
+
+  **model_pa_rotate**
+
+    *bool*, *optional*, *default = False*
+
+    Apply parallactic angle rotation to model visibilities. Enable this for alt-azmounts, unless your model visibilities are already rotated.
+
+  **model_feed_rotate**
+
+    *str*, *optional*, *default = ' '*
+
+    Apply a feed angle rotation to the model visibilities. Use 'auto' to read angles from FEED subtable, or give an explicit value in degrees.
+
+  **gain_plot**
+
+    Use cubical gain-plotter to plot diagnostic plots for self-calibration.
 
     **enable**
 
       *bool*, *optional*, *default = False*
 
-      Enable the plotting of diagnostics, using ragavi.
+      Enable the plotting of diagnostics, using gain-plotter.
 
-    **gaintype**
+    **diag**
 
-      *list* *of str*, *optional*, *default = G*
+      *{"ri", "ap", "none"}*, *optional*, *default = ap*
 
-      List of gain solution types. Options are 'F' (flux-calibration solutions), 'B' (bandpass-calibration solutions), 'K' (delay-calibration solutions), 'G' (gain-calibration solutions), and 'D' (D-Jones leakage-calibration solutions).
+      Plot diagonal elements as real/imag or amp/phase.
 
-    **field**
+    **off_diag**
 
-      *list* *of int*, *optional*, *default = 0*
+      *{"ri", "ap", "none"}*, *optional*, *default = none*
 
-      Fields to plot. Specify by field ID.
+      Also plot off-diagonal elements as real/imag or amp/phase.
+
+    **nrow**
+
+      *int*, *optional*, *default = 6*
+
+      Number of plot rows.
+
+    **ncol**
+
+      *int*, *optional*, *default = 12*
+
+      Number of plot columns.
 
 
 
@@ -806,6 +854,18 @@ Perform self-calibration on the data.
 
     Specifies a fixed amount of memory in gigabytes.
 
+  **nr_parallel_grid**
+
+    *int*, *optional*, *default = 1*
+
+    Will execute multiple gridders simultaneously when using w-stacking. When parallel gridding is not possible, or when image sizes are reasonably large (say 5k-10k), the w-gridder might be a better choice.
+
+  **use_wgridder**
+
+    *bool*, *optional*, *default = False*
+
+    Use the w-gridding gridder developed by Martin Reinecke. Otherwise, the default will be w-stacking.
+
 
 
 .. _selfcal_extract_sources:
@@ -900,17 +960,17 @@ Perform self-calibration on the data.
 
     *list* *of str*, *optional*, *default = CORR_DATA*
 
-    Data to output after calibration. Options are 'CORR_DATA', 'CORR_RES' or 'CORRECTED_DATA', where CORR_DATA and CORRECTED_DATA are synonyms.
+    Data to output after calibration. Options are 'PA_DATA', 'CORR_RES', 'CORR_DATA' or 'CORRECTED_DATA', where CORR_DATA and CORRECTED_DATA are synonyms. Note that for 'PA_DATA' only parallactic angle corrections will be applied to the data to produce 'CORRECTED_DATA' column.
 
   **gain_matrix_type**
 
-    *list* *of str*, *optional*, *default = GainDiagPhase, GainDiag*
+    *list* *of str*, *optional*, *default = Fslope, Fslope*
 
     Gain matrix type. 'GainDiagPhase' = phase-only calibration, 'GainDiagAmp' = amplitude only, 'GainDiag' = Amplitude + Phase, 'Gain2x2' = Amplitude + Phase taking non-diagonal terms into account, 'Fslope' = delay selfcal (for which solution intervals should be set to at least twice the values you would use for GainDiagPhase). Note that Fslope does not work with MeqTrees.
 
   **gsols_timeslots**
 
-    *list* *of int*, *optional*, *default = 1*
+    *list* *of int*, *optional*, *default = 2*
 
     G-Jones time solution interval. The parameter cal_timeslots_chunk above should be a multiple of Gsols_time. 0 entails using a single solution for the full time of the observations.
 
