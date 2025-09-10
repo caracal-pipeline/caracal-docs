@@ -12,6 +12,6 @@ build:
 
 version:
   regexes:
-    - '^v.*$'    # Automatically activate all tags starting with 'v'
+    - '^v*$'    # Automatically activate all tags starting with 'v'
   protected:
     - master       # Protect the main branch version from accidental deletion/deactivation
