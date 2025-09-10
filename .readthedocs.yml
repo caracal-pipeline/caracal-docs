@@ -9,9 +9,3 @@ build:
     # Copy your prebuilt HTML to where RTD expects it
     - mkdir -p _readthedocs/html
     - cp -r sphinx/_build/html/* _readthedocs/html/
-
-version:
-  regexes:
-    - '^v*$'    # Automatically activate all tags starting with 'v'
-  protected:
-    - master       # Protect the main branch version from accidental deletion/deactivation
