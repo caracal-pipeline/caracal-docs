@@ -8,4 +8,4 @@ build:
   commands:
     # Copy your prebuilt HTML to where RTD expects it
     - mkdir -p _readthedocs/html
-    - cp -r _build/html/* _readthedocs/html/
+    - cp -r sphinx/_build/html/* _readthedocs/html/
