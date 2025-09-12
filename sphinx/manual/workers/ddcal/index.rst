@@ -518,9 +518,9 @@ Perform direction-dependent calibration on the data (SHARED-RISK DEVELOPMENT MOD
 
   **img_ws_uvtaper**
 
-    *str*, *optional*, *default = 0*
+    *float*, *optional*, *default = 0.*
 
-    Taper for imaging (in arcsec).
+    Gaussian taper for imaging (in units of arcsec).
 
   **img_ws_niter**
 
