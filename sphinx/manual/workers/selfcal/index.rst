@@ -236,7 +236,7 @@ Perform self-calibration on the data.
 **img_taper**
 --------------------------------------------------
 
-  *str*, *optional*, *default = 0.*
+  *float*, *optional*, *default = 0.*
 
   Gaussian taper for imaging (in units of arcsec).
 
