@@ -418,7 +418,7 @@ Flagging of the data. The selected flagging steps are executed in the same order
 
     *list* *of str*, *optional*, *default = ' '*
 
-    Sequence of flagging rules, of the form "ms_pattern key:value key:value"
+    Sequence of flagging rules, of the form "ms_pattern key:value key:value". e.g.  ['antenna:XX scan:X', 'antenna:xxx timerange:YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS']
 
 
 
@@ -493,6 +493,12 @@ Flagging of the data. The selected flagging steps are executed in the same order
       *str*, *optional*, *default = calibrator_mild_flagging.yaml*
 
       Name of the Tricolour strategy file to be used for an MS with narrow bandwidth, if mode = 'auto' (see above).
+
+    **subtract_model_column**
+
+      *str*, *optional*, *default = ' '*
+
+      Column to subtract from 'col' to form residuals to flag on
 
   **tfcrop**
 

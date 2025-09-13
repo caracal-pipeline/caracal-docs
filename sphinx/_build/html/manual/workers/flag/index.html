@@ -421,7 +421,7 @@
 <p><strong>rules</strong></p>
 <blockquote>
 <div><p><em>list</em> <em>of str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
-<p>Sequence of flagging rules, of the form “ms_pattern key:value key:value”</p>
+<p>Sequence of flagging rules, of the form “ms_pattern key:value key:value”. e.g.  [‘antenna:XX scan:X’, ‘antenna:xxx timerange:YYYY/MM/DD/HH:MM:SS~YYYY/MM/DD/HH:MM:SS’]</p>
 </div></blockquote>
 </div></blockquote>
 </section>
@@ -483,6 +483,11 @@
 <blockquote>
 <div><p><em>str</em>, <em>optional</em>, <em>default = calibrator_mild_flagging.yaml</em></p>
 <p>Name of the Tricolour strategy file to be used for an MS with narrow bandwidth, if mode = ‘auto’ (see above).</p>
+</div></blockquote>
+<p><strong>subtract_model_column</strong></p>
+<blockquote>
+<div><p><em>str</em>, <em>optional</em>, <em>default = ‘ ‘</em></p>
+<p>Column to subtract from ‘col’ to form residuals to flag on</p>
 </div></blockquote>
 </div></blockquote>
 <p><strong>tfcrop</strong></p>
